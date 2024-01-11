@@ -11,6 +11,10 @@ void main(List<String> args) {
   person.printInfo(); // Name: Huy, Age: $22
 
   Person.sayHello(); // call method static with name Class
+
+  Map<String, dynamic> map = {'name': 'Hau', 'age': 28};
+
+  print(Person.fromJson(map));
 }
 
 class Person {
@@ -19,15 +23,21 @@ class Person {
 
   Person(this.name, this.age);
 
+  // use name constructor withSuggest new Person
+  Person.withSugges({required this.name, required this.age});
+
+  // name constructor fromJson from Map to Person
+  factory Person.fromJson(Map<String, dynamic> json) {
+    return Person(json['name'], json['age']);
+  }
+
   // func in Class understand the operation of that object
   void printInfo() {
     print('Name: $name, Age: $age');
   }
 
   //static method
-  static void sayHello(){
+  static void sayHello() {
     print('Say Hello');
   }
 }
-
-
