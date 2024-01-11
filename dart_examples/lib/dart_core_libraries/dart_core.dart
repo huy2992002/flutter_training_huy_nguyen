@@ -1,5 +1,7 @@
 //dart:core library is automatically imported.
 
+// ignore_for_file: unused_local_variable
+
 void main(List<String> args) {
   string();
 
@@ -53,10 +55,14 @@ void dateTime() {
   var now = DateTime.now();
   var berlinWallFell = DateTime(1989, 11, 9);
   var moonLanding = DateTime.parse("1969-07-20");
+
+  print(now);
 }
 
 void uri() {
   //A Uri object represents a uniform resource identifier, which identifies a resource, for example on the web.
 
   var dartlang = Uri.parse('http://dartlang.org/');
+
+  print(dartlang);
 }
