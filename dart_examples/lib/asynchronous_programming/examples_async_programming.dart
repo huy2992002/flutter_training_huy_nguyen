@@ -1,7 +1,7 @@
 void main(List<String> args) {
   order('Pho');
 
-  //user catchError exception future method if throw Exception (onError)
+  //use catchError exception future method if throw Exception (onError)
   test(true).catchError((onError) {
     print(onError);
   }); // Oke
@@ -15,12 +15,12 @@ void main(List<String> args) {
 
 Future<void> order(String food) async {
   print('Order $food ');
-  await cook(); // user await func cook finished
+  await cook(); // use await func cook finished
 }
 
 Future<void> cook() async {
   await Future.delayed(Duration(milliseconds: 1000), () {
-    // user await func delayed finished continue func
+    // use await func delayed finished continue func
     print('Cooking...');
   });
 
