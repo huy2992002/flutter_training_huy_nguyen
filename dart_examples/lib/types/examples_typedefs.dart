@@ -10,7 +10,8 @@ void main(List<String> args) {
 
   ListMapper<String> a = {
     'keyA': ['a', 'b']
-  }; // ListMapper<String> is Map<String,List<String>> 
+  }; 
+  // ListMapper<String> is Map<String,List<String>> 
 
   print(a);
 }
