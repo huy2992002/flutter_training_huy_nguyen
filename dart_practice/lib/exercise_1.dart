@@ -1,3 +1,6 @@
+//Create a program that asks the user to enter their name and their age. 
+//Print out a message that tells how many years they have to be 100 years old.
+
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
