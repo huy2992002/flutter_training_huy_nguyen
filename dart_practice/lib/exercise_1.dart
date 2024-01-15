@@ -5,7 +5,7 @@ void main(List<String> args) {
 }
 
 void checkAgeToHunderd() {
-  String name = Validator.inputString('Input name: ');
-  int age = Validator.inputInt('Input age: ');
+  final name = Validator.inputString('Input name: ');
+  final age = Validator.inputInt('Input age: ');
   print('$name has ${100 - age} more years to be 100 years old');
 }
