@@ -2,7 +2,7 @@ import 'dart:io';
 
 class Validator {
   static int inputInt(String prompt) {
-    int value = 0;
+    var value = 0;
 
     bool isValid;
 
@@ -21,7 +21,7 @@ class Validator {
   }
 
   static double inputDouble(String prompt) {
-    double value = 0;
+    var value = 0.0;
 
     bool isValid;
 
@@ -40,7 +40,7 @@ class Validator {
   }
 
   static String inputString(String prompt) {
-    String value = '';
+    var value = '';
 
     bool isValid;
 
