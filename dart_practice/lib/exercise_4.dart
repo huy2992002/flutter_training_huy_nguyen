@@ -1,8 +1,6 @@
 // Create a program that asks the user for a number and then prints out a list of all the divisors of that number.
-// ignore_for_file: inference_failure_on_collection_literal
 
 import 'dart:io';
-
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
