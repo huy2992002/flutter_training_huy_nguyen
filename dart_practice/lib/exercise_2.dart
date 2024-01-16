@@ -11,9 +11,5 @@ void main(List<String> args) {
 }
 
 void checkOddEven(int number) {
-  if(number.isEven) {
-    print('This number is an even number');
-  }else {
-    print('This number is an odd number');
-  }
+  print('This number is an ${number.isEven ? 'even' : 'odd'} number');
 }
