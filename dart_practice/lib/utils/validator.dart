@@ -56,4 +56,23 @@ class Validator {
     } while (!isValid);
     return value;
   }
+
+  static String inputBirthday(String prompt) {
+    var value = '';
+
+    bool isValid;
+
+    do {
+      stdout.write(prompt);
+      value = stdin.readLineSync().toString();
+      try {
+        DateTime.parse(value);
+        isValid = true;
+      } catch (e) {
+        print('Error, Invalid Birtday');
+        isValid = false;
+      }
+    } while (!isValid);
+    return value;
+  }
 }
