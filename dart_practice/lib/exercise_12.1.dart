@@ -29,7 +29,7 @@ void getBirthDay(String path) {
   if (dictionary[name] != null) {
     print("$name's birthday is ${dictionary[name]}");
   } else {
-    final birthday = Validator.inputBirthday("Please update $name's birthday");
+    final birthday = Validator.inputBirthday("Please update $name's birthday: ");
     dictionary.putIfAbsent(name, () => birthday);
     print('Update successfully');
     saveDictionary(dictionary, path);
