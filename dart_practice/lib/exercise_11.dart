@@ -16,11 +16,11 @@ void main(List<String> args) {
   getBirthDay(dictionaryBirthday);
 }
 
-void getBirthDay(Map<String,String> dictionary) {
+void getBirthDay(Map<String, dynamic> dictionary) {
   final name = Validator.inputString("who's birthday do you want look up?: ");
-  if(dictionary[name] != null) {
+  if (dictionary[name] != null) {
     print("$name's birthday is ${dictionary[name]}");
-  }else {
+  } else {
     print('The birthday of the person you are looking for could not be found');
   }
 }
