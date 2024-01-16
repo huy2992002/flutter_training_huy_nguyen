@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 import 'dart:io';
-import 'package:dart_practice/utils/validator.dart';
+import 'package:dart_practice/exercise_11.dart';
 
 void main(List<String> args) {
   const path =
@@ -11,13 +11,4 @@ void main(List<String> args) {
   final dictionary = jsonDecode(data) as Map<String, dynamic>;
 
   getBirthDay(dictionary);
-}
-
-void getBirthDay(Map<String, dynamic> dictionary) {
-  final name = Validator.inputString("who's birthday do you want look up?: ");
-  if (dictionary[name] != null) {
-    print("$name's birthday is ${dictionary[name]}");
-  } else {
-    print('The birthday of the person you are looking for could not be found');
-  }
 }
