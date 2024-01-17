@@ -59,15 +59,19 @@ class ProductManager {
   }
 
   void searchProduct() {
-    final name = Validator.inputString(
-        'Enter the product name you want to search for: ');
+    final name =
+        Validator.inputString('Enter the product name you want to search: ');
 
     final listSearch = _products
         .where((e) => e.name.toLowerCase().contains(name.toLowerCase()))
         .toList();
-        
-    print('List of products found: ');
-    listSearch.forEach(print);
+
+    if (listSearch.isEmpty) {
+      print('Cannot find product.');
+    } else {
+      print('List of products found: ');
+      listSearch.forEach(print);
+    }
   }
 
   void countTotalProducts() {
