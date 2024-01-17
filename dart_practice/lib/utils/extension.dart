@@ -18,3 +18,21 @@ extension ExInt on int {
     return stringMonth[this];
   }
 }
+
+extension ExDouble on double {
+  String toFomatVnd() {
+    final stThis = toInt().toString();
+    var st = ' Vnd';
+    var count = 0;
+
+    for (var i = stThis.length - 1; i >= 0; i--) {
+      st = '${stThis[i]}$st';
+      count++;
+      if (count == 3 && i != 0) {
+        st = '.$st';
+        count = 0;
+      }
+    }
+    return st;
+  }
+}
