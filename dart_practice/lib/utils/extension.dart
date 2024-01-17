@@ -10,9 +10,9 @@ extension ExInt on int {
       7: 'July',
       8: 'August',
       9: 'September',
-      10: 'October ',
-      11: 'November ',
-      12: 'December ',
+      10: 'October',
+      11: 'November',
+      12: 'December',
     };
 
     return stringMonth[this];
