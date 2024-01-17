@@ -2,7 +2,7 @@
 //The program will guess a number, and you, the user, will say whether it is too high, too low, or your number.
 //At the end of this exchange, your program should print out how many guesses it took to get your number.
 
-import 'dart:math' as math;
+import 'package:dart_practice/utils/math.dart';
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
@@ -10,7 +10,7 @@ void main(List<String> args) {
 }
 
 void guessNumber() {
-  final numberRandom = math.Random().nextInt(100) + 1;
+  final numberRandom = Math.randomInt(100) + 1;
 
   int numberGuess;
   var min = 1;
