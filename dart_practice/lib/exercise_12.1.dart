@@ -5,8 +5,7 @@ import 'dart:io';
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
-  const path =
-      'D:/inter_flutter/flutter_training_huy_nguyen/dart_practice/lib/data.json';
+  const path = 'dart_practice/lib/data.json';
 
   getBirthDay(path);
 }
@@ -29,7 +28,8 @@ void getBirthDay(String path) {
   if (dictionary[name] != null) {
     print("$name's birthday is ${dictionary[name]}");
   } else {
-    final birthday = Validator.inputBirthday("Please update $name's birthday: ");
+    final birthday =
+        Validator.inputBirthday("Please update $name's birthday: ");
     dictionary.putIfAbsent(name, () => birthday);
     print('Update successfully');
     saveDictionary(dictionary, path);
