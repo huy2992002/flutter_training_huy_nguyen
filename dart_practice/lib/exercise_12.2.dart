@@ -6,8 +6,7 @@ import 'package:dart_practice/exercise_12.1.dart';
 import 'package:dart_practice/utils/extension.dart';
 
 void main(List<String> args) {
-  const path =
-      'D:/inter_flutter/flutter_training_huy_nguyen/dart_practice/lib/data.json';
+  const path = 'dart_practice/lib/data.json';
   final dictionary = getDictionary(path);
   countBirthDay(dictionary);
 }
