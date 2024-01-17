@@ -1,8 +1,7 @@
 //Generate a random number between 1 and 100. Ask the user to guess the number,
 //then tell them whether they guessed too low, too high, or exactly right.
 
-import 'dart:math' as math;
-
+import 'package:dart_practice/utils/math.dart';
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
@@ -10,7 +9,7 @@ void main(List<String> args) {
 }
 
 void guessNumber() {
-  final numberRandom = math.Random().nextInt(100) + 1;
+  final numberRandom = Math.randomInt(100) + 1;
   int numberGuess;
   
   do {
