@@ -1,9 +1,10 @@
 import 'package:dart_practice/exercise_13/manager/product_manager.dart';
-import 'package:dart_practice/exercise_13/models/product_model.dart';
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
-  final productManager = ProductManager(initProducts);
+  
+
+  final productManager = ProductManager([]);
 
   int i;
 
