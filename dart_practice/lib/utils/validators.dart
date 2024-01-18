@@ -1,6 +1,6 @@
 import 'dart:io';
 
-class Validator {
+class Validators {
   static int inputInt(String prompt) {
     var value = 0;
 
@@ -26,7 +26,7 @@ class Validator {
     bool isValid;
 
     do {
-      value = Validator.inputInt(prompt);
+      value = Validators.inputInt(prompt);
       value < 0 ? isValid = false : isValid = true;
       if (value < 0) print('Please enter a positive integer');
     } while (!isValid);

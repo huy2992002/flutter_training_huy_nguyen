@@ -1,8 +1,8 @@
 //Generate a random number between 1 and 100. Ask the user to guess the number,
 //then tell them whether they guessed too low, too high, or exactly right.
 
-import 'package:dart_practice/utils/math.dart';
-import 'package:dart_practice/utils/validator.dart';
+import 'package:dart_practice/utils/maths.dart';
+import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
   final random = numberRandom();
@@ -19,7 +19,7 @@ void main(List<String> args) {
 }
 
 int numberRandom() {
-  final numberRandom = Math.randomInt(100) + 1;
+  final numberRandom = Maths.randomInt(100) + 1;
   return numberRandom;
 }
 
@@ -27,7 +27,7 @@ int numberGuess() {
   int numberGuess;
 
   do {
-    numberGuess = Validator.inputInt('Guess a number from 1 to 100: ');
+    numberGuess = Validators.inputInt('Guess a number from 1 to 100: ');
     if (numberGuess < 1 || numberGuess > 100) {
       print('Please guess a number from 1 to 100');
     }

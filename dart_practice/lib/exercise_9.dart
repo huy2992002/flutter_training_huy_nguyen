@@ -7,7 +7,7 @@
 
 import 'dart:math' as math;
 
-import 'package:dart_practice/utils/validator.dart';
+import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
   int i;
@@ -15,7 +15,7 @@ void main(List<String> args) {
   do {
     printOptions();
     do {
-      i = Validator.inputInt('Choice: ');
+      i = Validators.inputInt('Choice: ');
     } while (i < 1 || i > 4);
 
     switch (i) {
@@ -75,7 +75,7 @@ String getPasswordWeak() {
   print('1. $passwordDefault ');
   print('2. $passwordGenerate ');
   do {
-    i = Validator.inputInt('Choice a password: ');
+    i = Validators.inputInt('Choice a password: ');
   } while (i < 1 || i > 2);
 
   return i == 1 ? passwordDefault : passwordGenerate;

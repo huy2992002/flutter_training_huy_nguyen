@@ -1,10 +1,10 @@
 // Create a program that asks the user for a number and then prints out a list of all the divisors of that number.
 
 import 'dart:io';
-import 'package:dart_practice/utils/validator.dart';
+import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
-  final number = Validator.inputInt('Choose a number to find the divisor: ');
+  final number = Validators.inputInt('Choose a number to find the divisor: ');
   final results = divisorsInteger(number);
 
   if (results.isNotEmpty) {

@@ -1,10 +1,10 @@
 import 'package:dart_practice/utils/extension.dart';
-import 'package:dart_practice/utils/math.dart';
-import 'package:dart_practice/utils/validator.dart';
+import 'package:dart_practice/utils/maths.dart';
+import 'package:dart_practice/utils/validators.dart';
 
 class ProductModel {
   ProductModel() {
-    _uuid = Math.randomUUid(length: 6);
+    _uuid = Maths.randomUUid(length: 6);
   }
 
   ProductModel.parameters({
@@ -13,7 +13,7 @@ class ProductModel {
     required int quantity,
     String? uuid,
   }) {
-    _uuid = uuid ?? Math.randomUUid(length: 6);
+    _uuid = uuid ?? Maths.randomUUid(length: 6);
     _name = name;
     _price = price;
     _quantity = quantity;
@@ -68,8 +68,8 @@ class ProductModel {
   }
 
   void inputInformation() {
-    _name = Validator.inputString('Input name product: ');
-    _price = Validator.inputDouble('Input price product: ');
-    _quantity = Validator.inputPositiveInt('Input quantity: ');
+    _name = Validators.inputString('Input name product: ');
+    _price = Validators.inputDouble('Input price product: ');
+    _quantity = Validators.inputPositiveInt('Input quantity: ');
   }
 }

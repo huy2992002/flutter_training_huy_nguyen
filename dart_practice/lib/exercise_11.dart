@@ -4,7 +4,7 @@
 //When you run your program it should ask the user to enter a name, and return the birthday of that person back to them.
 //The interaction should look something like this
 
-import 'package:dart_practice/utils/validator.dart';
+import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
   final dictionaryBirthday = {
@@ -17,7 +17,7 @@ void main(List<String> args) {
 }
 
 void getBirthDay(Map<String, dynamic> dictionary) {
-  final name = Validator.inputString("who's birthday do you want look up?: ");
+  final name = Validators.inputString("who's birthday do you want look up?: ");
   if (dictionary[name] != null) {
     print("$name's birthday is ${dictionary[name]}");
   } else {

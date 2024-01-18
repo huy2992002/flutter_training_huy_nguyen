@@ -2,7 +2,7 @@ import 'package:dart_practice/exercise_13/models/base_model.dart';
 import 'package:dart_practice/exercise_13/models/product_model.dart';
 import 'package:dart_practice/utils/constants.dart';
 import 'package:dart_practice/utils/services.dart';
-import 'package:dart_practice/utils/validator.dart';
+import 'package:dart_practice/utils/validators.dart';
 
 class ProductManager {
   ProductManager(this._products, this._carts);
@@ -52,7 +52,7 @@ class ProductManager {
   void addCart() {
     showAllListProducts();
     while (true) {
-      final uuid = Validator.inputString(
+      final uuid = Validators.inputString(
         "Enter the product uuid you want to add / Enter 'exit' to exit : ",
       );
       if (uuid.toLowerCase() == 'exit') return;
@@ -62,7 +62,7 @@ class ProductManager {
           isFound = true;
           print(product);
           final quantity =
-              Validator.inputPositiveInt('Enter the quantity you want to add: ');
+              Validators.inputPositiveInt('Enter the quantity you want to add: ');
           if ((product.quantity - quantity) < 0) {
             print('Not enough product to add');
             break;
@@ -93,7 +93,7 @@ class ProductManager {
 
   void editProduct() {
     showAllListProducts();
-    final uuid = Validator.inputString('Enter the uuid you want to edit: ');
+    final uuid = Validators.inputString('Enter the uuid you want to edit: ');
     for (final product in _products) {
       if (product.uuid == uuid) {
         product.inputInformation();
@@ -108,7 +108,7 @@ class ProductManager {
 
   void deleteProduct() {
     showAllListProducts();
-    final uuid = Validator.inputString('Enter the uuid you want to delete: ');
+    final uuid = Validators.inputString('Enter the uuid you want to delete: ');
     for (final product in _products) {
       if (product.uuid == uuid) {
         _products.remove(product);
@@ -123,7 +123,7 @@ class ProductManager {
 
   void searchProduct() {
     final name =
-        Validator.inputString('Enter the product name you want to search: ');
+        Validators.inputString('Enter the product name you want to search: ');
 
     final listSearch = _products
         .where((e) => e.name.toLowerCase().contains(name.toLowerCase()))

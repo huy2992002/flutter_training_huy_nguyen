@@ -2,22 +2,22 @@
 //The program will guess a number, and you, the user, will say whether it is too high, too low, or your number.
 //At the end of this exchange, your program should print out how many guesses it took to get your number.
 
-import 'package:dart_practice/utils/math.dart';
-import 'package:dart_practice/utils/validator.dart';
+import 'package:dart_practice/utils/maths.dart';
+import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
   guessNumber();
 }
 
 void guessNumber() {
-  final numberRandom = Math.randomInt(100) + 1;
+  final numberRandom = Maths.randomInt(100) + 1;
 
   int numberGuess;
   var min = 1;
   var max = 100;
   do {
     do {
-      numberGuess = Validator.inputInt('Guess a number: ');
+      numberGuess = Validators.inputInt('Guess a number: ');
       if (numberGuess < min || numberGuess > max) {
         print('Please guess a number larger than $min and smaller $max');
       }

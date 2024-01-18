@@ -2,7 +2,7 @@ import 'package:dart_practice/exercise_13/manager/product_manager.dart';
 import 'package:dart_practice/exercise_13/models/base_model.dart';
 import 'package:dart_practice/utils/constants.dart';
 import 'package:dart_practice/utils/services.dart';
-import 'package:dart_practice/utils/validator.dart';
+import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
   final productData = Services.getDataJson(Constants.productDataPath);
@@ -18,7 +18,7 @@ void main(List<String> args) {
   do {
     productManager.printMenu();
     do {
-      i = Validator.inputInt('Choice: ');
+      i = Validators.inputInt('Choice: ');
       if (i < 1 || i > 9) print('Please enter from 1 to 9 !!!');
     } while (i < 1 || i > 9);
 
