@@ -1,14 +1,17 @@
 import 'package:dart_practice/exercise_13/manager/product_manager.dart';
 import 'package:dart_practice/exercise_13/models/base_model.dart';
+import 'package:dart_practice/utils/constants.dart';
 import 'package:dart_practice/utils/services.dart';
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
-  const path = 'dart_practice/lib/exercise_13/data/product_data.json';
-  final data = Services.getDataJson(path);
+  final productData = Services.getDataJson(Constants.productDataPath);
+  final productBase = BaseModel.fromJson(productData);
 
-  final baseModel = BaseModel.fromJson(data);
-  final productManager = ProductManager(baseModel.products);
+  final cartData = Services.getDataJson(Constants.cartDataPath);
+  final cartBase = BaseModel.fromJson(cartData);
+
+  final productManager = ProductManager(productBase.products, cartBase.products);
 
   int i;
 
@@ -16,8 +19,8 @@ void main(List<String> args) {
     productManager.printMenu();
     do {
       i = Validator.inputInt('Choice: ');
-      if (i < 1 || i > 7) print('Please enter from 1 to 7 !!!');
-    } while (i < 1 || i > 7);
+      if (i < 1 || i > 9) print('Please enter from 1 to 9 !!!');
+    } while (i < 1 || i > 9);
 
     switch (i) {
       case 1:
@@ -33,7 +36,11 @@ void main(List<String> args) {
       case 6:
         productManager.countTotalProducts();
       case 7:
+        productManager.addCart();
+      case 8:
+        productManager.showAllListCart();  
+      case 9:
         print('Program is finished');
     }
-  } while (i != 7);
+  } while (i != 9);
 }

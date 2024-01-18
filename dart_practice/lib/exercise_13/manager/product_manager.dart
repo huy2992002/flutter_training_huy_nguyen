@@ -1,15 +1,16 @@
 import 'package:dart_practice/exercise_13/models/base_model.dart';
 import 'package:dart_practice/exercise_13/models/product_model.dart';
+import 'package:dart_practice/utils/constants.dart';
 import 'package:dart_practice/utils/services.dart';
 import 'package:dart_practice/utils/validator.dart';
 
 class ProductManager {
-  ProductManager(this._products);
+  ProductManager(this._products, this._carts);
   final List<ProductModel> _products;
+  final List<ProductModel> _carts;
 
-  void saveProducts() {
-    const path = 'dart_practice/lib/exercise_13/data/product_data.json';
-    final base = BaseModel(products: _products);
+  void saveProducts(String path, List<ProductModel> data) {
+    final base = BaseModel(products: data);
     Services.saveDataJson(base.toJson(), path);
   }
 
@@ -21,13 +22,64 @@ class ProductManager {
     print('4. Delete product by uuid.');
     print('5. Search product by name.');
     print('6. Count the total products in the list.');
-    print('7. Exit.');
+    print('7. Add product to cart.');
+    print('8. Show product in cart.');
+    print('9. Exit.');
   }
 
   void showAllListProducts() {
+    if (_products.isEmpty) {
+      print('There are no products');
+      return;
+    }
     print('All List products: ');
     for (final product in _products) {
       print(product);
+    }
+  }
+
+  void showAllListCart() {
+    if (_carts.isEmpty) {
+      print('There are no products in cart');
+      return;
+    }
+    print('All List carts: ');
+    for (final product in _carts) {
+      print(product);
+    }
+  }
+
+  void addCart() {
+    showAllListProducts();
+    while (true) {
+      final uuid = Validator.inputString(
+        "Enter the product uuid you want to add / Enter 'exit' to exit : ",
+      );
+      if (uuid.toLowerCase() == 'exit') return;
+      var isFound = false;
+      for (final product in _products) {
+        if (product.uuid == uuid) {
+          isFound = true;
+          print(product);
+          final quantity =
+              Validator.inputPositiveInt('Enter the quantity you want to add: ');
+          if ((product.quantity - quantity) < 0) {
+            print('Not enough product to add');
+            break;
+          }
+          product.quantity = product.quantity - quantity;
+          saveProducts(Constants.productDataPath, _products);
+          final productCart = ProductModel.parameters(
+            name: product.name,
+            price: product.price,
+            quantity: quantity,
+          );
+          _carts.add(productCart);
+          saveProducts(Constants.cartDataPath, _carts);
+          print('Add product to cart successfully');
+        }
+      }
+      if (!isFound) print('Product uuid not found');
     }
   }
 
@@ -35,7 +87,7 @@ class ProductManager {
     print('Create new Product.');
     final product = ProductModel()..inputInformation();
     _products.add(product);
-    saveProducts();
+    saveProducts(Constants.productDataPath, _products);
     print('Create Product successfully !!!');
   }
 
@@ -46,7 +98,7 @@ class ProductManager {
       if (product.uuid == uuid) {
         product.inputInformation();
         print('Edit product successfully!!!');
-        saveProducts();
+        saveProducts(Constants.productDataPath, _products);
         return;
       }
     }
@@ -61,7 +113,7 @@ class ProductManager {
       if (product.uuid == uuid) {
         _products.remove(product);
         print('Delete product successfully!!!');
-        saveProducts();
+        saveProducts(Constants.productDataPath, _products);
         return;
       }
     }
