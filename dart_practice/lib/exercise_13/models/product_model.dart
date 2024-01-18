@@ -4,11 +4,11 @@ import 'package:dart_practice/utils/validator.dart';
 
 class ProductModel {
   ProductModel() {
-    _id = Math.genarateRandom(lenght: 6);
+    _id = Math.randomUUid(lenght: 6);
   }
 
   ProductModel.parameters(this._name, this._price) {
-    _id = Math.genarateRandom(lenght: 6);
+    _id = Math.randomUUid(lenght: 6);
   }
 
   String _id = '';
