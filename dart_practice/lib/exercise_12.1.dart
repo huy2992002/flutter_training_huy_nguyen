@@ -1,10 +1,11 @@
 //Load the birthday dictionary from a JSON file on disk, rather than having the dictionary defined in the program.
 
+import 'package:dart_practice/utils/constants.dart';
 import 'package:dart_practice/utils/services.dart';
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
-  const path = 'dart_practice/lib/data.json';
+  const path = Constants.dataPath;
 
   getBirthDay(path);
 }
