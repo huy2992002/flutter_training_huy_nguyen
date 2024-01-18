@@ -13,7 +13,9 @@ class ProductModel {
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel.parameters(
-        json['name'] as String, json['price'] as double);
+      json['name'] as String,
+      json['price'] as double,
+    );
   }
 
   String _uuid = '';
