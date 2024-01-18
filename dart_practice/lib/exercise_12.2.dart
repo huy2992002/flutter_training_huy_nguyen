@@ -7,7 +7,7 @@ import 'package:dart_practice/utils/services.dart';
 
 void main(List<String> args) {
   const path = 'dart_practice/lib/data.json';
-  final dictionary = getDataJson(path);
+  final dictionary = Services.getDataJson(path);
   countBirthDay(dictionary);
 }
 

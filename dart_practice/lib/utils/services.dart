@@ -1,14 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
 
-Map<String, dynamic> getDataJson(String path) {
-  final data = File(path).readAsStringSync();
-  final dictionary = jsonDecode(data) as Map<String, dynamic>;
-  return dictionary;
-}
+class Services {
+  static Map<String, dynamic> getDataJson(String path) {
+    final data = File(path).readAsStringSync();
+    final dictionary = jsonDecode(data) as Map<String, dynamic>;
+    return dictionary;
+  }
 
-void saveDataJson(Map<String, dynamic> map, String path) {
-  final file = File(path);
-  final content = json.encode(map);
-  file.writeAsStringSync(content);
+  static void saveDataJson(Map<String, dynamic> map, String path) {
+    final file = File(path);
+    final content = json.encode(map);
+    file.writeAsStringSync(content);
+  }
 }

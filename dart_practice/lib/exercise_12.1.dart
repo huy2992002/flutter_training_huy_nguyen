@@ -10,7 +10,7 @@ void main(List<String> args) {
 }
 
 void getBirthDay(String path) {
-  final dictionary = getDataJson(path);
+  final dictionary = Services.getDataJson(path);
   final name = Validator.inputString("who's birthday do you want look up?: ");
   if (dictionary[name] != null) {
     print("$name's birthday is ${dictionary[name]}");
@@ -19,6 +19,6 @@ void getBirthDay(String path) {
         Validator.inputBirthday("Please update $name's birthday: ");
     dictionary.putIfAbsent(name, () => birthday);
     print('Update successfully');
-    saveDataJson(dictionary, path);
+    Services.saveDataJson(dictionary, path);
   }
 }

@@ -10,7 +10,7 @@ class ProductManager {
   void saveProducts() {
     const path = 'dart_practice/lib/exercise_13/data/product_data.json';
     final base = BaseModel(products: _products);
-    saveDataJson(base.toJson(), path);
+    Services.saveDataJson(base.toJson(), path);
   }
 
   void printMenu() {
