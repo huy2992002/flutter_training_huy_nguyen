@@ -15,12 +15,16 @@ void countBirthDay(Map<String, dynamic> dictionary) {
   final map = <String, int>{};
 
   for (final e in dictionary.values) {
-    final month = DateTime.parse(e as String).month.toStringMonth();
+    if (e is String) {
+      final month = DateTime.parse(e).month.toStringMonth();
 
-    if (map.containsKey(month)) {
-      map.update(month ?? '', (value) => value + 1);
+      if (map.containsKey(month)) {
+        map.update(month ?? '', (value) => value + 1);
+      } else {
+        map.putIfAbsent(month ?? '', () => 1);
+      }
     } else {
-      map.putIfAbsent(month ?? '', () => 1);
+      continue;
     }
   }
 
