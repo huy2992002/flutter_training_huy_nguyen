@@ -3,15 +3,16 @@
 //Write a Dart code that takes this list and makes a new list that has only the even elements of this list in it.
 
 void main(List<String> args) {
-  final a = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100];
+  final listNumber = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100];
 
-  print(evenNumbersInList(a));
+  print(evenNumbersInList(listNumber));
 }
 
-List<int> evenNumbersInList(List<int> a) {
+// return list number even in a list
+List<int> evenNumbersInList(List<int> list) {
   final list = <int>[];
 
-  for (final e in a) {
+  for (final e in list) {
     if (e.isEven) list.add(e);
   }
 
