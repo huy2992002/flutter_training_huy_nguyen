@@ -6,14 +6,13 @@ class Math {
     return number;
   }
 
-  static String genarateRandom({required int lenght}) {
+  static String randomUUid({required int lenght}) {
     const lowercaseLetter = 'qwertyuiopasdfghjklzxcvbnm';
     const uppercaseLetter = 'QWERTYUIOPASDFGHJKLZXCVBNM';
     const numbers = '0123456789';
-    const symbols = r'!@#$%^&*()_+';
 
     final allChars =
-        '$lowercaseLetter$uppercaseLetter$numbers$symbols'.split('');
+        '$lowercaseLetter$uppercaseLetter$numbers'.split('');
     var value = '';
     for (var i = 0; i < lenght; i++) {
       final index = math.Random().nextInt(allChars.length);
