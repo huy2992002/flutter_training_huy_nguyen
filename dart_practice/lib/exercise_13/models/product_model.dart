@@ -70,6 +70,6 @@ class ProductModel {
   void inputInformation() {
     _name = Validator.inputString('Input name product: ');
     _price = Validator.inputDouble('Input price product: ');
-    _quantity = Validator.inputInt('Input quantity: ');
+    _quantity = Validator.inputPositiveInt('Input quantity: ');
   }
 }

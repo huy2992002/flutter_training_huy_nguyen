@@ -20,6 +20,20 @@ class Validator {
     return value;
   }
 
+  static int inputPositiveInt(String prompt) {
+    var value = 0;
+
+    bool isValid;
+
+    do {
+      value = Validator.inputInt(prompt);
+      value < 0 ? isValid = false : isValid = true;
+      if (value < 0) print('Please enter a positive integer');
+    } while (!isValid);
+
+    return value;
+  }
+
   static double inputDouble(String prompt) {
     var value = 0.0;
 
