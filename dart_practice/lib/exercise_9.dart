@@ -22,9 +22,9 @@ void main(List<String> args) {
       case 1:
         print("Your password is '${getPasswordWeak()}'");
       case 2:
-        print("Your password is '${genaratePassowrd(8)}'");
+        print("Your password is '${generatePassword(8)}'");
       case 3:
-        print("Your password is '${genaratePassowrd(15)}'");
+        print("Your password is '${generatePassword(15)}'");
       case 4:
         print('Program is finished !!!');
     }
@@ -39,7 +39,7 @@ void printOptions() {
   print('4. Exit.');
 }
 
-String genaratePassowrd(int lenght) {
+String generatePassword(int length) {
   const lowercaseLetter = 'qwertyuiopasdfghjklzxcvbnm';
   const uppercaseLetter = 'QWERTYUIOPASDFGHJKLZXCVBNM';
   const numbers = '0123456789';
@@ -47,7 +47,7 @@ String genaratePassowrd(int lenght) {
 
   final allChars = '$lowercaseLetter$uppercaseLetter$numbers$symbols'.split('');
   var password = '';
-  for (var i = 0; i < lenght; i++) {
+  for (var i = 0; i < length; i++) {
     final index = math.Random().nextInt(allChars.length);
     password = '$password${allChars[index]}';
   }
@@ -69,7 +69,7 @@ String getPassDefault() {
 String getPasswordWeak() {
   int i;
   final passwordDefault = getPassDefault();
-  final passwordGenerate = genaratePassowrd(4);
+  final passwordGenerate = generatePassword(4);
 
   print('Please choice password: ');
   print('1. $passwordDefault ');
