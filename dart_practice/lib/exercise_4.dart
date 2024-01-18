@@ -5,10 +5,10 @@ import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
   final n = Validator.inputInt('Choose a number to find the divisor: ');
-  divisorsInterger(n);
+  divisorsInteger(n);
 }
 
-void divisorsInterger(int number) {
+void divisorsInteger(int number) {
   for (var i = 1; i <= number; i++) {
     if (number % i == 0) stdout.write('$i ');
   }

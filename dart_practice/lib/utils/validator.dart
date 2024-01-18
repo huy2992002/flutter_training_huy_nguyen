@@ -69,7 +69,7 @@ class Validator {
         DateTime.parse(value);
         isValid = true;
       } catch (e) {
-        print('Error, Invalid Birtday');
+        print('Error, Invalid Birthday');
         isValid = false;
       }
     } while (!isValid);

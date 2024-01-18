@@ -33,7 +33,7 @@ class ProductManager {
 
   void createProduct() {
     print('Create new Product.');
-    final product = ProductModel()..inputInfomation();
+    final product = ProductModel()..inputInformation();
     _products.add(product);
     saveProducts();
     print('Create Product successfully !!!');
@@ -44,7 +44,7 @@ class ProductManager {
     final uuid = Validator.inputString('Enter the uuid you want to edit: ');
     for (final product in _products) {
       if (product.uuid == uuid) {
-        product.inputInfomation();
+        product.inputInformation();
         print('Edit product successfully!!!');
         saveProducts();
         return;

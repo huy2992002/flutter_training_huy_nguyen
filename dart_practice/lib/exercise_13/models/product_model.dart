@@ -4,7 +4,7 @@ import 'package:dart_practice/utils/validator.dart';
 
 class ProductModel {
   ProductModel() {
-    _uuid = Math.randomUUid(lenght: 6);
+    _uuid = Math.randomUUid(length: 6);
   }
 
   ProductModel.parameters({
@@ -13,7 +13,7 @@ class ProductModel {
     required int quantity,
     String? uuid,
   }) {
-    _uuid = uuid ?? Math.randomUUid(lenght: 6);
+    _uuid = uuid ?? Math.randomUUid(length: 6);
     _name = name;
     _price = price;
     _quantity = quantity;
@@ -64,10 +64,10 @@ class ProductModel {
 
   @override
   String toString() {
-    return 'Product ID: $_uuid, Product Name: $_name, Product Price: ${_price.toFomatVnd()}, Quantity: $_quantity';
+    return 'Product ID: $_uuid, Product Name: $_name, Product Price: ${_price.toFormatVnd()}, Quantity: $_quantity';
   }
 
-  void inputInfomation() {
+  void inputInformation() {
     _name = Validator.inputString('Input name product: ');
     _price = Validator.inputDouble('Input price product: ');
     _quantity = Validator.inputInt('Input quantity: ');

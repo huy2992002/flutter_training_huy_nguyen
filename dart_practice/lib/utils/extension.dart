@@ -20,7 +20,7 @@ extension ExInt on int {
 }
 
 extension ExDouble on double {
-  String toFomatVnd() {
+  String toFormatVnd() {
     final stThis = toInt().toString();
     var st = ' Vnd';
     var count = 0;
