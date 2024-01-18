@@ -17,7 +17,7 @@ class ProductManager {
   }
 
   void showAllListProducts() {
-    print('Show All List products: ');
+    print('All List products: ');
     for (final product in _products) {
       print(product);
     }
@@ -31,8 +31,8 @@ class ProductManager {
   }
 
   void editProduct() {
-    final id = Validator.inputInt('Enter the id you want to edit: ');
-
+    showAllListProducts();
+    final id = Validator.inputString('Enter the id you want to edit: ');
     for (final product in _products) {
       if (product.id == id) {
         product.inputInfomation();
@@ -45,8 +45,8 @@ class ProductManager {
   }
 
   void deleteProduct() {
-    final id = Validator.inputInt('Enter the id you want to delete: ');
-
+    showAllListProducts();
+    final id = Validator.inputString('Enter the id you want to delete: ');
     for (final product in _products) {
       if (product.id == id) {
         _products.remove(product);

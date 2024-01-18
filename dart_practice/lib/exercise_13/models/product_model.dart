@@ -1,25 +1,23 @@
 import 'package:dart_practice/utils/extension.dart';
+import 'package:dart_practice/utils/math.dart';
 import 'package:dart_practice/utils/validator.dart';
 
 class ProductModel {
   ProductModel() {
-    increment++;
-    _id = increment;
+    _id = Math.genarateRandom(lenght: 6);
   }
 
   ProductModel.parameters(this._name, this._price) {
-    increment++;
-    _id = increment;
+    _id = Math.genarateRandom(lenght: 6);
   }
 
-  static int increment = 0;
-  int _id = 0;
+  String _id = '';
   String _name = '';
   double _price = 0;
 
-  int get id => _id;
+  String get id => _id;
 
-  set id(int id) {
+  set id(String id) {
     _id = id;
   }
 
