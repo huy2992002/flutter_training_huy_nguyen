@@ -4,12 +4,23 @@ import 'dart:io';
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
-  final n = Validator.inputInt('Choose a number to find the divisor: ');
-  divisorsInteger(n);
+  final number = Validator.inputInt('Choose a number to find the divisor: ');
+  final results = divisorsInteger(number);
+
+  if (results.isNotEmpty) {
+    for (final e in results) {
+      stdout.write('$e ');
+    }
+  } else {
+    print('No found divisor of $number');
+  }
 }
 
-void divisorsInteger(int number) {
+List<int> divisorsInteger(int number) {
+  final results = <int>[];
   for (var i = 1; i <= number; i++) {
-    if (number % i == 0) stdout.write('$i ');
+    if (number % i == 0) results.add(i);
   }
+
+  return results;
 }
