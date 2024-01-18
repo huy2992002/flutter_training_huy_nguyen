@@ -9,8 +9,8 @@ class ProductManager {
     print('Choose one of the options below.');
     print('1. View all list products.');
     print('2. Create product.');
-    print('3. Edit product by ID.');
-    print('4. Delete product by ID.');
+    print('3. Edit product by uuid.');
+    print('4. Delete product by uuid.');
     print('5. Search product by name.');
     print('6. Count the total products in the list.');
     print('7. Exit.');
@@ -32,23 +32,23 @@ class ProductManager {
 
   void editProduct() {
     showAllListProducts();
-    final id = Validator.inputString('Enter the id you want to edit: ');
+    final uuid = Validator.inputString('Enter the uuid you want to edit: ');
     for (final product in _products) {
-      if (product.id == id) {
+      if (product.uuid == uuid) {
         product.inputInfomation();
         print('Edit product successfully!!!');
         return;
       }
     }
 
-    print('Could not find product id to edit.');
+    print('Could not find product uuid to edit.');
   }
 
   void deleteProduct() {
     showAllListProducts();
-    final id = Validator.inputString('Enter the id you want to delete: ');
+    final uuid = Validator.inputString('Enter the uuid you want to delete: ');
     for (final product in _products) {
-      if (product.id == id) {
+      if (product.uuid == uuid) {
         _products.remove(product);
         print('Delete product successfully!!!');
         return;

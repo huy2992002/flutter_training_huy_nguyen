@@ -4,22 +4,32 @@ import 'package:dart_practice/utils/validator.dart';
 
 class ProductModel {
   ProductModel() {
-    _id = Math.randomUUid(lenght: 6);
+    _uuid = Math.randomUUid(lenght: 6);
   }
 
   ProductModel.parameters(this._name, this._price) {
-    _id = Math.randomUUid(lenght: 6);
+    _uuid = Math.randomUUid(lenght: 6);
   }
 
-  String _id = '';
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel.parameters(
+        json['name'] as String, json['price'] as double);
+  }
+
+  String _uuid = '';
   String _name = '';
   double _price = 0;
+  int _quantity = 0;
 
-  String get id => _id;
-
-  set id(String id) {
-    _id = id;
+  Map<String, dynamic> toJson() {
+    return {
+      'uuid': _uuid,
+      'name': _name,
+      'price': _price,
+    };
   }
+
+  String get uuid => _uuid;
 
   String get name => _name;
 
@@ -33,21 +43,20 @@ class ProductModel {
     _price = price;
   }
 
+  int get quantity => _quantity;
+
+  set quantity(int price) {
+    _quantity = price;
+  }
+
   @override
   String toString() {
-    return 'Product ID: $_id, Product Name: $_name, Product Price: ${_price.toFomatVnd()}';
+    return 'Product ID: $_uuid, Product Name: $_name, Product Price: ${_price.toFomatVnd()}, Quantity: $_quantity';
   }
 
   void inputInfomation() {
     _name = Validator.inputString('Input name product: ');
     _price = Validator.inputDouble('Input price product: ');
+    _quantity = Validator.inputInt('Input quantity: ');
   }
 }
-
-List<ProductModel> initProducts = [
-  ProductModel.parameters('Product 1', 100000),
-  ProductModel.parameters('Product 2', 200000),
-  ProductModel.parameters('Product 3', 200000),
-  ProductModel.parameters('Product 4', 300000),
-  ProductModel.parameters('Product 5', 400000),
-];
