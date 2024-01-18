@@ -7,14 +7,24 @@ class ProductModel {
     _uuid = Math.randomUUid(lenght: 6);
   }
 
-  ProductModel.parameters(this._name, this._price) {
-    _uuid = Math.randomUUid(lenght: 6);
+  ProductModel.parameters({
+    required String name,
+    required double price,
+    required int quantity,
+    String? uuid,
+  }) {
+    _uuid = uuid ?? Math.randomUUid(lenght: 6);
+    _name = name;
+    _price = price;
+    _quantity = quantity;
   }
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel.parameters(
-      json['name'] as String,
-      json['price'] as double,
+      uuid: json['uuid'] as String,
+      name: json['name'] as String,
+      price: json['price'] as double,
+      quantity: json['quantity'] as int,
     );
   }
 
@@ -28,6 +38,7 @@ class ProductModel {
       'uuid': _uuid,
       'name': _name,
       'price': _price,
+      'quantity': _quantity,
     };
   }
 

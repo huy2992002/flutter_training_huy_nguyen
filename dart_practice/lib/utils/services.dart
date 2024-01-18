@@ -7,8 +7,8 @@ Map<String, dynamic> getDataJson(String path) {
   return dictionary;
 }
 
-void saveDataJson(Map<String, dynamic> dictionary, String path) {
+void saveDataJson(Map<String, dynamic> map, String path) {
   final file = File(path);
-  final content = json.encode(dictionary);
+  final content = json.encode(map);
   file.writeAsStringSync(content);
 }

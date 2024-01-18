@@ -1,9 +1,17 @@
+import 'package:dart_practice/exercise_13/models/base_model.dart';
 import 'package:dart_practice/exercise_13/models/product_model.dart';
+import 'package:dart_practice/utils/services.dart';
 import 'package:dart_practice/utils/validator.dart';
 
 class ProductManager {
   ProductManager(this._products);
   final List<ProductModel> _products;
+
+  void saveProducts() {
+    const path = 'dart_practice/lib/exercise_13/data/product_data.json';
+    final base = BaseModel(products: _products);
+    saveDataJson(base.toJson(), path);
+  }
 
   void printMenu() {
     print('Choose one of the options below.');
@@ -27,6 +35,7 @@ class ProductManager {
     print('Create new Product.');
     final product = ProductModel()..inputInfomation();
     _products.add(product);
+    saveProducts();
     print('Create Product successfully !!!');
   }
 
@@ -37,6 +46,7 @@ class ProductManager {
       if (product.uuid == uuid) {
         product.inputInfomation();
         print('Edit product successfully!!!');
+        saveProducts();
         return;
       }
     }
@@ -51,6 +61,7 @@ class ProductManager {
       if (product.uuid == uuid) {
         _products.remove(product);
         print('Delete product successfully!!!');
+        saveProducts();
         return;
       }
     }

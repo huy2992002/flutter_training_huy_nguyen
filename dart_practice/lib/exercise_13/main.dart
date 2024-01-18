@@ -1,12 +1,14 @@
 import 'package:dart_practice/exercise_13/manager/product_manager.dart';
-import 'package:dart_practice/exercise_13/models/product_model.dart';
+import 'package:dart_practice/exercise_13/models/base_model.dart';
+import 'package:dart_practice/utils/services.dart';
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
-  final products = <ProductModel>[];
   const path = 'dart_practice/lib/exercise_13/data/product_data.json';
-
-  final productManager = ProductManager([]);
+  final data = getDataJson(path);
+  
+  final baseModel = BaseModel.fromJson(data);
+  final productManager = ProductManager(baseModel.products);
 
   int i;
 
