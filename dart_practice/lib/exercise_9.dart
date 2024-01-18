@@ -7,7 +7,6 @@
 
 import 'dart:math' as math;
 
-import 'package:dart_practice/utils/math.dart';
 import 'package:dart_practice/utils/validator.dart';
 
 void main(List<String> args) {
@@ -23,9 +22,9 @@ void main(List<String> args) {
       case 1:
         print("Your password is '${getPasswordWeak()}'");
       case 2:
-        print("Your password is '${Math.genarateRandom(lenght: 8)}'");
+        print("Your password is '${genaratePassowrd(8)}'");
       case 3:
-        print("Your password is '${Math.genarateRandom(lenght: 15)}'");
+        print("Your password is '${genaratePassowrd(15)}'");
       case 4:
         print('Program is finished !!!');
     }
@@ -38,6 +37,21 @@ void printOptions() {
   print('2. Password medium.');
   print('3. Password strong.');
   print('4. Exit.');
+}
+
+String genaratePassowrd(int lenght) {
+  const lowercaseLetter = 'qwertyuiopasdfghjklzxcvbnm';
+  const uppercaseLetter = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  const numbers = '0123456789';
+  const symbols = r'!@#$%^&*()_+';
+
+  final allChars = '$lowercaseLetter$uppercaseLetter$numbers$symbols'.split('');
+  var password = '';
+  for (var i = 0; i < lenght; i++) {
+    final index = math.Random().nextInt(allChars.length);
+    password = '$password${allChars[index]}';
+  }
+  return password;
 }
 
 String getPassDefault() {
@@ -55,7 +69,7 @@ String getPassDefault() {
 String getPasswordWeak() {
   int i;
   final passwordDefault = getPassDefault();
-  final passwordGenerate = Math.genarateRandom(lenght: 4);
+  final passwordGenerate = genaratePassowrd(4);
 
   print('Please choice password: ');
   print('1. $passwordDefault ');
