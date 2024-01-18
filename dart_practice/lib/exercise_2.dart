@@ -1,5 +1,5 @@
-//Ask the user for a number. 
-//Depending on whether the number is even or odd, 
+//Ask the user for a number.
+//Depending on whether the number is even or odd,
 //print out an appropriate message to the user.
 
 import 'package:dart_practice/utils/validator.dart';
@@ -7,9 +7,11 @@ import 'package:dart_practice/utils/validator.dart';
 void main(List<String> args) {
   final number = Validator.inputInt('Choose a number: ');
 
-  checkOddEven(number);
+  final result = checkOddEven(number);
+
+  print('This number is an ${result ? 'even' : 'odd'} number');
 }
 
-void checkOddEven(int number) {
-  print('This number is an ${number.isEven ? 'even' : 'odd'} number');
+bool checkOddEven(int number) {
+  return number.isEven;
 }
