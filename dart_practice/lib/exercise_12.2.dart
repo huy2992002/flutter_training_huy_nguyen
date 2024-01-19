@@ -2,11 +2,12 @@
 //and count how many scientists have a birthday in each month.
 //Your program should output something like:
 
+import 'package:dart_practice/utils/constants.dart';
 import 'package:dart_practice/utils/extension.dart';
 import 'package:dart_practice/utils/services.dart';
 
 void main(List<String> args) {
-  const path = 'dart_practice/lib/data.json';
+  const path = Constants.dataPath;
   final dictionary = Services.getDataJson(path);
   countBirthDay(dictionary);
 }
