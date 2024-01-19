@@ -41,6 +41,7 @@ class ProductModel {
   String _detail = '';
   String? _note;
 
+  // Convert a Object into a Map
   Map<String, dynamic> toJson() {
     return {
       'uuid': _uuid,
@@ -89,6 +90,7 @@ class ProductModel {
     return 'Product ID: $_uuid, Product Name: $_name, Product Price: ${_price.toFormatVnd()}, Quantity: $_quantity, Detail: $_detail${_note != null ? ', Note: $_note' : ''}';
   }
 
+  // Enter product information
   void inputInformation() {
     _name = Validators.inputString('Input name product: ');
     _price = Validators.inputDouble('Input price product: ');

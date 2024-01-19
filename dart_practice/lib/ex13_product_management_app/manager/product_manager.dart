@@ -14,6 +14,7 @@ class ProductManager {
     Services.saveDataJson(base.toJson(), path);
   }
 
+  // Print menu list
   void printMenu() {
     print('Choose one of the options below.');
     print('1. View all list products.');
@@ -27,6 +28,7 @@ class ProductManager {
     print('9. Exit.');
   }
 
+  // View all list products 
   Future<void> showAllListProducts() async {
     if (_products.isEmpty) {
       print('There are no products');
@@ -39,6 +41,7 @@ class ProductManager {
     }
   }
 
+  // View all list carts 
   Future<void> showAllListCart() async {
     if (_carts.isEmpty) {
       print('There are no products in cart');
@@ -51,6 +54,7 @@ class ProductManager {
     }
   }
 
+  // add product to cart
   Future<void> addCart() async {
     while (true) {
       final uuid = Validators.inputString(
@@ -88,6 +92,7 @@ class ProductManager {
     }
   }
 
+  // add product
   Future<void> createProduct() async {
     print('Create new Product.');
     final product = ProductModel()..inputInformation();
@@ -98,6 +103,7 @@ class ProductManager {
     print('Create Product successfully !!!');
   }
 
+  // Update product
   Future<void> editProduct() async {
     final uuid = Validators.inputString('Enter the uuid you want to edit: ');
     for (final product in _products) {
@@ -113,6 +119,7 @@ class ProductManager {
     print('Could not find product uuid to edit.');
   }
 
+  // Delete Product from List product by uuid
   Future<void> deleteProduct() async {
     final uuid = Validators.inputString('Enter the uuid you want to delete: ');
     for (final product in _products) {
@@ -129,6 +136,7 @@ class ProductManager {
     print('Could not find product id to delete.');
   }
 
+  // Search product by name
   void searchProduct() {
     final name =
         Validators.inputString('Enter the product name you want to search: ');
@@ -145,6 +153,7 @@ class ProductManager {
     }
   }
 
+  // count total product in list
   void countTotalProducts() {
     print('Total products in the list is ${_products.length}');
   }
