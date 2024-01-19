@@ -1,17 +1,18 @@
-import 'package:dart_practice/exercise_13/manager/product_manager.dart';
-import 'package:dart_practice/exercise_13/models/base_model.dart';
+import 'package:dart_practice/ex13_product_management_app/manager/product_manager.dart';
+import 'package:dart_practice/ex13_product_management_app/models/base_model.dart';
 import 'package:dart_practice/utils/constants.dart';
 import 'package:dart_practice/utils/services.dart';
 import 'package:dart_practice/utils/validators.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
   final productData = Services.getDataJson(Constants.productDataPath);
   final productBase = BaseModel.fromJson(productData);
 
   final cartData = Services.getDataJson(Constants.cartDataPath);
   final cartBase = BaseModel.fromJson(cartData);
 
-  final productManager = ProductManager(productBase.products, cartBase.products);
+  final productManager =
+      ProductManager(productBase.products, cartBase.products);
 
   int i;
 
@@ -24,21 +25,21 @@ void main(List<String> args) {
 
     switch (i) {
       case 1:
-        productManager.showAllListProducts();
+        await productManager.showAllListProducts();
       case 2:
-        productManager.createProduct();
+        await productManager.createProduct();
       case 3:
-        productManager.editProduct();
+        await productManager.editProduct();
       case 4:
-        productManager.deleteProduct();
+        await productManager.deleteProduct();
       case 5:
         productManager.searchProduct();
       case 6:
         productManager.countTotalProducts();
       case 7:
-        productManager.addCart();
+        await productManager.addCart();
       case 8:
-        productManager.showAllListCart();  
+        await productManager.showAllListCart();
       case 9:
         print('Program is finished');
     }

@@ -1,5 +1,5 @@
-import 'package:dart_practice/exercise_13/models/base_model.dart';
-import 'package:dart_practice/exercise_13/models/product_model.dart';
+import 'package:dart_practice/ex13_product_management_app/models/base_model.dart';
+import 'package:dart_practice/ex13_product_management_app/models/product_model.dart';
 import 'package:dart_practice/utils/constants.dart';
 import 'package:dart_practice/utils/services.dart';
 import 'package:dart_practice/utils/validators.dart';
@@ -27,30 +27,31 @@ class ProductManager {
     print('9. Exit.');
   }
 
-  void showAllListProducts() {
+  Future<void> showAllListProducts() async {
     if (_products.isEmpty) {
       print('There are no products');
       return;
     }
+    await Future.delayed(const Duration(seconds: 2), () {});
     print('All List products: ');
     for (final product in _products) {
       print(product);
     }
   }
 
-  void showAllListCart() {
+  Future<void> showAllListCart() async {
     if (_carts.isEmpty) {
       print('There are no products in cart');
       return;
     }
+    await Future.delayed(const Duration(seconds: 1), () {});
     print('All List carts: ');
     for (final product in _carts) {
       print(product);
     }
   }
 
-  void addCart() {
-    showAllListProducts();
+  Future<void> addCart() async {
     while (true) {
       final uuid = Validators.inputString(
         "Enter the product uuid you want to add / Enter 'exit' to exit : ",
@@ -61,8 +62,9 @@ class ProductManager {
         if (product.uuid == uuid) {
           isFound = true;
           print(product);
-          final quantity =
-              Validators.inputPositiveInt('Enter the quantity you want to add: ');
+          final quantity = Validators.inputPositiveInt(
+            'Enter the quantity you want to add: ',
+          );
           if ((product.quantity - quantity) < 0) {
             print('Not enough product to add');
             break;
@@ -73,9 +75,12 @@ class ProductManager {
             name: product.name,
             price: product.price,
             quantity: quantity,
+            detail: product.detail,
+            note: product.note,
           );
           _carts.add(productCart);
           saveProducts(Constants.cartDataPath, _carts);
+          await Future.delayed(const Duration(milliseconds: 500), () {});
           print('Add product to cart successfully');
         }
       }
@@ -83,22 +88,24 @@ class ProductManager {
     }
   }
 
-  void createProduct() {
+  Future<void> createProduct() async {
     print('Create new Product.');
     final product = ProductModel()..inputInformation();
     _products.add(product);
     saveProducts(Constants.productDataPath, _products);
+    await Future.delayed(const Duration(milliseconds: 500), () {});
+
     print('Create Product successfully !!!');
   }
 
-  void editProduct() {
-    showAllListProducts();
+  Future<void> editProduct() async {
     final uuid = Validators.inputString('Enter the uuid you want to edit: ');
     for (final product in _products) {
       if (product.uuid == uuid) {
         product.inputInformation();
-        print('Edit product successfully!!!');
         saveProducts(Constants.productDataPath, _products);
+        await Future.delayed(const Duration(milliseconds: 500), () {});
+        print('Edit product successfully!!!');
         return;
       }
     }
@@ -106,14 +113,15 @@ class ProductManager {
     print('Could not find product uuid to edit.');
   }
 
-  void deleteProduct() {
-    showAllListProducts();
+  Future<void> deleteProduct() async {
     final uuid = Validators.inputString('Enter the uuid you want to delete: ');
     for (final product in _products) {
       if (product.uuid == uuid) {
         _products.remove(product);
         print('Delete product successfully!!!');
         saveProducts(Constants.productDataPath, _products);
+        await Future.delayed(const Duration(milliseconds: 500), () {});
+        print('Delete product successfully!!!');
         return;
       }
     }

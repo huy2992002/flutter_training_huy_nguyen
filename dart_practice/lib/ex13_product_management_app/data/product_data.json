@@ -1,0 +1,44 @@
+{
+    "products": [
+        {
+            "uuid": "abc123",
+            "name": "Product 1",
+            "price": 100000.0,
+            "quantity": 15,
+            "detail": "Detail Product 1",
+            "note": "Note Product 1"
+        },
+        {
+            "uuid": "abc456",
+            "name": "Product 2",
+            "price": 200000.0,
+            "quantity": 20,
+            "detail": "Detail Product 2",
+            "note": null
+        },
+        {
+            "uuid": "abc789",
+            "name": "Product 3",
+            "price": 400000.0,
+            "quantity": 18,
+            "detail": "Detail Product 3",
+            "note": "Note Product 3"
+        },
+        {
+            "uuid": "def123",
+            "name": "Product 4",
+            "price": 300000.0,
+            "quantity": 20,
+            "detail": "Detail Product 4",
+            "note": null
+        },
+        {
+            "uuid": "def456",
+            "name": "Product 5",
+            "price": 300000.0,
+            "quantity": 22,
+            "detail": "Detail Product 5",
+            "note": "Note Product 5"
+        }
+    ]
+}

@@ -1,4 +1,4 @@
-import 'package:dart_practice/exercise_13/models/product_model.dart';
+import 'package:dart_practice/ex13_product_management_app/models/product_model.dart';
 
 class BaseModel {
   BaseModel({

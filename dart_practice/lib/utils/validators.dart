@@ -71,6 +71,15 @@ class Validators {
     return value;
   }
 
+  static String? inputStringCanNull(String prompt) {
+    stdout.write(prompt);
+    final value = stdin.readLineSync().toString();
+    if (value.isEmpty) {
+      return null;
+    }
+    return value;
+  }
+
   static String inputBirthday(String prompt) {
     var value = '';
 
