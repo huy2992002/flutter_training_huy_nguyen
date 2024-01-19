@@ -4,16 +4,16 @@
 import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
-  checkAgeToHundred();
-}
-
-void checkAgeToHundred() {
   final name = Validators.inputString('Input name: ');
   final age = Validators.inputPositiveInt('Input age: ');
-  final check = 100 - age > 1;
-  if (check) {
+
+  if (ageToHundred(age) > 1) {
     print('$name has ${100 - age} more years to be 100 years old');
   } else {
     print('You are over 100 years old');
   }
+}
+
+int ageToHundred(int age) {
+  return 100 - age;
 }
