@@ -10,7 +10,7 @@ void main(List<String> args) {
 }
 
 void guessNumber() {
-  final numberRandom = Maths.randomInt(100) + 1;
+  final numberRandom = Maths.randomInt(100);
 
   int numberGuess;
   var min = 1;

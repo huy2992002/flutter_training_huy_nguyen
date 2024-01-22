@@ -5,7 +5,7 @@ import 'package:dart_practice/utils/maths.dart';
 import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
-  final random = numberRandom();
+  final random = Maths.randomInt(100);
   print(random);
   final guess = numberGuess();
 
@@ -16,11 +16,6 @@ void main(List<String> args) {
   } else {
     print('The number you guessed is larger than the random number');
   }
-}
-
-int numberRandom() {
-  final numberRandom = Maths.randomInt(100) + 1;
-  return numberRandom;
 }
 
 int numberGuess() {
