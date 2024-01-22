@@ -127,7 +127,7 @@ class ProductManager {
   }
 
   // Search product by name
-  void searchProduct() {
+  List<ProductModel> searchProduct() {
     String name =
         Validators.inputString('Enter the product name you want to search: ');
 
@@ -135,12 +135,7 @@ class ProductManager {
         .where((e) => e.name.toLowerCase().contains(name.toLowerCase()))
         .toList();
 
-    if (listSearch.isEmpty) {
-      print('Cannot find product.');
-    } else {
-      print('List of products found: ');
-      listSearch.forEach(print);
-    }
+    return listSearch;
   }
 
   // count total product in list
