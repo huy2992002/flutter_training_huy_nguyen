@@ -3,7 +3,7 @@
 //and makes a new list of only the first and last elements of the given list. For practice, write this code inside a function.
 
 void main(List<String> args) {
-  final arr = [5, 10, 15, 20, 25];
+  List<int> arr = [5, 10, 15, 20, 25];
 
   print(getFirstLastList(arr));
 }

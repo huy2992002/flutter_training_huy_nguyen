@@ -7,7 +7,7 @@
 import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
-  final dictionaryBirthday = {
+  Map<String, String> dictionaryBirthday = {
     'Dang Quoc Hoang': '2002/07/15',
     'Nguyen Phuc Kim Thuy': '2002/11/09',
     'Nguyen Ngoc Son': '2004/11/28',
@@ -17,9 +17,9 @@ void main(List<String> args) {
 }
 
 void getBirthDay(Map<String, dynamic> dictionary) {
-  var count = 0;
-  final name = Validators.inputString("who's birthday do you want look up?: ");
-  for (final e in dictionary.keys) {
+  int count = 0;
+  String name = Validators.inputString("who's birthday do you want look up?: ");
+  for (String e in dictionary.keys) {
     if (e.toLowerCase().contains(name.toLowerCase())) {
       print("$e's birthday is ${dictionary[e]}");
       count++;

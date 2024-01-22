@@ -10,7 +10,7 @@ class ProductManager {
   final List<ProductModel> _carts;
 
   void saveProducts(String path, List<ProductModel> data) {
-    final base = BaseModel(products: data);
+    BaseModel base = BaseModel(products: data);
     Services.saveDataJson(base.toJson(), path);
   }
 
@@ -36,7 +36,7 @@ class ProductManager {
     }
     await Future.delayed(const Duration(seconds: 2), () {});
     print('All List products: ');
-    for (final product in _products) {
+    for (ProductModel product in _products) {
       print(product);
     }
   }
@@ -49,7 +49,7 @@ class ProductManager {
     }
     await Future.delayed(const Duration(seconds: 1), () {});
     print('All List carts: ');
-    for (final product in _carts) {
+    for (ProductModel product in _carts) {
       print(product);
     }
   }
@@ -57,16 +57,16 @@ class ProductManager {
   // add product to cart
   Future<void> addCart() async {
     while (true) {
-      final uuid = Validators.inputString(
+      String uuid = Validators.inputString(
         "Enter the product uuid you want to add / Enter 'exit' to exit : ",
       );
       if (uuid.toLowerCase() == 'exit') return;
       var isFound = false;
-      for (final product in _products) {
+      for (ProductModel product in _products) {
         if (product.uuid == uuid) {
           isFound = true;
           print(product);
-          final quantity = Validators.inputPositiveInt(
+          int quantity = Validators.inputPositiveInt(
             'Enter the quantity you want to add: ',
           );
           if ((product.quantity - quantity) < 0) {
@@ -75,7 +75,7 @@ class ProductManager {
           }
           product.quantity = product.quantity - quantity;
           saveProducts(Constants.productDataPath, _products);
-          final productCart = ProductModel.parameters(
+          ProductModel productCart = ProductModel.parameters(
             name: product.name,
             price: product.price,
             quantity: quantity,
@@ -95,7 +95,7 @@ class ProductManager {
   // add product
   Future<void> createProduct() async {
     print('Create new Product.');
-    final product = ProductModel()..inputInformation();
+    ProductModel product = ProductModel()..inputInformation();
     _products.add(product);
     saveProducts(Constants.productDataPath, _products);
     await Future.delayed(const Duration(milliseconds: 500), () {});
@@ -105,8 +105,8 @@ class ProductManager {
 
   // Update product
   Future<void> editProduct() async {
-    final uuid = Validators.inputString('Enter the uuid you want to edit: ');
-    for (final product in _products) {
+    String uuid = Validators.inputString('Enter the uuid you want to edit: ');
+    for (ProductModel product in _products) {
       if (product.uuid == uuid) {
         product.inputInformation();
         saveProducts(Constants.productDataPath, _products);
@@ -121,8 +121,8 @@ class ProductManager {
 
   // Delete Product from List product by uuid
   Future<void> deleteProduct() async {
-    final uuid = Validators.inputString('Enter the uuid you want to delete: ');
-    for (final product in _products) {
+    String uuid = Validators.inputString('Enter the uuid you want to delete: ');
+    for (ProductModel product in _products) {
       if (product.uuid == uuid) {
         _products.remove(product);
         print('Delete product successfully!!!');
@@ -138,10 +138,10 @@ class ProductManager {
 
   // Search product by name
   void searchProduct() {
-    final name =
+    String name =
         Validators.inputString('Enter the product name you want to search: ');
 
-    final listSearch = _products
+    List<ProductModel> listSearch = _products
         .where((e) => e.name.toLowerCase().contains(name.toLowerCase()))
         .toList();
 

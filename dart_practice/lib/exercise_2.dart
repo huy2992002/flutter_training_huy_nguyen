@@ -5,9 +5,9 @@
 import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
-  final number = Validators.inputInt('Choose a number: ');
+  int number = Validators.inputInt('Choose a number: ');
 
-  final result = checkOddEven(number);
+  bool result = checkOddEven(number);
 
   print('This number is an ${result ? 'even' : 'odd'} number');
 }

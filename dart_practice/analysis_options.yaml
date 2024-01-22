@@ -19,6 +19,9 @@ linter:
     lines_longer_than_80_chars: false
     use_string_buffers: false
     unnecessary_getters_setters: false
+    omit_local_variable_types: false
+    prefer_final_locals: false
+    prefer_final_in_for_each: false
 
 # Uncomment the following section to specify additional rules.
 

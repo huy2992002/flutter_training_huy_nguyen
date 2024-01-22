@@ -10,11 +10,11 @@ void main(List<String> args) {
 }
 
 void guessNumber() {
-  final numberRandom = Maths.randomInt(100);
+  int numberRandom = Maths.randomInt(100);
 
   int numberGuess;
-  var min = 1;
-  var max = 100;
+  int min = 1;
+  int max = 100;
   do {
     do {
       numberGuess = Validators.inputInt('Guess a number: ');
