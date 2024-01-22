@@ -17,10 +17,15 @@ void main(List<String> args) {
 }
 
 void getBirthDay(Map<String, dynamic> dictionary) {
+  var count = 0;
   final name = Validators.inputString("who's birthday do you want look up?: ");
-  if (dictionary[name] != null) {
-    print("$name's birthday is ${dictionary[name]}");
-  } else {
+  for (final e in dictionary.keys) {
+    if (e.toLowerCase().contains(name.toLowerCase())) {
+      print("$e's birthday is ${dictionary[e]}");
+      count++;
+    }
+  }
+  if (count == 0) {
     print('The birthday of the person you are looking for could not be found');
   }
 }
