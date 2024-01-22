@@ -98,19 +98,18 @@ class ProductManager {
   }
 
   // Update product
-  Future<void> editProduct() async {
+  Future<bool> editProduct() async {
     String uuid = Validators.inputString('Enter the uuid you want to edit: ');
     for (ProductModel product in _products) {
       if (product.uuid == uuid) {
         product.editInformation();
         saveProducts(Constants.productDataPath, _products);
         await Future.delayed(const Duration(milliseconds: 500), () {});
-        print('Edit product successfully!!!');
-        return;
+        return true;
       }
     }
 
-    print('Could not find product uuid to edit.');
+    return false;
   }
 
   // Delete Product from List product by uuid
