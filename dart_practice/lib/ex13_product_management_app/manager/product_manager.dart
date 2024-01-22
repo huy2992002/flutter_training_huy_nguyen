@@ -139,7 +139,7 @@ class ProductManager {
   }
 
   // count total product in list
-  void countTotalProducts() {
-    print('Total products in the list is ${_products.length}');
+  int countTotalProducts() {
+    return _products.length;
   }
 }
