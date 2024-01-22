@@ -7,8 +7,10 @@ void main(List<String> args) {
   final name = Validators.inputString('Input name: ');
   final age = Validators.inputPositiveInt('Input age: ');
 
-  if (ageToHundred(age) > 1) {
-    print('$name has ${100 - age} more years to be 100 years old');
+  final ageSpace = ageToHundred(age);
+
+  if (ageSpace > 1) {
+    print('$name has $ageSpace more years to be 100 years old');
   } else {
     print('You are over 100 years old');
   }
