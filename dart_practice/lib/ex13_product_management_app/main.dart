@@ -27,7 +27,12 @@ void main(List<String> args) async {
       case 1:
         await productManager.showAllListProducts();
       case 2:
-        await productManager.createProduct();
+        bool check = await productManager.createProduct();
+        if(check) {
+          print('Create product successfully !!!');
+        }else {
+          print('Create product failed !!!');
+        }
       case 3:
         await productManager.editProduct();
       case 4:

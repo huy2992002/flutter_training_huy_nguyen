@@ -88,14 +88,13 @@ class ProductManager {
   }
 
   // add product
-  Future<void> createProduct() async {
+  Future<bool> createProduct() async {
     print('Create new Product.');
     ProductModel product = ProductModel.input();
     _products.add(product);
     saveProducts(Constants.productDataPath, _products);
     await Future.delayed(const Duration(milliseconds: 500), () {});
-
-    print('Create Product successfully !!!');
+    return true;
   }
 
   // Update product
