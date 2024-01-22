@@ -17,11 +17,5 @@ void main(List<String> args) {
 }
 
 List<int> itemLess5InList(List<int> list) {
-  final results = <int>[];
-  for (final e in list) {
-    if (e < 5) {
-      results.add(e);
-    }
-  }
-  return results;
+  return list.where((element) => element < 5).toList();
 }
