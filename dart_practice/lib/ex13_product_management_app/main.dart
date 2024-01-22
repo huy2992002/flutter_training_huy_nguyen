@@ -1,5 +1,6 @@
 import 'package:dart_practice/ex13_product_management_app/manager/product_manager.dart';
 import 'package:dart_practice/ex13_product_management_app/models/base_model.dart';
+import 'package:dart_practice/ex13_product_management_app/models/product_model.dart';
 import 'package:dart_practice/utils/constants.dart';
 import 'package:dart_practice/utils/services.dart';
 import 'package:dart_practice/utils/validators.dart';
@@ -50,7 +51,14 @@ void main(List<String> args) async {
           print('Delete product failed !!!');
         }
       case 5:
-        productManager.searchProduct();
+        List<ProductModel> listSearch = productManager.searchProduct();
+
+        if (listSearch.isEmpty) {
+          print('Cannot find product.');
+        } else {
+          print('List of products found: ');
+          listSearch.forEach(print);
+        }
       case 6:
         productManager.countTotalProducts();
       case 7:
