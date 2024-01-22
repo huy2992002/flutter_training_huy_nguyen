@@ -56,40 +56,35 @@ class ProductManager {
 
   // add product to cart
   Future<void> addCart() async {
-    while (true) {
-      String uuid = Validators.inputString(
-        "Enter the product uuid you want to add / Enter 'exit' to exit : ",
-      );
-      if (uuid.toLowerCase() == 'exit') return;
-      var isFound = false;
-      for (ProductModel product in _products) {
-        if (product.uuid == uuid) {
-          isFound = true;
-          print(product);
-          int quantity = Validators.inputPositiveInt(
-            'Enter the quantity you want to add: ',
-          );
-          if ((product.quantity - quantity) < 0) {
-            print('Not enough product to add');
-            break;
-          }
-          product.quantity = product.quantity - quantity;
-          saveProducts(Constants.productDataPath, _products);
-          ProductModel productCart = ProductModel.parameters(
-            name: product.name,
-            price: product.price,
-            quantity: quantity,
-            detail: product.detail,
-            note: product.note,
-          );
-          _carts.add(productCart);
-          saveProducts(Constants.cartDataPath, _carts);
-          await Future.delayed(const Duration(milliseconds: 500), () {});
-          print('Add product to cart successfully');
-        }
-      }
-      if (!isFound) print('Product uuid not found');
+    for (int i = 0; i < _products.length; i++) {
+      print('${i + 1}: ${_products[i]}');
     }
+
+    int i;
+    do {
+      i = Validators.inputInt('Choice: ');
+    } while (i < 1 || i > _products.length);
+
+    int quantity = Validators.inputPositiveInt(
+      'Enter the quantity you want to add: ',
+    );
+    if ((_products[i - 1].quantity - quantity) < 0) {
+      print('Not enough product to add');
+      return;
+    }
+    _products[i - 1].quantity = _products[i - 1].quantity - quantity;
+    saveProducts(Constants.productDataPath, _products);
+    ProductModel productCart = ProductModel.parameters(
+      name: _products[i - 1].name,
+      price: _products[i - 1].price,
+      quantity: quantity,
+      detail: _products[i - 1].detail,
+      note: _products[i - 1].note,
+    );
+    _carts.add(productCart);
+    saveProducts(Constants.cartDataPath, _carts);
+    await Future.delayed(const Duration(milliseconds: 500), () {});
+    print('Add product to cart successfully');
   }
 
   // add product
