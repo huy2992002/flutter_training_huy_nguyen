@@ -9,11 +9,11 @@ void main(List<String> args) {
   print(random);
   final guess = numberGuess();
 
-  if(checkNumberGuess(random, guess) == 0) {
+  if (checkNumberGuess(random, guess) == 0) {
     print('The number you guessed is a the random number');
-  }else if (checkNumberGuess(random, guess) > 0 ) {
+  } else if (checkNumberGuess(random, guess) > 0) {
     print('The number you guessed is smaller than the random number');
-  }else {
+  } else {
     print('The number you guessed is larger than the random number');
   }
 }

@@ -23,13 +23,13 @@ void guessNumber() {
       }
     } while (numberGuess < min || numberGuess > max);
 
-    if(numberGuess > numberRandom){
+    if (numberGuess > numberRandom) {
       print('The number to find is smaller than the number you guess');
       max = numberGuess - 1;
-    }else if(numberGuess < numberRandom) {
+    } else if (numberGuess < numberRandom) {
       print('The number to find is large than the number you guess');
       min = numberGuess + 1;
-    }else {
+    } else {
       print('The exact number to look for is $numberRandom');
     }
   } while (numberGuess != numberRandom);

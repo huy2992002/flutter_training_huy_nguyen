@@ -28,7 +28,7 @@ class ProductManager {
     print('9. Exit.');
   }
 
-  // View all list products 
+  // View all list products
   Future<void> showAllListProducts() async {
     if (_products.isEmpty) {
       print('There are no products');
@@ -41,7 +41,7 @@ class ProductManager {
     }
   }
 
-  // View all list carts 
+  // View all list carts
   Future<void> showAllListCart() async {
     if (_carts.isEmpty) {
       print('There are no products in cart');
