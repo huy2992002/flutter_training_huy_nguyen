@@ -113,20 +113,17 @@ class ProductManager {
   }
 
   // Delete Product from List product by uuid
-  Future<void> deleteProduct() async {
+  Future<bool> deleteProduct() async {
     String uuid = Validators.inputString('Enter the uuid you want to delete: ');
     for (ProductModel product in _products) {
       if (product.uuid == uuid) {
         _products.remove(product);
-        print('Delete product successfully!!!');
         saveProducts(Constants.productDataPath, _products);
         await Future.delayed(const Duration(milliseconds: 500), () {});
-        print('Delete product successfully!!!');
-        return;
+        return true;
       }
     }
-
-    print('Could not find product id to delete.');
+    return false;
   }
 
   // Search product by name

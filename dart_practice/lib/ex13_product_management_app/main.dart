@@ -42,7 +42,13 @@ void main(List<String> args) async {
           print('Edit product failed !!!');
         }
       case 4:
-        await productManager.deleteProduct();
+        bool checkDelete = await productManager.deleteProduct();
+        if (checkDelete) {
+          print('Delete product successfully !!!');
+        } else {
+          print('Could not find product id to delete.');
+          print('Delete product failed !!!');
+        }
       case 5:
         productManager.searchProduct();
       case 6:
