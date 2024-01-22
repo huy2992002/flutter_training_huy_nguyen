@@ -9,5 +9,5 @@ void main(List<String> args) {
 }
 
 List<int> getFirstLastList(List<int> arr) {
-  return [arr.first,arr.last];
+  return [arr.first, arr.last];
 }

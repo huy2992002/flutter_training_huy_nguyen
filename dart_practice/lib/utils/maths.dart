@@ -11,8 +11,7 @@ class Maths {
     const uppercaseLetter = 'QWERTYUIOPASDFGHJKLZXCVBNM';
     const numbers = '0123456789';
 
-    final allChars =
-        '$lowercaseLetter$uppercaseLetter$numbers'.split('');
+    final allChars = '$lowercaseLetter$uppercaseLetter$numbers'.split('');
     var value = '';
     for (var i = 0; i < length; i++) {
       final index = math.Random().nextInt(allChars.length);
