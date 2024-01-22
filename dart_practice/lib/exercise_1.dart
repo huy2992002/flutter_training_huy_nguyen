@@ -4,10 +4,10 @@
 import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
-  final name = Validators.inputString('Input name: ');
-  final age = Validators.inputPositiveInt('Input age: ');
+  String name = Validators.inputString('Input name: ');
+  int age = Validators.inputPositiveInt('Input age: ');
 
-  final ageSpace = ageToHundred(age);
+  int ageSpace = ageToHundred(age);
 
   if (ageSpace > 1) {
     print('$name has $ageSpace more years to be 100 years old');

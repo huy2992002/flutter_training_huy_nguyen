@@ -7,17 +7,17 @@ import 'package:dart_practice/utils/extension.dart';
 import 'package:dart_practice/utils/services.dart';
 
 void main(List<String> args) {
-  const path = Constants.dataPath;
-  final dictionary = Services.getDataJson(path);
+  String path = Constants.dataPath;
+  Map<String, dynamic> dictionary = Services.getDataJson(path);
   countBirthDay(dictionary);
 }
 
 void countBirthDay(Map<String, dynamic> dictionary) {
-  final map = <String, int>{};
+  Map<String, dynamic> map = {};
 
   for (final e in dictionary.values) {
     if (e is String) {
-      final month = DateTime.parse(e).month.toStringMonth();
+      String? month = DateTime.parse(e).month.toStringMonth();
 
       if (map.containsKey(month)) {
         map.update(month ?? '', (value) => value + 1);

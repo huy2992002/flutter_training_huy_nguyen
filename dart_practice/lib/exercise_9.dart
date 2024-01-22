@@ -40,36 +40,37 @@ void printOptions() {
 }
 
 String generatePassword(int length) {
-  const lowercaseLetter = 'qwertyuiopasdfghjklzxcvbnm';
-  const uppercaseLetter = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  const numbers = '0123456789';
-  const symbols = r'!@#$%^&*()_+';
+  String lowercaseLetter = 'qwertyuiopasdfghjklzxcvbnm';
+  String uppercaseLetter = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  String numbers = '0123456789';
+  String symbols = r'!@#$%^&*()_+';
 
-  final allChars = '$lowercaseLetter$uppercaseLetter$numbers$symbols'.split('');
+  List<String> allChars =
+      '$lowercaseLetter$uppercaseLetter$numbers$symbols'.split('');
   var password = '';
   for (var i = 0; i < length; i++) {
-    final index = math.Random().nextInt(allChars.length);
+    int index = math.Random().nextInt(allChars.length);
     password = '$password${allChars[index]}';
   }
   return password;
 }
 
 String getPassDefault() {
-  final listPasswordDefault = [
+  List<String> listPasswordDefault = [
     'password1',
     'password2',
     'password3',
   ];
 
-  final index = math.Random().nextInt(listPasswordDefault.length);
+  int index = math.Random().nextInt(listPasswordDefault.length);
 
   return listPasswordDefault[index];
 }
 
 String getPasswordWeak() {
   int i;
-  final passwordDefault = getPassDefault();
-  final passwordGenerate = generatePassword(4);
+  String passwordDefault = getPassDefault();
+  String passwordGenerate = generatePassword(4);
 
   print('Please choice password: ');
   print('1. $passwordDefault ');

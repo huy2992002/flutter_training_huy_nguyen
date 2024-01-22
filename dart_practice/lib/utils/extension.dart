@@ -1,6 +1,6 @@
 extension ExInt on int {
   String? toStringMonth() {
-    final stringMonth = {
+    Map<int, String> stringMonth = {
       1: 'January',
       2: 'February',
       3: 'March',
@@ -21,11 +21,11 @@ extension ExInt on int {
 
 extension ExDouble on double {
   String toFormatVnd() {
-    final stThis = toInt().toString();
-    var st = ' Vnd';
-    var count = 0;
+    String stThis = toInt().toString();
+    String st = ' Vnd';
+    int count = 0;
 
-    for (var i = stThis.length - 1; i >= 0; i--) {
+    for (int i = stThis.length - 1; i >= 0; i--) {
       st = '${stThis[i]}$st';
       count++;
       if (count == 3 && i != 0) {

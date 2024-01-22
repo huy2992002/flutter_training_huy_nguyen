@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 class Maths {
   static int randomInt(int max) {
-    final number = math.Random().nextInt(max) + 1;
+    int number = math.Random().nextInt(max) + 1;
     return number;
   }
 
@@ -11,10 +11,11 @@ class Maths {
     const uppercaseLetter = 'QWERTYUIOPASDFGHJKLZXCVBNM';
     const numbers = '0123456789';
 
-    final allChars = '$lowercaseLetter$uppercaseLetter$numbers'.split('');
-    var value = '';
+    List<String> allChars =
+        '$lowercaseLetter$uppercaseLetter$numbers'.split('');
+    String value = '';
     for (var i = 0; i < length; i++) {
-      final index = math.Random().nextInt(allChars.length);
+      int index = math.Random().nextInt(allChars.length);
       value = '$value${allChars[index]}';
     }
     return value;

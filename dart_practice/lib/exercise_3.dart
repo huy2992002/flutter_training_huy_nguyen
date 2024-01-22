@@ -5,10 +5,10 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  final list = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
-  final results = itemLess5InList(list);
+  List<int> list = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+  List<int> results = itemLess5InList(list);
   if (results.isNotEmpty) {
-    for (final e in results) {
+    for (int e in results) {
       stdout.write('$e ');
     }
   } else {

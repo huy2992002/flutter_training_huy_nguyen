@@ -5,9 +5,9 @@ import 'package:dart_practice/utils/maths.dart';
 import 'package:dart_practice/utils/validators.dart';
 
 void main(List<String> args) {
-  final random = Maths.randomInt(100);
-  print(random);
-  final guess = numberGuess();
+  int random = Maths.randomInt(100);
+
+  int guess = numberGuess();
 
   if (checkNumberGuess(random, guess) == 0) {
     print('The number you guessed is a the random number');
