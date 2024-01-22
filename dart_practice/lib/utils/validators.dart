@@ -20,6 +20,27 @@ class Validators {
     return value;
   }
 
+  static int? inputIntCanNull(String prompt) {
+    int value = 0;
+
+    bool isValid;
+
+    do {
+      try {
+        stdout.write(prompt);
+        String input = stdin.readLineSync().toString();
+        if (input.isEmpty) return null;
+        value = int.parse(input);
+        isValid = true;
+      } catch (e) {
+        print('Error, Invalid Number !!!');
+        isValid = false;
+      }
+    } while (!isValid);
+
+    return value;
+  }
+
   static int inputPositiveInt(String prompt) {
     int value = 0;
 
@@ -34,8 +55,23 @@ class Validators {
     return value;
   }
 
+  static int? inputPositiveIntCanNull(String prompt) {
+    int? value = 0;
+
+    bool isValid;
+
+    do {
+      value = Validators.inputIntCanNull(prompt);
+      if (value == null) return null;
+      value < 0 ? isValid = false : isValid = true;
+      if (value < 0) print('Please enter a positive integer');
+    } while (!isValid);
+
+    return value;
+  }
+
   static double inputDouble(String prompt) {
-    double value = 0.0;
+    double value = 0;
 
     bool isValid;
 
@@ -43,6 +79,27 @@ class Validators {
       try {
         stdout.write(prompt);
         value = double.parse(stdin.readLineSync().toString());
+        isValid = true;
+      } catch (e) {
+        print('Error, Invalid Number !!!');
+        isValid = false;
+      }
+    } while (!isValid);
+
+    return value;
+  }
+
+  static double? inputDoubleCanNull(String prompt) {
+    double value = 0;
+
+    bool isValid;
+
+    do {
+      try {
+        stdout.write(prompt);
+        String input = stdin.readLineSync().toString();
+        if (input.isEmpty) return null;
+        value = double.parse(input);
         isValid = true;
       } catch (e) {
         print('Error, Invalid Number !!!');

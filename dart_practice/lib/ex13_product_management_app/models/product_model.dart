@@ -98,4 +98,13 @@ class ProductModel {
     _detail = Validators.inputString('Input Detail: ');
     _note = Validators.inputStringCanNull('Input Note: ');
   }
+
+  void editInformation() {
+    _name = Validators.inputStringCanNull('Input new name: ') ?? _name;
+    _price = Validators.inputDoubleCanNull('Input new price: ') ?? _price;
+    _quantity =
+        Validators.inputPositiveIntCanNull('Input new quantity: ') ?? _quantity;
+    _detail = Validators.inputStringCanNull('Input new detail: ') ?? _detail;
+    _note = Validators.inputStringCanNull('Input Note: ') ?? _note;
+  }
 }
