@@ -60,7 +60,8 @@ void main(List<String> args) async {
           listSearch.forEach(print);
         }
       case 6:
-        productManager.countTotalProducts();
+        int total = productManager.countTotalProducts();
+        print('Total products in the list is $total');
       case 7:
         await productManager.addCart();
       case 8:
