@@ -3,8 +3,13 @@ import 'package:dart_practice/utils/maths.dart';
 import 'package:dart_practice/utils/validators.dart';
 
 class ProductModel {
-  ProductModel() {
+  ProductModel.input() {
     _uuid = Maths.randomUUid(length: 6);
+    _name = Validators.inputString('Input name product: ');
+    _price = Validators.inputDouble('Input price product: ');
+    _quantity = Validators.inputPositiveInt('Input quantity: ');
+    _detail = Validators.inputString('Input Detail: ');
+    _note = Validators.inputStringCanNull('Input Note: ');
   }
 
   ProductModel.parameters({
@@ -88,15 +93,6 @@ class ProductModel {
   @override
   String toString() {
     return 'Product ID: $_uuid, Product Name: $_name, Product Price: ${_price.toFormatVnd()}, Quantity: $_quantity, Detail: $_detail${_note != null ? ', Note: $_note' : ''}';
-  }
-
-  // Enter product information
-  void inputInformation() {
-    _name = Validators.inputString('Input name product: ');
-    _price = Validators.inputDouble('Input price product: ');
-    _quantity = Validators.inputPositiveInt('Input quantity: ');
-    _detail = Validators.inputString('Input Detail: ');
-    _note = Validators.inputStringCanNull('Input Note: ');
   }
 
   void editInformation() {
