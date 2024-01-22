@@ -27,9 +27,20 @@ void main(List<String> args) async {
       case 1:
         await productManager.showAllListProducts();
       case 2:
-        await productManager.createProduct();
+        bool check = await productManager.createProduct();
+        if (check) {
+          print('Create product successfully !!!');
+        } else {
+          print('Create product failed !!!');
+        }
       case 3:
-        await productManager.editProduct();
+        bool checkUpdate = await productManager.editProduct();
+        if (checkUpdate) {
+          print('Edit product successfully !!!');
+        } else {
+          print('Could not find product uuid to edit.');
+          print('Edit product failed !!!');
+        }
       case 4:
         await productManager.deleteProduct();
       case 5:
