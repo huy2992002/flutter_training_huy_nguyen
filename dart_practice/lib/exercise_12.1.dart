@@ -17,7 +17,7 @@ void getBirthDay(String path) {
     print("$name's birthday is ${dictionary[name]}");
   } else {
     final birthday =
-        Validators.inputBirthday("Please update $name's birthday: ");
+        Validators.inputBirthday("Please update $name's birthday (yyyy-mm-dd): ");
     dictionary.putIfAbsent(name, () => birthday);
     print('Update successfully');
     Services.saveDataJson(dictionary, path);
