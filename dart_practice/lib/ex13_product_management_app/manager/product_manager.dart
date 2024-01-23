@@ -89,15 +89,20 @@ class ProductManager {
 
   // add product
   Future<bool> createProduct() async {
-    print('Create new Product.');
-    ProductModel product = ProductModel.input();
-    for (ProductModel e in _products) {
-      if (e.name == product.name) return false;
+    try {
+      print('Create new Product.');
+      ProductModel product = ProductModel.input();
+      for (ProductModel e in _products) {
+        if (e.name == product.name) return false;
+      }
+      _products.add(product);
+      saveProducts(Constants.productDataPath, _products);
+      await Future.delayed(const Duration(milliseconds: 500), () {});
+      return true;
+    } catch (e) {
+      print('Error Exception $e');
+      return false;
     }
-    _products.add(product);
-    saveProducts(Constants.productDataPath, _products);
-    await Future.delayed(const Duration(milliseconds: 500), () {});
-    return true;
   }
 
   // Update product
