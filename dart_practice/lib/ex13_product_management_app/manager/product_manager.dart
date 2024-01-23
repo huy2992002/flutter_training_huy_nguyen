@@ -127,16 +127,21 @@ class ProductManager {
 
   // Delete Product from List product by uuid
   Future<bool> deleteProduct() async {
-    String uuid = Validators.inputString('Enter the uuid you want to delete: ');
-    for (ProductModel product in _products) {
-      if (product.uuid == uuid) {
-        _products.remove(product);
-        saveProducts(Constants.productDataPath, _products);
-        await Future.delayed(const Duration(milliseconds: 500), () {});
-        return true;
+    try {
+      String uuid =
+          Validators.inputString('Enter the uuid you want to delete: ');
+      for (ProductModel product in _products) {
+        if (product.uuid == uuid) {
+          _products.remove(product);
+          saveProducts(Constants.productDataPath, _products);
+          await Future.delayed(const Duration(milliseconds: 500), () {});
+          return true;
+        }
       }
+      return false;
+    } catch (e) {
+      return false;
     }
-    return false;
   }
 
   // Search product by name
