@@ -12,12 +12,12 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             BasicWidgets(),
-            SizedBox(height: 20.0),
+            SizedBox(height: 20),
             LayoutWidget(),
           ],
         ),
