@@ -13,7 +13,7 @@ void main(List<String> args) {
 }
 
 void countBirthDay(Map<String, dynamic> dictionary) {
-  Map<String, dynamic> map = {};
+  Map<String, int> map = {};
 
   for (final e in dictionary.values) {
     if (e is String) {
