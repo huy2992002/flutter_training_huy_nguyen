@@ -140,7 +140,6 @@ class ProductManager {
       }
       return false;
     } catch (e) {
-      print('Error Exception $e');
       return false;
     }
   }
