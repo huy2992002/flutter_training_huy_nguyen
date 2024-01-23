@@ -91,6 +91,9 @@ class ProductManager {
   Future<bool> createProduct() async {
     print('Create new Product.');
     ProductModel product = ProductModel.input();
+    for (ProductModel e in _products) {
+      if (e.name == product.name) return false;
+    }
     _products.add(product);
     saveProducts(Constants.productDataPath, _products);
     await Future.delayed(const Duration(milliseconds: 500), () {});

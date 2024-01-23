@@ -32,7 +32,7 @@ void main(List<String> args) async {
         if (check) {
           print('Create product successfully !!!');
         } else {
-          print('Create product failed !!!');
+          print('The product is already available');
         }
       case 3:
         bool checkUpdate = await productManager.editProduct();
