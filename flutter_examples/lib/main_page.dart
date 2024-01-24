@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_examples/assets_image/assets_image_page.dart';
 import 'package:flutter_examples/detail_page.dart';
 import 'package:flutter_examples/introduction/introduction_page.dart';
 import 'package:flutter_examples/layout/layout_page.dart';
@@ -31,6 +32,8 @@ class _MainPageState extends State<MainPage> {
               Title(text: '1. Introduction', pagePush: IntroductionPage()),
               SizedBox(height: 20),
               Title(text: '2. Layout', pagePush: LayoutPage()),
+              SizedBox(height: 20),
+              Title(text: '3. Assets Images', pagePush: AssetsImagesPage()),
             ],
           ),
         ),
