@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_examples/introduction/custom_widgets.dart';
 
 class BasicWidgets extends StatefulWidget {
   const BasicWidgets({super.key});
@@ -10,12 +9,6 @@ class BasicWidgets extends StatefulWidget {
 
 class _BasicWidgetsState extends State<BasicWidgets> {
   Color color = Colors.blue;
-
-  List<CartShoppingItem> shoppings = [
-    const CartShoppingItem(color: Colors.black, title: 'Shopping 2'),
-    const CartShoppingItem(color: Colors.red, title: 'Shopping 3'),
-    const CartShoppingItem(color: Colors.yellow, title: 'Shopping 4'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -72,11 +65,6 @@ class _BasicWidgetsState extends State<BasicWidgets> {
             color: color,
           ),
         ),
-        // Call custom widget CartShoppingItem
-        const CartShoppingItem(color: Colors.blue, title: 'Shopping 1'),
-
-        // use List.generate render List CartShoppingItem
-        ...List.generate(shoppings.length, (index) => shoppings[index]),
       ],
     );
   }
