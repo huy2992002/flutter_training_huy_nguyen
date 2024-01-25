@@ -4,6 +4,7 @@ import 'package:flutter_examples/detail_page.dart';
 import 'package:flutter_examples/interactivity/interactivity_page.dart';
 import 'package:flutter_examples/introduction/introduction_page.dart';
 import 'package:flutter_examples/layout/layout_page.dart';
+import 'package:flutter_examples/localization/localization_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -37,6 +38,8 @@ class _MainPageState extends State<MainPage> {
               Title(text: '3. Assets Images', pagePush: AssetsImagesPage()),
               SizedBox(height: 20),
               Title(text: '4. Interactivity', pagePush: InteractivityPage()),
+              SizedBox(height: 20),
+              Title(text: '5. Localization', pagePush: LocalizationPage()),
             ],
           ),
         ),

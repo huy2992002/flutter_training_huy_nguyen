@@ -19,6 +19,11 @@ linter:
     omit_local_variable_types: false
     prefer_final_locals: false
     prefer_final_in_for_each: false
+    depend_on_referenced_packages: false
+    always_use_package_imports: false
+    use_super_parameters: false
+    noop_primitive_operations: false
+    require_trailing_commas: false
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`
   # included above or to enable additional rules. A list of all available lints
