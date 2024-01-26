@@ -6,6 +6,7 @@ import 'package:flutter_examples/introduction/introduction_page.dart';
 import 'package:flutter_examples/layout/layout_page.dart';
 import 'package:flutter_examples/localization/localization_page.dart';
 import 'package:flutter_examples/responsiveness/responsiveness_page.dart';
+import 'package:flutter_examples/theming/theme_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -38,6 +39,7 @@ class _MainPageState extends State<MainPage> {
               Title(text: '4. Interactivity', pagePush: InteractivityPage()),
               Title(text: '5. Localization', pagePush: LocalizationPage()),
               Title(text: '6. Responsiveness', pagePush: ResponsivenessPage()),
+              Title(text: '7. Theming', pagePush: ThemePage()),
             ],
           ),
         ),
