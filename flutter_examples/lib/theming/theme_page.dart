@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_examples/theming/theme_provider.dart';
+import 'package:flutter_examples/theming/app_provider.dart';
 import 'package:provider/provider.dart';
 
 class ThemePage extends StatelessWidget {
@@ -16,7 +16,7 @@ class ThemePage extends StatelessWidget {
         ),
         child: GestureDetector(
           onTap: () {
-            Provider.of<ThemeProvider>(context,listen: false).changeTheme();
+            Provider.of<AppProvider>(context,listen: false).changeTheme();
             print('object');
           },
           child: Container(
