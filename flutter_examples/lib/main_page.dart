@@ -5,6 +5,7 @@ import 'package:flutter_examples/interactivity/interactivity_page.dart';
 import 'package:flutter_examples/introduction/introduction_page.dart';
 import 'package:flutter_examples/layout/layout_page.dart';
 import 'package:flutter_examples/localization/localization_page.dart';
+import 'package:flutter_examples/responsiveness/responsiveness_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -32,14 +33,11 @@ class _MainPageState extends State<MainPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Title(text: '1. Introduction', pagePush: IntroductionPage()),
-              SizedBox(height: 20),
               Title(text: '2. Layout', pagePush: LayoutPage()),
-              SizedBox(height: 20),
               Title(text: '3. Assets Images', pagePush: AssetsImagesPage()),
-              SizedBox(height: 20),
               Title(text: '4. Interactivity', pagePush: InteractivityPage()),
-              SizedBox(height: 20),
               Title(text: '5. Localization', pagePush: LocalizationPage()),
+              Title(text: '6. Responsiveness', pagePush: ResponsivenessPage()),
             ],
           ),
         ),
@@ -60,20 +58,23 @@ class Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute<dynamic>(
-            builder: (context) => DetailPage(
-              title: text,
-              child: pagePush,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute<dynamic>(
+              builder: (context) => DetailPage(
+                title: text,
+                child: pagePush,
+              ),
             ),
-          ),
-        );
-      },
-      child: Text(
-        text,
-        style: const TextStyle(color: Colors.red, fontSize: 25),
+          );
+        },
+        child: Text(
+          text,
+          style: const TextStyle(color: Colors.red, fontSize: 25),
+        ),
       ),
     );
   }
