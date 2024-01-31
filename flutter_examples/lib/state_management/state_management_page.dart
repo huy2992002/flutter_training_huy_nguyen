@@ -46,10 +46,10 @@ class _StateManagementPageState extends State<StateManagementPage> {
                 (index) => Container(
                       width: 10,
                       height: 10,
-                      margin: EdgeInsets.symmetric(horizontal: 2),
+                      margin: const EdgeInsets.symmetric(horizontal: 2),
                       decoration: BoxDecoration(
                         color: pageIndex == index ? Colors.grey : Colors.white,
-                        border: Border.all(color: Colors.black),
+                        border: Border.all(),
                         shape: BoxShape.circle,
                       ),
                     )),
