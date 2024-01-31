@@ -3,6 +3,7 @@ import 'package:flutter_examples/provider/demo_basic_provider.dart';
 import 'package:flutter_examples/provider/demo_change_notifier_provider.dart';
 import 'package:flutter_examples/provider/demo_future_provider.dart';
 import 'package:flutter_examples/provider/demo_multi_provider.dart';
+import 'package:flutter_examples/provider/demo_stream_provider.dart';
 import 'package:flutter_examples/provider/demo_value_listenable_provider.dart';
 
 class ProviderPage extends StatelessWidget {
@@ -22,6 +23,8 @@ class ProviderPage extends StatelessWidget {
         DemoValueListenableProvider(),
         SizedBox(height: 20),
         DemoFutureProvider(),
+        SizedBox(height: 20),
+        DemoStreamProvider(),
       ],
     );
   }
