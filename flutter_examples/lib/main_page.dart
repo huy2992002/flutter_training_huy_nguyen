@@ -5,6 +5,7 @@ import 'package:flutter_examples/interactivity/interactivity_page.dart';
 import 'package:flutter_examples/introduction/introduction_page.dart';
 import 'package:flutter_examples/layout/layout_page.dart';
 import 'package:flutter_examples/localization/localization_page.dart';
+import 'package:flutter_examples/provider/provider_page.dart';
 import 'package:flutter_examples/responsiveness/responsiveness_page.dart';
 import 'package:flutter_examples/state_management/state_management_page.dart';
 import 'package:flutter_examples/theming/theme_page.dart';
@@ -42,6 +43,7 @@ class _MainPageState extends State<MainPage> {
               Title(text: '6. Responsiveness', pagePush: ResponsivenessPage()),
               Title(text: '7. Theming', pagePush: ThemePage()),
               Title(text: '8. State management', pagePush: StateManagementPage()),
+              Title(text: '9. Provider', pagePush: ProviderPage()),
             ],
           ),
         ),
