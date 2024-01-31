@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_examples/provider/demo_basic_provider.dart';
+import 'package:flutter_examples/provider/demo_change_notifier_provider.dart';
 
 class ProviderPage extends StatelessWidget {
   const ProviderPage({super.key});
@@ -11,6 +12,7 @@ class ProviderPage extends StatelessWidget {
         SizedBox(width: double.infinity),
         DemoBasicProvider(),
         SizedBox(height: 20.0),
+        DemoChangeNotifierProvider(),
       ],
     );
   }
