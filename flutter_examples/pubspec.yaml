@@ -33,6 +33,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_localization: null
+  http: ^1.1.0
   intl: 0.18.1
   provider: null
 

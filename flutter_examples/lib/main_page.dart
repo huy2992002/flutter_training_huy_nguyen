@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_examples/assets_image/assets_image_page.dart';
 import 'package:flutter_examples/detail_page.dart';
+import 'package:flutter_examples/http/http_page.dart';
 import 'package:flutter_examples/interactivity/interactivity_page.dart';
 import 'package:flutter_examples/introduction/introduction_page.dart';
 import 'package:flutter_examples/layout/layout_page.dart';
@@ -44,6 +45,7 @@ class _MainPageState extends State<MainPage> {
               Title(text: '7. Theming', pagePush: ThemePage()),
               Title(text: '8. State management', pagePush: StateManagementPage()),
               Title(text: '9. Provider', pagePush: ProviderPage()),
+              Title(text: '10. Http', pagePush: HttpPage()),
             ],
           ),
         ),
