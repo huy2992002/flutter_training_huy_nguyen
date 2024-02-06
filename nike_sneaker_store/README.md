@@ -2,7 +2,7 @@
 
 ## OVERVIEW
 - This is a document detailing the plan to build the Nike Sneaker Store app
-- You can see the design app: [here](https://www.figma.com/file/j1509R317pGZ5o7yN2onpT/Nike-Sneaker-Store-App-(Community)?type=design&node-id=13%3A4657&mode=design&t=XVFbwFwUmSPUaFL2-1)
+- You can see the design app: [here](https://www.figma.com/file/NeMkgnPe650F4yep27Xmwm/NikeSneakerStore?type=design&node-id=0%3A1&mode=design&t=CCrQNYUpdEDs4dUQ-1)
 
 ## TIMELINE
 - Feb 05, 2024 - Feb 21, 2024
