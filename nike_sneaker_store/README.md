@@ -1,16 +1,34 @@
-# nike_sneaker_store
+# Nike Sneaker Store
 
-A new Flutter project.
+## OVERVIEW
+- This is a document detailing the plan to build the Nike Sneaker Store app
+- You can see the design app: [here](https://www.figma.com/file/j1509R317pGZ5o7yN2onpT/Nike-Sneaker-Store-App-(Community)?type=design&node-id=13%3A4657&mode=design&t=XVFbwFwUmSPUaFL2-1)
 
-## Getting Started
+## TIMELINE
+- Feb 05, 2024 - Feb 21, 2024
 
-This project is a starting point for a Flutter application.
+## TEAM SIZE
+- 1 Developer
 
-A few resources to get you started if this is your first Flutter project:
+## TECHNIQUES
+- Flutter
+- Dart
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## EDITOR
+- Visual Studio Code
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## TARGETS
+- Get familiar with Flutter user interface, widgets and Flutter CLI.
+- Get acquainted with Flutter concepts and gain a better understanding of the architecture overview.
+- Have an understanding at a basic level of how a Flutter application works.
+- Be able to debug (with simulator & physical device) & and develop with some available tools from recommendation.
+- Be able to build a responsive layout and interactivity for one mobile application.
+- Understanding and applying the widget_book plugin for building UI documentation.
+
+## Deployment Plan
+- [ ] Epic 1: Analysis design, component
+- [ ] Epic 2: Setup environment
+- [ ] Epic 3: Create skeleton structure practice
+- [ ] Epic 4: Setup themes, l10n
+- [ ] Epic 5: Implement the UI
+- [ ] Epic 6: Test the application and prepare for the review
