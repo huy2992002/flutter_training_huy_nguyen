@@ -9,6 +9,106 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/ic_add.svg
+  String get icAdd => 'assets/icons/ic_add.svg';
+
+  /// File path: assets/icons/ic_arrow.svg
+  String get icArrow => 'assets/icons/ic_arrow.svg';
+
+  /// File path: assets/icons/ic_bag.svg
+  String get icBag => 'assets/icons/ic_bag.svg';
+
+  /// File path: assets/icons/ic_cart.svg
+  String get icCart => 'assets/icons/ic_cart.svg';
+
+  /// File path: assets/icons/ic_down.svg
+  String get icDown => 'assets/icons/ic_down.svg';
+
+  /// File path: assets/icons/ic_edit.svg
+  String get icEdit => 'assets/icons/ic_edit.svg';
+
+  /// File path: assets/icons/ic_email.svg
+  String get icEmail => 'assets/icons/ic_email.svg';
+
+  /// File path: assets/icons/ic_eye.svg
+  String get icEye => 'assets/icons/ic_eye.svg';
+
+  /// File path: assets/icons/ic_eye_hidden.svg
+  String get icEyeHidden => 'assets/icons/ic_eye_hidden.svg';
+
+  /// File path: assets/icons/ic_heart.svg
+  String get icHeart => 'assets/icons/ic_heart.svg';
+
+  /// File path: assets/icons/ic_heart_outline.svg
+  String get icHeartOutline => 'assets/icons/ic_heart_outline.svg';
+
+  /// File path: assets/icons/ic_home.svg
+  String get icHome => 'assets/icons/ic_home.svg';
+
+  /// File path: assets/icons/ic_location.svg
+  String get icLocation => 'assets/icons/ic_location.svg';
+
+  /// File path: assets/icons/ic_mail.svg
+  String get icMail => 'assets/icons/ic_mail.svg';
+
+  /// File path: assets/icons/ic_menu.svg
+  String get icMenu => 'assets/icons/ic_menu.svg';
+
+  /// File path: assets/icons/ic_notification.svg
+  String get icNotification => 'assets/icons/ic_notification.svg';
+
+  /// File path: assets/icons/ic_order.svg
+  String get icOrder => 'assets/icons/ic_order.svg';
+
+  /// File path: assets/icons/ic_person.svg
+  String get icPerson => 'assets/icons/ic_person.svg';
+
+  /// File path: assets/icons/ic_phone.svg
+  String get icPhone => 'assets/icons/ic_phone.svg';
+
+  /// File path: assets/icons/ic_remove.svg
+  String get icRemove => 'assets/icons/ic_remove.svg';
+
+  /// File path: assets/icons/ic_setting.svg
+  String get icSetting => 'assets/icons/ic_setting.svg';
+
+  /// File path: assets/icons/ic_sign_out.svg
+  String get icSignOut => 'assets/icons/ic_sign_out.svg';
+
+  /// File path: assets/icons/ic_trash.svg
+  String get icTrash => 'assets/icons/ic_trash.svg';
+
+  /// List of all assets
+  List<String> get values => [
+        icAdd,
+        icArrow,
+        icBag,
+        icCart,
+        icDown,
+        icEdit,
+        icEmail,
+        icEye,
+        icEyeHidden,
+        icHeart,
+        icHeartOutline,
+        icHome,
+        icLocation,
+        icMail,
+        icMenu,
+        icNotification,
+        icOrder,
+        icPerson,
+        icPhone,
+        icRemove,
+        icSetting,
+        icSignOut,
+        icTrash
+      ];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -90,6 +190,7 @@ class $AssetsImagesGen {
 class Assets {
   Assets._();
 
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
