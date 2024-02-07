@@ -98,6 +98,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hello World!'**
   String get helloWorld;
+
+  /// No description provided for @welcomeTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome To \nNike'**
+  String get welcomeTo;
+
+  /// No description provided for @letStartJourney.
+  ///
+  /// In en, this message translates to:
+  /// **'Let’s Start Journey With Nike'**
+  String get letStartJourney;
+
+  /// No description provided for @smartGorgeousFashionable.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart, Gorgeous & Fashionable \nCollection Explore Now'**
+  String get smartGorgeousFashionable;
+
+  /// No description provided for @youHavePowerTo.
+  ///
+  /// In en, this message translates to:
+  /// **'You Have the \nPower To'**
+  String get youHavePowerTo;
+
+  /// No description provided for @thereAreManyBeautifulAttractive.
+  ///
+  /// In en, this message translates to:
+  /// **'There Are Many Beautiful And Attractive \nPlants To Your Room'**
+  String get thereAreManyBeautifulAttractive;
+
+  /// No description provided for @helloAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello Again!'**
+  String get helloAgain;
+
+  /// No description provided for @fillYourDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill Your Details'**
+  String get fillYourDetails;
+
+  /// No description provided for @registerAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Account'**
+  String get registerAccount;
+
+  /// No description provided for @emailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
+  String get emailAddress;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @yourName.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Name'**
+  String get yourName;
+
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// No description provided for @signIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get signIn;
+
+  /// No description provided for @signUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get signUp;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get signOut;
+
+  /// No description provided for @newUser.
+  ///
+  /// In en, this message translates to:
+  /// **'New User?'**
+  String get newUser;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get createAccount;
+
+  /// No description provided for @alreadyAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already Have Account?'**
+  String get alreadyAccount;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password'**
+  String get forgotPassword;
+
+  /// No description provided for @enterEmailResetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Your Email Account To Reset \nYour Password'**
+  String get enterEmailResetPassword;
+
+  /// No description provided for @resetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPassword;
+
+  /// No description provided for @checkYourEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Your Email'**
+  String get checkYourEmail;
+
+  /// No description provided for @weHaveSendRecoveryCode.
+  ///
+  /// In en, this message translates to:
+  /// **'We Have Send Password Recovery Code In Your Email'**
+  String get weHaveSendRecoveryCode;
+
+  /// No description provided for @otpVerification.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP Verification'**
+  String get otpVerification;
+
+  /// No description provided for @pleaseCheckYourEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Check Your Email To See The Verification Code'**
+  String get pleaseCheckYourEmail;
+
+  /// No description provided for @otpCode.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP Code'**
+  String get otpCode;
+
+  /// No description provided for @verify.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get verify;
+
+  /// No description provided for @resendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code to'**
+  String get resendCode;
+
+  /// No description provided for @explore.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get explore;
+
+  /// No description provided for @lookingForShoes.
+  ///
+  /// In en, this message translates to:
+  /// **'Looking for shoes'**
+  String get lookingForShoes;
+
+  /// No description provided for @selectCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Category'**
+  String get selectCategory;
+
+  /// No description provided for @allShoes.
+  ///
+  /// In en, this message translates to:
+  /// **'All Shoes'**
+  String get allShoes;
+
+  /// No description provided for @outDoor.
+  ///
+  /// In en, this message translates to:
+  /// **'Outdoor'**
+  String get outDoor;
+
+  /// No description provided for @tennis.
+  ///
+  /// In en, this message translates to:
+  /// **'Tennis'**
+  String get tennis;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
