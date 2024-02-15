@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class NKColor {
-  NKColor._();
+class NSColor {
+  NSColor._();
 
   static const primary = Color(0xFF0D6EFD);
   static const primaryVariant = Color(0xFF1483C2);
