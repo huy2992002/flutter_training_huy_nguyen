@@ -28,26 +28,29 @@ class NSElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-      decoration: BoxDecoration(
-        color: backgroundColor ?? Theme.of(context).colorScheme.primary,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (icon != null) ...[
-            icon!,
-            const SizedBox(width: 16),
-          ],
-          Text(
-            text,
-            style: NSStyle.h14SemiBold.copyWith(
-              color: textColor ?? Theme.of(context).colorScheme.onPrimary,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+        decoration: BoxDecoration(
+          color: backgroundColor ?? Theme.of(context).colorScheme.primary,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null) ...[
+              icon!,
+              const SizedBox(width: 16),
+            ],
+            Text(
+              text,
+              style: NSStyle.h14SemiBold.copyWith(
+                color: textColor ?? Theme.of(context).colorScheme.onPrimary,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
