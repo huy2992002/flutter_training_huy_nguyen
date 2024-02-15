@@ -14,3 +14,7 @@ linter:
     use_super_parameters: false
     noop_primitive_operations: false
     require_trailing_commas: false
+analyzer:
+  errors:
+    inference_failure_on_function_return_type: false
+
