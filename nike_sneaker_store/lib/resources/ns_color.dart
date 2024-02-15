@@ -14,4 +14,10 @@ class NSColor {
   static const neutral = Color(0xFF707B81);
   static const notification = Color(0xFFFD1600);
   static const favorite = Color(0xFFF87265);
+  static const darkPrimary = Color(0xFFC2EF00);
+  static const darkPrimaryVariant = Color(0xFF304164);
+  static const darkPrimaryContainer = Color(0xFF4B5875);
+  static const darkOnPrimaryContainer = Color(0xFFFFFFFF);
+  static const darkBackground = Color(0xFF1E2B47);
+  static const onDarkBackground = Color(0xFFFFFFFF);
 }
