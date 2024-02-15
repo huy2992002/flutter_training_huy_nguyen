@@ -9,3 +9,8 @@ linter:
     omit_local_variable_types: false
     prefer_final_locals: false
     prefer_final_in_for_each: false
+    always_use_package_imports: false
+    depend_on_referenced_packages: false
+    use_super_parameters: false
+    noop_primitive_operations: false
+    require_trailing_commas: false
