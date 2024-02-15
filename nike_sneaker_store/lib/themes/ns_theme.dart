@@ -18,6 +18,8 @@ class NSTheme {
       onBackground: NSColor.onBackground,
       surface: NSColor.surface,
       onSurface: NSColor.onSurface,
+      primaryContainer: NSColor.primaryContainer,
+      onPrimaryContainer: NSColor.onPrimaryContainer,
     ),
   );
 
@@ -35,6 +37,8 @@ class NSTheme {
       onBackground: NSColor.darkOnBackground,
       surface: NSColor.surface,
       onSurface: NSColor.onSurface,
+      primaryContainer: NSColor.darkPrimaryContainer,
+      onPrimaryContainer: NSColor.darkOnPrimaryContainer,
     ),
   );
 }
