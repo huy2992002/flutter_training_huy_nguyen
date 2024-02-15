@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/pages/splash_page.dart';
 import 'package:nike_sneaker_store/themes/ns_theme.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       locale: AppLocalizations.supportedLocales[1],
       theme: NSTheme.lightTheme,
       darkTheme: NSTheme.darkTheme,
-      home: Container(),
+      home: const SplashPage(),
     );
   }
 }
