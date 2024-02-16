@@ -9,8 +9,8 @@ class NSColor {
   static const onSecondary = Color(0xFFFFFFFF);
   static const primaryContainer = Color(0xFFFFFFFF);
   static const onPrimaryContainer = Color(0xFF6A6A6A);
-  static const secondaryContainer = Color(0xFFF7F7F9);
-  static const onSecondaryContainer = Color(0xFF6A6A6A);
+  static const secondaryContainer = Color(0xFFDDDDDD);
+  static const onSecondaryContainer = Color(0xFF2B2B2B);
   static const background = Color(0xFFF5F5F5);
   static const onBackground = Color(0xFF2B2B2B);
   static const surface = Color(0xFFFFFFFF);
