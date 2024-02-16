@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
 import 'package:pinput/pinput.dart';
 
-class NsOtpCode extends StatelessWidget {
-  const NsOtpCode({
+class NSOtpCode extends StatelessWidget {
+  const NSOtpCode({
     this.controller,
     this.codeLength = 4,
     this.onChanged,
