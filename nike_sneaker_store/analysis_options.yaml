@@ -17,4 +17,5 @@ linter:
 analyzer:
   errors:
     inference_failure_on_function_return_type: false
+    inference_failure_on_function_invocation: false
 
