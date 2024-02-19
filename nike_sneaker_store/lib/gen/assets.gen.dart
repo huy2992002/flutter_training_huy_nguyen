@@ -168,6 +168,10 @@ class $AssetsImagesGen {
   AssetGenImage get imgSuccessfully =>
       const AssetGenImage('assets/images/img_successfully.png');
 
+  /// File path: assets/images/img_sumer_sale.png
+  AssetGenImage get imgSumerSale =>
+      const AssetGenImage('assets/images/img_sumer_sale.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
         imgAvatar,
@@ -183,7 +187,8 @@ class $AssetsImagesGen {
         imgPrOnboard1,
         imgPrOnboard2,
         imgPrOnboard3,
-        imgSuccessfully
+        imgSuccessfully,
+        imgSumerSale
       ];
 }
 
