@@ -105,7 +105,7 @@ class NSStyle {
 
   static TextStyle h32Bold = primaryTextStyle(
     fontSize: 32,
-    fontFamily: 'Raleway',
+    fontFamily: 'Raleway-Bold',
     fontWeight: FontWeight.w700,
   );
 
