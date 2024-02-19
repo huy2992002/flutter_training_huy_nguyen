@@ -56,9 +56,10 @@ class CardCartProduct extends StatelessWidget {
             ),
             Row(
               children: [
-                SvgPicture.asset(
-                  Assets.icons.icAdd,
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                iconButton(
+                  context,
+                  iconPath: Assets.icons.icAdd,
+                  onTap: onPlus,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -69,14 +70,29 @@ class CardCartProduct extends StatelessWidget {
                     ),
                   ),
                 ),
-                SvgPicture.asset(
-                  Assets.icons.icRemove,
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                iconButton(
+                  context,
+                  iconPath: Assets.icons.icRemove,
+                  onTap: onLess,
                 ),
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget iconButton(
+    BuildContext context, {
+    required String iconPath,
+    Function()? onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: SvgPicture.asset(
+        iconPath,
+        color: Theme.of(context).colorScheme.onPrimaryContainer,
       ),
     );
   }
