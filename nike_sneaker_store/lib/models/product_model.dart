@@ -2,6 +2,7 @@ class ProductModel {
   ProductModel({
     required this.id,
     required this.name,
+    required this.imagePath,
     required this.price,
     required this.description,
     required this.isBestSeller,
@@ -10,6 +11,7 @@ class ProductModel {
 
   String id;
   String name;
+  String imagePath;
   double price;
   String description;
   bool isBestSeller;
