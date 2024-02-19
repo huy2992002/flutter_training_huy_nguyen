@@ -108,4 +108,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tennis => 'Tennis';
+
+  @override
+  String get getStarted => 'Get Started';
+
+  @override
+  String get next => 'Next';
 }

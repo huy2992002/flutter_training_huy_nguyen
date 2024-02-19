@@ -108,4 +108,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get tennis => 'Tennis';
+
+  @override
+  String get getStarted => 'Bắt Đầu';
+
+  @override
+  String get next => 'Tiếp Theo';
 }
