@@ -16,6 +16,7 @@ class NSColor {
   static const surface = Color(0xFFFFFFFF);
   static const onSurface = Color(0xFF2B2B2B);
   static const neutral = Color(0xFF707B81);
+  static const tertiary = Color(0xFFFFB21A);
   static const notification = Color(0xFFFD1600);
   static const favorite = Color(0xFFF87265);
   static const darkPrimary = Color(0xFFC2EF00);

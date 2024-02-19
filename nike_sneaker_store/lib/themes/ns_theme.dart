@@ -23,6 +23,7 @@ class NSTheme {
       secondaryContainer: NSColor.secondaryContainer,
       onSecondaryContainer: NSColor.onSecondaryContainer,
       scrim: NSColor.primary,
+      tertiary: NSColor.tertiary,
     ),
   );
 
@@ -45,6 +46,7 @@ class NSTheme {
       secondaryContainer: NSColor.darkSecondaryContainer,
       onSecondaryContainer: NSColor.darkOnSecondaryContainer,
       scrim: NSColor.darkSecondary,
+      tertiary: NSColor.tertiary,
     ),
   );
 }
