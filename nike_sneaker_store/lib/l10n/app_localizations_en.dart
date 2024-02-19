@@ -11,7 +11,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcomeTo => 'Welcome To \nNike';
 
   @override
-  String get letStartJourney => 'Let’s Start Journey With Nike';
+  String get letStartJourney => 'Let’s Start Journey \nWith Nike';
 
   @override
   String get smartGorgeousFashionable => 'Smart, Gorgeous & Fashionable \nCollection Explore Now';

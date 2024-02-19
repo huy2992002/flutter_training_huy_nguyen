@@ -11,7 +11,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get welcomeTo => 'Chào mừng đến \nNike';
 
   @override
-  String get letStartJourney => 'Hãy bắt đầu hành trình cùng Nike';
+  String get letStartJourney => 'Hãy bắt đầu hành trình \ncùng Nike';
 
   @override
   String get smartGorgeousFashionable => 'Thông minh, lộng lẫy và thời trang \nKhám phá ngay';

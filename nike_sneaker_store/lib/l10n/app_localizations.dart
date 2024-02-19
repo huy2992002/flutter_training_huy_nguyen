@@ -108,7 +108,7 @@ abstract class AppLocalizations {
   /// No description provided for @letStartJourney.
   ///
   /// In en, this message translates to:
-  /// **'Let’s Start Journey With Nike'**
+  /// **'Let’s Start Journey \nWith Nike'**
   String get letStartJourney;
 
   /// No description provided for @smartGorgeousFashionable.
