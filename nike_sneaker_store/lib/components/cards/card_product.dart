@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
+import 'package:nike_sneaker_store/utils/extension.dart';
 
 class CardProduct extends StatelessWidget {
   const CardProduct({
@@ -59,7 +60,7 @@ class CardProduct extends StatelessWidget {
                 Text(product.name, style: NSStyle.h16SemiBold),
                 const SizedBox(height: 12),
                 Text(
-                  '\$ ${product.price.toStringAsFixed(2)}',
+                  product.price.toPriceDollar(),
                   style: NSStyle.h14Medium,
                 ),
               ],
