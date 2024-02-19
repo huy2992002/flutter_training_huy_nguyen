@@ -120,6 +120,10 @@ class $AssetsImagesGen {
   AssetGenImage get imgLogo =>
       const AssetGenImage('assets/images/img_logo.png');
 
+  /// File path: assets/images/img_logo_nike.png
+  AssetGenImage get imgLogoNike =>
+      const AssetGenImage('assets/images/img_logo_nike.png');
+
   /// File path: assets/images/img_nike_air_max.png
   AssetGenImage get imgNikeAirMax =>
       const AssetGenImage('assets/images/img_nike_air_max.png');
@@ -164,6 +168,10 @@ class $AssetsImagesGen {
   AssetGenImage get imgPrOnboard3 =>
       const AssetGenImage('assets/images/img_pr_onboard_3.png');
 
+  /// File path: assets/images/img_splash_hightlight.png
+  AssetGenImage get imgSplashHightlight =>
+      const AssetGenImage('assets/images/img_splash_hightlight.png');
+
   /// File path: assets/images/img_successfully.png
   AssetGenImage get imgSuccessfully =>
       const AssetGenImage('assets/images/img_successfully.png');
@@ -176,6 +184,7 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
         imgAvatar,
         imgLogo,
+        imgLogoNike,
         imgNikeAirMax,
         imgNikeAirMax200,
         imgNikeAirMax270,
@@ -187,6 +196,7 @@ class $AssetsImagesGen {
         imgPrOnboard1,
         imgPrOnboard2,
         imgPrOnboard3,
+        imgSplashHightlight,
         imgSuccessfully,
         imgSumerSale
       ];
