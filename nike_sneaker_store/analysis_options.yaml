@@ -20,3 +20,4 @@ analyzer:
     inference_failure_on_function_invocation: false
     deprecated_member_use: false
     inference_failure_on_instance_creation: false
+    
