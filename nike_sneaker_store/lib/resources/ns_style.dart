@@ -111,7 +111,7 @@ class NSStyle {
 
   static TextStyle h32Black = primaryTextStyle(
     fontSize: 32,
-    fontFamily: 'Raleway',
+    fontFamily: 'Raleway-Black',
     fontWeight: FontWeight.w900,
   );
 

@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: AppLocalizations.supportedLocales[1],
+      locale: AppLocalizations.supportedLocales[0],
       theme: NSTheme.lightTheme,
       darkTheme: NSTheme.darkTheme,
       home: const SplashPage(),
