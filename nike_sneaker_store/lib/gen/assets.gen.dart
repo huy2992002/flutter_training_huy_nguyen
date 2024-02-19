@@ -168,9 +168,9 @@ class $AssetsImagesGen {
   AssetGenImage get imgPrOnboard3 =>
       const AssetGenImage('assets/images/img_pr_onboard_3.png');
 
-  /// File path: assets/images/img_splash_hightlight.png
-  AssetGenImage get imgSplashHightlight =>
-      const AssetGenImage('assets/images/img_splash_hightlight.png');
+  /// File path: assets/images/img_splash_hight_light.png
+  AssetGenImage get imgSplashHightLight =>
+      const AssetGenImage('assets/images/img_splash_hight_light.png');
 
   /// File path: assets/images/img_successfully.png
   AssetGenImage get imgSuccessfully =>
@@ -196,7 +196,7 @@ class $AssetsImagesGen {
         imgPrOnboard1,
         imgPrOnboard2,
         imgPrOnboard3,
-        imgSplashHightlight,
+        imgSplashHightLight,
         imgSuccessfully,
         imgSumerSale
       ];
