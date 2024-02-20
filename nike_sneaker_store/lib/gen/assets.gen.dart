@@ -33,6 +33,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_email.svg
   String get icEmail => 'assets/icons/ic_email.svg';
 
+  /// File path: assets/icons/ic_error.svg
+  String get icError => 'assets/icons/ic_error.svg';
+
   /// File path: assets/icons/ic_eye.svg
   String get icEye => 'assets/icons/ic_eye.svg';
 
@@ -78,8 +81,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_sign_out.svg
   String get icSignOut => 'assets/icons/ic_sign_out.svg';
 
+  /// File path: assets/icons/ic_tick.svg
+  String get icTick => 'assets/icons/ic_tick.svg';
+
   /// File path: assets/icons/ic_trash.svg
   String get icTrash => 'assets/icons/ic_trash.svg';
+
+  /// File path: assets/icons/ic_warning.svg
+  String get icWarning => 'assets/icons/ic_warning.svg';
 
   /// List of all assets
   List<String> get values => [
@@ -90,6 +99,7 @@ class $AssetsIconsGen {
         icDown,
         icEdit,
         icEmail,
+        icError,
         icEye,
         icEyeHidden,
         icHeart,
@@ -105,7 +115,9 @@ class $AssetsIconsGen {
         icRemove,
         icSetting,
         icSignOut,
-        icTrash
+        icTick,
+        icTrash,
+        icWarning
       ];
 }
 
