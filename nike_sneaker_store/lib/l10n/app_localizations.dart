@@ -345,6 +345,12 @@ abstract class AppLocalizations {
   /// **'Confirm password is not match'**
   String get confirmPasswordNotMatch;
 
+  /// No description provided for @emailOrPasswordIncorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'email or password is incorrect'**
+  String get emailOrPasswordIncorrect;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

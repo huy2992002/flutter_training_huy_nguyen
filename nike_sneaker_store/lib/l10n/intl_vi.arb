@@ -41,6 +41,7 @@
   "passwordLeast6": "Mật khẩu phải có ít nhất 6 ký tự",
   "validEmailAddress": "Vui lòng nhập địa chỉ email hợp lệ",
   "confirmPasswordNotMatch": "Xác nhận mật khẩu không khớp",
+  "emailOrPasswordIncorrect": "Email hoặc mật khẩu không đúng",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {

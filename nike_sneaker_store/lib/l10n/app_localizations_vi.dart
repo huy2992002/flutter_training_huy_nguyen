@@ -131,6 +131,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get confirmPasswordNotMatch => 'Xác nhận mật khẩu không khớp';
 
   @override
+  String get emailOrPasswordIncorrect => 'Email hoặc mật khẩu không đúng';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }

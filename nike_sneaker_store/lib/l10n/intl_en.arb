@@ -41,6 +41,7 @@
   "passwordLeast6": "Password must be at least 6 digits long",
   "validEmailAddress": "Enter a valid email address",
   "confirmPasswordNotMatch": "Confirm password is not match",
+  "emailOrPasswordIncorrect": "email or password is incorrect",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {
