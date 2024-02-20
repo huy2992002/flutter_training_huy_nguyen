@@ -348,7 +348,7 @@ abstract class AppLocalizations {
   /// No description provided for @emailOrPasswordIncorrect.
   ///
   /// In en, this message translates to:
-  /// **'email or password is incorrect'**
+  /// **'Email or password is incorrect'**
   String get emailOrPasswordIncorrect;
 
   /// No description provided for @discountOff.

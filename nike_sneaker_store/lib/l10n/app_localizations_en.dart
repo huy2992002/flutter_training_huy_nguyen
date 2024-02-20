@@ -131,7 +131,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirmPasswordNotMatch => 'Confirm password is not match';
 
   @override
-  String get emailOrPasswordIncorrect => 'email or password is incorrect';
+  String get emailOrPasswordIncorrect => 'Email or password is incorrect';
 
   @override
   String discountOff(int discount) {
