@@ -20,7 +20,7 @@ class NsIconButton extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color:
-              backgroundColor ?? Theme.of(context).colorScheme.primaryContainer,
+              backgroundColor ?? Theme.of(context).colorScheme.secondaryContainer,
           shape: BoxShape.circle,
         ),
         child: icon,
