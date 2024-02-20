@@ -23,10 +23,11 @@ class BackgroundOnboarding extends StatelessWidget {
             children: [
               Image.asset(Assets.images.imgSplashHightLight.path),
               const SizedBox(height: 200),
-              Image.asset(
-                Assets.images.imgLogoNike.path,
-                width: size.width,
-              )
+              Center(
+                child: Image.asset(
+                  Assets.images.imgLogoNike.path,
+                ),
+              ),
             ],
           ),
         ),
