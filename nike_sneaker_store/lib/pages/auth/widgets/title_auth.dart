@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
 
@@ -19,15 +18,16 @@ class TitleAuth extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            AppLocalizations.of(context).helloAgain,
+            title,
             style: NSStyle.h32Bold,
           ),
           const SizedBox(height: 8),
           Text(
-            AppLocalizations.of(context).fillYourDetails,
+            subTitle,
             style: NSStyle.h16Medium.copyWith(
               color: NSColor.neutral,
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
