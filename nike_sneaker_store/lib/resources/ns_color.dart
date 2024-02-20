@@ -31,4 +31,7 @@ class NSColor {
   static const darkOnBackground = Color(0xFFFFFFFF);
   static const darkSurface = Color(0xFF1E2B47);
   static const darkOnSurface = Color(0xFFFFFFFF);
+  static const success = Color(0xFF55B938);
+  static const error = Color(0xFFD65745);
+  static const warning = Color(0xFFEAC645);
 }
