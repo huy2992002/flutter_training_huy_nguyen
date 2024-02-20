@@ -351,6 +351,12 @@ abstract class AppLocalizations {
   /// **'Email or password is incorrect'**
   String get emailOrPasswordIncorrect;
 
+  /// No description provided for @emailAlreadyExists.
+  ///
+  /// In en, this message translates to:
+  /// **'Email already exists'**
+  String get emailAlreadyExists;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

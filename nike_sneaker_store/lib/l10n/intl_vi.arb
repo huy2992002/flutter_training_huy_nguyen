@@ -42,6 +42,7 @@
   "validEmailAddress": "Vui lòng nhập địa chỉ email hợp lệ",
   "confirmPasswordNotMatch": "Xác nhận mật khẩu không khớp",
   "emailOrPasswordIncorrect": "Email hoặc mật khẩu không đúng",
+  "emailAlreadyExists": "Email đã tồn tại",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {

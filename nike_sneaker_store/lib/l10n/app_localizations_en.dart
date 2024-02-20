@@ -134,6 +134,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailOrPasswordIncorrect => 'Email or password is incorrect';
 
   @override
+  String get emailAlreadyExists => 'Email already exists';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

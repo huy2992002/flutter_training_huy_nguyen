@@ -134,6 +134,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get emailOrPasswordIncorrect => 'Email hoặc mật khẩu không đúng';
 
   @override
+  String get emailAlreadyExists => 'Email đã tồn tại';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }

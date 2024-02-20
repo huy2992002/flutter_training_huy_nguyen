@@ -42,6 +42,7 @@
   "validEmailAddress": "Enter a valid email address",
   "confirmPasswordNotMatch": "Confirm password is not match",
   "emailOrPasswordIncorrect": "Email or password is incorrect",
+  "emailAlreadyExists": "Email already exists",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {
