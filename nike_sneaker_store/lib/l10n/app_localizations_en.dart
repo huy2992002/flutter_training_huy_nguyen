@@ -53,7 +53,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signOut => 'Sign Out';
 
   @override
-  String get newUser => 'New User?';
+  String get newUser => 'New User? ';
 
   @override
   String get createAccount => 'Create Account';

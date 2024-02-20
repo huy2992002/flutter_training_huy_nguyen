@@ -53,7 +53,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get signOut => 'Đăng Xuất';
 
   @override
-  String get newUser => 'Bạn Chưa Có Tài Khoản ?';
+  String get newUser => 'Bạn Chưa Có Tài Khoản? ';
 
   @override
   String get createAccount => 'Tạo Tài Khoản';

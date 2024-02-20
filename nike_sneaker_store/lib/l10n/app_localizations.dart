@@ -192,7 +192,7 @@ abstract class AppLocalizations {
   /// No description provided for @newUser.
   ///
   /// In en, this message translates to:
-  /// **'New User?'**
+  /// **'New User? '**
   String get newUser;
 
   /// No description provided for @createAccount.
