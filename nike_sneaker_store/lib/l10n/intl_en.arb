@@ -37,6 +37,10 @@
   "tennis": "Tennis",
   "getStarted": "Get Started",
   "next": "Next",
+  "fieldIsRequired": "This field is required",
+  "passwordLeast6": "Password must be at least 6 digits long",
+  "validEmailAddress": "Enter a valid email address",
+  "confirmPasswordNotMatch": "Confirm password is not match",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

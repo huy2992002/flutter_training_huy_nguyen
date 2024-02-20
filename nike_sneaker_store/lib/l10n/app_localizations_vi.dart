@@ -119,6 +119,18 @@ class AppLocalizationsVi extends AppLocalizations {
   String get next => 'Tiếp Theo';
 
   @override
+  String get fieldIsRequired => 'Vui lòng không để rỗng';
+
+  @override
+  String get passwordLeast6 => 'Mật khẩu phải có ít nhất 6 ký tự';
+
+  @override
+  String get validEmailAddress => 'Vui lòng nhập địa chỉ email hợp lệ';
+
+  @override
+  String get confirmPasswordNotMatch => 'Xác nhận mật khẩu không khớp';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }

@@ -119,6 +119,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get next => 'Next';
 
   @override
+  String get fieldIsRequired => 'This field is required';
+
+  @override
+  String get passwordLeast6 => 'Password must be at least 6 digits long';
+
+  @override
+  String get validEmailAddress => 'Enter a valid email address';
+
+  @override
+  String get confirmPasswordNotMatch => 'Confirm password is not match';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

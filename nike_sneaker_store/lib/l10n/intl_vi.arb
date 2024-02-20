@@ -37,6 +37,10 @@
   "tennis": "Tennis",
   "getStarted": "Bắt Đầu",
   "next": "Tiếp Theo",
+  "fieldIsRequired": "Vui lòng không để rỗng",
+  "passwordLeast6": "Mật khẩu phải có ít nhất 6 ký tự",
+  "validEmailAddress": "Vui lòng nhập địa chỉ email hợp lệ",
+  "confirmPasswordNotMatch": "Xác nhận mật khẩu không khớp",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {

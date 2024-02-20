@@ -321,6 +321,30 @@ abstract class AppLocalizations {
   /// **'Next'**
   String get next;
 
+  /// No description provided for @fieldIsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get fieldIsRequired;
+
+  /// No description provided for @passwordLeast6.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 digits long'**
+  String get passwordLeast6;
+
+  /// No description provided for @validEmailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email address'**
+  String get validEmailAddress;
+
+  /// No description provided for @confirmPasswordNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password is not match'**
+  String get confirmPasswordNotMatch;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:
