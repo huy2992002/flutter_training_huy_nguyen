@@ -8,6 +8,7 @@ class NSElevatedButton extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
     this.icon,
+    this.isDisable = false,
     super.key,
   });
 
@@ -17,6 +18,7 @@ class NSElevatedButton extends StatelessWidget {
     required this.text,
     this.backgroundColor,
     this.textColor,
+    this.isDisable = false,
     super.key,
   });
 
@@ -25,32 +27,44 @@ class NSElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
   final Widget? icon;
+  final bool isDisable;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed,
+      onTap: isDisable ? null : onPressed,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
         decoration: BoxDecoration(
           color: backgroundColor ?? Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (icon != null) ...[
-              icon!,
-              const SizedBox(width: 16),
-            ],
-            Text(
-              text,
-              style: NSStyle.h14SemiBold.copyWith(
-                color: textColor ?? Theme.of(context).colorScheme.onPrimary,
+        child: isDisable
+            ? Center(
+                child: SizedBox.square(
+                  dimension: 30,
+                  child: CircularProgressIndicator(
+                    color: textColor ?? Theme.of(context).colorScheme.onPrimary,
+                    strokeWidth: 2.5,
+                  ),
+                ),
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (icon != null) ...[
+                    icon!,
+                    const SizedBox(width: 16),
+                  ],
+                  Text(
+                    text,
+                    style: NSStyle.h14SemiBold.copyWith(
+                      color:
+                          textColor ?? Theme.of(context).colorScheme.onPrimary,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
