@@ -65,7 +65,7 @@ class NSSnackBar {
     );
   }
 
-    static void snackbarWarning(
+  static void snackbarWarning(
     BuildContext context, {
     required String title,
   }) {
