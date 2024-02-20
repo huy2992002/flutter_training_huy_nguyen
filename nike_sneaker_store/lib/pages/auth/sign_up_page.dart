@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
+import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_text_form_field.dart';
+import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
@@ -62,9 +65,20 @@ class _SignUpPageState extends State<SignUpPage> {
           key: formKey,
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
-              top: MediaQuery.paddingOf(context).top + 80,
+              top: MediaQuery.paddingOf(context).top + 23,
             ),
             children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: NsIconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: SvgPicture.asset(
+                    Assets.icons.icArrow,
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 11),
               TitleAuth(
                 title: AppLocalizations.of(context).registerAccount,
                 subTitle: AppLocalizations.of(context).fillYourDetails,
