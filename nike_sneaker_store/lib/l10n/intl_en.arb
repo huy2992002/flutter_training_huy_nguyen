@@ -18,7 +18,7 @@
   "newUser": "New User? ",
   "createAccount": "Create Account",
   "recoveryPassword": "Recovery Password",
-  "alreadyAccount": "Already Have Account?",
+  "alreadyAccount": "Already Have Account? ",
   "forgotPassword": "Forgot Password",
   "enterEmailResetPassword": "Enter Your Email Account To Reset \nYour Password",
   "resetPassword": "Reset Password",

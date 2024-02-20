@@ -62,7 +62,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get recoveryPassword => 'Khôi Phục Mật Khẩu';
 
   @override
-  String get alreadyAccount => 'Bạn Đã Có Tài Khoản?';
+  String get alreadyAccount => 'Bạn Đã Có Tài Khoản? ';
 
   @override
   String get forgotPassword => 'Quên Mật Khẩu';

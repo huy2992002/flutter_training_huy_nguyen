@@ -62,7 +62,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get recoveryPassword => 'Recovery Password';
 
   @override
-  String get alreadyAccount => 'Already Have Account?';
+  String get alreadyAccount => 'Already Have Account? ';
 
   @override
   String get forgotPassword => 'Forgot Password';
