@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
+import 'package:nike_sneaker_store/components/button/ns_text_button.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_text_form_field.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
+import 'package:nike_sneaker_store/pages/auth/forgot_password_page.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_up_page.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_under.dart';
 import 'package:nike_sneaker_store/pages/main_page.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class SignInPage extends StatefulWidget {
@@ -83,10 +84,17 @@ class _SignInPageState extends State<SignInPage> {
                 onFieldSubmitted: (value) => onLogin(),
               ),
               const SizedBox(height: 12),
-              Text(
-                AppLocalizations.of(context).recoveryPassword,
-                style: NSStyle.h12Normal,
-                textAlign: TextAlign.right,
+              Align(
+                alignment: Alignment.centerRight,
+                child: NsTextButton(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ForgotPasswordPage(),
+                    ),
+                  ),
+                  text: AppLocalizations.of(context).recoveryPassword,
+                ),
               ),
               const SizedBox(height: 24),
               NSElevatedButton.text(

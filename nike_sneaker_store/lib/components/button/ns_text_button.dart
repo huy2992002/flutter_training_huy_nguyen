@@ -19,7 +19,7 @@ class NsTextButton extends StatelessWidget {
       onTap: onPressed,
       child: Text(
         text,
-        style: textStyle ?? NSStyle.h16Medium,
+        style: textStyle ?? NSStyle.h12Normal,
       ),
     );
   }
