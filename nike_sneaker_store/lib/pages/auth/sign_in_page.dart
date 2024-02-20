@@ -70,13 +70,17 @@ class _SignInPageState extends State<SignInPage> {
                 controller: emailController,
                 hintText: 'xyz@gmail.com',
                 validator: (value) => Validator.validatorEmail(context, value),
+                textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: 30),
               TitleLabel(text: AppLocalizations.of(context).password),
               NSTextFormField.password(
                 controller: passwordController,
                 hintText: '••••••••',
-                validator: (value) => Validator.validatorPassword(context, value),
+                validator: (value) =>
+                    Validator.validatorPassword(context, value),
+                textInputAction: TextInputAction.done,
+                onFieldSubmitted: (value) => onLogin(),
               ),
               const SizedBox(height: 12),
               Text(

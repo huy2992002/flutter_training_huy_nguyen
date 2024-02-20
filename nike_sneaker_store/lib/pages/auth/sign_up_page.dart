@@ -76,6 +76,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 hintText: 'xxxxxxx',
                 validator: (value) =>
                     Validator.validatorRequired(context, value),
+                textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: 20),
               TitleLabel(text: AppLocalizations.of(context).emailAddress),
@@ -83,6 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: emailController,
                 hintText: 'xyz@gmail.com',
                 validator: (value) => Validator.validatorEmail(context, value),
+                textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: 20),
               TitleLabel(text: AppLocalizations.of(context).password),
@@ -91,6 +93,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 hintText: '••••••••',
                 validator: (value) =>
                     Validator.validatorPassword(context, value),
+                textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: 20),
               TitleLabel(text: AppLocalizations.of(context).confirmPassword),
@@ -102,6 +105,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   value,
                   passwordController.text,
                 ),
+                textInputAction: TextInputAction.done,
+                onFieldSubmitted: (value) => onRegister(),
               ),
               const SizedBox(height: 30),
               NSElevatedButton.text(
