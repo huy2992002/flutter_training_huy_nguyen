@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class CardSale extends StatelessWidget {
@@ -17,7 +18,7 @@ class CardSale extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
+        Padding(
           padding: const EdgeInsets.only(top: 26),
           child: Container(
             height: 100,
@@ -34,7 +35,7 @@ class CardSale extends StatelessWidget {
                   children: [
                     Text(title, style: NSStyle.h12Medium),
                     Text(
-                      '$discount% OFF',
+                      AppLocalizations.of(context).discountOff(discount),
                       style: NSStyle.h36Black.copyWith(
                         color: Theme.of(context).colorScheme.primary,
                       ),
