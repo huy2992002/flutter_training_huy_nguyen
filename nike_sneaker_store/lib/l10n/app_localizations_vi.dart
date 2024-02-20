@@ -59,6 +59,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get createAccount => 'Tạo Tài Khoản';
 
   @override
+  String get recoveryPassword => 'Khôi Phục Mật Khẩu';
+
+  @override
   String get alreadyAccount => 'Bạn Đã Có Tài Khoản?';
 
   @override

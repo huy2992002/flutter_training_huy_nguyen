@@ -59,6 +59,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get createAccount => 'Create Account';
 
   @override
+  String get recoveryPassword => 'Recovery Password';
+
+  @override
   String get alreadyAccount => 'Already Have Account?';
 
   @override

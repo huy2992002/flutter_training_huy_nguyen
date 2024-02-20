@@ -201,6 +201,12 @@ abstract class AppLocalizations {
   /// **'Create Account'**
   String get createAccount;
 
+  /// No description provided for @recoveryPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Recovery Password'**
+  String get recoveryPassword;
+
   /// No description provided for @alreadyAccount.
   ///
   /// In en, this message translates to:
