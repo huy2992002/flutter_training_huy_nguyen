@@ -114,4 +114,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get next => 'Next';
+
+  @override
+  String discountOff(int discount) {
+    return '$discount% OFF';
+  }
 }

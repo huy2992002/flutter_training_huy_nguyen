@@ -114,4 +114,9 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get next => 'Tiếp Theo';
+
+  @override
+  String discountOff(int discount) {
+    return '$discount% Giảm giá';
+  }
 }

@@ -21,7 +21,6 @@
   "forgotPassword": "Quên Mật Khẩu",
   "enterEmailResetPassword": "Nhập Vào Email Để Lấy Lại \nMật Khẩu Của Bạn",
   "resetPassword": "Đặt Lại Mật Khẩu",
-  "resetPassword": "Đặt Lại Mật Khẩu",
   "checkYourEmail": "Kiểm Tra Email Của Bạn",
   "weHaveSendRecoveryCode": "Chúng Tôi Đã Gửi Mã Khôi Phục Mật Khẩu Vào Email Của Bạn",
   "otpVerification": "Xác Minh OTP",
@@ -36,5 +35,13 @@
   "outDoor": "Ngoài Trời",
   "tennis": "Tennis",
   "getStarted": "Bắt Đầu",
-  "next": "Tiếp Theo"
+  "next": "Tiếp Theo",
+  "discountOff": "{discount}% Giảm giá",
+  "@discountOff": {
+    "placeholders": {
+      "discount": {
+        "type": "int"
+      }
+    }
+  }
 }

@@ -35,5 +35,13 @@
   "outDoor": "Outdoor",
   "tennis": "Tennis",
   "getStarted": "Get Started",
-  "next": "Next"
+  "next": "Next",
+  "discountOff": "{discount}% OFF",
+  "@discountOff": {
+    "placeholders": {
+      "discount": {
+        "type": "int"
+      }
+    }
+  }
 }
