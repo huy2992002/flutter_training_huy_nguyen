@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/onboarding/widgets/onboarding_background.dart';
 import 'package:nike_sneaker_store/pages/onboarding/widgets/onboarding_power.dart';
 import 'package:nike_sneaker_store/pages/onboarding/widgets/onboarding_start.dart';
@@ -30,7 +31,15 @@ class _OnboardingPageState extends State<OnboardingPage> {
         duration: const Duration(microseconds: 200),
         curve: Curves.bounceIn,
       );
-    } else {}
+    } else {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const SignInPage(),
+        ),
+        (route) => false,
+      );
+    }
   }
 
   @override
