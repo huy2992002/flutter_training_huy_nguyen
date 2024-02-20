@@ -11,33 +11,44 @@ import 'package:nike_sneaker_store/pages/main_page.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    final formKey = GlobalKey<FormState>();
+  State<SignInPage> createState() => _SignInPageState();
+}
 
-    void onLogin() {
-      if (!formKey.currentState!.validate()) return;
-      bool checkUser = accounts.any((e) =>
-          emailController.text == e.email &&
-          passwordController.text == e.password);
-      if (checkUser) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const MainPage()),
-        );
-      } else {
-        NSSnackBar.snackbarError(
-          context,
-          title: AppLocalizations.of(context).emailOrPasswordIncorrect,
-        );
-      }
+class _SignInPageState extends State<SignInPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+  final formKey = GlobalKey<FormState>();
+
+  Future<void> onLogin() async {
+    if (!formKey.currentState!.validate()) return;
+    setState(() => isLoading = true);
+    await Future.delayed(const Duration(seconds: 2));
+    bool checkUser = accounts.any((e) =>
+        emailController.text == e.email &&
+        passwordController.text == e.password);
+    if (checkUser) {
+      setState(() => isLoading = false);
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const MainPage()),
+        (route) => false,
+      );
+    } else {
+      setState(() => isLoading = false);
+      NSSnackBar.snackbarError(
+        context,
+        title: AppLocalizations.of(context).emailOrPasswordIncorrect,
+      );
     }
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
         key: formKey,
@@ -74,6 +85,7 @@ class SignInPage extends StatelessWidget {
             NSElevatedButton.text(
               onPressed: onLogin,
               text: AppLocalizations.of(context).signIn,
+              isDisable: isLoading,
             ),
             const SizedBox(height: 200),
             TitleUnder(
