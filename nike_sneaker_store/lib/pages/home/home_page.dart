@@ -90,7 +90,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(height: 24),
-          TitleHome(text: AppLocalizations.of(context).newArrivals),
+          TitleHome(
+            text: AppLocalizations.of(context).newArrivals,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: CardSale(
