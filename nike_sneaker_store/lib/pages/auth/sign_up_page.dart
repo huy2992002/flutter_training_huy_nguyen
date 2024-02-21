@@ -11,6 +11,7 @@ import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/double_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
+import 'package:nike_sneaker_store/utils/maths.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -28,28 +29,36 @@ class _SignUpPageState extends State<SignUpPage> {
   bool isLoading = false;
   final formKey = GlobalKey<FormState>();
 
+  void isShowLoading() {
+    setState(() => isLoading = true);
+  }
+
+  void isHideLoading() {
+    setState(() => isLoading = false);
+  }
+
   Future<void> onRegister() async {
     if (formKey.currentState != null) {
       if (formKey.currentState!.validate()) return;
     }
-    setState(() => isLoading = true);
+    isShowLoading();
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) => emailController.text == e.email);
     if (checkUser) {
-      setState(() => isLoading = false);
+      isHideLoading();
       NSSnackBar.snackbarError(
         context,
         title: AppLocalizations.of(context).emailAlreadyExists,
       );
     } else {
       UserModel user = UserModel(
-        id: '${int.parse(accounts.last.id) + 1}',
+        uuid: Maths.randomUUid(length: 6),
         name: nameController.text,
         email: emailController.text,
         password: passwordController.text,
       );
       accounts.add(user);
-      setState(() => isLoading = false);
+      isHideLoading();
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const SignInPage()),

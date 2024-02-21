@@ -2,7 +2,7 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 
 class NotificationModel {
   NotificationModel({
-    required this.id,
+    required this.uuid,
     required this.title,
     required this.product,
     required this.priceSale,
@@ -10,7 +10,7 @@ class NotificationModel {
     this.isRead = false,
   });
 
-  String id;
+  String uuid;
   String title;
   ProductModel product;
   double priceSale;

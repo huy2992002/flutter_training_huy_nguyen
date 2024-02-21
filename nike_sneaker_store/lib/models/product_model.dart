@@ -1,6 +1,6 @@
 class ProductModel {
   ProductModel({
-    required this.id,
+    required this.uuid,
     required this.name,
     required this.imagePath,
     required this.price,
@@ -10,7 +10,7 @@ class ProductModel {
     this.isFavorite = false,
   });
 
-  String id;
+  String uuid;
   String name;
   String imagePath;
   double price;

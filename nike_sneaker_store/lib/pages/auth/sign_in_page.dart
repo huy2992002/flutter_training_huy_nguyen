@@ -26,24 +26,32 @@ class _SignInPageState extends State<SignInPage> {
   bool isLoading = false;
   final formKey = GlobalKey<FormState>();
 
+  void isShowLoading() {
+    setState(() => isLoading = true);
+  }
+
+  void isHideLoading() {
+    setState(() => isLoading = false);
+  }
+
   Future<void> onLogin() async {
     if (formKey.currentState != null) {
       if (formKey.currentState!.validate()) return;
     }
-    setState(() => isLoading = true);
+    isShowLoading();
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) =>
         emailController.text == e.email &&
         passwordController.text == e.password);
     if (checkUser) {
-      setState(() => isLoading = false);
+      isHideLoading();
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const MainPage()),
         (route) => false,
       );
     } else {
-      setState(() => isLoading = false);
+      isHideLoading();
       NSSnackBar.snackbarError(
         context,
         title: AppLocalizations.of(context).emailOrPasswordIncorrect,
