@@ -38,7 +38,7 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.8
-  flutter_gen_runner: 5.4.0
+  flutter_gen_runner: ^5.4.0
   flutter_test:
     sdk: flutter
   very_good_analysis: ^5.1.0
@@ -47,7 +47,7 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
 flutter:
-  generate: true
+  generate: false
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -77,6 +77,6 @@ flutter:
         - asset: assets/fonts/Raleway-Black.ttf
     - family: Raleway-Bold
       fonts:
-        - asset: assets/fonts/Raleway-Bold.ttf    
+        - asset: assets/fonts/Raleway-Bold.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
