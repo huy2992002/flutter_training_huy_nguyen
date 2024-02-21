@@ -8,9 +8,9 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
+import 'package:nike_sneaker_store/pages/auth/widgets/double_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
-import 'package:nike_sneaker_store/pages/auth/widgets/title_under.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -37,7 +37,7 @@ class _SignUpPageState extends State<SignUpPage> {
       setState(() => isLoading = false);
       NSSnackBar.snackbarError(
         context,
-        title: 'email da ton tai',
+        title: AppLocalizations.of(context).emailAlreadyExists,
       );
     } else {
       UserModel user = UserModel(
@@ -87,7 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
               TitleLabel(text: AppLocalizations.of(context).yourName),
               NSTextFormField.text(
                 controller: nameController,
-                hintText: 'xxxxxxx',
+                hintText: AppLocalizations.of(context).hintTextDefault,
                 validator: (value) =>
                     Validator.validatorRequired(context, value),
                 textInputAction: TextInputAction.next,
@@ -96,7 +96,7 @@ class _SignUpPageState extends State<SignUpPage> {
               TitleLabel(text: AppLocalizations.of(context).emailAddress),
               NSTextFormField.text(
                 controller: emailController,
-                hintText: 'xyz@gmail.com',
+                hintText: AppLocalizations.of(context).hintTextEmail,
                 validator: (value) => Validator.validatorEmail(context, value),
                 textInputAction: TextInputAction.next,
               ),
@@ -104,7 +104,7 @@ class _SignUpPageState extends State<SignUpPage> {
               TitleLabel(text: AppLocalizations.of(context).password),
               NSTextFormField.password(
                 controller: passwordController,
-                hintText: '••••••••',
+                hintText: AppLocalizations.of(context).hintTextPassword,
                 validator: (value) =>
                     Validator.validatorPassword(context, value),
                 textInputAction: TextInputAction.next,
@@ -113,7 +113,7 @@ class _SignUpPageState extends State<SignUpPage> {
               TitleLabel(text: AppLocalizations.of(context).confirmPassword),
               NSTextFormField.password(
                 controller: confirmController,
-                hintText: '••••••••',
+                hintText: AppLocalizations.of(context).hintTextPassword,
                 validator: (value) => Validator.validatorConfirmPassword(
                   context,
                   value,
@@ -129,7 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 isDisable: isLoading,
               ),
               const SizedBox(height: 50),
-              TitleUnder(
+              DoubleText(
                 text: AppLocalizations.of(context).alreadyAccount,
                 title: AppLocalizations.of(context).signIn,
                 onTap: () => Navigator.push(

@@ -137,6 +137,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailAlreadyExists => 'Email already exists';
 
   @override
+  String get hintTextEmail => 'xyz@gmail.com';
+
+  @override
+  String get hintTextPassword => '••••••••';
+
+  @override
+  String get hintTextDefault => 'xxxxxxxx';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

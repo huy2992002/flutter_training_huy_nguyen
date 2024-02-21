@@ -43,6 +43,9 @@
   "confirmPasswordNotMatch": "Confirm password is not match",
   "emailOrPasswordIncorrect": "Email or password is incorrect",
   "emailAlreadyExists": "Email already exists",
+  "hintTextEmail": "xyz@gmail.com",
+  "hintTextPassword": "••••••••",
+  "hintTextDefault": "xxxxxxxx",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

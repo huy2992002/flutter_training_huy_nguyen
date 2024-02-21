@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
 
-class TitleUnder extends StatelessWidget {
-  const TitleUnder({
+class DoubleText extends StatelessWidget {
+  const DoubleText({
     required this.text,
     required this.title,
     this.onTap,

@@ -137,6 +137,15 @@ class AppLocalizationsVi extends AppLocalizations {
   String get emailAlreadyExists => 'Email đã tồn tại';
 
   @override
+  String get hintTextEmail => 'xyz@gmail.com';
+
+  @override
+  String get hintTextPassword => '••••••••';
+
+  @override
+  String get hintTextDefault => 'xxxxxxxx';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }

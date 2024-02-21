@@ -357,6 +357,24 @@ abstract class AppLocalizations {
   /// **'Email already exists'**
   String get emailAlreadyExists;
 
+  /// No description provided for @hintTextEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'xyz@gmail.com'**
+  String get hintTextEmail;
+
+  /// No description provided for @hintTextPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'••••••••'**
+  String get hintTextPassword;
+
+  /// No description provided for @hintTextDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'xxxxxxxx'**
+  String get hintTextDefault;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

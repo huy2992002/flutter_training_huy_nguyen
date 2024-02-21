@@ -44,8 +44,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             ),
             const SizedBox(height: 40),
             TitleLabel(text: AppLocalizations.of(context).emailAddress),
-            const NSTextFormField.text(
-              hintText: 'XXXXXXXX',
+            NSTextFormField.text(
+              hintText: AppLocalizations.of(context).hintTextDefault,
               textInputAction: TextInputAction.done,
             ),
             const SizedBox(height: 40),
