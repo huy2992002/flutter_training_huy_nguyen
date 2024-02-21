@@ -36,11 +36,13 @@ class CardProduct extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: onFavorite,
-                  child: SvgPicture.asset(
-                    product.isFavorite
-                        ? Assets.icons.icHeart
-                        : Assets.icons.icHeartOutline,
-                  ),
+                  child: product.isFavorite
+                      ? SvgPicture.asset(Assets.icons.icHeart)
+                      : SvgPicture.asset(
+                          Assets.icons.icHeartOutline,
+                          color:
+                              Theme.of(context).colorScheme.onPrimaryContainer,
+                        ),
                 ),
                 Image.asset(
                   product.imagePath,

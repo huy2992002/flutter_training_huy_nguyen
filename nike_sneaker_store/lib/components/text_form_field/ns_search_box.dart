@@ -33,11 +33,14 @@ class NSSearchBox extends StatelessWidget {
           border: InputBorder.none,
           hintText: AppLocalizations.of(context).lookingForShoes,
           hintStyle: NSStyle.h14SemiBold.copyWith(
-            color: NSColor.neutral
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
           prefixIcon: Padding(
             padding: const EdgeInsets.only(left: 24, right: 12),
-            child: SvgPicture.asset(Assets.icons.icSearch),
+            child: SvgPicture.asset(
+              Assets.icons.icSearch,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+            ),
           ),
           prefixIconConstraints: const BoxConstraints(
             maxHeight: 24,
