@@ -447,6 +447,12 @@ abstract class AppLocalizations {
   /// **'New Arrivals'**
   String get newArrivals;
 
+  /// No description provided for @summerSale.
+  ///
+  /// In en, this message translates to:
+  /// **'Summer Sale'**
+  String get summerSale;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

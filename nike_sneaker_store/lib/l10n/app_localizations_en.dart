@@ -182,6 +182,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newArrivals => 'New Arrivals';
 
   @override
+  String get summerSale => 'Summer Sale';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

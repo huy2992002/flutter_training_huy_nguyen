@@ -182,6 +182,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get newArrivals => 'Điểm đến mới';
 
   @override
+  String get summerSale => 'Giảm giá hè';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }
