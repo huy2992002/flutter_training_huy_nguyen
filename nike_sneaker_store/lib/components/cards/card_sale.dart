@@ -18,32 +18,29 @@ class CardSale extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 26),
-          child: Container(
-            height: 100,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Row(
-              children: [
-                const SizedBox(width: 20),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: NSStyle.h12Medium),
-                    Text(
-                      AppLocalizations.of(context).discountOff(discount),
-                      style: NSStyle.h36Black.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
+        Container(
+          height: 100,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Row(
+            children: [
+              const SizedBox(width: 20),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: NSStyle.h12Medium),
+                  Text(
+                    AppLocalizations.of(context).discountOff(discount),
+                    style: NSStyle.h36Black.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
         
