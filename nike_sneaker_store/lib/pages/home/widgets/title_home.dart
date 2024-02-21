@@ -12,7 +12,7 @@ class TitleHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
+      padding: const EdgeInsets.only(left: 20, bottom: 14),
       child: Text(
         text,
         style: NSStyle.h16SemiBold,

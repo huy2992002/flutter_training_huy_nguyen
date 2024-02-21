@@ -33,27 +33,33 @@ class _HomePageState extends State<HomePage> {
         onCart: () {},
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 16),
+        padding: const EdgeInsets.only(top: 16),
         children: [
-          const NSSearchBox(),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: NSSearchBox(),
+          ),
           const SizedBox(height: 24),
           TitleHome(text: AppLocalizations.of(context).selectCategory),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(
-                categories.length,
-                (index) => Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: CardCategory(
-                    onPressed: () => setState(() => categoryIndex = index),
-                    text: categories[index],
-                    backgroundColor: categoryIndex == index
-                        ? Theme.of(context).colorScheme.primary
-                        : Theme.of(context).colorScheme.primaryContainer,
-                    textColor: categoryIndex == index
-                        ? Theme.of(context).colorScheme.onPrimary
-                        : Theme.of(context).colorScheme.onPrimaryContainer,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: List.generate(
+                  categories.length,
+                  (index) => Padding(
+                    padding: const EdgeInsets.only(right: 16),
+                    child: CardCategory(
+                      onPressed: () => setState(() => categoryIndex = index),
+                      text: categories[index],
+                      backgroundColor: categoryIndex == index
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.primaryContainer,
+                      textColor: categoryIndex == index
+                          ? Theme.of(context).colorScheme.onPrimary
+                          : Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
                   ),
                 ),
               ),
@@ -63,29 +69,35 @@ class _HomePageState extends State<HomePage> {
           TitleHome(text: AppLocalizations.of(context).popularShoes),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(products.length, (index) {
-                final product = products[index];
-                return Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: CardProduct(
-                    product: product,
-                    onFavorite: () {
-                      setState(() {
-                        product.isFavorite = !product.isFavorite;
-                      });
-                    },
-                  ),
-                );
-              }),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: List.generate(products.length, (index) {
+                  final product = products[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: CardProduct(
+                      product: product,
+                      onFavorite: () {
+                        setState(() {
+                          product.isFavorite = !product.isFavorite;
+                        });
+                      },
+                    ),
+                  );
+                }),
+              ),
             ),
           ),
           const SizedBox(height: 24),
           TitleHome(text: AppLocalizations.of(context).newArrivals),
-          CardSale(
-            title: AppLocalizations.of(context).summerSale,
-            discount: 50,
-            imagePath: Assets.images.imgSumerSale.path,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: CardSale(
+              title: AppLocalizations.of(context).summerSale,
+              discount: 50,
+              imagePath: Assets.images.imgSumerSale.path,
+            ),
           ),
         ],
       ),
