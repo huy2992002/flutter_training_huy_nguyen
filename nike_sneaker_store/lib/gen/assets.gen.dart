@@ -75,6 +75,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_remove.svg
   String get icRemove => 'assets/icons/ic_remove.svg';
 
+  /// File path: assets/icons/ic_search.svg
+  String get icSearch => 'assets/icons/ic_search.svg';
+
   /// File path: assets/icons/ic_setting.svg
   String get icSetting => 'assets/icons/ic_setting.svg';
 
@@ -113,6 +116,7 @@ class $AssetsIconsGen {
         icPerson,
         icPhone,
         icRemove,
+        icSearch,
         icSetting,
         icSignOut,
         icTick,
