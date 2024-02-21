@@ -176,6 +176,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get descriptionNikeClubMax => 'The Nike Club Max represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker thats visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nikes biggest heel Air unit yet.';
 
   @override
+  String get popularShoes => 'Popular Shoes';
+
+  @override
+  String get newArrivals => 'New Arrivals';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

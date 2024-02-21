@@ -176,6 +176,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get descriptionNikeClubMax => 'Nike Club Max là một biểu tượng của sự kết hợp giữa phong cách và công nghệ tiên tiến. Được phát triển từ dòng Air Max với thiết kế độc đáo và đệm lớn nhất từng có, Air Max 270 không chỉ mang lại sự thoải mái mà còn là một tuyên ngôn thời trang.';
 
   @override
+  String get popularShoes => 'Giày phổ biến';
+
+  @override
+  String get newArrivals => 'Điểm đến mới';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }
