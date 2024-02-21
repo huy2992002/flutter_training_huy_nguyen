@@ -146,6 +146,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hintTextDefault => 'xxxxxxxx';
 
   @override
+  String get nameNikeJordan => 'Nike Jordan';
+
+  @override
+  String get descriptionNikeJordan => 'The Nike Air Jordan 1 Retro High stands as an unmistakable icon in the sneaker world. Originating from the collaboration between Nike and Michael Jordan, this silhouette has transcended its basketball roots to become a staple in fashion, culture, and lifestyle.';
+
+  @override
+  String get nameNikeAirMax => 'Nike Air Max';
+
+  @override
+  String get descriptionNikeAirMax => 'The Nike Air Max 90 is an iconic sneaker that revolutionized the world of athletic footwear. With its distinctive design and pioneering air cushioning technology, this shoe has captivated sneaker enthusiasts, athletes, and fashion-forward individuals for decades.';
+
+  @override
+  String get nameNikeAirMax200 => 'Nike Air Max 200';
+
+  @override
+  String get descriptionNikeAirMax200 => 'The Nike Air Max 200 is a modern twist on the classic Air Max legacy, offering a bold, refreshed look while retaining the comfort and performance that fans have come to expect from the Air Max series.';
+
+  @override
+  String get nameNikeAirMax270 => 'Nike Air Max 270';
+
+  @override
+  String get descriptionNikeAirMax270 => 'The Nike Air Max 270 represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker thats visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nikes biggest heel Air unit yet.';
+
+  @override
+  String get nameNikeClubMax => 'Nike Club Max';
+
+  @override
+  String get descriptionNikeClubMax => 'The Nike Club Max represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker thats visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nikes biggest heel Air unit yet.';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

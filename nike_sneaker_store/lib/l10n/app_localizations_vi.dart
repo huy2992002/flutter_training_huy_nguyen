@@ -146,6 +146,36 @@ class AppLocalizationsVi extends AppLocalizations {
   String get hintTextDefault => 'xxxxxxxx';
 
   @override
+  String get nameNikeJordan => 'Nike Jordan';
+
+  @override
+  String get descriptionNikeJordan => 'Nike Air Jordan là biểu tượng không thể nhầm lẫn trong thế giới giày sneaker. Sản phẩm là kết quả của sự hợp tác giữa Nike và Michael Jordan, đã vượt qua ranh giới của bóng rổ để trở thành một phần không thể thiếu trong thế giới thời trang và văn hóa.';
+
+  @override
+  String get nameNikeAirMax => 'Nike Air Max';
+
+  @override
+  String get descriptionNikeAirMax => 'Nike Air Max là một trong những dòng sản phẩm giày thể thao nổi tiếng của Nike, với thiết kế đặc trưng là túi khí Air Max được tích hợp trong đế giày, tạo ra sự thoải mái và đàn hồi khi di chuyển. Được phát triển từ những ý tưởng sáng tạo về công nghệ và thiết kế, Nike Air Max đã trở thành biểu tượng của sự thoải mái và phong cách trong thế giới thể thao và đời sống hàng ngày.';
+
+  @override
+  String get nameNikeAirMax200 => 'Nike Air Max 200';
+
+  @override
+  String get descriptionNikeAirMax200 => 'Nike Air Max 200 là một biến thể mới trong dòng sản phẩm Air Max của Nike, mang đến một diện mạo mới lạ và cá tính cho người mặc. Với thiết kế hiện đại và công nghệ đệm tiên tiến, Air Max 200 hứa hẹn mang lại sự thoải mái và phong cách độc đáo cho mọi hoạt động.';
+
+  @override
+  String get nameNikeAirMax270 => 'Nike Air Max 270';
+
+  @override
+  String get descriptionNikeAirMax270 => 'Nike Air Max 270 là một biểu tượng của sự kết hợp giữa phong cách và công nghệ tiên tiến. Được phát triển từ dòng Air Max với thiết kế độc đáo và đệm lớn nhất từng có, Air Max 270 không chỉ mang lại sự thoải mái mà còn là một tuyên ngôn thời trang.';
+
+  @override
+  String get nameNikeClubMax => 'Nike Club Max';
+
+  @override
+  String get descriptionNikeClubMax => 'Nike Club Max là một biểu tượng của sự kết hợp giữa phong cách và công nghệ tiên tiến. Được phát triển từ dòng Air Max với thiết kế độc đáo và đệm lớn nhất từng có, Air Max 270 không chỉ mang lại sự thoải mái mà còn là một tuyên ngôn thời trang.';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }

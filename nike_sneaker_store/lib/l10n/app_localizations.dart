@@ -375,6 +375,66 @@ abstract class AppLocalizations {
   /// **'xxxxxxxx'**
   String get hintTextDefault;
 
+  /// No description provided for @nameNikeJordan.
+  ///
+  /// In en, this message translates to:
+  /// **'Nike Jordan'**
+  String get nameNikeJordan;
+
+  /// No description provided for @descriptionNikeJordan.
+  ///
+  /// In en, this message translates to:
+  /// **'The Nike Air Jordan 1 Retro High stands as an unmistakable icon in the sneaker world. Originating from the collaboration between Nike and Michael Jordan, this silhouette has transcended its basketball roots to become a staple in fashion, culture, and lifestyle.'**
+  String get descriptionNikeJordan;
+
+  /// No description provided for @nameNikeAirMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Nike Air Max'**
+  String get nameNikeAirMax;
+
+  /// No description provided for @descriptionNikeAirMax.
+  ///
+  /// In en, this message translates to:
+  /// **'The Nike Air Max 90 is an iconic sneaker that revolutionized the world of athletic footwear. With its distinctive design and pioneering air cushioning technology, this shoe has captivated sneaker enthusiasts, athletes, and fashion-forward individuals for decades.'**
+  String get descriptionNikeAirMax;
+
+  /// No description provided for @nameNikeAirMax200.
+  ///
+  /// In en, this message translates to:
+  /// **'Nike Air Max 200'**
+  String get nameNikeAirMax200;
+
+  /// No description provided for @descriptionNikeAirMax200.
+  ///
+  /// In en, this message translates to:
+  /// **'The Nike Air Max 200 is a modern twist on the classic Air Max legacy, offering a bold, refreshed look while retaining the comfort and performance that fans have come to expect from the Air Max series.'**
+  String get descriptionNikeAirMax200;
+
+  /// No description provided for @nameNikeAirMax270.
+  ///
+  /// In en, this message translates to:
+  /// **'Nike Air Max 270'**
+  String get nameNikeAirMax270;
+
+  /// No description provided for @descriptionNikeAirMax270.
+  ///
+  /// In en, this message translates to:
+  /// **'The Nike Air Max 270 represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker that\'s visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nike\'s biggest heel Air unit yet.'**
+  String get descriptionNikeAirMax270;
+
+  /// No description provided for @nameNikeClubMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Nike Club Max'**
+  String get nameNikeClubMax;
+
+  /// No description provided for @descriptionNikeClubMax.
+  ///
+  /// In en, this message translates to:
+  /// **'The Nike Club Max represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker that\'s visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nike\'s biggest heel Air unit yet.'**
+  String get descriptionNikeClubMax;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

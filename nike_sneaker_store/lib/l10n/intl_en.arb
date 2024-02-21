@@ -46,6 +46,16 @@
   "hintTextEmail": "xyz@gmail.com",
   "hintTextPassword": "••••••••",
   "hintTextDefault": "xxxxxxxx",
+  "nameNikeJordan": "Nike Jordan",
+  "descriptionNikeJordan": "The Nike Air Jordan 1 Retro High stands as an unmistakable icon in the sneaker world. Originating from the collaboration between Nike and Michael Jordan, this silhouette has transcended its basketball roots to become a staple in fashion, culture, and lifestyle.",
+  "nameNikeAirMax": "Nike Air Max",
+  "descriptionNikeAirMax": "The Nike Air Max 90 is an iconic sneaker that revolutionized the world of athletic footwear. With its distinctive design and pioneering air cushioning technology, this shoe has captivated sneaker enthusiasts, athletes, and fashion-forward individuals for decades.",
+  "nameNikeAirMax200": "Nike Air Max 200",
+  "descriptionNikeAirMax200": "The Nike Air Max 200 is a modern twist on the classic Air Max legacy, offering a bold, refreshed look while retaining the comfort and performance that fans have come to expect from the Air Max series.",
+  "nameNikeAirMax270": "Nike Air Max 270",
+  "descriptionNikeAirMax270": "The Nike Air Max 270 represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker that's visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nike's biggest heel Air unit yet.",
+  "nameNikeClubMax": "Nike Club Max",
+  "descriptionNikeClubMax": "The Nike Club Max represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker that's visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nike's biggest heel Air unit yet.",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {
