@@ -17,7 +17,7 @@ class NsIconButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color:
               backgroundColor ?? Theme.of(context).colorScheme.secondaryContainer,
