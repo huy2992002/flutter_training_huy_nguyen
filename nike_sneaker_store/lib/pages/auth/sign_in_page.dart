@@ -10,7 +10,7 @@ import 'package:nike_sneaker_store/pages/auth/sign_up_page.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/double_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
-import 'package:nike_sneaker_store/pages/main_page.dart';
+import 'package:nike_sneaker_store/pages/main/main_page.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class SignInPage extends StatefulWidget {
