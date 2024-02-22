@@ -236,6 +236,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get yesterday => 'Hôm qua';
 
   @override
+  String get productAlreadyInCart => 'Sản phẩm đã có trong giỏ hàng rồi';
+
+  @override
+  String get productAddSuccess => 'Sản phẩm đã được thêm thành công';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }

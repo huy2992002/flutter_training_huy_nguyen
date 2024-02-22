@@ -236,6 +236,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
+  String get productAlreadyInCart => 'The product is already in the cart';
+
+  @override
+  String get productAddSuccess => 'The product has been added successfully';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

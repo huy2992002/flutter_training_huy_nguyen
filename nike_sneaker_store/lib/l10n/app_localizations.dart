@@ -555,6 +555,18 @@ abstract class AppLocalizations {
   /// **'Yesterday'**
   String get yesterday;
 
+  /// No description provided for @productAlreadyInCart.
+  ///
+  /// In en, this message translates to:
+  /// **'The product is already in the cart'**
+  String get productAlreadyInCart;
+
+  /// No description provided for @productAddSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'The product has been added successfully'**
+  String get productAddSuccess;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:
