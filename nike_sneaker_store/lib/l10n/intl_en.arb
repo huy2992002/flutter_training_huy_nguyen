@@ -61,10 +61,33 @@
   "summerSale": "Summer Sale",
   "readMore": "Read More",
   "addToCart": "Add to Cart",
+  "favorite": "Favorite",
+  "myCart": "My Cart",
+  "bestSeller": "Best Seller",
+  "subTotal": "Subtotal",
+  "delivery": "Delivery",
+  "totalCost": "Total Cost",
+  "checkOut": "Checkout",
+  "address": "Address",
+  "contactInformation": "Contact Information",
+  "yourPaymentSuccessful": "Your Payment Is Successful",
+  "backToShopping": "Back To Shopping",
+  "notifications": "Notifications",
+  "search": "Search",
+  "recent": "Recent",
+  "yesterday": "Yesterday",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {
       "discount": {
+        "type": "int"
+      }
+    }
+  },
+  "intItem": "{item} Item",
+  "@intItem": {
+    "placeholders": {
+      "item": {
         "type": "int"
       }
     }

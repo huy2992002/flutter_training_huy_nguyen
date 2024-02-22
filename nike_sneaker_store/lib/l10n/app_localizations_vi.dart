@@ -191,7 +191,57 @@ class AppLocalizationsVi extends AppLocalizations {
   String get addToCart => 'Thêm vào giỏ';
 
   @override
+  String get favorite => 'Yêu thích';
+
+  @override
+  String get myCart => 'My Cart';
+
+  @override
+  String get bestSeller => 'Bán chạy';
+
+  @override
+  String get subTotal => 'Tổng giá';
+
+  @override
+  String get delivery => 'Giá giao hàng';
+
+  @override
+  String get totalCost => 'Tổng thanh toán';
+
+  @override
+  String get checkOut => 'Thanh toán';
+
+  @override
+  String get address => 'Địa chỉ';
+
+  @override
+  String get contactInformation => 'Thông tin liên lạc';
+
+  @override
+  String get yourPaymentSuccessful => 'Bạn đã thanh toán thành công';
+
+  @override
+  String get backToShopping => 'Quay lại mua sắm';
+
+  @override
+  String get notifications => 'Thông báo';
+
+  @override
+  String get search => 'Tìm kiếm';
+
+  @override
+  String get recent => 'Gần đây';
+
+  @override
+  String get yesterday => 'Hôm qua';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
+  }
+
+  @override
+  String intItem(int item) {
+    return '$item Số Lượng';
   }
 }

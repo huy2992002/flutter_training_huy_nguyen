@@ -191,7 +191,57 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addToCart => 'Add to Cart';
 
   @override
+  String get favorite => 'Favorite';
+
+  @override
+  String get myCart => 'My Cart';
+
+  @override
+  String get bestSeller => 'Best Seller';
+
+  @override
+  String get subTotal => 'Subtotal';
+
+  @override
+  String get delivery => 'Delivery';
+
+  @override
+  String get totalCost => 'Total Cost';
+
+  @override
+  String get checkOut => 'Checkout';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get contactInformation => 'Contact Information';
+
+  @override
+  String get yourPaymentSuccessful => 'Your Payment Is Successful';
+
+  @override
+  String get backToShopping => 'Back To Shopping';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get recent => 'Recent';
+
+  @override
+  String get yesterday => 'Yesterday';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
+  }
+
+  @override
+  String intItem(int item) {
+    return '$item Item';
   }
 }

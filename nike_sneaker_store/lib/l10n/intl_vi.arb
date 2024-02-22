@@ -61,10 +61,33 @@
   "summerSale": "Giảm giá hè",
   "readMore": "Đọc thêm",
   "addToCart": "Thêm vào giỏ",
+  "favorite": "Yêu thích",
+  "myCart": "My Cart",
+  "bestSeller": "Bán chạy",
+  "subTotal": "Tổng giá",
+  "delivery": "Giá giao hàng",
+  "totalCost": "Tổng thanh toán",
+  "checkOut": "Thanh toán",
+  "address": "Địa chỉ",
+  "contactInformation": "Thông tin liên lạc",
+  "yourPaymentSuccessful": "Bạn đã thanh toán thành công",
+  "backToShopping": "Quay lại mua sắm",
+  "notifications": "Thông báo",
+  "search": "Tìm kiếm",
+  "recent": "Gần đây",
+  "yesterday": "Hôm qua",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {
       "discount": {
+        "type": "int"
+      }
+    }
+  },
+  "intItem": "{item} Số Lượng",
+  "@intItem": {
+    "placeholders": {
+      "item": {
         "type": "int"
       }
     }
