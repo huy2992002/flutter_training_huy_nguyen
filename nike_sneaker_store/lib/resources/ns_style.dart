@@ -57,7 +57,7 @@ class NSStyle {
 
   static TextStyle h16Medium = primaryTextStyle(
     fontSize: 16,
-    fontFamily: 'Raleway',
+    fontFamily: 'Poppins',
     fontWeight: FontWeight.w500,
   );
 
