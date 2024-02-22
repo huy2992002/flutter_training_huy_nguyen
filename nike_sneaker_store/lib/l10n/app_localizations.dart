@@ -567,6 +567,12 @@ abstract class AppLocalizations {
   /// **'The product has been added successfully'**
   String get productAddSuccess;
 
+  /// No description provided for @cartEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'There are no products in the cart yet'**
+  String get cartEmpty;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

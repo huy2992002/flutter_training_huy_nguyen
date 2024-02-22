@@ -242,6 +242,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get productAddSuccess => 'Sản phẩm đã được thêm thành công';
 
   @override
+  String get cartEmpty => 'Chưa có sản phẩm nào trong giỏ hàng';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }

@@ -242,6 +242,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get productAddSuccess => 'The product has been added successfully';
 
   @override
+  String get cartEmpty => 'There are no products in the cart yet';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

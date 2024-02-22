@@ -78,6 +78,7 @@
   "yesterday": "Yesterday",
   "productAlreadyInCart": "The product is already in the cart",
   "productAddSuccess": "The product has been added successfully",
+  "cartEmpty": "There are no products in the cart yet",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

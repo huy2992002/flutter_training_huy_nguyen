@@ -78,6 +78,7 @@
   "yesterday": "Hôm qua",
   "productAlreadyInCart": "Sản phẩm đã có trong giỏ hàng rồi",
   "productAddSuccess": "Sản phẩm đã được thêm thành công",
+  "cartEmpty": "Chưa có sản phẩm nào trong giỏ hàng",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {
