@@ -8,6 +8,7 @@ class NSElevatedButton extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
     this.icon,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
     this.isDisable = false,
     super.key,
   });
@@ -18,6 +19,7 @@ class NSElevatedButton extends StatelessWidget {
     required this.text,
     this.backgroundColor,
     this.textColor,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
     this.isDisable = false,
     super.key,
   });
@@ -27,6 +29,7 @@ class NSElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
   final Widget? icon;
+  final EdgeInsetsGeometry padding;
   final bool isDisable;
 
   @override
@@ -34,7 +37,7 @@ class NSElevatedButton extends StatelessWidget {
     return GestureDetector(
       onTap: isDisable ? null : onPressed,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+        padding: padding,
         decoration: BoxDecoration(
           color: backgroundColor ?? Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(12),
