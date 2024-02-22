@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
+import 'package:nike_sneaker_store/components/app_bar/icon_cart_app_bar.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
@@ -36,30 +36,7 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
             AppLocalizations.of(context).explore,
             style: NSStyle.h32Bold,
           ),
-          Stack(
-            children: [
-              NsIconButton(
-                onPressed: onMenu,
-                icon: SvgPicture.asset(
-                  Assets.icons.icBag,
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
-                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-              ),
-              Positioned(
-                top: 0,
-                right: 0,
-                child: Container(
-                  width: 10,
-                  height: 10,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.error,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          const IconCartAppBar(),
         ],
       ),
     );
