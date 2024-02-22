@@ -185,6 +185,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get summerSale => 'Giảm giá hè';
 
   @override
+  String get readMore => 'Đọc thêm';
+
+  @override
   String get addToCart => 'Thêm vào giỏ';
 
   @override

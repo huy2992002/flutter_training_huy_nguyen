@@ -185,6 +185,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get summerSale => 'Summer Sale';
 
   @override
+  String get readMore => 'Read More';
+
+  @override
   String get addToCart => 'Add to Cart';
 
   @override

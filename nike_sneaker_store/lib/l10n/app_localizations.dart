@@ -453,6 +453,12 @@ abstract class AppLocalizations {
   /// **'Summer Sale'**
   String get summerSale;
 
+  /// No description provided for @readMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Read More'**
+  String get readMore;
+
   /// No description provided for @addToCart.
   ///
   /// In en, this message translates to:
