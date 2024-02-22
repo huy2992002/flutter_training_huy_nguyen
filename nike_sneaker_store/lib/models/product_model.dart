@@ -43,7 +43,8 @@ List<ProductModel> products = [
     imagePath: Assets.images.imgNikeAirMax.path,
     price: 302,
     quantity: 20,
-    description: 'The Nike Air Max 90 is an iconic sneaker that revolutionized the world of athletic footwear. With its distinctive design and pioneering air cushioning technology, this shoe has captivated sneaker enthusiasts, athletes, and fashion-forward individuals for decades.',
+    description:
+        'The Nike Air Max 90 is an iconic sneaker that revolutionized the world of athletic footwear. With its distinctive design and pioneering air cushioning technology, this shoe has captivated sneaker enthusiasts, athletes, and fashion-forward individuals for decades.',
     isBestSeller: true,
     category: 'Tennis',
   ),
@@ -53,7 +54,8 @@ List<ProductModel> products = [
     imagePath: Assets.images.imgNikeAirMax200.path,
     price: 302,
     quantity: 20,
-    description:'The Nike Air Max 200 is a modern twist on the classic Air Max legacy, offering a bold, refreshed look while retaining the comfort and performance that fans have come to expect from the Air Max series.',
+    description:
+        'The Nike Air Max 200 is a modern twist on the classic Air Max legacy, offering a bold, refreshed look while retaining the comfort and performance that fans have come to expect from the Air Max series.',
     isBestSeller: true,
     category: 'Outdoor',
   ),
@@ -63,7 +65,8 @@ List<ProductModel> products = [
     imagePath: Assets.images.imgNikeAirMax270.path,
     price: 302,
     quantity: 20,
-    description: "The Nike Air Max 270 represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker that's visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nike's biggest heel Air unit yet.",
+    description:
+        "The Nike Air Max 270 represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker that's visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nike's biggest heel Air unit yet.",
     isBestSeller: true,
     category: 'Outdoor',
   ),
@@ -73,8 +76,11 @@ List<ProductModel> products = [
     imagePath: Assets.images.imgNikeAirMax270.path,
     price: 302,
     quantity: 20,
-    description: "The Nike Club Max represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker that's visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nike's biggest heel Air unit yet.",
+    description:
+        "The Nike Club Max represents a significant milestone in the evolution of the Air Max family, blending classic style with modern technology to create a sneaker that's visually striking and supremely comfortable. Designed to support lifestyle wear rather than sports performance, the Air Max 270 draws inspiration from the Air Max lineage, showcasing Nike's biggest heel Air unit yet.",
     isBestSeller: true,
     category: 'Tennis',
   ),
 ];
+
+List<ProductModel> myCarts = [];

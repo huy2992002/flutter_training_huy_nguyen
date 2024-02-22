@@ -3,6 +3,7 @@ import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
 import 'package:nike_sneaker_store/components/cards/card_category.dart';
 import 'package:nike_sneaker_store/components/cards/card_product.dart';
 import 'package:nike_sneaker_store/components/cards/card_sale.dart';
+import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
@@ -85,6 +86,24 @@ class _HomePageState extends State<HomePage> {
                           builder: (context) => DetailPage(product: product),
                         ),
                       ),
+                      onAddCart: () {
+                        bool checkCart = myCarts
+                            .any((element) => element.uuid == product.uuid);
+                        if (checkCart) {
+                          NSSnackBar.snackbarWarning(
+                            context,
+                            title: AppLocalizations.of(context)
+                                .productAlreadyInCart,
+                          );
+                        } else {
+                          myCarts.add(product..quantity = 1);
+                          NSSnackBar.snackbarSuccess(
+                            context,
+                            title:
+                                AppLocalizations.of(context).productAddSuccess,
+                          );
+                        }
+                      },
                       onFavorite: () {
                         setState(() {
                           product.isFavorite = !product.isFavorite;
