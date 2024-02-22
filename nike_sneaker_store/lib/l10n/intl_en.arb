@@ -76,6 +76,8 @@
   "search": "Search",
   "recent": "Recent",
   "yesterday": "Yesterday",
+  "productAlreadyInCart": "The product is already in the cart",
+  "productAddSuccess": "The product has been added successfully",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

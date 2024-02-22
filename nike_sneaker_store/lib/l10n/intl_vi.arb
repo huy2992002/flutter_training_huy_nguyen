@@ -76,6 +76,8 @@
   "search": "Tìm kiếm",
   "recent": "Gần đây",
   "yesterday": "Hôm qua",
+  "productAlreadyInCart": "Sản phẩm đã có trong giỏ hàng rồi",
+  "productAddSuccess": "Sản phẩm đã được thêm thành công",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {
