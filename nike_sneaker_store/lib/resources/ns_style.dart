@@ -99,7 +99,7 @@ class NSStyle {
 
   static TextStyle h26Bold = primaryTextStyle(
     fontSize: 26,
-    fontFamily: 'Raleway',
+    fontFamily: 'Raleway-Bold',
     fontWeight: FontWeight.w700,
   );
 
