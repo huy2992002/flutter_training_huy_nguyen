@@ -17,12 +17,11 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18).copyWith(
         top: MediaQuery.paddingOf(context).top + 3,
         bottom: 3,
       ),
-      color: Theme.of(context).colorScheme.background,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
