@@ -7,6 +7,7 @@ import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
+import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
 import 'package:nike_sneaker_store/pages/home/widgets/title_home.dart';
 
 class HomePage extends StatefulWidget {
@@ -78,6 +79,12 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.only(right: 20),
                     child: CardProduct(
                       product: product,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailPage(product: product),
+                        ),
+                      ),
                       onFavorite: () {
                         setState(() {
                           product.isFavorite = !product.isFavorite;
