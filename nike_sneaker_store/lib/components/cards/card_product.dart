@@ -27,11 +27,13 @@ class CardProduct extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.all(12),
+            alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(16),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
@@ -68,7 +70,7 @@ class CardProduct extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
+          if(onAddCart != null) Positioned(
             right: 0,
             bottom: 0,
             child: GestureDetector(
