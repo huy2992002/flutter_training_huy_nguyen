@@ -59,6 +59,7 @@
   "popularShoes": "Popular Shoes",
   "newArrivals": "New Arrivals",
   "summerSale": "Summer Sale",
+  "addToCart": "Add to Cart",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {
