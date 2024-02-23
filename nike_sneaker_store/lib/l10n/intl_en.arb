@@ -79,6 +79,10 @@
   "productAlreadyInCart": "The product is already in the cart",
   "productAddSuccess": "The product has been added successfully",
   "cartEmpty": "There are no products in the cart yet",
+  "searchProduct": "Search product",
+  "isNoResult": "There is no result",
+  "noFavoriteProduct": "Currently there are no favorite products",
+  "noFavoriteNotification": "Currently there are no notification",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

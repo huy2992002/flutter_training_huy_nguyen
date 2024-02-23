@@ -573,6 +573,30 @@ abstract class AppLocalizations {
   /// **'There are no products in the cart yet'**
   String get cartEmpty;
 
+  /// No description provided for @searchProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Search product'**
+  String get searchProduct;
+
+  /// No description provided for @isNoResult.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no result'**
+  String get isNoResult;
+
+  /// No description provided for @noFavoriteProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Currently there are no favorite products'**
+  String get noFavoriteProduct;
+
+  /// No description provided for @noFavoriteNotification.
+  ///
+  /// In en, this message translates to:
+  /// **'Currently there are no notification'**
+  String get noFavoriteNotification;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

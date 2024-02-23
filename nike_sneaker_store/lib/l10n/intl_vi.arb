@@ -79,6 +79,10 @@
   "productAlreadyInCart": "Sản phẩm đã có trong giỏ hàng rồi",
   "productAddSuccess": "Sản phẩm đã được thêm thành công",
   "cartEmpty": "Chưa có sản phẩm nào trong giỏ hàng",
+  "searchProduct": "Tìm kiếm sản phẩm",
+  "isNoResult": "Không tìm thấy sản phẩm",
+  "noFavoriteProduct": "Hiện tại chưa có sản phẩm yêu thích nào",
+  "noFavoriteNotification": "Hiện tại chưa có thông báo nào",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {

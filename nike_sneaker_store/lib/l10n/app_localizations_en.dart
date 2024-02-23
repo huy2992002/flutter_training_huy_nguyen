@@ -245,6 +245,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cartEmpty => 'There are no products in the cart yet';
 
   @override
+  String get searchProduct => 'Search product';
+
+  @override
+  String get isNoResult => 'There is no result';
+
+  @override
+  String get noFavoriteProduct => 'Currently there are no favorite products';
+
+  @override
+  String get noFavoriteNotification => 'Currently there are no notification';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }
