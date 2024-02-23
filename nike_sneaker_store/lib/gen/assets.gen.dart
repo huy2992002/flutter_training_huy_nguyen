@@ -84,6 +84,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_sign_out.svg
   String get icSignOut => 'assets/icons/ic_sign_out.svg';
 
+  /// File path: assets/icons/ic_successfully.svg
+  String get icSuccessfully => 'assets/icons/ic_successfully.svg';
+
   /// File path: assets/icons/ic_tick.svg
   String get icTick => 'assets/icons/ic_tick.svg';
 
@@ -119,6 +122,7 @@ class $AssetsIconsGen {
         icSearch,
         icSetting,
         icSignOut,
+        icSuccessfully,
         icTick,
         icTrash,
         icWarning
