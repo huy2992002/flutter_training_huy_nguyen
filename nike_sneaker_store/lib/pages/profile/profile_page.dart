@@ -1,14 +1,103 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/resources/ns_color.dart';
+import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
+import 'package:nike_sneaker_store/components/avatar/ns_avatar.dart';
+import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
+import 'package:nike_sneaker_store/components/text_form_field/ns_text_form_field.dart';
+import 'package:nike_sneaker_store/gen/assets.gen.dart';
+import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/models/user_model.dart';
+import 'package:nike_sneaker_store/resources/ns_style.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+
+  @override
+  void initState() {
+    nameController.text = userLogin?.name ?? '';
+    locationController.text = userLogin?.address ?? '';
+    phoneController.text = userLogin?.phone ?? '';
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: NSColor.onPrimary,
+    return GestureDetector(
+      onTap: FocusScope.of(context).unfocus,
+      child: Scaffold(
+        appBar: NSAppBar(
+          title: AppLocalizations.of(context).profile,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 38),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: NSAvatar(
+                    imagePath:
+                        userLogin?.avatar ?? Assets.images.imgAvatar.path,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Center(
+                    child: Text(userLogin?.name ?? '',
+                        style: NSStyle.h14SemiBold)),
+                const SizedBox(height: 6),
+                Center(
+                  child: Text(
+                    AppLocalizations.of(context).changeProfilePicture,
+                    style: NSStyle.h12Normal.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 43),
+                Text(
+                  AppLocalizations.of(context).yourName,
+                  style: NSStyle.h16SemiBold,
+                ),
+                const SizedBox(height: 17),
+                NSTextFormField.text(
+                  hintText: AppLocalizations.of(context).yourName,
+                ),
+                const SizedBox(height: 34),
+                Text(
+                  AppLocalizations.of(context).location,
+                  style: NSStyle.h16SemiBold,
+                ),
+                const SizedBox(height: 17),
+                NSTextFormField.text(
+                  hintText: AppLocalizations.of(context).location,
+                ),
+                const SizedBox(height: 34),
+                Text(
+                  AppLocalizations.of(context).mobileNumber,
+                  style: NSStyle.h16SemiBold,
+                ),
+                const SizedBox(height: 17),
+                NSTextFormField.text(
+                  hintText: AppLocalizations.of(context).mobileNumber,
+                ),
+                const SizedBox(height: 55),
+                NSElevatedButton.text(
+                  onPressed: () {},
+                  text: AppLocalizations.of(context).saveNow,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
