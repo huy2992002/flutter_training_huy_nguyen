@@ -6,11 +6,18 @@ import 'package:nike_sneaker_store/components/cards/card_cart_product.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
+import 'package:nike_sneaker_store/pages/cart/cart_information_page.dart';
+import 'package:nike_sneaker_store/pages/cart/widgets/cart_total_cost.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +65,15 @@ class CartPage extends StatelessWidget {
                   )
                 ],
               ),
+      ),
+      bottomNavigationBar: CartTotalCost(
+        onCheckout: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CartInformationPage(),
+          ),
+        ),
+        canCheckOut: myCarts.isNotEmpty,
       ),
     );
   }
