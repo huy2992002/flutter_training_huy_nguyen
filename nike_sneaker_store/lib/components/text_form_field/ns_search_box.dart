@@ -6,10 +6,18 @@ import 'package:nike_sneaker_store/resources/ns_color.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NSSearchBox extends StatelessWidget {
-  const NSSearchBox({super.key, this.controller, this.onChanged});
+  const NSSearchBox({
+    super.key,
+    this.controller,
+    this.onChanged,
+    this.onTap,
+    this.readOnly = false,
+  });
 
   final TextEditingController? controller;
   final Function(String)? onChanged;
+  final Function()? onTap;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +36,7 @@ class NSSearchBox extends StatelessWidget {
       child: TextField(
         controller: controller,
         onChanged: onChanged,
+        onTap: onTap,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(vertical: 14),
           border: InputBorder.none,
@@ -46,6 +55,7 @@ class NSSearchBox extends StatelessWidget {
             maxHeight: 24,
           ),
         ),
+        readOnly: readOnly,
       ),
     );
   }
