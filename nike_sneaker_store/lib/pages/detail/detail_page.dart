@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nike_sneaker_store/components/app_bar/icon_cart_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
@@ -32,29 +33,7 @@ class DetailPage extends StatelessWidget {
           ),
         ),
         title: 'Details',
-        rightIcon: Stack(
-          children: [
-            NsIconButton(
-              onPressed: () {},
-              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-              icon: SvgPicture.asset(
-                Assets.icons.icBag,
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
-              ),
-            ),
-            Positioned(
-              right: 0,
-              child: Container(
-                width: 10,
-                height: 10,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.error,
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
-          ],
-        ),
+        rightIcon: const IconCartAppBar()
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 26),
