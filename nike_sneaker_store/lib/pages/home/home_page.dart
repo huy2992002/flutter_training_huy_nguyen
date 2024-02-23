@@ -87,9 +87,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onAddCart: () {
-                        bool checkCart = myCarts
+                        bool hasCheckCart = myCarts
                             .any((element) => element.uuid == product.uuid);
-                        if (checkCart) {
+                        if (hasCheckCart) {
                           NSSnackBar.snackbarWarning(
                             context,
                             title: AppLocalizations.of(context)
