@@ -17,8 +17,8 @@ class NSBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> iconPaths = [
       Assets.icons.icHome,
-      Assets.icons.icCart,
       Assets.icons.icHeartOutline,
+      Assets.icons.icNotification,
       Assets.icons.icPerson,
     ];
 
