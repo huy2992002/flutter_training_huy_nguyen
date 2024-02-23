@@ -35,7 +35,7 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   Future<void> onLogin() async {
-    if (formKey.currentState != null || !formKey.currentState!.validate()) return;
+    if (formKey.currentState != null && !formKey.currentState!.validate()) return;
     isShowLoading();
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) =>
