@@ -257,6 +257,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noFavoriteNotification => 'Currently there are no notification';
 
   @override
+  String get phone => 'Phone';
+
+  @override
+  String get changeProfilePicture => 'Change Profile Picture';
+
+  @override
+  String get location => 'Location';
+
+  @override
+  String get mobileNumber => 'Mobile Number';
+
+  @override
+  String get saveNow => 'Save Now';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

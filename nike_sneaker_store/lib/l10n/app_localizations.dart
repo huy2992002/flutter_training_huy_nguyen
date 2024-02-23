@@ -597,6 +597,36 @@ abstract class AppLocalizations {
   /// **'Currently there are no notification'**
   String get noFavoriteNotification;
 
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
+  /// No description provided for @changeProfilePicture.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Profile Picture'**
+  String get changeProfilePicture;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// No description provided for @mobileNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile Number'**
+  String get mobileNumber;
+
+  /// No description provided for @saveNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Now'**
+  String get saveNow;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

@@ -83,7 +83,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
                 CartInformationItem(
                   controller: phoneController,
                   iconPath: Assets.icons.icPhone,
-                  label: AppLocalizations.of(context).emailAddress,
+                  label: AppLocalizations.of(context).phone,
                   onEdit: focusNodePhone.requestFocus,
                   onChanged: (_) {
                     setState(() {});

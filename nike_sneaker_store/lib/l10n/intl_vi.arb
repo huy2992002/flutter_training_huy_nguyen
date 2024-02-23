@@ -83,6 +83,11 @@
   "isNoResult": "Không tìm thấy sản phẩm",
   "noFavoriteProduct": "Hiện tại chưa có sản phẩm yêu thích nào",
   "noFavoriteNotification": "Hiện tại chưa có thông báo nào",
+  "phone": "Điện thoại",
+  "changeProfilePicture": "Thay đổi ảnh đại diện",
+  "location": "Vị trí",
+  "mobileNumber": "Số điện thoại",
+  "saveNow": "Lưu",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {

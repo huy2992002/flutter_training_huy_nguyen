@@ -257,6 +257,21 @@ class AppLocalizationsVi extends AppLocalizations {
   String get noFavoriteNotification => 'Hiện tại chưa có thông báo nào';
 
   @override
+  String get phone => 'Điện thoại';
+
+  @override
+  String get changeProfilePicture => 'Thay đổi ảnh đại diện';
+
+  @override
+  String get location => 'Vị trí';
+
+  @override
+  String get mobileNumber => 'Số điện thoại';
+
+  @override
+  String get saveNow => 'Lưu';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }
