@@ -5,6 +5,7 @@ import 'package:nike_sneaker_store/components/cards/card_product.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
+import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
@@ -14,6 +15,19 @@ class FavoritePage extends StatefulWidget {
 }
 
 class _FavoritePageState extends State<FavoritePage> {
+  List<ProductModel> favoriteProducts = [];
+
+  @override
+  void initState() {
+    getFavoriteProducts();
+    super.initState();
+  }
+
+  void getFavoriteProducts() {
+    favoriteProducts = products.where((e) => e.isFavorite == true).toList();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,29 +35,41 @@ class _FavoritePageState extends State<FavoritePage> {
       appBar: NSAppBar(
           title: AppLocalizations.of(context).favorite,
           rightIcon: const IconCartAppBar()),
-      body: GridView.builder(
-        itemCount: products.length,
-        padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 28),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 20,
-            crossAxisSpacing: 20,
-            childAspectRatio: 5 / 6),
-        itemBuilder: (context, index) {
-          final product = products[index];
-          return CardProduct(
-            product: product,
-            onFavorite: () =>
-                setState(() => product.isFavorite = !product.isFavorite),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DetailPage(product: product),
+      body: favoriteProducts.isEmpty
+          ? Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 30).copyWith(top: 250),
+              child: Text(
+                AppLocalizations.of(context).noFavoriteProduct,
+                style: NSStyle.h21SemiBold
+                    .copyWith(color: Theme.of(context).colorScheme.primary),
+                textAlign: TextAlign.center,
               ),
+            )
+          : GridView.builder(
+              itemCount: favoriteProducts.length,
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 28),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 20,
+                  childAspectRatio: 5 / 6),
+              itemBuilder: (context, index) {
+                final product = favoriteProducts[index];
+                return CardProduct(
+                  product: product,
+                  onFavorite: () =>
+                      setState(() => product.isFavorite = !product.isFavorite),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailPage(product: product),
+                    ),
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
     );
   }
 }
