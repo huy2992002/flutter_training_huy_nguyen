@@ -26,3 +26,5 @@ List<UserModel> accounts = [
   UserModel(uuid: Maths.randomUUid(length: 6), name: 'tram', email: 'tram@gmail.com', password: '123456'),
   UserModel(uuid: Maths.randomUUid(length: 6), name: 'linh', email: 'linh@gmail.com', password: '123456'),
 ];
+
+UserModel? userLogin;

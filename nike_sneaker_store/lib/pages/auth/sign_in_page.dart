@@ -43,6 +43,7 @@ class _SignInPageState extends State<SignInPage> {
         passwordController.text == e.password);
     if (checkUser) {
       isHideLoading();
+      userLogin = accounts.singleWhere((e) => e.email == emailController.text);
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const MainPage()),
