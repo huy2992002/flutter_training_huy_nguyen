@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   device_preview: ^1.1.0
+  dotted_line: ^3.2.2
   flutter:
     sdk: flutter
   flutter_localization: null
