@@ -19,7 +19,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<ProductModel> productViews = [];
   int categoryIndex = 0;
+
+  @override
+  void initState() {
+    getProducts();
+    super.initState();
+  }
+
+  void getProducts() {
+    productViews = products;
+  }
+
   @override
   Widget build(BuildContext context) {
     List<String> categories = [
@@ -27,6 +39,16 @@ class _HomePageState extends State<HomePage> {
       AppLocalizations.of(context).outDoor,
       AppLocalizations.of(context).tennis,
     ];
+
+    void changeCategory(String category) {
+      if (category == AppLocalizations.of(context).allShoes) {
+        productViews = products;
+        setState(() {});
+        return;
+      }
+      productViews = products.where((e) => e.category == category).toList();
+      setState(() {});
+    }
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -53,7 +75,10 @@ class _HomePageState extends State<HomePage> {
                   (index) => Padding(
                     padding: const EdgeInsets.only(right: 16),
                     child: CardCategory(
-                      onPressed: () => setState(() => categoryIndex = index),
+                      onPressed: () {
+                        setState(() => categoryIndex = index);
+                        changeCategory(categories[index]);
+                      },
                       text: categories[index],
                       backgroundColor: categoryIndex == index
                           ? Theme.of(context).colorScheme.primary
@@ -74,8 +99,8 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
-                children: List.generate(products.length, (index) {
-                  final product = products[index];
+                children: List.generate(productViews.length, (index) {
+                  final product = productViews[index];
                   return Padding(
                     padding: const EdgeInsets.only(right: 20),
                     child: CardProduct(
