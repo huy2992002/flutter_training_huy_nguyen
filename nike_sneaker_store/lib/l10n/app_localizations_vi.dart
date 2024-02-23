@@ -272,6 +272,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get saveNow => 'Lưu';
 
   @override
+  String get profile => 'Thông tin';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }

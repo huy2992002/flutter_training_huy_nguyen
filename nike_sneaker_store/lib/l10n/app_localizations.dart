@@ -627,6 +627,12 @@ abstract class AppLocalizations {
   /// **'Save Now'**
   String get saveNow;
 
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

@@ -272,6 +272,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get saveNow => 'Save Now';
 
   @override
+  String get profile => 'Profile';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

@@ -88,6 +88,7 @@
   "location": "Vị trí",
   "mobileNumber": "Số điện thoại",
   "saveNow": "Lưu",
+  "profile": "Thông tin",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {
