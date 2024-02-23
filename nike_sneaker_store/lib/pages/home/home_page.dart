@@ -9,6 +9,7 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
+import 'package:nike_sneaker_store/pages/home/search_page.dart';
 import 'package:nike_sneaker_store/pages/home/widgets/title_home.dart';
 
 class HomePage extends StatefulWidget {
@@ -59,9 +60,19 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         padding: const EdgeInsets.only(top: 16),
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: NSSearchBox(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: NSSearchBox(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SearchPage(),
+                  ),
+                );
+              },
+              readOnly: true,
+            ),
           ),
           const SizedBox(height: 24),
           TitleHome(text: AppLocalizations.of(context).selectCategory),
