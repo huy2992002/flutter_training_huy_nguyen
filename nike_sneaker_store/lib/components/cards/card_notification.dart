@@ -56,11 +56,12 @@ class CardNotification extends StatelessWidget {
                         notification.product.price.toPriceDollar(),
                         style: NSStyle.h14Medium.copyWith(
                           color: Theme.of(context).colorScheme.error,
+                          decoration: TextDecoration.lineThrough
                         ),
                       ),
                       const SizedBox(width: 20),
                       Text(
-                        notification.product.price.toPriceDollar(),
+                        notification.priceSale.toPriceDollar(),
                         style: NSStyle.h14Medium,
                       ),
                     ],
