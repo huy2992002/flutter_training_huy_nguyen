@@ -6,7 +6,6 @@ import 'package:nike_sneaker_store/components/cards/card_notification.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NotificationsPage extends StatefulWidget {
   const NotificationsPage({super.key});
@@ -47,7 +46,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
             if (notifications.isNotEmpty)
               Text(
                 AppLocalizations.of(context).recent,
-                style: NSStyle.h18Semibold,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
               ),
             const SizedBox(height: 16),
             if (notifications.isEmpty)
@@ -59,8 +60,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 ),
                 child: Text(
                   AppLocalizations.of(context).noFavoriteNotification,
-                  style: NSStyle.h21SemiBold
-                      .copyWith(color: Theme.of(context).colorScheme.primary),
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                   textAlign: TextAlign.center,
                 ),
               )

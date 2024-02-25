@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NSSearchBox extends StatelessWidget {
   const NSSearchBox({
@@ -37,13 +36,13 @@ class NSSearchBox extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         onTap: onTap,
+        style: Theme.of(context).textTheme.labelMedium?.copyWith(
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+            ),
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(vertical: 14),
           border: InputBorder.none,
           hintText: AppLocalizations.of(context).lookingForShoes,
-          hintStyle: NSStyle.h14SemiBold.copyWith(
-            color: Theme.of(context).colorScheme.onPrimaryContainer,
-          ),
           prefixIcon: Padding(
             padding: const EdgeInsets.only(left: 24, right: 12),
             child: SvgPicture.asset(

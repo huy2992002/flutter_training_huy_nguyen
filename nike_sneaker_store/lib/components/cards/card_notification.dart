@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class CardNotification extends StatelessWidget {
@@ -43,26 +42,28 @@ class CardNotification extends StatelessWidget {
                 children: [
                   Text(
                     notification.title,
-                    style: NSStyle.h14Medium.copyWith(
-                      color: notification.isRead
-                          ? Theme.of(context).colorScheme.onPrimaryContainer
-                          : Theme.of(context).colorScheme.primary,
-                    ),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: notification.isRead
+                              ? Theme.of(context).colorScheme.onPrimaryContainer
+                              : Theme.of(context).colorScheme.primary,
+                        ),
                   ),
                   const SizedBox(height: 8),
                   Row(
                     children: [
                       Text(
                         notification.product.price.toPriceDollar(),
-                        style: NSStyle.h14Medium.copyWith(
-                          color: Theme.of(context).colorScheme.error,
-                          decoration: TextDecoration.lineThrough
-                        ),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: Theme.of(context).colorScheme.error,
+                              decoration: TextDecoration.lineThrough,
+                            ),
                       ),
                       const SizedBox(width: 20),
                       Text(
                         notification.priceSale.toPriceDollar(),
-                        style: NSStyle.h14Medium,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: Theme.of(context).colorScheme.onBackground,
+                            ),
                       ),
                     ],
                   ),

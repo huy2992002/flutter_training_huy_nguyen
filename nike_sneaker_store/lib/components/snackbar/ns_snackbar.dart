@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NSSnackBar {
   static void snackbarDefault(
@@ -30,9 +29,9 @@ class NSSnackBar {
               Expanded(
                 child: Text(
                   title,
-                  style: NSStyle.h16Normal.copyWith(
-                    color: NSColor.darkOnPrimaryContainer,
-                  ),
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        color: NSColor.darkOnPrimaryContainer,
+                      ),
                 ),
               ),
             ],

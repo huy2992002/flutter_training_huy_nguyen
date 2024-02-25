@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class CartInformationItem extends StatelessWidget {
   const CartInformationItem({
@@ -44,8 +43,9 @@ class CartInformationItem extends StatelessWidget {
               TextField(
                 controller: controller,
                 onChanged: onChanged,
-                style: NSStyle.h14SemiBold.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimaryContainer),
+                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
                 decoration: const InputDecoration(
                   isDense: true,
                   contentPadding: EdgeInsets.zero,
@@ -57,8 +57,11 @@ class CartInformationItem extends StatelessWidget {
               const SizedBox(height: 2),
               Text(
                 label,
-                style: NSStyle.h12Medium,
-              )
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+              ),
             ],
           ),
         ),

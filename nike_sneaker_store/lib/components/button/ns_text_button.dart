@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NsTextButton extends StatelessWidget {
   const NsTextButton({
@@ -19,7 +18,10 @@ class NsTextButton extends StatelessWidget {
       onTap: onPressed,
       child: Text(
         text,
-        style: textStyle ?? NSStyle.h12Normal,
+        style: textStyle ??
+            Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
       ),
     );
   }

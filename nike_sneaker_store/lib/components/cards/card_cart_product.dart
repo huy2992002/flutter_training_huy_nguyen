@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class CardCartProduct extends StatelessWidget {
@@ -47,10 +46,17 @@ class CardCartProduct extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(product.name, style: NSStyle.h16Medium),
+                  Text(
+                    product.name,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
+                  ),
                   Text(
                     product.price.toPriceDollar(),
-                    style: NSStyle.h14Medium,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
                   ),
                 ],
               ),
@@ -66,9 +72,10 @@ class CardCartProduct extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
                     '${product.quantity}',
-                    style: NSStyle.h14Medium.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
-                    ),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color:
+                              Theme.of(context).colorScheme.onPrimaryContainer,
+                        ),
                   ),
                 ),
                 iconButton(

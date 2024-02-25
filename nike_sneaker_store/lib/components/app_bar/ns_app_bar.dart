@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
   const NSAppBar({
@@ -24,7 +23,12 @@ class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           if (leftIcon != null) leftIcon! else const SizedBox(width: 44),
-          Text(title, style: NSStyle.h16SemiBold),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
+          ),
           if (rightIcon != null) rightIcon! else const SizedBox(width: 44),
         ],
       ),

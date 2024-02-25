@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class PromptText extends StatelessWidget {
   const PromptText({
@@ -21,15 +20,17 @@ class PromptText extends StatelessWidget {
       children: [
         Text(
           text,
-          style: NSStyle.h16Medium.copyWith(
-            color: NSColor.neutral,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: NSColor.neutral,
+              ),
         ),
         GestureDetector(
           onTap: onTap,
           child: Text(
             title,
-            style: NSStyle.h16SemiBold,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
           ),
         ),
       ],

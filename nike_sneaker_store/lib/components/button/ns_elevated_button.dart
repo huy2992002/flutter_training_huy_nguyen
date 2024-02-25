@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NSElevatedButton extends StatelessWidget {
   const NSElevatedButton.text({
@@ -71,10 +70,10 @@ class NSElevatedButton extends StatelessWidget {
                   ],
                   Text(
                     text,
-                    style: NSStyle.h14SemiBold.copyWith(
-                      color:
-                          textColor ?? Theme.of(context).colorScheme.onPrimary,
-                    ),
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                          color: textColor ??
+                              Theme.of(context).colorScheme.onPrimary,
+                        ),
                   ),
                 ],
               ),

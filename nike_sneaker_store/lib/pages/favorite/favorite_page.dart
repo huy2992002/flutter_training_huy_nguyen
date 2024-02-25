@@ -5,7 +5,6 @@ import 'package:nike_sneaker_store/components/cards/card_product.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
@@ -46,8 +45,9 @@ class _FavoritePageState extends State<FavoritePage> {
               ),
               child: Text(
                 AppLocalizations.of(context).noFavoriteProduct,
-                style: NSStyle.h21SemiBold
-                    .copyWith(color: Theme.of(context).colorScheme.primary),
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                 textAlign: TextAlign.center,
               ),
             )

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NSTextFormField extends StatefulWidget {
   const NSTextFormField.text({
@@ -51,19 +50,22 @@ class _NSTextFormFieldState extends State<NSTextFormField> {
     return TextFormField(
       controller: widget.controller,
       onChanged: widget.onChanged,
-      
+      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            color: Theme.of(context).colorScheme.onSecondaryContainer,
+          ),
       decoration: InputDecoration(
         filled: true,
         fillColor: Theme.of(context).colorScheme.secondaryContainer,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 14,vertical: 16),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(14),
         ),
         hintText: widget.hintText,
-        hintStyle: NSStyle.h14Medium.copyWith(
-          color: Theme.of(context).colorScheme.onSecondaryContainer,
-        ),
+        errorStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: Theme.of(context).colorScheme.error,
+            ),
         suffixIcon: widget.isPassword
             ? GestureDetector(
                 onTap: () => setState(() => _isShowPassword = !_isShowPassword),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class CardSale extends StatelessWidget {
   const CardSale({
@@ -33,12 +32,18 @@ class CardSale extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: NSStyle.h12Medium),
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context).colorScheme.onBackground,
+                          ),
+                    ),
                     Text(
                       AppLocalizations.of(context).discountOff(discount),
-                      style: NSStyle.h36Black.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                     ),
                   ],
                 ),
@@ -46,7 +51,6 @@ class CardSale extends StatelessWidget {
             ),
           ),
         ),
-        
         Positioned(
           top: 0,
           right: 20,

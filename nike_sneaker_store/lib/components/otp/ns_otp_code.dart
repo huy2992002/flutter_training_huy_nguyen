@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 import 'package:pinput/pinput.dart';
 
 class NSOtpCode extends StatelessWidget {
@@ -25,9 +24,9 @@ class NSOtpCode extends StatelessWidget {
     final defaultPinTheme = PinTheme(
       width: 76,
       height: 56,
-      textStyle: NSStyle.h18Semibold.copyWith(
-        color: Theme.of(context).colorScheme.onSecondaryContainer,
-      ),
+      textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+            color: Theme.of(context).colorScheme.onSecondaryContainer,
+          ),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.secondaryContainer,
         borderRadius: BorderRadius.circular(12),

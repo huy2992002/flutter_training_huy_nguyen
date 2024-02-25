@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NSDialog {
   NSDialog._();
@@ -27,11 +26,18 @@ class NSDialog {
               icon,
               const SizedBox(height: 16),
             ],
-            Text(title, style: NSStyle.h16Bold),
+            Text(
+              title,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
             const SizedBox(height: 8),
             Text(
               subTitle,
-              style: NSStyle.h16Normal.copyWith(color: NSColor.neutral),
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    color: NSColor.neutral,
+                  ),
               textAlign: TextAlign.center,
             ),
           ],
@@ -64,7 +70,9 @@ class NSDialog {
             ],
             Text(
               title,
-              style: NSStyle.h20Medium,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),

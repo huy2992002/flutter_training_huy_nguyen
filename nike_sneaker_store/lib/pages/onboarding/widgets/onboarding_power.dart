@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class OnboardingPower extends StatelessWidget {
   const OnboardingPower({
@@ -18,17 +17,17 @@ class OnboardingPower extends StatelessWidget {
           const SizedBox(height: 50),
           Text(
             AppLocalizations.of(context).youHavePowerTo,
-            style: NSStyle.h32Bold.copyWith(
-              color: Theme.of(context).colorScheme.onSecondary,
-            ),
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                  color: Theme.of(context).colorScheme.onSecondary,
+                ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 30),
           Text(
             AppLocalizations.of(context).thereAreManyBeautifulAttractive,
-            style: NSStyle.h16Normal.copyWith(
-              color: Theme.of(context).colorScheme.onSecondary,
-            ),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  color: Theme.of(context).colorScheme.onSecondary,
+                ),
             textAlign: TextAlign.center,
           ),
         ],

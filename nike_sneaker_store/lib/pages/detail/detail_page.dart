@@ -8,7 +8,6 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/detail/widgets/ns_read_more.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class DetailPage extends StatelessWidget {
@@ -41,15 +40,26 @@ class DetailPage extends StatelessWidget {
           right: 20,
         ),
         children: [
-          Text(product.name, style: NSStyle.h26Bold),
+          Text(
+            product.name,
+            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
+          ),
           const SizedBox(height: 8),
           Text(
             product.category,
-            style: NSStyle.h16Normal
-                .copyWith(color: Theme.of(context).colorScheme.primary),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
           ),
           const SizedBox(height: 8),
-          Text(product.price.toPriceDollar(), style: NSStyle.h24Semibold),
+          Text(
+            product.price.toPriceDollar(),
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
             child: Image.asset(

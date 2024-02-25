@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class TitleHome extends StatelessWidget {
   const TitleHome({
@@ -17,7 +16,9 @@ class TitleHome extends StatelessWidget {
       padding: padding ?? const EdgeInsets.only(left: 20, bottom: 14),
       child: Text(
         text,
-        style: NSStyle.h16SemiBold,
+        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
       ),
     );
   }

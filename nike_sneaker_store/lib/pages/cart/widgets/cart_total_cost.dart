@@ -5,7 +5,6 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_value_item.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class CartTotalCost extends StatelessWidget {
@@ -62,15 +61,17 @@ class CartTotalCost extends StatelessWidget {
             children: [
               Text(
                 AppLocalizations.of(context).totalCost,
-                style: NSStyle.h16Medium.copyWith(color: NSColor.neutral),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: NSColor.neutral,
+                    ),
               ),
               const Spacer(),
               Text(
                 totalCost.toPriceDollar(),
-                style: NSStyle.h16SemiBold.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontFamily: 'Poppins',
-                ),
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontFamily: 'Poppins',
+                    ),
               ),
             ],
           ),

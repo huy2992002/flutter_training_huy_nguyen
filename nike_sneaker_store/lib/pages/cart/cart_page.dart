@@ -8,7 +8,6 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_information_page.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_total_cost.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -38,8 +37,9 @@ class _CartPageState extends State<CartPage> {
             ? Center(
                 child: Text(
                   AppLocalizations.of(context).cartEmpty,
-                  style: NSStyle.h21SemiBold
-                      .copyWith(color: Theme.of(context).colorScheme.primary),
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                   textAlign: TextAlign.center,
                 ),
               )
@@ -49,7 +49,9 @@ class _CartPageState extends State<CartPage> {
                   const SizedBox(height: 16),
                   Text(
                     AppLocalizations.of(context).intItem(myCarts.length),
-                    style: NSStyle.h16Medium,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
                   ),
                   Expanded(
                     child: ListView.separated(

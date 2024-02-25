@@ -9,7 +9,6 @@ import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_information_item.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_total_cost.dart';
 import 'package:nike_sneaker_store/pages/main/main_page.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class CartInformationPage extends StatefulWidget {
   const CartInformationPage({super.key});
@@ -72,7 +71,9 @@ class _CartInformationPageState extends State<CartInformationPage> {
               children: [
                 Text(
                   AppLocalizations.of(context).contactInformation,
-                  style: NSStyle.h14Medium,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
                 ),
                 const SizedBox(height: 16),
                 CartInformationItem(
@@ -99,7 +100,9 @@ class _CartInformationPageState extends State<CartInformationPage> {
                 const SizedBox(height: 12),
                 Text(
                   AppLocalizations.of(context).address,
-                  style: NSStyle.h14Medium,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
                 ),
                 const SizedBox(height: 8),
                 Row(

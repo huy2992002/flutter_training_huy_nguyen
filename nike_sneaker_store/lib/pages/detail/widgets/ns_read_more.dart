@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NSReadMore extends StatefulWidget {
   const NSReadMore({
@@ -29,7 +28,10 @@ class _NSReadMoreState extends State<NSReadMore> {
           hoverColor: Colors.transparent,
           child: Text(
             widget.text,
-            style: NSStyle.h14Normal.copyWith(color: NSColor.neutral),
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: NSColor.neutral,
+                  fontWeight: FontWeight.w400,
+                ),
             maxLines: _isShowAllText ? null : widget.maxLine,
             overflow: _isShowAllText ? null : TextOverflow.ellipsis,
           ),
@@ -40,8 +42,10 @@ class _NSReadMoreState extends State<NSReadMore> {
             onTap: () => setState(() => _isShowAllText = true),
             child: Text(
               AppLocalizations.of(context).readMore,
-              style: NSStyle.h14Normal
-                  .copyWith(color: Theme.of(context).colorScheme.primary),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.w400,
+                  ),
               textAlign: TextAlign.right,
             ),
           ),

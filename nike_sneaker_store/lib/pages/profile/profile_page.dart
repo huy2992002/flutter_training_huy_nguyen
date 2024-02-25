@@ -6,7 +6,6 @@ import 'package:nike_sneaker_store/components/text_form_field/ns_text_form_field
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -51,21 +50,29 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 8),
                 Center(
-                    child: Text(userLogin?.name ?? '',
-                        style: NSStyle.h14SemiBold)),
+                  child: Text(
+                    userLogin?.name ?? '',
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
+                  ),
+                ),
                 const SizedBox(height: 6),
                 Center(
                   child: Text(
                     AppLocalizations.of(context).changeProfilePicture,
-                    style: NSStyle.h12Normal.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                   ),
                 ),
                 const SizedBox(height: 43),
                 Text(
                   AppLocalizations.of(context).yourName,
-                  style: NSStyle.h16SemiBold,
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
                 ),
                 const SizedBox(height: 17),
                 NSTextFormField.text(
@@ -74,7 +81,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 const SizedBox(height: 34),
                 Text(
                   AppLocalizations.of(context).location,
-                  style: NSStyle.h16SemiBold,
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
                 ),
                 const SizedBox(height: 17),
                 NSTextFormField.text(
@@ -83,7 +92,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 const SizedBox(height: 34),
                 Text(
                   AppLocalizations.of(context).mobileNumber,
-                  style: NSStyle.h16SemiBold,
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
                 ),
                 const SizedBox(height: 17),
                 NSTextFormField.text(

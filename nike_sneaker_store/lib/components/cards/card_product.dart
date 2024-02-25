@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class CardProduct extends StatelessWidget {
@@ -55,42 +54,51 @@ class CardProduct extends StatelessWidget {
                 if (product.isBestSeller) ...[
                   Text(
                     'BEST SELLER',
-                    style: NSStyle.h12Medium.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                   ),
                   const SizedBox(height: 4),
                 ],
-                Text(product.name, style: NSStyle.h16SemiBold),
+                Text(
+                  product.name,
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
+                ),
                 const SizedBox(height: 12),
                 Text(
                   product.price.toPriceDollar(),
-                  style: NSStyle.h14Medium,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
                 ),
               ],
             ),
           ),
-          if(onAddCart != null) Positioned(
-            right: 0,
-            bottom: 0,
-            child: GestureDetector(
-              onTap: onAddCart,
-              child: Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16),
+          if (onAddCart != null)
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: GestureDetector(
+                onTap: onAddCart,
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
+                    ),
                   ),
-                ),
-                child: SvgPicture.asset(
-                  Assets.icons.icAdd,
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  child: SvgPicture.asset(
+                    Assets.icons.icAdd,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
                 ),
               ),
             ),
-          ),
         ],
       ),
     );

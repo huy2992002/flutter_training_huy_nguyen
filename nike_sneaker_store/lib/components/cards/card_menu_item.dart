@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class CardMenuItem extends StatelessWidget {
   const CardMenuItem({
@@ -28,9 +27,9 @@ class CardMenuItem extends StatelessWidget {
           const SizedBox(width: 30),
           Text(
             title,
-            style: NSStyle.h16Medium.copyWith(
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
           ),
         ],
       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class CardCategory extends StatelessWidget {
   const CardCategory({
@@ -28,10 +27,10 @@ class CardCategory extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: NSStyle.h12Normal.copyWith(
-            color:
-                textColor ?? Theme.of(context).colorScheme.onPrimaryContainer,
-          ),
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                color: textColor ??
+                    Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
         ),
       ),
     );

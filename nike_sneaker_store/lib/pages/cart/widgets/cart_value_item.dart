@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class CartValueItem extends StatelessWidget {
   const CartValueItem({
@@ -18,15 +17,17 @@ class CartValueItem extends StatelessWidget {
       children: [
         Text(
           title,
-          style: NSStyle.h16Medium.copyWith(color: NSColor.neutral),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: NSColor.neutral,
+              ),
         ),
         const Spacer(),
         Text(
           value,
-          style: NSStyle.h16SemiBold.copyWith(
-            color: Theme.of(context).colorScheme.onPrimaryContainer,
-            fontFamily: 'Poppins',
-          ),
+          style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                fontFamily: 'Poppins',
+              ),
         ),
       ],
     );

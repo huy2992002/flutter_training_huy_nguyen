@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class TitleAuth extends StatelessWidget {
   const TitleAuth({
@@ -19,14 +18,16 @@ class TitleAuth extends StatelessWidget {
         children: [
           Text(
             title,
-            style: NSStyle.h32Bold,
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
           ),
           const SizedBox(height: 8),
           Text(
             subTitle,
-            style: NSStyle.h16Medium.copyWith(
-              color: NSColor.neutral,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: NSColor.neutral,
+                ),
             textAlign: TextAlign.center,
           ),
         ],

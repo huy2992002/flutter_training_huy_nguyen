@@ -9,7 +9,6 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
-import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -70,8 +69,10 @@ class _SearchPageState extends State<SearchPage> {
                         _searchController.text.isEmpty
                             ? AppLocalizations.of(context).searchProduct
                             : AppLocalizations.of(context).isNoResult,
-                        style: NSStyle.h21SemiBold.copyWith(
-                            color: Theme.of(context).colorScheme.primary),
+                        style:
+                            Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                         textAlign: TextAlign.center,
                       ),
                     )
