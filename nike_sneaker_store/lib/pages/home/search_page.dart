@@ -22,16 +22,18 @@ class _SearchPageState extends State<SearchPage> {
   List<ProductModel> _searchProducts = [];
   TextEditingController _searchController = TextEditingController();
 
+  void _resetState() => setState(() {});
+
   void _search(String searchText) {
     if (searchText.isEmpty) {
       _searchProducts = [];
-      setState(() {});
+      _resetState();
       return;
     }
     _searchProducts = products
         .where((e) => e.name.toLowerCase().contains(searchText.toLowerCase()))
         .toList();
-    setState(() {});
+    _resetState();
   }
 
   @override
@@ -87,8 +89,10 @@ class _SearchPageState extends State<SearchPage> {
                         final product = _searchProducts[index];
                         return CardProduct(
                           product: product,
-                          onFavorite: () => setState(
-                              () => product.isFavorite = !product.isFavorite),
+                          onFavorite: () {
+                            product.isFavorite = !product.isFavorite;
+                            _resetState();
+                          },
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(

@@ -25,6 +25,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
     const OnboardingPower(),
   ];
 
+  void _resetState() => setState(() {});
+
   void _onNext() {
     if (_pageIndex < _onboardPages.length - 1) {
       _pageController.nextPage(
@@ -55,7 +57,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               itemBuilder: (context, index) => _onboardPages[index],
               onPageChanged: (value) {
                 _pageIndex = value;
-                setState(() {});
+                _resetState();
               },
             ),
           ),

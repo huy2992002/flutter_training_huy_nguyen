@@ -29,6 +29,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  void _resetState() => setState(() {});
+
   void _getProducts() {
     _productViews = products;
   }
@@ -44,11 +46,11 @@ class _HomePageState extends State<HomePage> {
     void changeCategory(String category) {
       if (category == AppLocalizations.of(context).allShoes) {
         _productViews = products;
-        setState(() {});
+        _resetState();
         return;
       }
       _productViews = products.where((e) => e.category == category).toList();
-      setState(() {});
+      _resetState();
     }
 
     return Scaffold(
@@ -87,7 +89,8 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.only(right: 16),
                     child: CardCategory(
                       onPressed: () {
-                        setState(() => _categoryIndex = index);
+                        _categoryIndex = index;
+                        _resetState();
                         changeCategory(categories[index]);
                       },
                       text: categories[index],
@@ -141,9 +144,8 @@ class _HomePageState extends State<HomePage> {
                         }
                       },
                       onFavorite: () {
-                        setState(() {
-                          product.isFavorite = !product.isFavorite;
-                        });
+                        product.isFavorite = !product.isFavorite;
+                        _resetState();
                       },
                     ),
                   );

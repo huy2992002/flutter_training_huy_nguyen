@@ -16,13 +16,18 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
+  void _resetState() => setState(() {});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NSAppBar(
         title: AppLocalizations.of(context).notifications,
         rightIcon: NsIconButton(
-          onPressed: () => setState(() => notifications.clear()),
+          onPressed: () {
+            notifications.clear();
+            _resetState();
+          },
           icon: SvgPicture.asset(
             Assets.icons.icTrash,
             color: Theme.of(context).colorScheme.onPrimaryContainer,
@@ -63,7 +68,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       notification: notification,
                       onTap: () {
                         notification.isRead = true;
-                        setState(() {});
+                        _resetState();
                       },
                     );
                   },

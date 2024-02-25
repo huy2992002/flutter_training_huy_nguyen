@@ -23,9 +23,11 @@ class _FavoritePageState extends State<FavoritePage> {
     super.initState();
   }
 
+  void _resetState() => setState(() {});
+
   void _getFavoriteProducts() {
     _favoriteProducts = products.where((e) => e.isFavorite == true).toList();
-    setState(() {});
+    _resetState();
   }
 
   @override
@@ -59,8 +61,10 @@ class _FavoritePageState extends State<FavoritePage> {
                 final product = _favoriteProducts[index];
                 return CardProduct(
                   product: product,
-                  onFavorite: () =>
-                      setState(() => product.isFavorite = !product.isFavorite),
+                  onFavorite: () {
+                    product.isFavorite = !product.isFavorite;
+                    _resetState();
+                  },
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(

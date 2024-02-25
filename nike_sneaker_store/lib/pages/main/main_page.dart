@@ -15,6 +15,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
 
+  void _resetState() => setState(() {});
+
   List<Widget> _pages = [
     const HomePage(),
     const FavoritePage(),
@@ -24,7 +26,7 @@ class _MainPageState extends State<MainPage> {
 
   void changePage(int index) {
     _currentIndex = index;
-    setState(() {});
+    _resetState();
   }
 
   @override
