@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
 
-class DoubleText extends StatelessWidget {
-  const DoubleText({
+class PromptText extends StatelessWidget {
+  const PromptText({
     required this.text,
     required this.title,
     this.onTap,

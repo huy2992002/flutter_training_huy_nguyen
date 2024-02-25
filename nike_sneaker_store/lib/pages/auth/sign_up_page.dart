@@ -8,7 +8,7 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
-import 'package:nike_sneaker_store/pages/auth/widgets/double_text.dart';
+import 'package:nike_sneaker_store/pages/auth/widgets/prompt_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
 import 'package:nike_sneaker_store/utils/maths.dart';
@@ -138,7 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 isDisable: isLoading,
               ),
               const SizedBox(height: 50),
-              DoubleText(
+              PromptText(
                 text: AppLocalizations.of(context).alreadyAccount,
                 title: AppLocalizations.of(context).signIn,
                 onTap: () => Navigator.push(
