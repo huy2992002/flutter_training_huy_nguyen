@@ -20,17 +20,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<ProductModel> productViews = [];
-  int categoryIndex = 0;
+  List<ProductModel> _productViews = [];
+  int _categoryIndex = 0;
 
   @override
   void initState() {
-    getProducts();
+    _getProducts();
     super.initState();
   }
 
-  void getProducts() {
-    productViews = products;
+  void _getProducts() {
+    _productViews = products;
   }
 
   @override
@@ -43,11 +43,11 @@ class _HomePageState extends State<HomePage> {
 
     void changeCategory(String category) {
       if (category == AppLocalizations.of(context).allShoes) {
-        productViews = products;
+        _productViews = products;
         setState(() {});
         return;
       }
-      productViews = products.where((e) => e.category == category).toList();
+      _productViews = products.where((e) => e.category == category).toList();
       setState(() {});
     }
 
@@ -87,14 +87,14 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.only(right: 16),
                     child: CardCategory(
                       onPressed: () {
-                        setState(() => categoryIndex = index);
+                        setState(() => _categoryIndex = index);
                         changeCategory(categories[index]);
                       },
                       text: categories[index],
-                      backgroundColor: categoryIndex == index
+                      backgroundColor: _categoryIndex == index
                           ? Theme.of(context).colorScheme.primary
                           : Theme.of(context).colorScheme.primaryContainer,
-                      textColor: categoryIndex == index
+                      textColor: _categoryIndex == index
                           ? Theme.of(context).colorScheme.onPrimary
                           : Theme.of(context).colorScheme.onPrimaryContainer,
                     ),
@@ -110,8 +110,8 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
-                children: List.generate(productViews.length, (index) {
-                  final product = productViews[index];
+                children: List.generate(_productViews.length, (index) {
+                  final product = _productViews[index];
                   return Padding(
                     padding: const EdgeInsets.only(right: 20),
                     child: CardProduct(

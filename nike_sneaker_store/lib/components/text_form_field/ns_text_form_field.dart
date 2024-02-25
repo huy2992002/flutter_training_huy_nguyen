@@ -39,10 +39,10 @@ class NSTextFormField extends StatefulWidget {
 }
 
 class _NSTextFormFieldState extends State<NSTextFormField> {
-  bool isShowPassword = false;
+  bool _isShowPassword = false;
   @override
   void initState() {
-    isShowPassword = widget.isPassword;
+    _isShowPassword = widget.isPassword;
     super.initState();
   }
 
@@ -66,9 +66,9 @@ class _NSTextFormFieldState extends State<NSTextFormField> {
         ),
         suffixIcon: widget.isPassword
             ? GestureDetector(
-                onTap: () => setState(() => isShowPassword = !isShowPassword),
+                onTap: () => setState(() => _isShowPassword = !_isShowPassword),
                 child: SvgPicture.asset(
-                  isShowPassword
+                  _isShowPassword
                       ? Assets.icons.icEyeHidden
                       : Assets.icons.icEye,
                   color: Theme.of(context).colorScheme.onSecondaryContainer,
@@ -82,7 +82,7 @@ class _NSTextFormFieldState extends State<NSTextFormField> {
           minWidth: 48,
         ),
       ),
-      obscureText: isShowPassword,
+      obscureText: _isShowPassword,
       validator: widget.validator,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       onFieldSubmitted: widget.onFieldSubmitted,

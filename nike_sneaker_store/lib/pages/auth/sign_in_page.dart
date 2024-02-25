@@ -21,36 +21,36 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  bool isLoading = false;
-  final formKey = GlobalKey<FormState>();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
+  final _formKey = GlobalKey<FormState>();
 
-  void isShowLoading() {
-    setState(() => isLoading = true);
+  void _isShowLoading() {
+    setState(() => _isLoading = true);
   }
 
-  void isHideLoading() {
-    setState(() => isLoading = false);
+  void _isHideLoading() {
+    setState(() => _isLoading = false);
   }
 
-  Future<void> onLogin() async {
-    if (formKey.currentState != null && !formKey.currentState!.validate()) return;
-    isShowLoading();
+  Future<void> _onLogin() async {
+    if (_formKey.currentState != null && !_formKey.currentState!.validate()) return;
+    _isShowLoading();
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) =>
-        emailController.text == e.email &&
-        passwordController.text == e.password);
+        _emailController.text == e.email &&
+        _passwordController.text == e.password);
     if (checkUser) {
-      isHideLoading();
-      userLogin = accounts.singleWhere((e) => e.email == emailController.text);
+      _isHideLoading();
+      userLogin = accounts.singleWhere((e) => e.email == _emailController.text);
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const MainPage()),
         (route) => false,
       );
     } else {
-      isHideLoading();
+      _isHideLoading();
       NSSnackBar.snackbarError(
         context,
         title: AppLocalizations.of(context).emailOrPasswordIncorrect,
@@ -64,7 +64,7 @@ class _SignInPageState extends State<SignInPage> {
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
         body: Form(
-          key: formKey,
+          key: _formKey,
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
               top: MediaQuery.paddingOf(context).top + 80,
@@ -77,7 +77,7 @@ class _SignInPageState extends State<SignInPage> {
               const SizedBox(height: 54),
               TitleLabel(text: AppLocalizations.of(context).emailAddress),
               NSTextFormField.text(
-                controller: emailController,
+                controller: _emailController,
                 hintText: AppLocalizations.of(context).hintTextEmail,
                 validator: (value) => Validator.validatorEmail(context, value),
                 textInputAction: TextInputAction.next,
@@ -85,12 +85,12 @@ class _SignInPageState extends State<SignInPage> {
               const SizedBox(height: 30),
               TitleLabel(text: AppLocalizations.of(context).password),
               NSTextFormField.password(
-                controller: passwordController,
+                controller: _passwordController,
                 hintText: AppLocalizations.of(context).hintTextPassword,
                 validator: (value) =>
                     Validator.validatorPassword(context, value),
                 textInputAction: TextInputAction.done,
-                onFieldSubmitted: (value) => onLogin(),
+                onFieldSubmitted: (value) => _onLogin(),
               ),
               const SizedBox(height: 12),
               Align(
@@ -107,9 +107,9 @@ class _SignInPageState extends State<SignInPage> {
               ),
               const SizedBox(height: 24),
               NSElevatedButton.text(
-                onPressed: onLogin,
+                onPressed: _onLogin,
                 text: AppLocalizations.of(context).signIn,
-                isDisable: isLoading,
+                isDisable: _isLoading,
               ),
               const SizedBox(height: 200),
               PromptText(

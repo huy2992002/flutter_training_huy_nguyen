@@ -16,15 +16,15 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController locationController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _locationController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
 
   @override
   void initState() {
-    nameController.text = userLogin?.name ?? '';
-    locationController.text = userLogin?.address ?? '';
-    phoneController.text = userLogin?.phone ?? '';
+    _nameController.text = userLogin?.name ?? '';
+    _locationController.text = userLogin?.address ?? '';
+    _phoneController.text = userLogin?.phone ?? '';
     super.initState();
   }
 

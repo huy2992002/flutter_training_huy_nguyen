@@ -18,26 +18,26 @@ class NSReadMore extends StatefulWidget {
 }
 
 class _NSReadMoreState extends State<NSReadMore> {
-  bool isShowAllText = false;
+  bool _isShowAllText = false;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         InkWell(
-          onTap: () => setState(() => isShowAllText = !isShowAllText),
+          onTap: () => setState(() => _isShowAllText = !_isShowAllText),
           hoverColor: Colors.transparent,
           child: Text(
             widget.text,
             style: NSStyle.h14Normal.copyWith(color: NSColor.neutral),
-            maxLines: isShowAllText ? null : widget.maxLine,
-            overflow: isShowAllText ? null : TextOverflow.ellipsis,
+            maxLines: _isShowAllText ? null : widget.maxLine,
+            overflow: _isShowAllText ? null : TextOverflow.ellipsis,
           ),
         ),
         const SizedBox(height: 10),
-        if (!isShowAllText)
+        if (!_isShowAllText)
           GestureDetector(
-            onTap: () => setState(() => isShowAllText = true),
+            onTap: () => setState(() => _isShowAllText = true),
             child: Text(
               AppLocalizations.of(context).readMore,
               style: NSStyle.h14Normal

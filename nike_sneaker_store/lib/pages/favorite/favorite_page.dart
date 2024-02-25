@@ -15,16 +15,16 @@ class FavoritePage extends StatefulWidget {
 }
 
 class _FavoritePageState extends State<FavoritePage> {
-  List<ProductModel> favoriteProducts = [];
+  List<ProductModel> _favoriteProducts = [];
 
   @override
   void initState() {
-    getFavoriteProducts();
+    _getFavoriteProducts();
     super.initState();
   }
 
-  void getFavoriteProducts() {
-    favoriteProducts = products.where((e) => e.isFavorite == true).toList();
+  void _getFavoriteProducts() {
+    _favoriteProducts = products.where((e) => e.isFavorite == true).toList();
     setState(() {});
   }
 
@@ -35,7 +35,7 @@ class _FavoritePageState extends State<FavoritePage> {
       appBar: NSAppBar(
           title: AppLocalizations.of(context).favorite,
           rightIcon: const IconCartAppBar()),
-      body: favoriteProducts.isEmpty
+      body: _favoriteProducts.isEmpty
           ? Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 30).copyWith(top: 250),
@@ -47,7 +47,7 @@ class _FavoritePageState extends State<FavoritePage> {
               ),
             )
           : GridView.builder(
-              itemCount: favoriteProducts.length,
+              itemCount: _favoriteProducts.length,
               padding:
                   const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 28),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -56,7 +56,7 @@ class _FavoritePageState extends State<FavoritePage> {
                   crossAxisSpacing: 20,
                   childAspectRatio: 5 / 6),
               itemBuilder: (context, index) {
-                final product = favoriteProducts[index];
+                final product = _favoriteProducts[index];
                 return CardProduct(
                   product: product,
                   onFavorite: () =>

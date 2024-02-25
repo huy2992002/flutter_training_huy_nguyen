@@ -19,25 +19,25 @@ class CartInformationPage extends StatefulWidget {
 }
 
 class _CartInformationPageState extends State<CartInformationPage> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  FocusNode focusNodeEmail = FocusNode();
-  FocusNode focusNodePhone = FocusNode();
-  FocusNode addressNode = FocusNode();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _addressController = TextEditingController();
+  FocusNode _focusNodeEmail = FocusNode();
+  FocusNode _focusNodePhone = FocusNode();
+  FocusNode _addressNode = FocusNode();
 
   @override
   void initState() {
-    emailController.text = userLogin?.email ?? '';
-    phoneController.text = userLogin?.phone ?? '';
-    addressController.text = userLogin?.address ?? '';
+    _emailController.text = userLogin?.email ?? '';
+    _phoneController.text = userLogin?.phone ?? '';
+    _addressController.text = userLogin?.address ?? '';
     super.initState();
   }
 
-  bool get canCheckOut =>
-      emailController.text.isNotEmpty &&
-      phoneController.text.isNotEmpty &&
-      addressController.text.isNotEmpty;
+  bool get _canCheckOut =>
+      _emailController.text.isNotEmpty &&
+      _phoneController.text.isNotEmpty &&
+      _addressController.text.isNotEmpty;
 
   @override
   Widget build(BuildContext context) {
@@ -70,25 +70,25 @@ class _CartInformationPageState extends State<CartInformationPage> {
                 ),
                 const SizedBox(height: 16),
                 CartInformationItem(
-                  controller: emailController,
+                  controller: _emailController,
                   iconPath: Assets.icons.icEmail,
                   label: AppLocalizations.of(context).emailAddress,
-                  onEdit: focusNodeEmail.requestFocus,
+                  onEdit: _focusNodeEmail.requestFocus,
                   onChanged: (_) {
                     setState(() {});
                   },
-                  focusNode: focusNodeEmail,
+                  focusNode: _focusNodeEmail,
                 ),
                 const SizedBox(height: 16),
                 CartInformationItem(
-                  controller: phoneController,
+                  controller: _phoneController,
                   iconPath: Assets.icons.icPhone,
                   label: AppLocalizations.of(context).phone,
-                  onEdit: focusNodePhone.requestFocus,
+                  onEdit: _focusNodePhone.requestFocus,
                   onChanged: (_) {
                     setState(() {});
                   },
-                  focusNode: focusNodePhone,
+                  focusNode: _focusNodePhone,
                 ),
                 const SizedBox(height: 12),
                 Text(
@@ -100,7 +100,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
                   children: [
                     Expanded(
                       child: TextField(
-                        controller: addressController,
+                        controller: _addressController,
                         onChanged: (_) {
                           setState(() {});
                         },
@@ -109,11 +109,11 @@ class _CartInformationPageState extends State<CartInformationPage> {
                           isDense: true,
                           border: InputBorder.none,
                         ),
-                        focusNode: addressNode,
+                        focusNode: _addressNode,
                       ),
                     ),
                     GestureDetector(
-                      onTap: addressNode.requestFocus,
+                      onTap: _addressNode.requestFocus,
                       child: SvgPicture.asset(Assets.icons.icEdit),
                     )
                   ],
@@ -143,7 +143,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
               ),
             );
           },
-          canCheckOut: canCheckOut,
+          canCheckOut: _canCheckOut,
         ),
       ),
     );

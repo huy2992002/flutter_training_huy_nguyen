@@ -19,16 +19,16 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  List<ProductModel> searchProducts = [];
-  TextEditingController searchController = TextEditingController();
+  List<ProductModel> _searchProducts = [];
+  TextEditingController _searchController = TextEditingController();
 
-  void search(String searchText) {
+  void _search(String searchText) {
     if (searchText.isEmpty) {
-      searchProducts = [];
+      _searchProducts = [];
       setState(() {});
       return;
     }
-    searchProducts = products
+    _searchProducts = products
         .where((e) => e.name.toLowerCase().contains(searchText.toLowerCase()))
         .toList();
     setState(() {});
@@ -56,16 +56,16 @@ class _SearchPageState extends State<SearchPage> {
           children: [
             const SizedBox(height: 24),
             NSSearchBox(
-              controller: searchController,
-              onChanged: search,
+              controller: _searchController,
+              onChanged: _search,
             ),
             const SizedBox(height: 18),
             Expanded(
-              child: searchProducts.isEmpty
+              child: _searchProducts.isEmpty
                   ? Padding(
                       padding: const EdgeInsets.only(top: 250),
                       child: Text(
-                        searchController.text.isEmpty
+                        _searchController.text.isEmpty
                             ? AppLocalizations.of(context).searchProduct
                             : AppLocalizations.of(context).isNoResult,
                         style: NSStyle.h21SemiBold.copyWith(
@@ -74,7 +74,7 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     )
                   : GridView.builder(
-                      itemCount: searchProducts.length,
+                      itemCount: _searchProducts.length,
                       padding: const EdgeInsets.only(top: 10),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -84,7 +84,7 @@ class _SearchPageState extends State<SearchPage> {
                         childAspectRatio: 5 / 6,
                       ),
                       itemBuilder: (context, index) {
-                        final product = searchProducts[index];
+                        final product = _searchProducts[index];
                         return CardProduct(
                           product: product,
                           onFavorite: () => setState(

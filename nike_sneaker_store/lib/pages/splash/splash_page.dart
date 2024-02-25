@@ -13,10 +13,10 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    toPage();
+    _toPage();
   }
 
-  Future<void> toPage() async {
+  Future<void> _toPage() async {
     await Future.delayed(const Duration(milliseconds: 2300), () {
       Navigator.push(
         context,

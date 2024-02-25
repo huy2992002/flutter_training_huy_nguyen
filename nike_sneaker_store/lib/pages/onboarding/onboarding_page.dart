@@ -19,14 +19,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
   int _pageIndex = 0;
   final PageController _pageController = PageController();
 
-  List<Widget> onboardPages = [
+  List<Widget> _onboardPages = [
     const OnboardingWelcome(),
     const OnboardingStart(),
     const OnboardingPower(),
   ];
 
-  void onNext() {
-    if (_pageIndex < onboardPages.length - 1) {
+  void _onNext() {
+    if (_pageIndex < _onboardPages.length - 1) {
       _pageController.nextPage(
         duration: const Duration(microseconds: 200),
         curve: Curves.bounceIn,
@@ -51,8 +51,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
           BackgroundOnboarding(
             child: PageView.builder(
               controller: _pageController,
-              itemCount: onboardPages.length,
-              itemBuilder: (context, index) => onboardPages[index],
+              itemCount: _onboardPages.length,
+              itemBuilder: (context, index) => _onboardPages[index],
               onPageChanged: (value) {
                 _pageIndex = value;
                 setState(() {});
@@ -68,7 +68,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
-                    onboardPages.length,
+                    _onboardPages.length,
                     (index) => AnimatedContainer(
                       duration: const Duration(milliseconds: 200),
                       width: _pageIndex == index ? 42 : 28,
@@ -85,7 +85,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 ),
                 const SizedBox(height: 60),
                 NSElevatedButton.text(
-                  onPressed: onNext,
+                  onPressed: _onNext,
                   backgroundColor: NSColor.background,
                   textColor: NSColor.onBackground,
                   text: _pageIndex == 0

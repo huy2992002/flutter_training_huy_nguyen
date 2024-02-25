@@ -22,26 +22,26 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmController = TextEditingController();
-  bool isLoading = false;
-  final formKey = GlobalKey<FormState>();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmController = TextEditingController();
+  bool _isLoading = false;
+  final _formKey = GlobalKey<FormState>();
 
   void isShowLoading() {
-    setState(() => isLoading = true);
+    setState(() => _isLoading = true);
   }
 
   void isHideLoading() {
-    setState(() => isLoading = false);
+    setState(() => _isLoading = false);
   }
 
   Future<void> onRegister() async {
-    if (formKey.currentState != null && !formKey.currentState!.validate()) return;
+    if (_formKey.currentState != null && !_formKey.currentState!.validate()) return;
     isShowLoading();
     await Future.delayed(const Duration(seconds: 2));
-    bool checkUser = accounts.any((e) => emailController.text == e.email);
+    bool checkUser = accounts.any((e) => _emailController.text == e.email);
     if (checkUser) {
       isHideLoading();
       NSSnackBar.snackbarError(
@@ -51,9 +51,9 @@ class _SignUpPageState extends State<SignUpPage> {
     } else {
       UserModel user = UserModel(
         uuid: Maths.randomUUid(length: 6),
-        name: nameController.text,
-        email: emailController.text,
-        password: passwordController.text,
+        name: _nameController.text,
+        email: _emailController.text,
+        password: _passwordController.text,
       );
       accounts.add(user);
       isHideLoading();
@@ -71,7 +71,7 @@ class _SignUpPageState extends State<SignUpPage> {
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
         body: Form(
-          key: formKey,
+          key: _formKey,
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
               top: MediaQuery.paddingOf(context).top + 23,
@@ -95,7 +95,7 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(height: 54),
               TitleLabel(text: AppLocalizations.of(context).yourName),
               NSTextFormField.text(
-                controller: nameController,
+                controller: _nameController,
                 hintText: AppLocalizations.of(context).hintTextDefault,
                 validator: (value) =>
                     Validator.validatorRequired(context, value),
@@ -104,7 +104,7 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(height: 20),
               TitleLabel(text: AppLocalizations.of(context).emailAddress),
               NSTextFormField.text(
-                controller: emailController,
+                controller: _emailController,
                 hintText: AppLocalizations.of(context).hintTextEmail,
                 validator: (value) => Validator.validatorEmail(context, value),
                 textInputAction: TextInputAction.next,
@@ -112,7 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(height: 20),
               TitleLabel(text: AppLocalizations.of(context).password),
               NSTextFormField.password(
-                controller: passwordController,
+                controller: _passwordController,
                 hintText: AppLocalizations.of(context).hintTextPassword,
                 validator: (value) =>
                     Validator.validatorPassword(context, value),
@@ -121,12 +121,12 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(height: 20),
               TitleLabel(text: AppLocalizations.of(context).confirmPassword),
               NSTextFormField.password(
-                controller: confirmController,
+                controller: _confirmController,
                 hintText: AppLocalizations.of(context).hintTextPassword,
                 validator: (value) => Validator.validatorConfirmPassword(
                   context,
                   value,
-                  passwordController.text,
+                  _passwordController.text,
                 ),
                 textInputAction: TextInputAction.done,
                 onFieldSubmitted: (value) => onRegister(),
@@ -135,7 +135,7 @@ class _SignUpPageState extends State<SignUpPage> {
               NSElevatedButton.text(
                 onPressed: onRegister,
                 text: AppLocalizations.of(context).signUp,
-                isDisable: isLoading,
+                isDisable: _isLoading,
               ),
               const SizedBox(height: 50),
               PromptText(

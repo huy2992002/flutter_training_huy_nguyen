@@ -13,9 +13,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int currentIndex = 0;
+  int _currentIndex = 0;
 
-  List<Widget> pages = [
+  List<Widget> _pages = [
     const HomePage(),
     const FavoritePage(),
     const NotificationsPage(),
@@ -23,16 +23,16 @@ class _MainPageState extends State<MainPage> {
   ];
 
   void changePage(int index) {
-    currentIndex = index;
+    _currentIndex = index;
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[currentIndex],
+      body: _pages[_currentIndex],
       bottomNavigationBar: NSBottomNavigationBar(
-        currentIndex: currentIndex,
+        currentIndex: _currentIndex,
         onChangePage: changePage,
       ),
     );
