@@ -36,7 +36,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 16),
+        padding: const EdgeInsets.only(
+          left: 20,
+          top: 16,
+          right: 20,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -48,8 +52,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
             const SizedBox(height: 16),
             if (notifications.isEmpty)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30)
-                    .copyWith(top: 250),
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  top: 250,
+                  right: 30,
+                ),
                 child: Text(
                   AppLocalizations.of(context).noFavoriteNotification,
                   style: NSStyle.h21SemiBold

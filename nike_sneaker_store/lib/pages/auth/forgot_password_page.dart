@@ -18,8 +18,10 @@ class ForgotPasswordPage extends StatelessWidget {
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
         body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
+          padding: EdgeInsets.only(
+            left: 20,
             top: MediaQuery.paddingOf(context).top + 23,
+            right: 20
           ),
           children: [
             Align(

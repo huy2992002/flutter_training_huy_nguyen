@@ -39,7 +39,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
       _phoneController.text.isNotEmpty &&
       _addressController.text.isNotEmpty;
 
-   void _resetState() => setState(() {});   
+  void _resetState() => setState(() {});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,11 @@ class _CartInformationPageState extends State<CartInformationPage> {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 46),
+          padding: const EdgeInsets.only(
+            left: 20,
+            top: 46,
+            right: 20,
+          ),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             decoration: BoxDecoration(

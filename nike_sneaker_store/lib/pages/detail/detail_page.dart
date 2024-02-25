@@ -24,19 +24,22 @@ class DetailPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NSAppBar(
-        leftIcon: NsIconButton(
-          onPressed: () => Navigator.pop(context),
-          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-          icon: SvgPicture.asset(
-            Assets.icons.icArrow,
-            color: Theme.of(context).colorScheme.onPrimaryContainer,
+          leftIcon: NsIconButton(
+            onPressed: () => Navigator.pop(context),
+            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+            icon: SvgPicture.asset(
+              Assets.icons.icArrow,
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+            ),
           ),
-        ),
-        title: 'Details',
-        rightIcon: const ActionIconAppBar()
-      ),
+          title: 'Details',
+          rightIcon: const ActionIconAppBar()),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 26),
+        padding: const EdgeInsets.only(
+          left: 20,
+          top: 26,
+          right: 20,
+        ),
         children: [
           Text(product.name, style: NSStyle.h26Bold),
           const SizedBox(height: 8),

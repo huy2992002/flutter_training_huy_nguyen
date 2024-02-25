@@ -39,8 +39,11 @@ class _FavoritePageState extends State<FavoritePage> {
           rightIcon: const ActionIconAppBar()),
       body: _favoriteProducts.isEmpty
           ? Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 30).copyWith(top: 250),
+              padding: const EdgeInsets.only(
+                left: 30,
+                top: 250,
+                right: 30,
+              ),
               child: Text(
                 AppLocalizations.of(context).noFavoriteProduct,
                 style: NSStyle.h21SemiBold
@@ -50,13 +53,17 @@ class _FavoritePageState extends State<FavoritePage> {
             )
           : GridView.builder(
               itemCount: _favoriteProducts.length,
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 28),
+              padding: const EdgeInsets.only(
+                left: 20,
+                top: 28,
+                right: 20,
+              ),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
-                  childAspectRatio: 5 / 6),
+                crossAxisCount: 2,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                childAspectRatio: 5 / 6,
+              ),
               itemBuilder: (context, index) {
                 final product = _favoriteProducts[index];
                 return CardProduct(
