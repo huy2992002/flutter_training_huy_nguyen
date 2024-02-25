@@ -32,3 +32,38 @@
 - [ ] Epic 4: Setup themes, l10n
 - [ ] Epic 5: Implement the UI
 - [ ] Epic 6: Test the application and prepare for the review
+
+## Installation
+1. Clone the repository:
+​
+    ```
+    https://github.com/huy2992002/flutter_training_huy_nguyen.git
+    ```
+2. Checkout branch:
+​
+    ```
+    git checkout <feature/flutter-practice-one> 
+    ```
+3. Pull origin branch:
+​
+    ```
+    git pull origin <feature/flutter-practice-one> 
+    ```
+4. Get dependency:
+​
+    ```
+    flutter pub get
+    ```    
+4. Run project:
+   ```
+    Run app:
+        cd nike_sneaker_store
+        flutter run ./apps/fitness_app/lib/main.dart
+   ```
+5. Command used in project:
+   ```
+    Gen assets:
+        flutter pub run build_runner build --delete-conflicting-outputs
+    Gen l10n:
+        flutter gen-l10n  
+    ```
