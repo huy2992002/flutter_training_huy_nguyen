@@ -14,7 +14,7 @@ class OnboardingPower extends StatelessWidget {
       padding: const EdgeInsets.only(top: 150),
       child: Column(
         children: [
-          Image.asset(Assets.images.imgPrOnboard3.path),
+          Image.asset(Assets.images.imgPrOnboardPower.path),
           const SizedBox(height: 50),
           Text(
             AppLocalizations.of(context).youHavePowerTo,

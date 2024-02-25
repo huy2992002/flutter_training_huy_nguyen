@@ -14,7 +14,7 @@ class OnboardingStart extends StatelessWidget {
       padding: const EdgeInsets.only(top: 150),
       child: Column(
         children: [
-          Image.asset(Assets.images.imgPrOnboard2.path),
+          Image.asset(Assets.images.imgPrOnboardLetStart.path),
           const SizedBox(height: 50),
           Text(
             AppLocalizations.of(context).letStartJourney,

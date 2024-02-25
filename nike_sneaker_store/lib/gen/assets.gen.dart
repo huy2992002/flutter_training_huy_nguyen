@@ -176,17 +176,17 @@ class $AssetsImagesGen {
   AssetGenImage get imgOnboard3 =>
       const AssetGenImage('assets/images/img_onboard_3.png');
 
-  /// File path: assets/images/img_pr_onboard_1.png
-  AssetGenImage get imgPrOnboard1 =>
-      const AssetGenImage('assets/images/img_pr_onboard_1.png');
+  /// File path: assets/images/img_pr_onboard_let_start.png
+  AssetGenImage get imgPrOnboardLetStart =>
+      const AssetGenImage('assets/images/img_pr_onboard_let_start.png');
 
-  /// File path: assets/images/img_pr_onboard_2.png
-  AssetGenImage get imgPrOnboard2 =>
-      const AssetGenImage('assets/images/img_pr_onboard_2.png');
+  /// File path: assets/images/img_pr_onboard_power.png
+  AssetGenImage get imgPrOnboardPower =>
+      const AssetGenImage('assets/images/img_pr_onboard_power.png');
 
-  /// File path: assets/images/img_pr_onboard_3.png
-  AssetGenImage get imgPrOnboard3 =>
-      const AssetGenImage('assets/images/img_pr_onboard_3.png');
+  /// File path: assets/images/img_pr_onboard_welcome.png
+  AssetGenImage get imgPrOnboardWelcome =>
+      const AssetGenImage('assets/images/img_pr_onboard_welcome.png');
 
   /// File path: assets/images/img_splash_hight_light.png
   AssetGenImage get imgSplashHightLight =>
@@ -213,9 +213,9 @@ class $AssetsImagesGen {
         imgOnboard1,
         imgOnboard2,
         imgOnboard3,
-        imgPrOnboard1,
-        imgPrOnboard2,
-        imgPrOnboard3,
+        imgPrOnboardLetStart,
+        imgPrOnboardPower,
+        imgPrOnboardWelcome,
         imgSplashHightLight,
         imgSuccessfully,
         imgSumerSale

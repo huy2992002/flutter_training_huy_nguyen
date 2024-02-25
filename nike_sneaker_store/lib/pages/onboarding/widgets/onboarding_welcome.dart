@@ -22,7 +22,7 @@ class OnboardingWelcome extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          Image.asset(Assets.images.imgPrOnboard1.path)
+          Image.asset(Assets.images.imgPrOnboardWelcome.path)
         ],
       ),
     );
