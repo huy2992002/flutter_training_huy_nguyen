@@ -93,12 +93,6 @@ abstract class AppLocalizations {
     Locale('vi')
   ];
 
-  /// No description provided for @helloWorld.
-  ///
-  /// In en, this message translates to:
-  /// **'Hello World!'**
-  String get helloWorld;
-
   /// No description provided for @welcomeTo.
   ///
   /// In en, this message translates to:

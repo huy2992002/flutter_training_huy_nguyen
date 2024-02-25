@@ -5,9 +5,6 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get helloWorld => 'Xin chào, Thế giới!';
-
-  @override
   String get welcomeTo => 'Chào mừng đến \nNike';
 
   @override
