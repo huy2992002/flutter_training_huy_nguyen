@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nike_sneaker_store/components/app_bar/icon_cart_app_bar.dart';
+import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/cards/card_product.dart';
@@ -48,7 +48,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
           backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         ),
-        rightIcon: const IconCartAppBar(),
+        rightIcon: const ActionIconAppBar(),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/components/app_bar/icon_cart_app_bar.dart';
+import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/cards/card_product.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
@@ -34,7 +34,7 @@ class _FavoritePageState extends State<FavoritePage> {
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NSAppBar(
           title: AppLocalizations.of(context).favorite,
-          rightIcon: const IconCartAppBar()),
+          rightIcon: const ActionIconAppBar()),
       body: _favoriteProducts.isEmpty
           ? Padding(
               padding:

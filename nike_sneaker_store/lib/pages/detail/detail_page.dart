@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nike_sneaker_store/components/app_bar/icon_cart_app_bar.dart';
+import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
@@ -33,7 +33,7 @@ class DetailPage extends StatelessWidget {
           ),
         ),
         title: 'Details',
-        rightIcon: const IconCartAppBar()
+        rightIcon: const ActionIconAppBar()
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 26),

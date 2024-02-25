@@ -4,8 +4,8 @@ import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
 
-class IconCartAppBar extends StatelessWidget {
-  const IconCartAppBar({super.key});
+class ActionIconAppBar extends StatelessWidget {
+  const ActionIconAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
