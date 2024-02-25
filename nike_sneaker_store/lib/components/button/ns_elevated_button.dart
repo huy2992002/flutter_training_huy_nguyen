@@ -13,16 +13,26 @@ class NSElevatedButton extends StatelessWidget {
     super.key,
   });
 
-  const NSElevatedButton.icon({
-    required this.onPressed,
-    required this.icon,
-    required this.text,
-    this.backgroundColor,
-    this.textColor,
-    this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-    this.isDisable = false,
-    super.key,
-  });
+  factory NSElevatedButton.icon({
+    required Function() onPressed,
+    required Widget icon,
+    required String text,
+    Color? backgroundColor,
+    Color? textColor,
+    EdgeInsetsGeometry? padding,
+    bool? isDisable,
+  }) {
+    return NSElevatedButton.text(
+      onPressed: onPressed,
+      text: text,
+      icon: icon,
+      backgroundColor: backgroundColor,
+      textColor: textColor,
+      padding:
+          padding ?? const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+      isDisable: isDisable ?? false,
+    );
+  }
 
   final Function() onPressed;
   final String text;
