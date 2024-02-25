@@ -38,8 +38,7 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Future<void> onRegister() async {
-    if (_formKey.currentState == null || !_formKey.currentState!.validate())
-      return;
+    if (_formKey.currentState == null || !_formKey.currentState!.validate()) return;
     isShowLoading();
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) => _emailController.text == e.email);
