@@ -54,6 +54,24 @@ class _HomePageState extends State<HomePage> {
       _resetState();
     }
 
+    void _addToCart(ProductModel product) {
+      bool hasCheckCart =
+          myCarts.any((element) => element.uuid == product.uuid);
+      if (hasCheckCart) {
+        NSSnackBar.snackbarWarning(
+          context,
+          title: AppLocalizations.of(context).productAlreadyInCart,
+        );
+      } else {
+        myCarts.add(product..quantity = 1);
+        _resetState();
+        NSSnackBar.snackbarSuccess(
+          context,
+          title: AppLocalizations.of(context).productAddSuccess,
+        );
+      }
+    }
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBarHome(
@@ -125,27 +143,13 @@ class _HomePageState extends State<HomePage> {
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DetailPage(product: product),
+                          builder: (context) => DetailPage(
+                            product: product,
+                            resetState: _resetState,
+                          ),
                         ),
                       ),
-                      onAddCart: () {
-                        bool hasCheckCart = myCarts
-                            .any((element) => element.uuid == product.uuid);
-                        if (hasCheckCart) {
-                          NSSnackBar.snackbarWarning(
-                            context,
-                            title: AppLocalizations.of(context)
-                                .productAlreadyInCart,
-                          );
-                        } else {
-                          myCarts.add(product..quantity = 1);
-                          NSSnackBar.snackbarSuccess(
-                            context,
-                            title:
-                                AppLocalizations.of(context).productAddSuccess,
-                          );
-                        }
-                      },
+                      onAddCart: () => _addToCart(product),
                       onFavorite: () {
                         product.isFavorite = !product.isFavorite;
                         _resetState();
