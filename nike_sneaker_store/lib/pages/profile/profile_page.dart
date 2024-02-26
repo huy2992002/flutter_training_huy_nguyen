@@ -1,11 +1,15 @@
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
-import 'package:nike_sneaker_store/components/avatar/ns_avatar.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
+import 'package:nike_sneaker_store/components/button/ns_text_button.dart';
+import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_text_form_field.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
+import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -18,6 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _locationController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
+  File? file;
 
   @override
   void initState() {
@@ -25,6 +30,28 @@ class _ProfilePageState extends State<ProfilePage> {
     _locationController.text = userLogin?.address ?? '';
     _phoneController.text = userLogin?.phone ?? '';
     super.initState();
+  }
+
+  bool get canSave {
+    return _nameController.text.isNotEmpty &&
+        _locationController.text.isNotEmpty &&
+        _phoneController.text.isNotEmpty;
+  }
+
+  Future<void> changeAvatar() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      file = File(result.files.single.path!);
+      NSSnackBar.snackbarSuccess(
+        context,
+        title: AppLocalizations.of(context).avatarChangedSuccess,
+      );
+    } else {
+      NSSnackBar.snackbarError(
+        context,
+        title: AppLocalizations.of(context).explore,
+      );
+    }
   }
 
   @override
@@ -43,11 +70,12 @@ class _ProfilePageState extends State<ProfilePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                  child: NSAvatar(
-                    imagePath:
-                        userLogin?.avatar ?? Assets.images.imgAvatar.path,
-                  ),
-                ),
+                    child: CircleAvatar(
+                  radius: 48,
+                  backgroundImage: file == null
+                      ? AssetImage(Assets.images.imgAvatar.path)
+                      : Image.file(file!).image,
+                )),
                 const SizedBox(height: 8),
                 Center(
                   child: Text(
@@ -59,9 +87,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 6),
                 Center(
-                  child: Text(
-                    AppLocalizations.of(context).changeProfilePicture,
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  child: NsTextButton(
+                    onPressed: changeAvatar,
+                    text: AppLocalizations.of(context).changeProfilePicture,
+                    textStyle: Theme.of(context).textTheme.labelSmall?.copyWith(
                           fontWeight: FontWeight.w500,
                           color: Theme.of(context).colorScheme.primary,
                         ),
@@ -76,7 +105,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 17),
                 NSTextFormField.text(
+                  controller: _nameController,
                   hintText: AppLocalizations.of(context).yourName,
+                  onChanged: (_) {
+                    canSave;
+                    setState(() {});
+                  },
                 ),
                 const SizedBox(height: 34),
                 Text(
@@ -87,7 +121,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 17),
                 NSTextFormField.text(
+                  controller: _locationController,
                   hintText: AppLocalizations.of(context).location,
+                  onChanged: (_) {
+                    canSave;
+                    setState(() {});
+                  },
+                  textInputType: TextInputType.phone,
                 ),
                 const SizedBox(height: 34),
                 Text(
@@ -98,12 +138,36 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 17),
                 NSTextFormField.text(
+                  controller: _phoneController,
                   hintText: AppLocalizations.of(context).mobileNumber,
+                  onChanged: (_) {
+                    canSave;
+                    setState(() {});
+                  },
                 ),
                 const SizedBox(height: 55),
                 NSElevatedButton.text(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (!canSave) return;
+                    userLogin?.name = _nameController.text;
+                    userLogin?.address = _locationController.text;
+                    userLogin?.phone = _phoneController.text;
+                    NSSnackBar.snackbarSuccess(
+                      context,
+                      title: AppLocalizations.of(context)
+                          .informationChangedSuccess,
+                    );
+                  },
                   text: AppLocalizations.of(context).saveNow,
+                  backgroundColor: canSave
+                      ? Theme.of(context).colorScheme.primary
+                      : NSColor.neutral.withOpacity(0.3),
+                  textColor: canSave
+                      ? Theme.of(context).colorScheme.onPrimary
+                      : Theme.of(context)
+                          .colorScheme
+                          .onBackground
+                          .withOpacity(0.6),
                 ),
               ],
             ),
