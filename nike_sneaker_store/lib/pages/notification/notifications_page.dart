@@ -70,7 +70,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
               Expanded(
                 child: ListView.separated(
                   itemCount: notifications.length,
-                  itemBuilder: (context, index) {
+                  itemBuilder: (_, index) {
                     final notification = notifications[index];
 
                     return CardNotification(
@@ -81,7 +81,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       },
                     );
                   },
-                  separatorBuilder: (context, index) =>
+                  separatorBuilder: (_, __) =>
                       const SizedBox(height: 16),
                 ),
               )

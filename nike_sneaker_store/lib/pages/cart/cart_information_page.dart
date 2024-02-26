@@ -145,7 +145,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const MainPage(),
+                        builder: (_) => const MainPage(),
                       ),
                       (route) => false);
                 },

@@ -64,7 +64,7 @@ class _FavoritePageState extends State<FavoritePage> {
                 crossAxisSpacing: 20,
                 childAspectRatio: 5 / 6,
               ),
-              itemBuilder: (context, index) {
+              itemBuilder: (_, index) {
                 final product = _favoriteProducts[index];
                 return CardProduct(
                   product: product,
@@ -75,7 +75,7 @@ class _FavoritePageState extends State<FavoritePage> {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DetailPage(product: product),
+                      builder: (_) => DetailPage(product: product),
                     ),
                   ),
                 );

@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const SearchPage(),
+                    builder: (_) => const SearchPage(),
                   ),
                 );
               },
@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DetailPage(
+                          builder: (_) => DetailPage(
                             product: product,
                             resetState: _resetState,
                           ),

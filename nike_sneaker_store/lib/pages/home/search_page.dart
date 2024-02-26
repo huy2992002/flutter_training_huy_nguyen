@@ -86,7 +86,7 @@ class _SearchPageState extends State<SearchPage> {
                         crossAxisSpacing: 20,
                         childAspectRatio: 5 / 6,
                       ),
-                      itemBuilder: (context, index) {
+                      itemBuilder: (_, index) {
                         final product = _searchProducts[index];
                         return CardProduct(
                           product: product,
@@ -97,7 +97,7 @@ class _SearchPageState extends State<SearchPage> {
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
+                              builder: (_) =>
                                   DetailPage(product: product),
                             ),
                           ),

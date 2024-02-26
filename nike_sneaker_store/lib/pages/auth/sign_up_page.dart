@@ -59,7 +59,7 @@ class _SignUpPageState extends State<SignUpPage> {
       isHideLoading();
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const SignInPage()),
+        MaterialPageRoute(builder: (_) => const SignInPage()),
         (route) => false,
       );
     }
@@ -145,7 +145,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 title: AppLocalizations.of(context).signIn,
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SignInPage()),
+                  MaterialPageRoute(builder: (_) => const SignInPage()),
                 ),
               ),
             ],

@@ -50,7 +50,7 @@ class ForgotPasswordPage extends StatelessWidget {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const VerificationPage(),
+                  builder: (_) => const VerificationPage(),
                 ),
               ),
               text: AppLocalizations.of(context).resetPassword,

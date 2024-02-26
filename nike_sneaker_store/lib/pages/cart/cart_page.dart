@@ -56,7 +56,7 @@ class _CartPageState extends State<CartPage> {
                   Expanded(
                     child: ListView.separated(
                       padding: const EdgeInsets.only(top: 8),
-                      itemBuilder: (context, index) {
+                      itemBuilder: (_, index) {
                         final product = myCarts[index];
                         return CardCartProduct(
                           product: product,
@@ -79,7 +79,7 @@ class _CartPageState extends State<CartPage> {
                           },
                         );
                       },
-                      separatorBuilder: (context, index) =>
+                      separatorBuilder: (_, __) =>
                           const SizedBox(height: 14),
                       itemCount: myCarts.length,
                     ),
@@ -91,7 +91,7 @@ class _CartPageState extends State<CartPage> {
         onCheckout: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const CartInformationPage(),
+            builder: (_) => const CartInformationPage(),
           ),
         ),
         canCheckOut: myCarts.isNotEmpty,

@@ -37,7 +37,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => const SignInPage(),
+          builder: (_) => const SignInPage(),
         ),
         (route) => false,
       );
@@ -54,7 +54,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             child: PageView.builder(
               controller: _pageController,
               itemCount: _onboardPages.length,
-              itemBuilder: (context, index) => _onboardPages[index],
+              itemBuilder: (_, index) => _onboardPages[index],
               onPageChanged: (value) {
                 _pageIndex = value;
                 _resetState();

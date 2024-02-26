@@ -16,7 +16,7 @@ class ActionIconAppBar extends StatelessWidget {
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const CartPage(),
+              builder: (_) => const CartPage(),
             ),
           ),
           icon: SvgPicture.asset(

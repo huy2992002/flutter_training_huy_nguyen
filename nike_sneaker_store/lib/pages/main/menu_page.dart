@@ -49,7 +49,7 @@ class MenuPage extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const CartPage(),
+                builder: (_) => const CartPage(),
               ),
             ),
             title: AppLocalizations.of(context).myCart,
@@ -84,7 +84,7 @@ class MenuPage extends StatelessWidget {
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SignInPage(),
+                  builder: (_) => const SignInPage(),
                 ),
                 (route) => false,
               );

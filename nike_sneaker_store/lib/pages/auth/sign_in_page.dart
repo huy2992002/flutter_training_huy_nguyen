@@ -46,7 +46,7 @@ class _SignInPageState extends State<SignInPage> {
       userLogin = accounts.singleWhere((e) => e.email == _emailController.text);
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const MainPage()),
+        MaterialPageRoute(builder: (_) => const MainPage()),
         (route) => false,
       );
     } else {
@@ -99,7 +99,7 @@ class _SignInPageState extends State<SignInPage> {
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ForgotPasswordPage(),
+                      builder: (_) => const ForgotPasswordPage(),
                     ),
                   ),
                   text: AppLocalizations.of(context).recoveryPassword,
@@ -117,7 +117,7 @@ class _SignInPageState extends State<SignInPage> {
                 title: AppLocalizations.of(context).createAccount,
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SignUpPage()),
+                  MaterialPageRoute(builder: (_) => const SignUpPage()),
                 ),
               ),
             ],
