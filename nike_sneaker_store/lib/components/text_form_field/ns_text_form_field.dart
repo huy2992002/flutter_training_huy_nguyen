@@ -10,6 +10,7 @@ class NSTextFormField extends StatefulWidget {
     this.validator,
     this.onFieldSubmitted,
     this.textInputAction,
+    this.textInputType,
     this.isPassword = false,
     super.key,
   });
@@ -21,6 +22,7 @@ class NSTextFormField extends StatefulWidget {
     this.validator,
     this.onFieldSubmitted,
     this.textInputAction,
+    this.textInputType,
     this.isPassword = true,
     super.key,
   });
@@ -31,6 +33,7 @@ class NSTextFormField extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final Function(String)? onFieldSubmitted;
   final TextInputAction? textInputAction;
+  final TextInputType? textInputType;
   final bool isPassword;
 
   @override
@@ -89,6 +92,7 @@ class _NSTextFormFieldState extends State<NSTextFormField> {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       onFieldSubmitted: widget.onFieldSubmitted,
       textInputAction: widget.textInputAction,
+      keyboardType: widget.textInputType,
     );
   }
 }
