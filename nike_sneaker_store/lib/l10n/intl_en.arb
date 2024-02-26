@@ -90,6 +90,11 @@
   "profile": "Profile",
   "informationChangedSuccess": "Information changed successfully",
   "avatarChangedSuccess": "Avatar changed successfully",
+  "passwordChangedSuccess": "Password changed successfully",
+  "changePassword": "Change Password",
+  "currentPassword": "Current Password",
+  "newPassword": "New Password",
+  "confirmPassword": "Confirm Password",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

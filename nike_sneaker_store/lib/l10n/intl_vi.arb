@@ -90,6 +90,11 @@
   "profile": "Thông tin",
   "informationChangedSuccess": "Thay đổi thông tin thành công",
   "avatarChangedSuccess": "Thay đổi ảnh đại diện thành công",
+  "passwordChangedSuccess": "Thay đổi mật khẩu thành công",
+  "changePassword": "Thay đổi mật khẩu",
+  "currentPassword": "Mật khẩu hiện taik",
+  "newPassword": "Mật Khẩu mới",
+  "confirmPassword": "Xác nhận mật khẩu",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {

@@ -38,7 +38,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get yourName => 'Tên Của Bạn';
 
   @override
-  String get confirmPassword => 'Xác Nhận Mật Khẩu';
+  String get confirmPassword => 'Xác nhận mật khẩu';
 
   @override
   String get signIn => 'Đăng Nhập';
@@ -276,6 +276,18 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get avatarChangedSuccess => 'Thay đổi ảnh đại diện thành công';
+
+  @override
+  String get passwordChangedSuccess => 'Thay đổi mật khẩu thành công';
+
+  @override
+  String get changePassword => 'Thay đổi mật khẩu';
+
+  @override
+  String get currentPassword => 'Mật khẩu hiện taik';
+
+  @override
+  String get newPassword => 'Mật Khẩu mới';
 
   @override
   String discountOff(int discount) {

@@ -278,6 +278,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get avatarChangedSuccess => 'Avatar changed successfully';
 
   @override
+  String get passwordChangedSuccess => 'Password changed successfully';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }
