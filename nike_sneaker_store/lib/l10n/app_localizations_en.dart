@@ -290,6 +290,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newPassword => 'New Password';
 
   @override
+  String get currentPasswordIncorrect => 'Current password is incorrect';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

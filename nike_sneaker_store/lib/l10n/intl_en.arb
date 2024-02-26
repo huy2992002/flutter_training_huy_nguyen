@@ -95,6 +95,7 @@
   "currentPassword": "Current Password",
   "newPassword": "New Password",
   "confirmPassword": "Confirm Password",
+  "currentPasswordIncorrect": "Current password is incorrect",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

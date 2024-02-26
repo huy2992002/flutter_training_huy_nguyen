@@ -663,6 +663,12 @@ abstract class AppLocalizations {
   /// **'New Password'**
   String get newPassword;
 
+  /// No description provided for @currentPasswordIncorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Current password is incorrect'**
+  String get currentPasswordIncorrect;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

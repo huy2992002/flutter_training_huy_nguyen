@@ -95,6 +95,7 @@
   "currentPassword": "Mật khẩu hiện taik",
   "newPassword": "Mật Khẩu mới",
   "confirmPassword": "Xác nhận mật khẩu",
+  "currentPasswordIncorrect": "Mật khẩu hiện tại không đúng",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {

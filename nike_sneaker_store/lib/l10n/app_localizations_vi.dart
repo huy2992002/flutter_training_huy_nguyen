@@ -290,6 +290,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get newPassword => 'Mật Khẩu mới';
 
   @override
+  String get currentPasswordIncorrect => 'Mật khẩu hiện tại không đúng';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }
