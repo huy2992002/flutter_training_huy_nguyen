@@ -11,6 +11,7 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
 import 'package:nike_sneaker_store/pages/home/search_page.dart';
 import 'package:nike_sneaker_store/pages/home/widgets/title_home.dart';
+import 'package:nike_sneaker_store/pages/main/main_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -56,7 +57,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBarHome(
-        onMenu: () {},
+        onMenu: () {
+          zoomController.toggle?.call();
+        },
         onCart: () {},
       ),
       body: ListView(

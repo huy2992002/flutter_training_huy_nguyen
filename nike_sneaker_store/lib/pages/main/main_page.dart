@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/pages/favorite/favorite_page.dart';
 import 'package:nike_sneaker_store/pages/home/home_page.dart';
+import 'package:nike_sneaker_store/pages/main/menu_page.dart';
 import 'package:nike_sneaker_store/pages/main/widgets/ns_bottom_navigation_bar.dart';
+import 'package:nike_sneaker_store/pages/main/widgets/ns_drawer.dart';
 import 'package:nike_sneaker_store/pages/notification/notifications_page.dart';
 import 'package:nike_sneaker_store/pages/profile/profile_page.dart';
 
@@ -12,9 +15,10 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
-  int _currentIndex = 0;
+ZoomDrawerController zoomController = ZoomDrawerController();
+int currentPageIndex = 0;
 
+class _MainPageState extends State<MainPage> {
   void _resetState() => setState(() {});
 
   List<Widget> _pages = [
@@ -25,17 +29,23 @@ class _MainPageState extends State<MainPage> {
   ];
 
   void changePage(int index) {
-    _currentIndex = index;
+    currentPageIndex = index;
     _resetState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_currentIndex],
-      bottomNavigationBar: NSBottomNavigationBar(
-        currentIndex: _currentIndex,
-        onChangePage: changePage,
+    return NSDrawer(
+      controller: zoomController,
+      menuScreen: MenuPage(
+        resetState: () => setState(() {}),
+      ),
+      mainScreen: Scaffold(
+        body: _pages[currentPageIndex],
+        bottomNavigationBar: NSBottomNavigationBar(
+          currentIndex: currentPageIndex,
+          onChangePage: changePage,
+        ),
       ),
     );
   }
