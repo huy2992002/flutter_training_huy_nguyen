@@ -23,11 +23,10 @@ class NSDrawer extends StatelessWidget {
       mainScreenTapClose: true,
       angle: -5,
       menuBackgroundColor: Theme.of(context).colorScheme.secondary,
-      boxShadow: [
+      boxShadow: const [
         BoxShadow(
           color: NSColor.onPrimaryContainer,
-          offset: Offset(0, 0),
-          blurRadius: 2
+          blurRadius: 2,
         )
       ],
     );
