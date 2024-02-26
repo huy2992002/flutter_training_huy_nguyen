@@ -81,7 +81,12 @@ class _CardCartProductState extends State<CardCartProduct> {
             ),
             if (isShowDelete)
               GestureDetector(
-                onTap: widget.onRemove,
+                onTap: () {
+                  widget.onRemove?.call();
+                  setState(() {
+                    isShowDelete = false;
+                  });
+                },
                 child: Container(
                   width: 50,
                   height: 85,
