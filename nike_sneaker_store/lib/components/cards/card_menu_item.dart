@@ -24,12 +24,14 @@ class CardMenuItem extends StatelessWidget {
             width: 24,
             color: Theme.of(context).colorScheme.onSecondary,
           ),
-          const SizedBox(width: 30),
-          Text(
-            title,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onSecondary,
-                ),
+          const SizedBox(width: 15),
+          Expanded(
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSecondary,
+                  ),
+            ),
           ),
         ],
       ),
