@@ -58,7 +58,26 @@ class _CartPageState extends State<CartPage> {
                       padding: const EdgeInsets.only(top: 8),
                       itemBuilder: (context, index) {
                         final product = myCarts[index];
-                        return CardCartProduct(product: product);
+                        return CardCartProduct(
+                          product: product,
+                          onPlus: () {
+                            setState(() {
+                              product.quantity++;
+                            });
+                          },
+                          onLess: () {
+                            if (product.quantity > 1) {
+                              setState(() {
+                                product.quantity--;
+                              });
+                            }
+                          },
+                          onRemove: () {
+                            setState(() {
+                              myCarts.remove(product);
+                            });
+                          },
+                        );
                       },
                       separatorBuilder: (context, index) =>
                           const SizedBox(height: 14),

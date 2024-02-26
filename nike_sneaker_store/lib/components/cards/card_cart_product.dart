@@ -4,12 +4,13 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
-class CardCartProduct extends StatelessWidget {
+class CardCartProduct extends StatefulWidget {
   const CardCartProduct({
     required this.product,
     this.onTap,
     this.onPlus,
     this.onLess,
+    this.onRemove,
     super.key,
   });
 
@@ -17,11 +18,28 @@ class CardCartProduct extends StatelessWidget {
   final Function()? onTap;
   final Function()? onPlus;
   final Function()? onLess;
+  final Function()? onRemove;
 
+  @override
+  State<CardCartProduct> createState() => _CardCartProductState();
+}
+
+class _CardCartProductState extends State<CardCartProduct> {
+  bool isShowDelete = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        widget.onTap?.call();
+        setState(() {
+          isShowDelete = false;
+        });
+      },
+      onLongPress: () {
+        setState(() {
+          isShowDelete = true;
+        });
+      },
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -38,7 +56,7 @@ class CardCartProduct extends StatelessWidget {
                 color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Image.asset(product.imagePath),
+              child: Image.asset(widget.product.imagePath),
             ),
             const SizedBox(width: 30),
             Expanded(
@@ -47,13 +65,13 @@ class CardCartProduct extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.name,
+                    widget.product.name,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Theme.of(context).colorScheme.onBackground,
                         ),
                   ),
                   Text(
-                    product.price.toPriceDollar(),
+                    widget.product.price.toPriceDollar(),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Theme.of(context).colorScheme.onBackground,
                         ),
@@ -61,30 +79,49 @@ class CardCartProduct extends StatelessWidget {
                 ],
               ),
             ),
-            Row(
-              children: [
-                iconButton(
-                  context,
-                  iconPath: Assets.icons.icAdd,
-                  onTap: onPlus,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    '${product.quantity}',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color:
-                              Theme.of(context).colorScheme.onPrimaryContainer,
-                        ),
+            if (isShowDelete)
+              GestureDetector(
+                onTap: widget.onRemove,
+                child: Container(
+                  width: 50,
+                  height: 85,
+                  padding: const EdgeInsets.all(13),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.error,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: SvgPicture.asset(
+                    Assets.icons.icTrash,
+                    color: Theme.of(context).colorScheme.onError,
                   ),
                 ),
-                iconButton(
-                  context,
-                  iconPath: Assets.icons.icRemove,
-                  onTap: onLess,
-                ),
-              ],
-            ),
+              )
+            else
+              Row(
+                children: [
+                  iconButton(
+                    context,
+                    iconPath: Assets.icons.icAdd,
+                    onTap: widget.onPlus,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      '${widget.product.quantity}',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                          ),
+                    ),
+                  ),
+                  iconButton(
+                    context,
+                    iconPath: Assets.icons.icRemove,
+                    onTap: widget.onLess,
+                  ),
+                ],
+              ),
           ],
         ),
       ),

@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       _resetState();
     }
 
-    void _addToCart(ProductModel product) {
+    void addCart(ProductModel product) {
       bool hasCheckCart =
           myCarts.any((element) => element.uuid == product.uuid);
       if (hasCheckCart) {
@@ -149,7 +149,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      onAddCart: () => _addToCart(product),
+                      onAddCart: () {
+                        addCart(product);
+                      },
                       onFavorite: () {
                         product.isFavorite = !product.isFavorite;
                         _resetState();
