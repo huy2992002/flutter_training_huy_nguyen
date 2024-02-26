@@ -58,7 +58,13 @@
    ```
     Run app:
         cd nike_sneaker_store
-        flutter run ./apps/fitness_app/lib/main.dart
+        flutter run ./lib/main.dart
+    Run with device preview
+        cd nike_sneaker_store
+        flutter run ./lib/device_preview/device_preview.dart
+    Run widget book
+        cd nike_sneaker_store
+        flutter run ./lib/widgetbook/widgetbook.dart     
    ```
 5. Command used in project:
    ```
