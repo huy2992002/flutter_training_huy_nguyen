@@ -627,6 +627,18 @@ abstract class AppLocalizations {
   /// **'Profile'**
   String get profile;
 
+  /// No description provided for @informationChangedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Information changed successfully'**
+  String get informationChangedSuccess;
+
+  /// No description provided for @avatarChangedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Avatar changed successfully'**
+  String get avatarChangedSuccess;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

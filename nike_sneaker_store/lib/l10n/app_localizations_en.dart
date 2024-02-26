@@ -272,6 +272,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile => 'Profile';
 
   @override
+  String get informationChangedSuccess => 'Information changed successfully';
+
+  @override
+  String get avatarChangedSuccess => 'Avatar changed successfully';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

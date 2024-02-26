@@ -88,6 +88,8 @@
   "mobileNumber": "Mobile Number",
   "saveNow": "Save Now",
   "profile": "Profile",
+  "informationChangedSuccess": "Information changed successfully",
+  "avatarChangedSuccess": "Avatar changed successfully",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

@@ -272,6 +272,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get profile => 'Thông tin';
 
   @override
+  String get informationChangedSuccess => 'Thay đổi thông tin thành công';
+
+  @override
+  String get avatarChangedSuccess => 'Thay đổi ảnh đại diện thành công';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }

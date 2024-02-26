@@ -88,6 +88,8 @@
   "mobileNumber": "Số điện thoại",
   "saveNow": "Lưu",
   "profile": "Thông tin",
+  "informationChangedSuccess": "Thay đổi thông tin thành công",
+  "avatarChangedSuccess": "Thay đổi ảnh đại diện thành công",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {
