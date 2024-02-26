@@ -19,6 +19,7 @@ class NSColor {
   static const tertiary = Color(0xFFFFB21A);
   static const notification = Color(0xFFFD1600);
   static const favorite = Color(0xFFF87265);
+  static const inversePrimary = Color(0xFF674DC5);
   static const darkPrimary = Color(0xFFC2EF00);
   static const darkOnPrimary = Color(0xFF304164);
   static const darkSecondary = Color(0xFF304164);
@@ -34,4 +35,5 @@ class NSColor {
   static const success = Color(0xFF55B938);
   static const error = Color(0xFFD65745);
   static const warning = Color(0xFFEAC645);
+  static const darkInversePrimary = Color(0xFFC2EF00);
 }

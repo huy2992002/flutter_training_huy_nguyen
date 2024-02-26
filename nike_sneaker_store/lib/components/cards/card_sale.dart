@@ -42,7 +42,7 @@ class CardSale extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context).discountOff(discount),
                       style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme.of(context).colorScheme.inversePrimary,
                           ),
                     ),
                   ],

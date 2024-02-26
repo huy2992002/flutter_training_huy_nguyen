@@ -20,6 +20,7 @@ class NSColorTheme {
     onSecondaryContainer: NSColor.onSecondaryContainer,
     scrim: NSColor.primary,
     tertiary: NSColor.tertiary,
+    inversePrimary: NSColor.inversePrimary,
   );
 
   static ColorScheme colorThemeDark = const ColorScheme(
@@ -40,5 +41,6 @@ class NSColorTheme {
     onSecondaryContainer: NSColor.darkOnSecondaryContainer,
     scrim: NSColor.darkSecondary,
     tertiary: NSColor.tertiary,
+    inversePrimary: NSColor.darkInversePrimary,
   );
 }
