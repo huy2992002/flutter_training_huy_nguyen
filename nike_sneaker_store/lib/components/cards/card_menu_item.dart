@@ -22,13 +22,13 @@ class CardMenuItem extends StatelessWidget {
           SvgPicture.asset(
             iconPath,
             width: 24,
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
           const SizedBox(width: 30),
           Text(
             title,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: Theme.of(context).colorScheme.onSecondary,
                 ),
           ),
         ],
