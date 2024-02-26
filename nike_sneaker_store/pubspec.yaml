@@ -37,6 +37,8 @@ dependencies:
   flutter_zoom_drawer: ^3.1.2
   intl: ^0.18.1
   pinput: ^4.0.0
+  widgetbook: ^3.7.1
+  widgetbook_annotation: ^3.1.0
 
 dev_dependencies:
   build_runner: ^2.4.8
@@ -45,6 +47,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   very_good_analysis: ^5.1.0
+  widgetbook_generator: ^3.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
