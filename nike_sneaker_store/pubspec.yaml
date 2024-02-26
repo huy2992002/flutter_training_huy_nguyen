@@ -72,6 +72,9 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
+    - family: Poppins-Bold
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf        
     - family: Raleway
       fonts:
         - asset: assets/fonts/Raleway-Regular.ttf
