@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class PromptText extends StatelessWidget {
+  /// The text consists of 2 parts. 
+  /// Prompt and [TextButton]
+  /// 
+  /// The [text], [title] arguments must not be null.
   const PromptText({
     required this.text,
     required this.title,
@@ -9,8 +13,13 @@ class PromptText extends StatelessWidget {
     super.key,
   });
 
+  /// The text prompt
   final String text;
+
+  /// The title of [TextButton]
   final String title;
+
+  /// Action when click onTap of widget
   final Function()? onTap;
 
   @override

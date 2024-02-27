@@ -12,15 +12,23 @@ import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class ChangePasswordPage extends StatelessWidget {
+  /// Screen change password page
   const ChangePasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    /// The [TextEditingController] of [TextFormField] current password
     TextEditingController currentPasswordController = TextEditingController();
-    TextEditingController newPasswordController = TextEditingController();
-    TextEditingController confirmPasswordController = TextEditingController();
-    final formKey = GlobalKey<FormState>();
 
+    /// The [TextEditingController] of [TextFormField] new password
+    TextEditingController newPasswordController = TextEditingController();
+
+    /// The [TextEditingController] of [TextFormField] confirm password
+    TextEditingController confirmPasswordController = TextEditingController();
+
+    /// The global key check [Validator] in page
+    final formKey = GlobalKey<FormState>();
+    
     void onSave() {
       if (formKey.currentState == null || !formKey.currentState!.validate()) return;
       if (currentPasswordController.text != userLogin?.password) {

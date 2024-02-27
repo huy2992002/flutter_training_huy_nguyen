@@ -15,6 +15,7 @@ import 'package:nike_sneaker_store/utils/maths.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class SignUpPage extends StatefulWidget {
+  /// Screen sign up page
   const SignUpPage({super.key});
 
   @override
@@ -22,28 +23,42 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  /// The [TextEditingController] of [TextFormField] name 
   TextEditingController _nameController = TextEditingController();
+
+  /// The [TextEditingController] of [TextFormField] email 
   TextEditingController _emailController = TextEditingController();
+
+  /// The [TextEditingController] of [TextFormField] password 
   TextEditingController _passwordController = TextEditingController();
+
+  /// The [TextEditingController] of [TextFormField] confirm password 
   TextEditingController _confirmController = TextEditingController();
+
+  /// If [_isLoading] is true display loading button 
   bool _isLoading = false;
+
+  /// The global key check [Validator] in page
   final _formKey = GlobalKey<FormState>();
 
-  void isShowLoading() {
-    setState(() => _isLoading = true);
+  /// Function change [_isLoading] with parameter [status] & resetState
+  void _showHiddenLoading({required bool status}) {
+    setState(() => _isLoading = status);
   }
 
-  void isHideLoading() {
-    setState(() => _isLoading = false);
-  }
-
+  /// Function when action register.
+  /// 
+  /// Check [Validator] success.
+  /// Check if [_emailController] is in the [accounts]. 
+  /// If it is already there, the [NSSnackBar] will be displayed. 
+  /// If it is not in the account, add the user to the account
   Future<void> onRegister() async {
     if (_formKey.currentState == null || !_formKey.currentState!.validate()) return;
-    isShowLoading();
+    _showHiddenLoading(status: true);
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) => _emailController.text == e.email);
     if (checkUser) {
-      isHideLoading();
+    _showHiddenLoading(status: false);
       NSSnackBar.snackbarError(
         context,
         title: AppLocalizations.of(context).emailAlreadyExists,
@@ -56,7 +71,7 @@ class _SignUpPageState extends State<SignUpPage> {
         password: _passwordController.text,
       );
       accounts.add(user);
-      isHideLoading();
+      _showHiddenLoading(status: false);
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (_) => const SignInPage()),

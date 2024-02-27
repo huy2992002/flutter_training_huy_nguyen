@@ -9,6 +9,7 @@ import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
 
 class VerificationPage extends StatelessWidget {
+  /// Screen verification page
   const VerificationPage({super.key});
 
   @override

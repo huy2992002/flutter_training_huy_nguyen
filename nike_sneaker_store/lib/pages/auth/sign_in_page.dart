@@ -14,6 +14,7 @@ import 'package:nike_sneaker_store/pages/main/main_page.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class SignInPage extends StatefulWidget {
+  /// Screen sign in page
   const SignInPage({super.key});
 
   @override
@@ -21,28 +22,37 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  /// The [TextEditingController] of [TextFormField] email 
   TextEditingController _emailController = TextEditingController();
+
+  /// The [TextEditingController] of [TextFormField] password 
   TextEditingController _passwordController = TextEditingController();
+
+  /// If [_isLoading] is true display loading button 
   bool _isLoading = false;
+
+  /// The global key check [Validator] in page
   final _formKey = GlobalKey<FormState>();
 
-  void _isShowLoading() {
-    setState(() => _isLoading = true);
+  /// Function change [_isLoading] with parameter [status] & resetState
+  void _showHiddenLoading({required bool status}) {
+    setState(() => _isLoading = status);
   }
 
-  void _isHideLoading() {
-    setState(() => _isLoading = false);
-  }
-
+  /// Function when action login.
+  /// 
+  /// Check [Validator] success.
+  /// If the [_emailController] and [_passwordController] match the [accounts], go to the [MainPage] screen. 
+  /// If incorrect, show snackbar notification
   Future<void> _onLogin() async {
     if (_formKey.currentState == null || !_formKey.currentState!.validate()) return;
-    _isShowLoading();
+    _showHiddenLoading(status: true);
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) =>
         _emailController.text == e.email &&
         _passwordController.text == e.password);
     if (checkUser) {
-      _isHideLoading();
+      _showHiddenLoading(status: false);
       userLogin = accounts.singleWhere((e) => e.email == _emailController.text);
       Navigator.pushAndRemoveUntil(
         context,
@@ -50,7 +60,7 @@ class _SignInPageState extends State<SignInPage> {
         (route) => false,
       );
     } else {
-      _isHideLoading();
+      _showHiddenLoading(status: false);
       NSSnackBar.snackbarError(
         context,
         title: AppLocalizations.of(context).emailOrPasswordIncorrect,

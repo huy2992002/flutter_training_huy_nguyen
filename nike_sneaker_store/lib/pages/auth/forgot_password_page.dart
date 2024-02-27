@@ -10,6 +10,7 @@ import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
+  /// Screen forgot password page
   const ForgotPasswordPage({super.key});
 
   @override

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TitleLabel extends StatelessWidget {
+  /// The text displays the label [TextFormField]
+  /// 
+  /// The [text] arguments must not be null.
   const TitleLabel({required this.text, super.key});
 
+  /// The text display
   final String text;
 
   @override
