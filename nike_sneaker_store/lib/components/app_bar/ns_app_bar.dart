@@ -9,6 +9,7 @@ class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.leftIcon,
     this.rightIcon,
+    this.colorAppBar,
     super.key,
   });
 
@@ -23,10 +24,12 @@ class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// If [rightIcon] argument is null, no display right app bar
   final Widget? rightIcon;
 
+  final Color? colorAppBar;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).colorScheme.background,
+      color: colorAppBar,
       padding: const EdgeInsets.symmetric(horizontal: 18).copyWith(
         top: MediaQuery.paddingOf(context).top + 3,
         bottom: 3,
