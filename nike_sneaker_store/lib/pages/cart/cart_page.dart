@@ -10,6 +10,7 @@ import 'package:nike_sneaker_store/pages/cart/cart_information_page.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_total_cost.dart';
 
 class CartPage extends StatefulWidget {
+  /// Screen display my carts
   const CartPage({super.key});
 
   @override
