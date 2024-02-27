@@ -20,6 +20,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NSAppBar(
         title: AppLocalizations.of(context).notifications,
         rightIcon: NsIconButton(
