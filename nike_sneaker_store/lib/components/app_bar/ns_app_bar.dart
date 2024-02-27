@@ -24,6 +24,9 @@ class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// If [rightIcon] argument is null, no display right app bar
   final Widget? rightIcon;
 
+  /// [Color] of app bar
+  /// 
+  /// If [colorAppBar] argument is null will use default color of Theme
   final Color? colorAppBar;
 
   @override
