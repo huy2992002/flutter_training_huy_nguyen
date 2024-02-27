@@ -23,7 +23,7 @@ class NSBottomNavigationBar extends StatelessWidget {
     ];
 
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       color: Theme.of(context).colorScheme.onPrimary,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -32,7 +32,7 @@ class NSBottomNavigationBar extends StatelessWidget {
           (index) => GestureDetector(
             onTap: () => onChangePage(index),
             child: Container(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: currentIndex == index
                     ? Theme.of(context).colorScheme.primary
@@ -42,6 +42,7 @@ class NSBottomNavigationBar extends StatelessWidget {
               child: SvgPicture.asset(
                 iconPaths[index],
                 width: 24,
+                height: 24,
                 color: currentIndex == index
                     ? Theme.of(context).colorScheme.onPrimary
                     : NSColor.neutral,
