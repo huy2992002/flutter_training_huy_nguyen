@@ -129,9 +129,10 @@ class _CardCartProductState extends State<CardCartProduct> {
                     context,
                     iconPath: Assets.icons.icAdd,
                     onTap: widget.onPlus,
+                    
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 2),
                     child: Text(
                       '${widget.product.quantity}',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -159,11 +160,14 @@ class _CardCartProductState extends State<CardCartProduct> {
     required String iconPath,
     Function()? onTap,
   }) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
-      child: SvgPicture.asset(
-        iconPath,
-        color: Theme.of(context).colorScheme.onPrimaryContainer,
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: SvgPicture.asset(
+          iconPath,
+          color: Theme.of(context).colorScheme.onPrimaryContainer,
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
+import 'package:nike_sneaker_store/gen/fonts.gen.dart';
 
 class CartInformationItem extends StatelessWidget {
   const CartInformationItem({
@@ -10,6 +11,7 @@ class CartInformationItem extends StatelessWidget {
     this.controller,
     this.onChanged,
     this.focusNode,
+    this.keyboardType,
     super.key,
   });
 
@@ -19,6 +21,7 @@ class CartInformationItem extends StatelessWidget {
   final Function() onEdit;
   final Function(String)? onChanged;
   final FocusNode? focusNode;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +48,7 @@ class CartInformationItem extends StatelessWidget {
                 onChanged: onChanged,
                 style: Theme.of(context).textTheme.labelMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      fontFamily: FontFamily.poppins
                     ),
                 decoration: const InputDecoration(
                   isDense: true,
@@ -53,6 +57,7 @@ class CartInformationItem extends StatelessWidget {
                   focusedBorder: InputBorder.none,
                 ),
                 focusNode: focusNode,
+                keyboardType: keyboardType,
               ),
               const SizedBox(height: 2),
               Text(

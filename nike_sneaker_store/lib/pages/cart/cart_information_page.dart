@@ -96,6 +96,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
                     _resetState();
                   },
                   focusNode: _focusNodePhone,
+                  keyboardType: TextInputType.phone,
                 ),
                 const SizedBox(height: 12),
                 Text(
@@ -113,6 +114,9 @@ class _CartInformationPageState extends State<CartInformationPage> {
                         onChanged: (_) {
                           _resetState();
                         },
+                        style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                              fontWeight: FontWeight.w500,
+                            ),
                         decoration: const InputDecoration(
                           contentPadding: EdgeInsets.zero,
                           isDense: true,

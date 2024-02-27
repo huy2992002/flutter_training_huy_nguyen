@@ -20,6 +20,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NSAppBar(
         leftIcon: NsIconButton(
           onPressed: () => Navigator.pop(context),
