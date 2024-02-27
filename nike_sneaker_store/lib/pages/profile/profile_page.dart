@@ -32,6 +32,10 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
   }
 
+  void _resetState() {
+    setState(() {});
+  }
+
   bool get canSave {
     return _nameController.text.isNotEmpty &&
         _locationController.text.isNotEmpty &&
@@ -109,7 +113,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   hintText: AppLocalizations.of(context).yourName,
                   onChanged: (_) {
                     canSave;
-                    setState(() {});
+                    _resetState();
                   },
                 ),
                 const SizedBox(height: 34),
@@ -125,7 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   hintText: AppLocalizations.of(context).location,
                   onChanged: (_) {
                     canSave;
-                    setState(() {});
+                    _resetState();
                   },
                   textInputType: TextInputType.phone,
                 ),
@@ -142,7 +146,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   hintText: AppLocalizations.of(context).mobileNumber,
                   onChanged: (_) {
                     canSave;
-                    setState(() {});
+                    _resetState();
                   },
                 ),
                 const SizedBox(height: 55),
