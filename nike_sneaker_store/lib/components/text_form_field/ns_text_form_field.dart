@@ -15,17 +15,24 @@ class NSTextFormField extends StatefulWidget {
     super.key,
   });
 
-  const NSTextFormField.password({
-    required this.hintText,
-    this.controller,
-    this.onChanged,
-    this.validator,
-    this.onFieldSubmitted,
-    this.textInputAction,
-    this.textInputType,
-    this.isPassword = true,
-    super.key,
-  });
+  factory NSTextFormField.password({
+    required String hintText,
+    TextEditingController? controller,
+    Function(String)? onChanged,
+    FormFieldValidator<String>? validator,
+    Function(String)? onFieldSubmitted,
+    TextInputAction? textInputAction,
+  }) {
+    return NSTextFormField.text(
+      hintText: hintText,
+      controller: controller,
+      onChanged: onChanged,
+      validator: validator,
+      onFieldSubmitted: onFieldSubmitted,
+      textInputAction: textInputAction,
+      isPassword: true,
+    );
+  }
 
   final TextEditingController? controller;
   final String hintText;
