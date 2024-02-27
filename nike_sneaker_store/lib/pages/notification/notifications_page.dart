@@ -8,6 +8,7 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
 
 class NotificationsPage extends StatefulWidget {
+  /// Screen display notifications
   const NotificationsPage({super.key});
 
   @override
@@ -15,6 +16,7 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
+  /// Function reset state
   void _resetState() => setState(() {});
 
   @override
