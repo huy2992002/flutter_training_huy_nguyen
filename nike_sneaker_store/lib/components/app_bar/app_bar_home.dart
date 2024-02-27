@@ -7,7 +7,7 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   /// Create design app bar with height 50px
   ///
-  /// The [onMenu] and [onCart] arguments must not be null.
+  /// The [onMenu] arguments must not be null.
   const AppBarHome({
     required this.onMenu,
     this.isMarkerNotification = false,
@@ -22,7 +22,8 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      color: Theme.of(context).colorScheme.background,
       padding: const EdgeInsets.symmetric(horizontal: 18).copyWith(
         top: MediaQuery.paddingOf(context).top + 3,
         bottom: 3,
