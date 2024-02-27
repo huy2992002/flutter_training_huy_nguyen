@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
 class TitleHome extends StatelessWidget {
+  /// The text displays the title of the home page
+  /// 
+  /// The [text] arguments must not be null.
   const TitleHome({
     required this.text,
     this.padding,
     super.key,
   });
 
+  /// The title display
   final String text;
+
   final EdgeInsetsGeometry? padding;
 
   @override

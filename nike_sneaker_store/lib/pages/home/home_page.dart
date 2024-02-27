@@ -14,6 +14,7 @@ import 'package:nike_sneaker_store/pages/home/widgets/title_home.dart';
 import 'package:nike_sneaker_store/pages/main/main_page.dart';
 
 class HomePage extends StatefulWidget {
+  /// The home Screen
   const HomePage({super.key});
 
   @override
@@ -21,7 +22,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  /// [List] containing the display product according to category
   List<ProductModel> _productViews = [];
+
+  /// index of category selected
   int _categoryIndex = 0;
 
   @override
@@ -30,8 +34,10 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  /// Function reset state
   void _resetState() => setState(() {});
 
+  /// The function get products
   void _getProducts() {
     _productViews = products;
   }
