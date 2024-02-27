@@ -5,8 +5,8 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class CardCartProduct extends StatefulWidget {
-  /// Create card item of Cart for 
-  /// 
+  /// Create card item of Cart for
+  ///
   /// The [product] arguments must not be null.
   const CardCartProduct({
     required this.product,
@@ -21,22 +21,22 @@ class CardCartProduct extends StatefulWidget {
   final ProductModel product;
 
   /// Action when click onTap Widget
-  /// 
+  ///
   /// The [onTap] argument can null
   final Function()? onTap;
 
   /// Action when click onTap icon plus
-  /// 
+  ///
   /// The [onPlus] argument can null
   final Function()? onPlus;
 
   /// Action when click onTap icon less
-  /// 
+  ///
   /// The [onLess] argument can null
   final Function()? onLess;
 
   /// Action when click onTap icon remove (when onLongPress will display)
-  /// 
+  ///
   /// The [onLess] argument can null
   final Function()? onRemove;
 
@@ -46,19 +46,22 @@ class CardCartProduct extends StatefulWidget {
 
 class _CardCartProductState extends State<CardCartProduct> {
   bool isShowDelete = false;
+
+  void showHideButtonDelete({required bool status}) {
+    setState(() {
+      isShowDelete = status;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         widget.onTap?.call();
-        setState(() {
-          isShowDelete = false;
-        });
+        showHideButtonDelete(status: false);
       },
       onLongPress: () {
-        setState(() {
-          isShowDelete = true;
-        });
+        showHideButtonDelete(status: true);
       },
       child: Container(
         padding: const EdgeInsets.all(10),
@@ -103,9 +106,7 @@ class _CardCartProductState extends State<CardCartProduct> {
               GestureDetector(
                 onTap: () {
                   widget.onRemove?.call();
-                  setState(() {
-                    isShowDelete = false;
-                  });
+                  showHideButtonDelete(status: false);
                 },
                 child: Container(
                   width: 50,
