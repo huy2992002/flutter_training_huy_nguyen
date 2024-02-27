@@ -2,6 +2,11 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/utils/maths.dart';
 
 class ProductModel {
+  /// Object product 
+  /// 
+  /// include
+  /// [uuid], [name], [imagePath], [price], [quantity], [description], [isBestSeller], [category] arguments must not be null
+  /// and [isFavorite] argument has default value is false 
   ProductModel({
     required this.uuid,
     required this.name,
@@ -14,17 +19,35 @@ class ProductModel {
     this.isFavorite = false,
   });
 
+  /// uuid of [ProductModel] , argument must not be duplicated
   String uuid;
+
+  /// Name of product
   String name;
+
+  /// Product image assets path
   String imagePath;
+
+  /// price of product
   double price;
+
+  /// quantity of product
   int quantity;
+
+  /// description of product
   String description;
+
+  /// If [isBestSeller] argument is true product will be the best seller
   bool isBestSeller;
+
+  /// category of product
   String category;
+
+  /// If [isBestSeller] argument is true product has been liked
   bool isFavorite;
 }
 
+/// Fetch data list [ProductModel]
 List<ProductModel> products = [
   ProductModel(
     uuid: Maths.randomUUid(length: 6),

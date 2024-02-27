@@ -2,6 +2,11 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/utils/maths.dart';
 
 class NotificationModel {
+  /// Object notification 
+  /// 
+  /// include
+  /// [uuid], [title], [product], [priceSale], [date], arguments must not be null
+  /// and [isRead] argument has default value is false 
   NotificationModel({
     required this.uuid,
     required this.title,
@@ -11,14 +16,26 @@ class NotificationModel {
     this.isRead = false,
   });
 
+  /// uuid of [NotificationModel] , argument must not be duplicated
   String uuid;
+
+  /// Title of notification
   String title;
+
+  /// The [product] is represents of the [NotificationModel]
   ProductModel product;
+
+  /// Price when product sale
   double priceSale;
+
+  /// Status of [NotificationModel] has been read or not
   bool isRead;
+
+  /// The time the notification is sent
   String date;
 }
 
+/// Fetch data list [NotificationModel]
 List<NotificationModel> notifications = [
   NotificationModel(
     uuid: Maths.randomUUid(length: 6),
