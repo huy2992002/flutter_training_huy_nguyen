@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 class Maths {
+  /// Generates a random string of length [length] commonly used for uuid generation
   static String randomUUid({required int length}) {
     const lowercaseLetter = 'qwertyuiopasdfghjklzxcvbnm';
     const uppercaseLetter = 'QWERTYUIOPASDFGHJKLZXCVBNM';
