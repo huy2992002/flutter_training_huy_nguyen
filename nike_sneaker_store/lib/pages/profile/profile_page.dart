@@ -12,6 +12,7 @@ import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class ProfilePage extends StatefulWidget {
+  /// Screen profile page
   const ProfilePage({super.key});
 
   @override
@@ -19,9 +20,18 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  /// The [TextEditingController] of [TextFormField] name 
   TextEditingController _nameController = TextEditingController();
+
+  /// The [TextEditingController] of [TextFormField] location 
   TextEditingController _locationController = TextEditingController();
+
+  /// The [TextEditingController] of [TextFormField] phone 
   TextEditingController _phoneController = TextEditingController();
+
+  /// File get & display file image avatar
+  /// 
+  /// if [file] is null will display default avatar
   File? file;
 
   @override
@@ -32,16 +42,20 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
   }
 
+  /// Function reset state
   void _resetState() {
     setState(() {});
   }
 
+  /// The getter checks that email, location & phone is not empty
   bool get canSave {
     return _nameController.text.isNotEmpty &&
         _locationController.text.isNotEmpty &&
         _phoneController.text.isNotEmpty;
   }
 
+
+  /// The Function use [FilePicker] get image from device and display by field [file]
   Future<void> changeAvatar() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
