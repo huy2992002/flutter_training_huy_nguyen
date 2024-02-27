@@ -10,11 +10,11 @@ class OnboardingPower extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 150),
+      padding: const EdgeInsets.only(top: 120),
       child: Column(
         children: [
           Image.asset(Assets.images.imgPrOnboardPower.path),
-          const SizedBox(height: 50),
+          const SizedBox(height: 30),
           Text(
             AppLocalizations.of(context).youHavePowerTo,
             style: Theme.of(context).textTheme.displaySmall?.copyWith(

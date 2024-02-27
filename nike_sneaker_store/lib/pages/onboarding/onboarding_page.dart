@@ -64,7 +64,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           Positioned(
             left: 20,
             right: 20,
-            bottom: 36,
+            bottom: 26,
             child: Column(
               children: [
                 Row(
@@ -85,7 +85,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 60),
+                const SizedBox(height: 36),
                 NSElevatedButton.text(
                   onPressed: _onNext,
                   backgroundColor: NSColor.background,
