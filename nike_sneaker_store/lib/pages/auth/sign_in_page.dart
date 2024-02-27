@@ -111,7 +111,7 @@ class _SignInPageState extends State<SignInPage> {
                 text: AppLocalizations.of(context).signIn,
                 isDisable: _isLoading,
               ),
-              const SizedBox(height: 200),
+              const SizedBox(height: 160),
               PromptText(
                 text: AppLocalizations.of(context).newUser,
                 title: AppLocalizations.of(context).createAccount,

@@ -75,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
           child: ListView(
             padding: EdgeInsets.only(
               left: 20,
-              top: MediaQuery.paddingOf(context).top + 23,
+              top: MediaQuery.paddingOf(context).top + 18,
               right: 20,
             ),
             children: [
@@ -94,7 +94,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 title: AppLocalizations.of(context).registerAccount,
                 subTitle: AppLocalizations.of(context).fillYourDetails,
               ),
-              const SizedBox(height: 54),
+              const SizedBox(height: 40),
               TitleLabel(text: AppLocalizations.of(context).yourName),
               NSTextFormField.text(
                 controller: _nameController,

@@ -8,7 +8,7 @@ class TitleLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 8),
       child: Text(
         text,
         style: Theme.of(context).textTheme.labelLarge?.copyWith(
