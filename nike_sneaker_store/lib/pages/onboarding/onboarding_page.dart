@@ -16,17 +16,24 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
+  /// index of [PageView]
   int _pageIndex = 0;
+
+  /// controller of [PageView]
   final PageController _pageController = PageController();
 
+  /// List page display [PageView]
   List<Widget> _onboardPages = [
     const OnboardingWelcome(),
     const OnboardingStart(),
     const OnboardingPower(),
   ];
 
+  /// Function reset state
   void _resetState() => setState(() {});
 
+  /// The function to switch page of [PageView]. 
+  /// If it is on the last page, it will switch to [SignInPage]
   void _onNext() {
     if (_pageIndex < _onboardPages.length - 1) {
       _pageController.nextPage(
