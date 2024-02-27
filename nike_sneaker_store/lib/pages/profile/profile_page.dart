@@ -46,6 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
       file = File(result.files.single.path!);
+      _resetState();
       NSSnackBar.snackbarSuccess(
         context,
         title: AppLocalizations.of(context).avatarChangedSuccess,
@@ -131,7 +132,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     canSave;
                     _resetState();
                   },
-                  textInputType: TextInputType.phone,
                 ),
                 const SizedBox(height: 34),
                 Text(
@@ -148,6 +148,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     canSave;
                     _resetState();
                   },
+                  textInputType: TextInputType.phone,
                 ),
                 const SizedBox(height: 55),
                 NSElevatedButton.text(
