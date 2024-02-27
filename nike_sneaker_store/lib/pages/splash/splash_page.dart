@@ -3,6 +3,7 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/pages/onboarding/onboarding_page.dart';
 
 class SplashPage extends StatefulWidget {
+  /// Screen splash page
   const SplashPage({super.key});
 
   @override
@@ -16,6 +17,7 @@ class _SplashPageState extends State<SplashPage> {
     _toPage();
   }
 
+  /// After 2 seconds, it will switch to the [OnboardingPage]
   Future<void> _toPage() async {
     await Future.delayed(const Duration(milliseconds: 2300), () {
       Navigator.push(
