@@ -23,8 +23,8 @@ class _SearchPageState extends State<SearchPage> {
 
   void _resetState() => setState(() {});
 
-  void _search(String searchText) {
-    if (searchText.isEmpty) {
+  void _search(String? searchText) {
+    if (searchText == null || searchText.isEmpty) {
       _searchProducts = [];
       _resetState();
       return;
@@ -97,8 +97,7 @@ class _SearchPageState extends State<SearchPage> {
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) =>
-                                  DetailPage(product: product),
+                              builder: (_) => DetailPage(product: product),
                             ),
                           ),
                         );
