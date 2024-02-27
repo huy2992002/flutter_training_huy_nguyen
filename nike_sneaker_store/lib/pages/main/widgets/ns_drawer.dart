@@ -3,6 +3,9 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class NSDrawer extends StatelessWidget {
+  /// The custom drawer
+  /// 
+  /// The [menuScreen] & [mainScreen] arguments must not be null.
   const NSDrawer({
     required this.menuScreen,
     required this.mainScreen,
@@ -10,8 +13,13 @@ class NSDrawer extends StatelessWidget {
     super.key,
   });
 
+  /// Controls the zoom drawer.
   final ZoomDrawerController? controller;
+
+  /// Screen display menu
   final Widget menuScreen;
+
+  /// Screen main
   final Widget mainScreen;
 
   @override

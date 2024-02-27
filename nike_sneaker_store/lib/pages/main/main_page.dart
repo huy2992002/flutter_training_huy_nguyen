@@ -15,12 +15,17 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
+/// The [ZoomDrawerController] of [TextFormField] drawer 
 ZoomDrawerController zoomController = ZoomDrawerController();
+
+/// index of [MainPage]
 int currentPageIndex = 0;
 
 class _MainPageState extends State<MainPage> {
+  /// Function reset state
   void _resetState() => setState(() {});
 
+  /// [List] page display [BottomNavigationBar]
   List<Widget> _pages = [
     const HomePage(),
     const FavoritePage(),
@@ -28,6 +33,7 @@ class _MainPageState extends State<MainPage> {
     const ProfilePage(),
   ];
 
+  /// The function change page with index
   void changePage(int index) {
     currentPageIndex = index;
     _resetState();
