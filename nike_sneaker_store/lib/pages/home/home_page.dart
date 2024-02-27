@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
         onMenu: () {
           zoomController.toggle?.call();
         },
-        onCart: () {},
+        isMarkerNotification: myCarts.isNotEmpty,
       ),
       body: ListView(
         padding: const EdgeInsets.only(top: 16),

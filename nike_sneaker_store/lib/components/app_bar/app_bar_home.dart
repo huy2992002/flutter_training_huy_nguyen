@@ -6,19 +6,19 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 
 class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   /// Create design app bar with height 50px
-  /// 
+  ///
   /// The [onMenu] and [onCart] arguments must not be null.
   const AppBarHome({
     required this.onMenu,
-    required this.onCart,
+    this.isMarkerNotification = false,
     super.key,
   });
 
   /// Action when click onTap of menu icon
   final Function() onMenu;
 
-  /// Action when click onTap of cart icon
-  final Function() onCart;
+  /// The [isMarkerNotification] argument is true will display marker with notification
+  final bool isMarkerNotification;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,9 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
                   color: Theme.of(context).colorScheme.onBackground,
                 ),
           ),
-          const ActionIconAppBar(),
+          ActionIconAppBar(
+            isMarked: isMarkerNotification,
+          ),
         ],
       ),
     );

@@ -67,16 +67,19 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NSAppBar(
-          leftIcon: NsIconButton(
-            onPressed: () => Navigator.pop(context),
-            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-            icon: SvgPicture.asset(
-              Assets.icons.icArrow,
-              color: Theme.of(context).colorScheme.onPrimaryContainer,
-            ),
+        leftIcon: NsIconButton(
+          onPressed: () => Navigator.pop(context),
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+          icon: SvgPicture.asset(
+            Assets.icons.icArrow,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
-          title: 'Details',
-          rightIcon: const ActionIconAppBar()),
+        ),
+        title: 'Details',
+        rightIcon: ActionIconAppBar(
+          isMarked: myCarts.isNotEmpty,
+        ),
+      ),
       body: ListView(
         padding: const EdgeInsets.only(
           left: 20,

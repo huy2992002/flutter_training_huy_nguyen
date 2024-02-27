@@ -49,7 +49,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
           backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         ),
-        rightIcon: const ActionIconAppBar(),
+        rightIcon: ActionIconAppBar(isMarked: myCarts.isNotEmpty),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),

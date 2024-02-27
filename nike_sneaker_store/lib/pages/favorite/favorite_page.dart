@@ -34,8 +34,11 @@ class _FavoritePageState extends State<FavoritePage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NSAppBar(
-          title: AppLocalizations.of(context).favorite,
-          rightIcon: const ActionIconAppBar()),
+        title: AppLocalizations.of(context).favorite,
+        rightIcon: ActionIconAppBar(
+          isMarked: myCarts.isNotEmpty,
+        ),
+      ),
       body: _favoriteProducts.isEmpty
           ? Padding(
               padding: const EdgeInsets.only(
