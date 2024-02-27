@@ -76,7 +76,7 @@ class NSDialog {
       context: context,
       builder: (context) => AlertDialog(
         contentPadding:
-            const EdgeInsets.symmetric(horizontal: 76, vertical: 40),
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16)),
         ),
