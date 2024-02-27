@@ -7,6 +7,7 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
 
 class FavoritePage extends StatefulWidget {
+  /// Screen display favorite products
   const FavoritePage({super.key});
 
   @override
@@ -14,6 +15,7 @@ class FavoritePage extends StatefulWidget {
 }
 
 class _FavoritePageState extends State<FavoritePage> {
+  /// [List] of favorite products
   List<ProductModel> _favoriteProducts = [];
 
   @override
@@ -22,8 +24,10 @@ class _FavoritePageState extends State<FavoritePage> {
     super.initState();
   }
 
+  /// Function reset state
   void _resetState() => setState(() {});
 
+  /// The function check out [products]'s favorite products add to [_favoriteProducts]
   void _getFavoriteProducts() {
     _favoriteProducts = products.where((e) => e.isFavorite == true).toList();
     _resetState();
