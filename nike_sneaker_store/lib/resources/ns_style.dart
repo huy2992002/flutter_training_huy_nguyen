@@ -118,7 +118,7 @@ class NSStyle {
 
   static TextStyle h36Black = primaryTextStyle(
     fontSize: 36,
-    fontFamily: FontFamily.ralewayBold,
+    fontFamily: FontFamily.poppinsBold,
     fontWeight: FontWeight.w700,
   );
 }
