@@ -13,6 +13,9 @@ import 'package:nike_sneaker_store/resources/ns_color.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class DetailPage extends StatefulWidget {
+  /// Screen display detail of [product]
+  /// 
+  /// The [product] arguments must not be null.
   const DetailPage({
     required this.product,
     this.resetState,
@@ -27,6 +30,7 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  /// The [ProductModel] display in screen
   late ProductModel productView;
 
   @override
@@ -35,16 +39,20 @@ class _DetailPageState extends State<DetailPage> {
     super.initState();
   }
 
+  /// The function change isFavorite for [productView]
   void _changeFavorite() {
     productView.isFavorite = !productView.isFavorite;
     widget.resetState?.call();
     setState(() {});
   }
 
+  /// Function reset state
   void _resetState() {
     setState(() {});
   }
 
+  /// Check if [product] is already in your [myCarts]. 
+  /// If not, add [product] to [myCarts]
   void _addToCart(ProductModel product) {
     bool hasCheckCart = myCarts.any((element) => element.uuid == product.uuid);
     if (hasCheckCart) {
