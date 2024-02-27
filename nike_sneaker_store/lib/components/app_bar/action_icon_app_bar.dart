@@ -6,6 +6,7 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
 
 class ActionIconAppBar extends StatelessWidget {
+  /// Cart icon in AppBar with action to go to your cart  
   const ActionIconAppBar({super.key});
 
   @override

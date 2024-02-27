@@ -3,6 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 
 class NSTextFormField extends StatefulWidget {
+  /// Create an [TextFormField]
+  /// 
+  /// The [hintText] arguments must not be null.
+  /// The [isPassword] arguments value default is false 
   const NSTextFormField.text({
     required this.hintText,
     this.controller,
@@ -15,6 +19,9 @@ class NSTextFormField extends StatefulWidget {
     super.key,
   });
 
+  /// Create [TextFormField] for password in app Nike Sneaker
+  /// 
+  /// The [hintText] arguments must not be null.
   factory NSTextFormField.password({
     required String hintText,
     TextEditingController? controller,
@@ -34,13 +41,40 @@ class NSTextFormField extends StatefulWidget {
     );
   }
 
+  /// Controls the text being edited.
+  ///
+  /// If null, this widget will create its own [TextEditingController]
   final TextEditingController? controller;
+
+  /// String hint text for [TextFormField]
   final String hintText;
+
+  /// Action when changing keyboard values
+  /// 
+  /// The [onChanged] arguments can null
   final Function(String)? onChanged;
+
+  /// Form validator value of [TextFormField]
+  /// 
+  /// The [validator] arguments can null
   final FormFieldValidator<String>? validator;
+
+  /// Action when onTap [textInputAction]
+  /// 
+  /// The [onFieldSubmitted] arguments can null
   final Function(String)? onFieldSubmitted;
+
+  /// Value of [TextInputAction]
+  /// 
+  /// The [textInputAction] arguments can null
   final TextInputAction? textInputAction;
+
+  /// Type of Input [TextFormField]
+  /// 
+  /// The [textInputType] arguments can null
   final TextInputType? textInputType;
+
+  /// If [isPassword] arguments is true [TextFormField] is password 
   final bool isPassword;
 
   @override

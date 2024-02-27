@@ -5,6 +5,14 @@ import 'package:nike_sneaker_store/resources/ns_color.dart';
 class NSDialog {
   NSDialog._();
 
+  /// Create [Dialog] show message
+  ///
+  /// The [title] arguments is display title of [Dialog]
+  ///
+  /// The [subTitle] arguments is display sub title
+  /// 
+  /// The [icon] argument display icon 
+  /// If [icon] argument is null, no display icon
   static void text(
     BuildContext context, {
     required String title,
@@ -46,6 +54,17 @@ class NSDialog {
     );
   }
 
+  /// Create [Dialog] show message have button implement action
+  ///
+  /// The [title] arguments is display title of [Dialog]
+  ///
+  /// The [textButton] arguments is display title of button
+  /// 
+  /// The [icon] argument display icon 
+  /// If [icon] argument is null, no display icon
+  /// 
+  /// The [icon] action when onTap button
+  /// [icon] can null
   static void textButton(
     BuildContext context, {
     required String title,

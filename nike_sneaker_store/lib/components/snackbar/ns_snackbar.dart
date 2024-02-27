@@ -4,6 +4,15 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class NSSnackBar {
+  /// Create [SnackBar] display notification
+  ///
+  /// The [title] arguments is display title of [SnackBar].
+  ///
+  /// The [color] arguments is display color of [SnackBar]
+  /// If [color] is null, default value is [NSColor.darkPrimaryContainer]
+  ///
+  /// The [iconPath] arguments is display color of [SnackBar].
+  /// If [iconPath] is null, default value is [Assets.icons.icTick]
   static void snackbarDefault(
     BuildContext context, {
     required String title,
@@ -41,6 +50,9 @@ class NSSnackBar {
     );
   }
 
+  /// Create [SnackBar] display notification success with color green [NSColor.success]
+  ///
+  /// The [title] arguments is display title of [SnackBar].
   static void snackbarSuccess(
     BuildContext context, {
     required String title,
@@ -52,6 +64,9 @@ class NSSnackBar {
     );
   }
 
+  /// Create [SnackBar] display notification error with color red [NSColor.error]
+  ///
+  /// The [title] arguments is display title of [SnackBar].
   static void snackbarError(
     BuildContext context, {
     required String title,
@@ -64,6 +79,9 @@ class NSSnackBar {
     );
   }
 
+  /// Create [SnackBar] display notification warning with color yellow [NSColor.warning]
+  ///
+  /// The [title] arguments is display title of [SnackBar].
   static void snackbarWarning(
     BuildContext context, {
     required String title,

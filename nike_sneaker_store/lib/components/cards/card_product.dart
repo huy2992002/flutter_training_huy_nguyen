@@ -5,6 +5,9 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class CardProduct extends StatelessWidget {
+  /// Create card item of [CardProduct]
+  ///
+  /// The [product] arguments must not be null.
   const CardProduct({
     required this.product,
     this.onTap,
@@ -13,9 +16,22 @@ class CardProduct extends StatelessWidget {
     super.key,
   });
 
+  /// [product] use display arguments of Object [ProductModel]
   final ProductModel product;
+
+  /// Action when click onTap Widget
+  ///
+  /// The [onTap] argument can null
   final Function()? onTap;
+
+  /// Action when click onTap icon heart
+  ///
+  ///The [onFavorite] argument can null
   final Function()? onFavorite;
+
+  /// Action when click onTap icon plus add to cart
+  ///
+  ///The [onAddCart] argument can null
   final Function()? onAddCart;
 
   @override

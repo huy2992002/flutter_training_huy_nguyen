@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CardCategory extends StatelessWidget {
+  /// Create card item of category  
+  /// 
+  /// The [text] arguments must not be null.  
   const CardCategory({
     required this.text,
     this.onPressed,
@@ -9,9 +12,22 @@ class CardCategory extends StatelessWidget {
     super.key,
   });
 
+  /// Title display of [CardCategory]
   final String text;
+
+  /// Action when click onTap Widget
+  /// 
+  /// The [onPressed] argument can null
   final Function()? onPressed;
+
+  /// Color of background Widget
+  /// 
+  /// If [backgroundColor] argument is null, The default color is [Theme.of(context).colorScheme.primaryContainer]
   final Color? backgroundColor;
+
+  /// Color of text widget
+  /// 
+  /// If [textColor] argument is null, The default color is [Theme.of(context).colorScheme.onPrimaryContainer]
   final Color? textColor;
 
   @override

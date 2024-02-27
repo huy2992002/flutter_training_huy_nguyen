@@ -5,6 +5,9 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class CardCartProduct extends StatefulWidget {
+  /// Create card item of Cart for 
+  /// 
+  /// The [product] arguments must not be null.
   const CardCartProduct({
     required this.product,
     this.onTap,
@@ -14,10 +17,27 @@ class CardCartProduct extends StatefulWidget {
     super.key,
   });
 
+  /// Object [ProductModel]
   final ProductModel product;
+
+  /// Action when click onTap Widget
+  /// 
+  /// The [onTap] argument can null
   final Function()? onTap;
+
+  /// Action when click onTap icon plus
+  /// 
+  /// The [onPlus] argument can null
   final Function()? onPlus;
+
+  /// Action when click onTap icon less
+  /// 
+  /// The [onLess] argument can null
   final Function()? onLess;
+
+  /// Action when click onTap icon remove (when onLongPress will display)
+  /// 
+  /// The [onLess] argument can null
   final Function()? onRemove;
 
   @override

@@ -5,6 +5,7 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class NSSearchBox extends StatelessWidget {
+  /// Create an [TextFormField] 
   const NSSearchBox({
     super.key,
     this.controller,
@@ -13,9 +14,22 @@ class NSSearchBox extends StatelessWidget {
     this.readOnly = false,
   });
 
+  /// Controls the text being edited.
+  ///
+  /// If null, this widget will create its own [TextEditingController]
   final TextEditingController? controller;
+
+  /// Action when changing keyboard values
+  /// 
+  /// The [onChanged] arguments can null
   final Function(String)? onChanged;
+
+  /// Action when onTap of [NSSearchBox]
+  /// 
+  /// The [onTap] arguments can null
   final Function()? onTap;
+
+  /// If [readOnly] arguments is true [TextFormField] is only read
   final bool readOnly;
 
   @override

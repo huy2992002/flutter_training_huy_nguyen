@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
+  /// Create design app bar with height 50px 
+  /// with title of app bar is [title], two icon left and right
+  /// 
+  /// The [title] arguments must not be null.
   const NSAppBar({
     required this.title,
     this.leftIcon,
@@ -8,8 +12,15 @@ class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
   });
 
+  /// The text to display center app bar
   final String title;
+
+  /// Icon display left of app bar
+  /// If [leftIcon] argument is null, no display left app bar
   final Widget? leftIcon;
+
+  /// Icon display right of app bar
+  /// If [rightIcon] argument is null, no display right app bar
   final Widget? rightIcon;
 
   @override

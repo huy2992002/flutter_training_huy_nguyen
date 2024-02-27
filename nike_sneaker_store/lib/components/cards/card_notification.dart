@@ -3,13 +3,21 @@ import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class CardNotification extends StatelessWidget {
+  /// Create card item of [NotificationModel]
+  ///
+  /// The [notification] arguments must not be null.
   const CardNotification({
     required this.notification,
     this.onTap,
     super.key,
   });
 
+  /// [notification] use display arguments of Object [NotificationModel]
   final NotificationModel notification;
+
+  /// Action when click onTap Widget
+  ///
+  /// The [onTap] argument can null
   final Function()? onTap;
 
   @override

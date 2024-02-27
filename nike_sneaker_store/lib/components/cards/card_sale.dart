@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 
 class CardSale extends StatelessWidget {
+  /// Create card sale item of advertising banner advertising
+  ///
+  /// The [title], [discount], [imagePath] arguments must not be null.
   const CardSale({
     required this.title,
     required this.discount,
@@ -9,8 +12,13 @@ class CardSale extends StatelessWidget {
     super.key,
   });
 
+  /// Display title of banner
   final String title;
+
+  /// Percent discount of banner
   final int discount;
+
+  /// [imagePath] is assetName of [AssetImage] display the product represents the banner
   final String imagePath;
 
   @override

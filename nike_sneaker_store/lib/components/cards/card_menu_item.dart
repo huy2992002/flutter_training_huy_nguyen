@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CardMenuItem extends StatelessWidget {
+  /// Create card item of menu drawer
+  ///
+  /// The [title], [iconPath] arguments must not be null.
   const CardMenuItem({
     required this.title,
     required this.iconPath,
@@ -9,8 +12,15 @@ class CardMenuItem extends StatelessWidget {
     super.key,
   });
 
+  /// Title display of [CardMenuItem]
   final String title;
+
+  /// [iconPath] is assetName of [SvgPicture.asset]
   final String iconPath;
+
+  /// Action when click onTap Widget
+  ///
+  /// The [onTap] argument can null
   final Function()? onTap;
 
   @override
