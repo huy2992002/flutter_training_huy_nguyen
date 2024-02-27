@@ -7,8 +7,6 @@
             "type": "dart",
             "program": "nike_sneaker_store/lib/main.dart",
             "args": [
-                "--flavor",
-                "production",
                 "nike_sneaker_store/lib/main.dart"
             ]
         },
