@@ -15,24 +15,33 @@ import 'package:nike_sneaker_store/utils/validator.dart';
 
 class SignInPage extends StatefulWidget {
   /// Screen sign in page
-  const SignInPage({super.key});
+  const SignInPage({super.key, this.email});
+
+  final String? email;
 
   @override
   State<SignInPage> createState() => _SignInPageState();
 }
 
 class _SignInPageState extends State<SignInPage> {
-  /// The [TextEditingController] of [TextFormField] email 
+  /// The [TextEditingController] of [TextFormField] email
   TextEditingController _emailController = TextEditingController();
 
-  /// The [TextEditingController] of [TextFormField] password 
+  /// The [TextEditingController] of [TextFormField] password
   TextEditingController _passwordController = TextEditingController();
 
-  /// If [_isLoading] is true display loading button 
+  /// If [_isLoading] is true display loading button
   bool _isLoading = false;
 
   /// The global key check [Validator] in page
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController.text = widget.email ?? '';
+    setState(() {});
+  }
 
   /// Function change [_isLoading] with parameter [status] & resetState
   void _showHiddenLoading({required bool status}) {
@@ -40,12 +49,13 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   /// Function when action login.
-  /// 
+  ///
   /// Check [Validator] success.
-  /// If the [_emailController] and [_passwordController] match the [accounts], go to the [MainPage] screen. 
+  /// If the [_emailController] and [_passwordController] match the [accounts], go to the [MainPage] screen.
   /// If incorrect, show snackbar notification
   Future<void> _onLogin() async {
-    if (_formKey.currentState == null || !_formKey.currentState!.validate()) return;
+    if (_formKey.currentState == null || !_formKey.currentState!.validate())
+      return;
     _showHiddenLoading(status: true);
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) =>
@@ -79,6 +89,7 @@ class _SignInPageState extends State<SignInPage> {
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
               top: MediaQuery.paddingOf(context).top + 80,
+              bottom: 20,
             ),
             children: [
               TitleAuth(
@@ -122,7 +133,7 @@ class _SignInPageState extends State<SignInPage> {
                 text: AppLocalizations.of(context).signIn,
                 isDisable: _isLoading,
               ),
-              const SizedBox(height: 160),
+              const SizedBox(height: 70),
               PromptText(
                 text: AppLocalizations.of(context).newUser,
                 title: AppLocalizations.of(context).createAccount,
