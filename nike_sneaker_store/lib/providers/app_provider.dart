@@ -28,12 +28,13 @@ class AppProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeLocale() {
-    if (_locale == const Locale('vi')) {
-      _locale = const Locale('en');
-    } else {
-      _locale = const Locale('vi');
-    }
+  void changeLocaleVi() {
+    _locale = const Locale('vi');
+    notifyListeners();
+  }
+
+  void changeLocaleEn() {
+    _locale = const Locale('en');
     notifyListeners();
   }
 }

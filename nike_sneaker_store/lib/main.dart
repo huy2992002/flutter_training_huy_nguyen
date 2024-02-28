@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: const Locale('en'),
+      locale: Provider.of<AppProvider>(context).locale,
       theme: Provider.of<AppProvider>(context).themeData,
       darkTheme: NSTheme.darkTheme,
       home: const SplashPage(),

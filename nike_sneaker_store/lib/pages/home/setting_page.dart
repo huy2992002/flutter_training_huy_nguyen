@@ -17,9 +17,11 @@ class SettingPage extends StatefulWidget {
   State<SettingPage> createState() => _SettingPageState();
 }
 
-bool isDark = false;
 
 class _SettingPageState extends State<SettingPage> {
+  bool isDark = false;
+  String? dropdownValue = 'en';
+  List<String> language = ['en', 'vi'];
   void onChangeTheme() {
     Provider.of<AppProvider>(context, listen: false).changeTheme();
 
@@ -69,9 +71,40 @@ class _SettingPageState extends State<SettingPage> {
             ],
           ),
           const SizedBox(height: 40),
-          Text(
-            AppLocalizations.of(context).changeLanguage,
-            style: Theme.of(context).textTheme.titleSmall,
+          Row(
+            children: [
+              Text(
+                AppLocalizations.of(context).changeLanguage,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+              const Spacer(),
+              DropdownButton(
+                items: List.generate(
+                  language.length,
+                  (index) => DropdownMenuItem(
+                    value: language[index],
+                    child: Text(
+                      language[index],
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                  ),
+                ),
+                onChanged: (value) {
+                  dropdownValue = value;
+                  if (value != null && value == 'vi') {
+                    Provider.of<AppProvider>(context, listen: false)
+                        .changeLocaleVi();
+                  }
+
+                  if (value != null && value == 'en') {
+                    Provider.of<AppProvider>(context, listen: false)
+                        .changeLocaleEn();
+                  }
+                  setState(() {});
+                },
+                value: dropdownValue,
+              ),
+            ],
           ),
           const SizedBox(height: 40),
           GestureDetector(
