@@ -17,6 +17,8 @@ class NSColor {
   static const onSurface = Color(0xFF2B2B2B);
   static const neutral = Color(0xFF707B81);
   static const tertiary = Color(0xFFFFB21A);
+  static const inverseSurface = Color(0xFFFAE9B1);
+  static const onInverseSurface = Color(0xFFF2C138);
   static const notification = Color(0xFFFD1600);
   static const favorite = Color(0xFFF87265);
   static const inversePrimary = Color(0xFF674DC5);
@@ -36,4 +38,6 @@ class NSColor {
   static const error = Color(0xFFD65745);
   static const warning = Color(0xFFEAC645);
   static const darkInversePrimary = Color(0xFFC2EF00);
+  static const darkInverseSurface = Color(0xFF092E40);
+  static const darkOnInverseSurface = Color(0xFF25B0EB);
 }

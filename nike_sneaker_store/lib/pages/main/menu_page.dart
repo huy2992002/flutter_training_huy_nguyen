@@ -4,9 +4,9 @@ import 'package:nike_sneaker_store/components/cards/card_menu_item.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
-import 'package:nike_sneaker_store/pages/auth/change_password_page.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
+import 'package:nike_sneaker_store/pages/home/setting_page.dart';
 import 'package:nike_sneaker_store/pages/main/main_page.dart';
 
 class MenuPage extends StatelessWidget {
@@ -73,10 +73,10 @@ class MenuPage extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => const ChangePasswordPage(),
+                builder: (_) => const SettingPage(),
               ),
             ),
-            title: AppLocalizations.of(context).changePassword,
+            title: AppLocalizations.of(context).setting,
             iconPath: Assets.icons.icSetting,
           ),
           const SizedBox(height: 20),

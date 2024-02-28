@@ -21,6 +21,8 @@ class NSColorTheme {
     scrim: NSColor.primary,
     tertiary: NSColor.tertiary,
     inversePrimary: NSColor.inversePrimary,
+    inverseSurface: NSColor.inverseSurface,
+    onInverseSurface: NSColor.onInverseSurface,
   );
 
   static ColorScheme colorThemeDark = const ColorScheme(
@@ -42,5 +44,7 @@ class NSColorTheme {
     scrim: NSColor.darkSecondary,
     tertiary: NSColor.tertiary,
     inversePrimary: NSColor.darkInversePrimary,
+    inverseSurface: NSColor.darkInverseSurface,
+    onInverseSurface: NSColor.darkOnInverseSurface,
   );
 }
