@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
         isMarkerNotification: myCarts.isNotEmpty,
       ),
       body: ListView(
-        padding: const EdgeInsets.only(top: 16),
+        padding: const EdgeInsets.only(top: 16,bottom: 20),
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
