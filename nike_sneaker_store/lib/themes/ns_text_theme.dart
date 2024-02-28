@@ -3,7 +3,7 @@ import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NSTextTheme {
   static TextTheme textTheme = TextTheme(
-    displayLarge: NSStyle.h36Black,
+    displayLarge: NSStyle.h33Black,
     displayMedium: NSStyle.h32Black,
     displaySmall: NSStyle.h32Bold,
     headlineLarge: NSStyle.h26Bold,

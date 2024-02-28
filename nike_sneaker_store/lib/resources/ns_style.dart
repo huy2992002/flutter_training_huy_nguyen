@@ -116,8 +116,8 @@ class NSStyle {
     fontWeight: FontWeight.w900,
   );
 
-  static TextStyle h36Black = primaryTextStyle(
-    fontSize: 36,
+  static TextStyle h33Black = primaryTextStyle(
+    fontSize: 33,
     fontFamily: FontFamily.poppinsBold,
     fontWeight: FontWeight.w700,
   );
