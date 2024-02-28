@@ -96,6 +96,9 @@
   "newPassword": "Mật Khẩu mới",
   "confirmPassword": "Xác nhận mật khẩu",
   "currentPasswordIncorrect": "Mật khẩu hiện tại không đúng",
+  "setting": "Cài đặt",
+  "changeTheme": "Thay đổi chủ đề",
+  "changeLanguage": "Thay đổi ngôn ngữ",
   "discountOff": "{discount}% Giảm giá",
   "@discountOff": {
     "placeholders": {

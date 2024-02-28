@@ -293,6 +293,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get currentPasswordIncorrect => 'Current password is incorrect';
 
   @override
+  String get setting => 'Setting';
+
+  @override
+  String get changeTheme => 'Change Theme';
+
+  @override
+  String get changeLanguage => 'Change Language';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

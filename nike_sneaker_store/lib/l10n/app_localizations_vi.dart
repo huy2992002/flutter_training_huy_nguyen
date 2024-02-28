@@ -293,6 +293,15 @@ class AppLocalizationsVi extends AppLocalizations {
   String get currentPasswordIncorrect => 'Mật khẩu hiện tại không đúng';
 
   @override
+  String get setting => 'Cài đặt';
+
+  @override
+  String get changeTheme => 'Thay đổi chủ đề';
+
+  @override
+  String get changeLanguage => 'Thay đổi ngôn ngữ';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm giá';
   }

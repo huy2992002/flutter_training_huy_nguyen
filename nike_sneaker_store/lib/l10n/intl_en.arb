@@ -96,6 +96,9 @@
   "newPassword": "New Password",
   "confirmPassword": "Confirm Password",
   "currentPasswordIncorrect": "Current password is incorrect",
+  "setting": "Setting",
+  "changeTheme": "Change Theme",
+  "changeLanguage": "Change Language",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

@@ -669,6 +669,24 @@ abstract class AppLocalizations {
   /// **'Current password is incorrect'**
   String get currentPasswordIncorrect;
 
+  /// No description provided for @setting.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting'**
+  String get setting;
+
+  /// No description provided for @changeTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Theme'**
+  String get changeTheme;
+
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language'**
+  String get changeLanguage;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:
