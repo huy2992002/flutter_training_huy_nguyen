@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/cards/card_cart_product.dart';
+import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
@@ -72,17 +73,22 @@ class _CartPageState extends State<CartPage> {
                               setState(() {
                                 product.quantity--;
                               });
+                            } else {
+                              NSDialog.question(
+                                context,
+                                title: AppLocalizations.of(context)
+                                    .doYouWantRemoveFromCart,
+                                action: () {
+                                  setState(() {
+                                    myCarts.remove(product);
+                                  });
+                                },
+                              );
                             }
-                          },
-                          onRemove: () {
-                            setState(() {
-                              myCarts.remove(product);
-                            });
                           },
                         );
                       },
-                      separatorBuilder: (_, __) =>
-                          const SizedBox(height: 14),
+                      separatorBuilder: (_, __) => const SizedBox(height: 14),
                       itemCount: myCarts.length,
                     ),
                   )
