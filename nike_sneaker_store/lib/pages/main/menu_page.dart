@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_avatar.dart';
 import 'package:nike_sneaker_store/components/cards/card_menu_item.dart';
+import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
@@ -94,13 +95,20 @@ class MenuPage extends StatelessWidget {
           ),
           CardMenuItem(
             onTap: () {
-              SharedPrefs.removeUserLogin();
-              Navigator.pushAndRemoveUntil(
+              NSDialog.question(
                 context,
-                MaterialPageRoute(
-                  builder: (_) => const SignInPage(),
+                title: AppLocalizations.of(context).doYouWantLogout,
+                action: () => WidgetsBinding.instance.addPostFrameCallback(
+                  (_) {
+                    SharedPrefs.removeUserLogin();
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const SignInPage(),
+                        ),
+                        (route) => false);
+                  },
                 ),
-                (route) => false,
               );
             },
             title: AppLocalizations.of(context).signOut,
