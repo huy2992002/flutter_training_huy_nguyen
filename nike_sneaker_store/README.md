@@ -72,4 +72,6 @@
         flutter pub run build_runner build --delete-conflicting-outputs
     Gen l10n:
         flutter gen-l10n  
+    Gen WidgetBook:
+        flutter pub run build_runner build    
     ```
