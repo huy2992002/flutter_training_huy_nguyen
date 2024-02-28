@@ -54,8 +54,9 @@ class _SignInPageState extends State<SignInPage> {
   /// If the [_emailController] and [_passwordController] match the [accounts], go to the [MainPage] screen.
   /// If incorrect, show snackbar notification
   Future<void> _onLogin() async {
-    if (_formKey.currentState == null || !_formKey.currentState!.validate())
+    if (_formKey.currentState == null || !_formKey.currentState!.validate()) {
       return;
+    }
     _showHiddenLoading(status: true);
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) =>
