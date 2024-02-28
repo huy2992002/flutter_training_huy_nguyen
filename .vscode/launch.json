@@ -14,9 +14,9 @@
             "name": "Device preview",
             "request": "launch",
             "type": "dart",
-            "program": "nike_sneaker_store/lib/device_preview/device_preview.dart",
+            "program": "nike_sneaker_store/lib/device_preview.dart",
             "args": [
-                "nike_sneaker_store/lib/device_preview/device_preview.dart"
+                "nike_sneaker_store/lib/device_preview.dart"
             ]
         },
         {
