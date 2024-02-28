@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
+import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class NSDialog {
@@ -10,8 +11,8 @@ class NSDialog {
   /// The [title] arguments is display title of [Dialog]
   ///
   /// The [subTitle] arguments is display sub title
-  /// 
-  /// The [icon] argument display icon 
+  ///
+  /// The [icon] argument display icon
   /// If [icon] argument is null, no display icon
   static void text(
     BuildContext context, {
@@ -59,10 +60,10 @@ class NSDialog {
   /// The [title] arguments is display title of [Dialog]
   ///
   /// The [textButton] arguments is display title of button
-  /// 
-  /// The [icon] argument display icon 
+  ///
+  /// The [icon] argument display icon
   /// If [icon] argument is null, no display icon
-  /// 
+  ///
   /// The [icon] action when onTap button
   /// [icon] can null
   static void textButton(
@@ -101,6 +102,54 @@ class NSDialog {
                 Navigator.pop(context);
               },
               text: textButton,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static void question(
+    BuildContext context, {
+    required String title,
+    Function()? action,
+  }) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16)),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                NSElevatedButton.text(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  text: AppLocalizations.of(context).no,
+                ),
+                NSElevatedButton.text(
+                  onPressed: () {
+                    action?.call();
+                    Navigator.pop(context);
+                  },
+                  text: AppLocalizations.of(context).yes,
+                ),
+              ],
             ),
           ],
         ),
