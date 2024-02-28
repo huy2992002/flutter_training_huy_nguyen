@@ -130,7 +130,7 @@ class _NSTextFormFieldState extends State<NSTextFormField> {
       ),
       obscureText: _isShowPassword,
       validator: widget.validator,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: AutovalidateMode.disabled,
       onFieldSubmitted: widget.onFieldSubmitted,
       textInputAction: widget.textInputAction,
       keyboardType: widget.textInputType,
