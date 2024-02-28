@@ -170,7 +170,7 @@ Widget nsAppBar(BuildContext context) {
 )
 Widget nsTextFormField(BuildContext context) {
   return Scaffold(
-    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+    backgroundColor: Theme.of(context).colorScheme.surface,
     body: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -203,7 +203,7 @@ Widget nsAvatar(BuildContext context) {
 )
 Widget nsOTPCode(BuildContext context) {
   return Scaffold(
-    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+    backgroundColor: Theme.of(context).colorScheme.surface,
     body: Center(
       child: NSOtpCode(
         codeLength: context.knobs.int.slider(
