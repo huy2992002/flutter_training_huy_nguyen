@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
@@ -19,6 +20,15 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     _toPage();
+    _changeBrightness();
+  }
+
+  void _changeBrightness() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness:
+          SharedPrefs.isDark ? Brightness.light : Brightness.dark,
+    ));
   }
 
   /// After 2 seconds, it will switch to the [OnboardingPage]

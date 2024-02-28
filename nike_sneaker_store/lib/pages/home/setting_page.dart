@@ -8,6 +8,7 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/pages/auth/change_password_page.dart';
 import 'package:nike_sneaker_store/pages/home/widgets/ns_switch.dart';
 import 'package:nike_sneaker_store/providers/app_provider.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:provider/provider.dart';
 
 class SettingPage extends StatefulWidget {
@@ -17,17 +18,22 @@ class SettingPage extends StatefulWidget {
   State<SettingPage> createState() => _SettingPageState();
 }
 
-
 class _SettingPageState extends State<SettingPage> {
-  bool isDark = false;
   String? dropdownValue = 'en';
   List<String> language = ['en', 'vi'];
+
+  @override
+  void initState() {
+    dropdownValue = SharedPrefs.isVietnamese ? 'vi' : 'en';
+    super.initState();
+  }
+
   void onChangeTheme() {
     Provider.of<AppProvider>(context, listen: false).changeTheme();
 
     setState(() {
-      isDark = !isDark;
-      if (isDark) {
+      SharedPrefs.isDark = !SharedPrefs.isDark;
+      if (SharedPrefs.isDark) {
         SystemChrome.setSystemUIOverlayStyle(
           const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
         );
@@ -66,7 +72,7 @@ class _SettingPageState extends State<SettingPage> {
               const Spacer(),
               NSSwitch(
                 onChange: onChangeTheme,
-                isDark: isDark,
+                isDark: SharedPrefs.isDark,
               ),
             ],
           ),
@@ -94,11 +100,13 @@ class _SettingPageState extends State<SettingPage> {
                   if (value != null && value == 'vi') {
                     Provider.of<AppProvider>(context, listen: false)
                         .changeLocaleVi();
+                    SharedPrefs.isVietnamese = true;
                   }
 
                   if (value != null && value == 'en') {
                     Provider.of<AppProvider>(context, listen: false)
                         .changeLocaleEn();
+                    SharedPrefs.isVietnamese = false;
                   }
                   setState(() {});
                 },

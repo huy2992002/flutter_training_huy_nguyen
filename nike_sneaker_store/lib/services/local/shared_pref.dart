@@ -6,6 +6,8 @@ class SharedPrefs {
   static const String usersKey = 'usersKey';
   static const String userLoginKey = 'userLoginKey';
   static const String checkAccessKey = 'checkAccessKey';
+  static const String themeKey = 'themeKey';
+  static const String languageKey = 'languageKey';
 
   static late SharedPreferences _prefs;
 
@@ -49,4 +51,16 @@ class SharedPrefs {
   }
 
   static set isAccessed(bool value) => _prefs.setBool(checkAccessKey, value);
+
+  static bool get isDark {
+    return _prefs.getBool(themeKey) ?? false;
+  }
+
+  static set isDark(bool value) => _prefs.setBool(themeKey, value);
+
+  static bool get isVietnamese {
+    return _prefs.getBool(languageKey) ?? false;
+  }
+
+  static set isVietnamese(bool value) => _prefs.setBool(languageKey, value);
 }
