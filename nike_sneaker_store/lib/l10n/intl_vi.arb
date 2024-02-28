@@ -61,7 +61,7 @@
   "readMore": "Đọc thêm",
   "addToCart": "Thêm vào giỏ",
   "favorite": "Yêu thích",
-  "myCart": "My Cart",
+  "myCart": "Giỏ hàng",
   "bestSeller": "Bán chạy",
   "subTotal": "Tổng giá",
   "delivery": "Giá giao hàng",
@@ -99,7 +99,11 @@
   "setting": "Cài đặt",
   "changeTheme": "Thay đổi chủ đề",
   "changeLanguage": "Thay đổi ngôn ngữ",
-  "discountOff": "{discount}% Giảm giá",
+  "yes": "Đúng",
+  "no": "Không",
+  "doYouWantLogout": "Bạn có muốn đăng xuất?",
+  "doYouWantRemoveFromCart": "Bạn có muốn xóa sản phẩm khỏi giỏ hàng?",
+  "discountOff": "{discount}% Giảm",
   "@discountOff": {
     "placeholders": {
       "discount": {

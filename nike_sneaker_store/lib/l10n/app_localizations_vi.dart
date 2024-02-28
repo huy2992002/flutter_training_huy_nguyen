@@ -191,7 +191,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get favorite => 'Yêu thích';
 
   @override
-  String get myCart => 'My Cart';
+  String get myCart => 'Giỏ hàng';
 
   @override
   String get bestSeller => 'Bán chạy';
@@ -302,8 +302,20 @@ class AppLocalizationsVi extends AppLocalizations {
   String get changeLanguage => 'Thay đổi ngôn ngữ';
 
   @override
+  String get yes => 'Đúng';
+
+  @override
+  String get no => 'Không';
+
+  @override
+  String get doYouWantLogout => 'Bạn có muốn đăng xuất?';
+
+  @override
+  String get doYouWantRemoveFromCart => 'Bạn có muốn xóa sản phẩm khỏi giỏ hàng?';
+
+  @override
   String discountOff(int discount) {
-    return '$discount% Giảm giá';
+    return '$discount% Giảm';
   }
 
   @override

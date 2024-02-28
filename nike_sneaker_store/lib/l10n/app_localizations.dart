@@ -687,6 +687,30 @@ abstract class AppLocalizations {
   /// **'Change Language'**
   String get changeLanguage;
 
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @doYouWantLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to log out?'**
+  String get doYouWantLogout;
+
+  /// No description provided for @doYouWantRemoveFromCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to remove the product from the cart?'**
+  String get doYouWantRemoveFromCart;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

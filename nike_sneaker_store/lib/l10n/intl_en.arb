@@ -99,6 +99,10 @@
   "setting": "Setting",
   "changeTheme": "Change Theme",
   "changeLanguage": "Change Language",
+  "yes": "Yes",
+  "no": "No",
+  "doYouWantLogout": "Do you want to log out?",
+  "doYouWantRemoveFromCart": "Do you want to remove the product from the cart?",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

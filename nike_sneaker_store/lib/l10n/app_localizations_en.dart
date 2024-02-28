@@ -302,6 +302,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get changeLanguage => 'Change Language';
 
   @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get doYouWantLogout => 'Do you want to log out?';
+
+  @override
+  String get doYouWantRemoveFromCart => 'Do you want to remove the product from the cart?';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }
