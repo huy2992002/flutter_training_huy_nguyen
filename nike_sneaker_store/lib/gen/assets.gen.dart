@@ -140,6 +140,10 @@ class $AssetsImagesGen {
   AssetGenImage get imgLogo =>
       const AssetGenImage('assets/images/img_logo.png');
 
+  /// File path: assets/images/img_logo_app.png
+  AssetGenImage get imgLogoApp =>
+      const AssetGenImage('assets/images/img_logo_app.png');
+
   /// File path: assets/images/img_logo_nike.png
   AssetGenImage get imgLogoNike =>
       const AssetGenImage('assets/images/img_logo_nike.png');
@@ -192,6 +196,7 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
         imgAvatar,
         imgLogo,
+        imgLogoApp,
         imgLogoNike,
         imgNikeAirMax,
         imgNikeAirMax200,
