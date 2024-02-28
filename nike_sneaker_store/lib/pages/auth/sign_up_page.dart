@@ -95,10 +95,9 @@ class _SignUpPageState extends State<SignUpPage> {
         body: Form(
           key: _formKey,
           child: ListView(
-            padding: EdgeInsets.only(
-              left: 20,
+            padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
               top: MediaQuery.paddingOf(context).top + 18,
-              right: 20,
+              bottom: 20,
             ),
             children: [
               Align(
