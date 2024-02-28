@@ -75,3 +75,6 @@
     Gen WidgetBook:
         flutter pub run build_runner build    
     ```
+6. Link APK app:
+
+    install: [here](https://drive.google.com/file/d/1OUCYBZNoOgNwczvxlk-GmqNjlPIhwnvR/view?usp=sharing)
