@@ -53,8 +53,7 @@ class _SignUpPageState extends State<SignUpPage> {
   /// If it is already there, the [NSSnackBar] will be displayed.
   /// If it is not in the account, add the user to the account
   Future<void> onRegister() async {
-    if (_formKey.currentState == null || !_formKey.currentState!.validate())
-      return;
+    if (_formKey.currentState == null || !_formKey.currentState!.validate()) return;
     _showHiddenLoading(status: true);
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) => _emailController.text == e.email);
