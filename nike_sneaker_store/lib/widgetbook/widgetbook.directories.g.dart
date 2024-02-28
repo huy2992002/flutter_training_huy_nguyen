@@ -9,7 +9,17 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:nike_sneaker_store/widgetbook/widgetbook.dart' as _i2;
+import 'package:nike_sneaker_store/widgetbook/components/wgb_app_bar.dart'
+    as _i2;
+import 'package:nike_sneaker_store/widgetbook/components/wgb_avatar.dart'
+    as _i3;
+import 'package:nike_sneaker_store/widgetbook/components/wgb_button.dart'
+    as _i4;
+import 'package:nike_sneaker_store/widgetbook/components/wgb_card.dart' as _i5;
+import 'package:nike_sneaker_store/widgetbook/components/wgb_otp.dart' as _i6;
+import 'package:nike_sneaker_store/widgetbook/components/wgb_text_field.dart'
+    as _i7;
+import 'package:nike_sneaker_store/widgetbook/components/wgb_theme.dart' as _i8;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -42,7 +52,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'NSAvatar',
             useCase: _i1.WidgetbookUseCase(
               name: 'Avatar',
-              builder: _i2.nsAvatar,
+              builder: _i3.nsAvatar,
             ),
           )
         ],
@@ -54,14 +64,14 @@ final directories = <_i1.WidgetbookNode>[
             name: 'NSElevatedButton',
             useCase: _i1.WidgetbookUseCase(
               name: 'Button',
-              builder: _i2.elevatedButton,
+              builder: _i4.elevatedButton,
             ),
           ),
           _i1.WidgetbookLeafComponent(
             name: 'NsIconButton',
             useCase: _i1.WidgetbookUseCase(
               name: 'Button',
-              builder: _i2.iconButton,
+              builder: _i4.iconButton,
             ),
           ),
         ],
@@ -73,28 +83,28 @@ final directories = <_i1.WidgetbookNode>[
             name: 'CardCartProduct',
             useCase: _i1.WidgetbookUseCase(
               name: 'Cards',
-              builder: _i2.cardCartProduct,
+              builder: _i5.cardCartProduct,
             ),
           ),
           _i1.WidgetbookLeafComponent(
             name: 'CardCategory',
             useCase: _i1.WidgetbookUseCase(
               name: 'Cards',
-              builder: _i2.cardCategory,
+              builder: _i5.cardCategory,
             ),
           ),
           _i1.WidgetbookLeafComponent(
             name: 'CardNotification',
             useCase: _i1.WidgetbookUseCase(
               name: 'Cards',
-              builder: _i2.cardNotification,
+              builder: _i5.cardNotification,
             ),
           ),
           _i1.WidgetbookLeafComponent(
             name: 'CardSale',
             useCase: _i1.WidgetbookUseCase(
               name: 'Cards',
-              builder: _i2.cardSale,
+              builder: _i5.cardSale,
             ),
           ),
         ],
@@ -106,7 +116,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'NSOtpCode',
             useCase: _i1.WidgetbookUseCase(
               name: 'OTP',
-              builder: _i2.nsOTPCode,
+              builder: _i6.nsOTPCode,
             ),
           )
         ],
@@ -118,11 +128,30 @@ final directories = <_i1.WidgetbookNode>[
             name: 'NSTextFormField',
             useCase: _i1.WidgetbookUseCase(
               name: 'TextField',
-              builder: _i2.nsTextFormField,
+              builder: _i7.nsTextFormField,
             ),
           )
         ],
       ),
     ],
-  )
+  ),
+  _i1.WidgetbookFolder(
+    name: 'themes',
+    children: [
+      _i1.WidgetbookLeafComponent(
+        name: 'NSColorTheme',
+        useCase: _i1.WidgetbookUseCase(
+          name: 'Theme',
+          builder: _i8.nsColorTheme,
+        ),
+      ),
+      _i1.WidgetbookLeafComponent(
+        name: 'NSTextTheme',
+        useCase: _i1.WidgetbookUseCase(
+          name: 'Theme',
+          builder: _i8.nsTextTheme,
+        ),
+      ),
+    ],
+  ),
 ];
