@@ -9,11 +9,15 @@ class OnboardingPower extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(top: 120),
+      padding: EdgeInsets.only(top: size.height * 0.2),
       child: Column(
         children: [
-          Image.asset(Assets.images.imgPrOnboardPower.path),
+          Image.asset(
+            Assets.images.imgPrOnboardPower.path,
+            height: size.height * 0.3,
+          ),
           const SizedBox(height: 30),
           Text(
             AppLocalizations.of(context).youHavePowerTo,
@@ -22,7 +26,7 @@ class OnboardingPower extends StatelessWidget {
                 ),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
           Text(
             AppLocalizations.of(context).thereAreManyBeautifulAttractive,
             style: Theme.of(context).textTheme.titleSmall?.copyWith(

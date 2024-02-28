@@ -9,6 +9,7 @@ class OnboardingWelcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.only(top: 100),
       child: Column(
@@ -21,7 +22,14 @@ class OnboardingWelcome extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          Image.asset(Assets.images.imgPrOnboardWelcome.path)
+          Align(
+            alignment: Alignment.centerRight,
+            child: Image.asset(
+              Assets.images.imgPrOnboardWelcome.path,
+              height: size.height * 0.5,
+              fit: BoxFit.cover,
+            ),
+          )
         ],
       ),
     );

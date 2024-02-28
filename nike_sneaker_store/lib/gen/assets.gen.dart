@@ -164,18 +164,6 @@ class $AssetsImagesGen {
   AssetGenImage get imgNikeJordan =>
       const AssetGenImage('assets/images/img_nike_jordan.png');
 
-  /// File path: assets/images/img_onboard_1.png
-  AssetGenImage get imgOnboard1 =>
-      const AssetGenImage('assets/images/img_onboard_1.png');
-
-  /// File path: assets/images/img_onboard_2.png
-  AssetGenImage get imgOnboard2 =>
-      const AssetGenImage('assets/images/img_onboard_2.png');
-
-  /// File path: assets/images/img_onboard_3.png
-  AssetGenImage get imgOnboard3 =>
-      const AssetGenImage('assets/images/img_onboard_3.png');
-
   /// File path: assets/images/img_pr_onboard_let_start.png
   AssetGenImage get imgPrOnboardLetStart =>
       const AssetGenImage('assets/images/img_pr_onboard_let_start.png');
@@ -210,9 +198,6 @@ class $AssetsImagesGen {
         imgNikeAirMax270,
         imgNikeClubMax,
         imgNikeJordan,
-        imgOnboard1,
-        imgOnboard2,
-        imgOnboard3,
         imgPrOnboardLetStart,
         imgPrOnboardPower,
         imgPrOnboardWelcome,

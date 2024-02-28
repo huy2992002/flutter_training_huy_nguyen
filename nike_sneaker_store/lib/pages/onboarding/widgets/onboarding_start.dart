@@ -9,12 +9,16 @@ class OnboardingStart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(top: 120),
+      padding: EdgeInsets.only(top: size.height * 0.2),
       child: Column(
         children: [
-          Image.asset(Assets.images.imgPrOnboardLetStart.path),
-          const SizedBox(height: 30),
+          Image.asset(
+            Assets.images.imgPrOnboardLetStart.path,
+            height: size.height * 0.3,
+          ),
+          const SizedBox(height: 20),
           Text(
             AppLocalizations.of(context).letStartJourney,
             style: Theme.of(context).textTheme.displaySmall?.copyWith(
