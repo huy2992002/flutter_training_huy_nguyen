@@ -68,7 +68,7 @@ class _SignInPageState extends State<SignInPage> {
       _showHiddenLoading(status: false);
       UserModel user = users.singleWhere((e) => e.email == _emailController.text);
       print('object user ${user.email}');
-      SharedPrefs.saveUserLogin(user);
+      await SharedPrefs.saveUserLogin(user);
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (_) => const MainPage()),
