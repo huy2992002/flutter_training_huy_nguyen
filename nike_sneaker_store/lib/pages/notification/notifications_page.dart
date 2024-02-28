@@ -38,11 +38,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(
-          left: 20,
-          top: 16,
-          right: 20,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -84,8 +80,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       },
                     );
                   },
-                  separatorBuilder: (_, __) =>
-                      const SizedBox(height: 16),
+                  separatorBuilder: (_, __) => const SizedBox(height: 16),
                 ),
               )
           ],

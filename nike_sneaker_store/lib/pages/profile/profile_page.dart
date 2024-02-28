@@ -85,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
         body: SingleChildScrollView(
           child: Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 38),
+                const EdgeInsets.symmetric(horizontal: 20,vertical: 38),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
