@@ -73,6 +73,7 @@ class _SignInPageState extends State<SignInPage> {
     return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Form(
           key: _formKey,
           child: ListView(

@@ -23,19 +23,19 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  /// The [TextEditingController] of [TextFormField] name 
+  /// The [TextEditingController] of [TextFormField] name
   TextEditingController _nameController = TextEditingController();
 
-  /// The [TextEditingController] of [TextFormField] email 
+  /// The [TextEditingController] of [TextFormField] email
   TextEditingController _emailController = TextEditingController();
 
-  /// The [TextEditingController] of [TextFormField] password 
+  /// The [TextEditingController] of [TextFormField] password
   TextEditingController _passwordController = TextEditingController();
 
-  /// The [TextEditingController] of [TextFormField] confirm password 
+  /// The [TextEditingController] of [TextFormField] confirm password
   TextEditingController _confirmController = TextEditingController();
 
-  /// If [_isLoading] is true display loading button 
+  /// If [_isLoading] is true display loading button
   bool _isLoading = false;
 
   /// The global key check [Validator] in page
@@ -47,18 +47,19 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   /// Function when action register.
-  /// 
+  ///
   /// Check [Validator] success.
-  /// Check if [_emailController] is in the [accounts]. 
-  /// If it is already there, the [NSSnackBar] will be displayed. 
+  /// Check if [_emailController] is in the [accounts].
+  /// If it is already there, the [NSSnackBar] will be displayed.
   /// If it is not in the account, add the user to the account
   Future<void> onRegister() async {
-    if (_formKey.currentState == null || !_formKey.currentState!.validate()) return;
+    if (_formKey.currentState == null || !_formKey.currentState!.validate())
+      return;
     _showHiddenLoading(status: true);
     await Future.delayed(const Duration(seconds: 2));
     bool checkUser = accounts.any((e) => _emailController.text == e.email);
     if (checkUser) {
-    _showHiddenLoading(status: false);
+      _showHiddenLoading(status: false);
       NSSnackBar.snackbarError(
         context,
         title: AppLocalizations.of(context).emailAlreadyExists,
@@ -85,6 +86,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surface,
         body: Form(
           key: _formKey,
           child: ListView(
