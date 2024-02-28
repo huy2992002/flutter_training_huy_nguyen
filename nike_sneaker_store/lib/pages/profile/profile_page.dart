@@ -10,6 +10,7 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 
 class ProfilePage extends StatefulWidget {
   /// Screen profile page
@@ -20,26 +21,34 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  /// The [TextEditingController] of [TextFormField] name 
+  /// The [TextEditingController] of [TextFormField] name
   TextEditingController _nameController = TextEditingController();
 
-  /// The [TextEditingController] of [TextFormField] location 
+  /// The [TextEditingController] of [TextFormField] location
   TextEditingController _locationController = TextEditingController();
 
-  /// The [TextEditingController] of [TextFormField] phone 
+  /// The [TextEditingController] of [TextFormField] phone
   TextEditingController _phoneController = TextEditingController();
 
   /// File get & display file image avatar
-  /// 
+  ///
   /// if [file] is null will display default avatar
   File? file;
 
+  UserModel? userLogin;
+
   @override
   void initState() {
+    getUser();
+    super.initState();
+  }
+
+  Future<void> getUser() async {
+    userLogin = await SharedPrefs.getUserLogin();
     _nameController.text = userLogin?.name ?? '';
     _locationController.text = userLogin?.address ?? '';
     _phoneController.text = userLogin?.phone ?? '';
-    super.initState();
+    _resetState();
   }
 
   /// Function reset state
@@ -53,7 +62,6 @@ class _ProfilePageState extends State<ProfilePage> {
         _locationController.text.isNotEmpty &&
         _phoneController.text.isNotEmpty;
   }
-
 
   /// The Function use [FilePicker] get image from device and display by field [file]
   Future<void> changeAvatar() async {
@@ -73,6 +81,18 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+  Future<void> saveUser() async {
+    if (!canSave) return;
+    userLogin?.name = _nameController.text;
+    userLogin?.address = _locationController.text;
+    userLogin?.phone = _phoneController.text;
+    await SharedPrefs.saveUserLogin(userLogin);
+    NSSnackBar.snackbarSuccess(
+      context,
+      title: AppLocalizations.of(context).informationChangedSuccess,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -84,8 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20,vertical: 38),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 38),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -167,17 +186,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 55),
                 NSElevatedButton.text(
-                  onPressed: () {
-                    if (!canSave) return;
-                    userLogin?.name = _nameController.text;
-                    userLogin?.address = _locationController.text;
-                    userLogin?.phone = _phoneController.text;
-                    NSSnackBar.snackbarSuccess(
-                      context,
-                      title: AppLocalizations.of(context)
-                          .informationChangedSuccess,
-                    );
-                  },
+                  onPressed: saveUser,
                   text: AppLocalizations.of(context).saveNow,
                   backgroundColor: canSave
                       ? Theme.of(context).colorScheme.primary

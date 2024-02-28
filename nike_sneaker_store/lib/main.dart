@@ -3,10 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/pages/splash/splash_page.dart';
 import 'package:nike_sneaker_store/providers/app_provider.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:nike_sneaker_store/themes/ns_theme.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
@@ -15,6 +16,8 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+
+  await SharedPrefs.initialization();
   runApp(
     ChangeNotifierProvider(
       create: (context) => AppProvider(),

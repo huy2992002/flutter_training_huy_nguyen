@@ -9,6 +9,7 @@ import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_information_item.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_total_cost.dart';
 import 'package:nike_sneaker_store/pages/main/main_page.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 
 class CartInformationPage extends StatefulWidget {
   const CartInformationPage({super.key});
@@ -27,10 +28,15 @@ class _CartInformationPageState extends State<CartInformationPage> {
 
   @override
   void initState() {
+    getUser();
+    super.initState();
+  }
+
+  Future<void> getUser() async {
+    UserModel? userLogin = await SharedPrefs.getUserLogin();
     _emailController.text = userLogin?.email ?? '';
     _phoneController.text = userLogin?.phone ?? '';
     _addressController.text = userLogin?.address ?? '';
-    super.initState();
   }
 
   bool get _canCheckOut =>
@@ -114,9 +120,10 @@ class _CartInformationPageState extends State<CartInformationPage> {
                         onChanged: (_) {
                           _resetState();
                         },
-                        style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.labelMedium?.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                ),
                         decoration: const InputDecoration(
                           contentPadding: EdgeInsets.zero,
                           isDense: true,

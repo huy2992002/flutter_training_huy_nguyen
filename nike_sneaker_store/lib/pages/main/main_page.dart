@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/favorite/favorite_page.dart';
 import 'package:nike_sneaker_store/pages/home/home_page.dart';
 import 'package:nike_sneaker_store/pages/main/menu_page.dart';
@@ -7,6 +8,7 @@ import 'package:nike_sneaker_store/pages/main/widgets/ns_bottom_navigation_bar.d
 import 'package:nike_sneaker_store/pages/main/widgets/ns_drawer.dart';
 import 'package:nike_sneaker_store/pages/notification/notifications_page.dart';
 import 'package:nike_sneaker_store/pages/profile/profile_page.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -22,9 +24,6 @@ ZoomDrawerController zoomController = ZoomDrawerController();
 int currentPageIndex = 0;
 
 class _MainPageState extends State<MainPage> {
-  /// Function reset state
-  void _resetState() => setState(() {});
-
   /// [List] page display [BottomNavigationBar]
   List<Widget> _pages = [
     const HomePage(),
@@ -32,11 +31,25 @@ class _MainPageState extends State<MainPage> {
     const NotificationsPage(),
     const ProfilePage(),
   ];
+  UserModel? userLogin;
+
+  @override
+  void initState() {
+    getUser();
+    super.initState();
+  }
 
   /// The function change page with index
   void changePage(int index) {
     currentPageIndex = index;
     _resetState();
+  }
+
+    /// Function reset state
+  void _resetState() => setState(() {});
+
+  Future<void> getUser() async {
+    userLogin = await SharedPrefs.getUserLogin();
   }
 
   @override
@@ -45,6 +58,7 @@ class _MainPageState extends State<MainPage> {
       controller: zoomController,
       menuScreen: MenuPage(
         resetState: () => setState(() {}),
+        user: userLogin,
       ),
       mainScreen: Scaffold(
         body: _pages[currentPageIndex],

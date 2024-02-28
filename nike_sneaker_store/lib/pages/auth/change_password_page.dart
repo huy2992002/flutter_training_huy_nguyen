@@ -9,6 +9,7 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class ChangePasswordPage extends StatelessWidget {
@@ -28,9 +29,12 @@ class ChangePasswordPage extends StatelessWidget {
 
     /// The global key check [Validator] in page
     final formKey = GlobalKey<FormState>();
-    
-    void onSave() {
-      if (formKey.currentState == null || !formKey.currentState!.validate()) return;
+
+    Future<void> onSave() async {
+      if (formKey.currentState == null || !formKey.currentState!.validate()) {
+        return;
+      }
+      UserModel? userLogin = await SharedPrefs.getUserLogin();
       if (currentPasswordController.text != userLogin?.password) {
         NSSnackBar.snackbarError(
           context,
@@ -38,7 +42,10 @@ class ChangePasswordPage extends StatelessWidget {
         );
         return;
       }
-      userLogin?.password = newPasswordController.text;
+      List<UserModel> users = await SharedPrefs.getUsers() ?? accounts;
+      users.singleWhere((e) => e.email == (userLogin?.email ?? '')).password =
+          newPasswordController.text;
+      SharedPrefs.saveUsers(users);
       NSSnackBar.snackbarSuccess(
         context,
         title: AppLocalizations.of(context).passwordChangedSuccess,

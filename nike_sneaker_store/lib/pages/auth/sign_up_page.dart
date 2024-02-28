@@ -11,6 +11,7 @@ import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/prompt_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:nike_sneaker_store/utils/maths.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
@@ -58,7 +59,8 @@ class _SignUpPageState extends State<SignUpPage> {
     }
     _showHiddenLoading(status: true);
     await Future.delayed(const Duration(seconds: 2));
-    bool checkUser = accounts.any((e) => _emailController.text == e.email);
+    List<UserModel> users = await SharedPrefs.getUsers() ?? accounts;
+    bool checkUser = users.any((e) => _emailController.text == e.email);
     if (checkUser) {
       _showHiddenLoading(status: false);
       NSSnackBar.snackbarError(
@@ -72,7 +74,8 @@ class _SignUpPageState extends State<SignUpPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      accounts.add(user);
+      users.add(user);
+      SharedPrefs.saveUsers(users);
       _showHiddenLoading(status: false);
       Navigator.pushAndRemoveUntil(
         context,

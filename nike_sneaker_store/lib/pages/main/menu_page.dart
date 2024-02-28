@@ -8,10 +8,17 @@ import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
 import 'package:nike_sneaker_store/pages/home/setting_page.dart';
 import 'package:nike_sneaker_store/pages/main/main_page.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 
 class MenuPage extends StatelessWidget {
-  const MenuPage({super.key, this.resetState});
+  const MenuPage({
+    super.key,
+    this.resetState,
+    this.user,
+  });
+
   final Function()? resetState;
+  final UserModel? user;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +40,7 @@ class MenuPage extends StatelessWidget {
           NSAvatar(imagePath: Assets.images.imgAvatar.path),
           const SizedBox(height: 15),
           Text(
-            userLogin?.name ?? '-:-',
+            user?.name ?? '-:-',
             style: Theme.of(context)
                 .textTheme
                 .titleLarge
@@ -87,7 +94,7 @@ class MenuPage extends StatelessWidget {
           ),
           CardMenuItem(
             onTap: () {
-              userLogin = null;
+              SharedPrefs.removeUserLogin();
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(

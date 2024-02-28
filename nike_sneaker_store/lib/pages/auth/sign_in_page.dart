@@ -11,6 +11,7 @@ import 'package:nike_sneaker_store/pages/auth/widgets/prompt_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
 import 'package:nike_sneaker_store/pages/main/main_page.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class SignInPage extends StatefulWidget {
@@ -59,12 +60,15 @@ class _SignInPageState extends State<SignInPage> {
     }
     _showHiddenLoading(status: true);
     await Future.delayed(const Duration(seconds: 2));
-    bool checkUser = accounts.any((e) =>
+    List<UserModel> users = await SharedPrefs.getUsers() ?? accounts;
+    bool checkUser = users.any((e) =>
         _emailController.text == e.email &&
         _passwordController.text == e.password);
     if (checkUser) {
       _showHiddenLoading(status: false);
-      userLogin = accounts.singleWhere((e) => e.email == _emailController.text);
+      UserModel user = users.singleWhere((e) => e.email == _emailController.text);
+      print('object user ${user.email}');
+      SharedPrefs.saveUserLogin(user);
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (_) => const MainPage()),
