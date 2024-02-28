@@ -78,6 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         appBar: NSAppBar(
           title: AppLocalizations.of(context).profile,
         ),
