@@ -64,12 +64,13 @@ class _FavoritePageState extends State<FavoritePage> {
                 left: 20,
                 top: 28,
                 right: 20,
+                bottom: 28,
               ),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-                childAspectRatio: 5 / 6,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                childAspectRatio: 3/4,
               ),
               itemBuilder: (_, index) {
                 final product = _favoriteProducts[index];

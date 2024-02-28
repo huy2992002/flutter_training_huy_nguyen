@@ -21,7 +21,7 @@ class _SearchPageState extends State<SearchPage> {
   /// [List] containing the searched product
   List<ProductModel> _searchProducts = [];
 
-  /// The [TextEditingController] of [TextFormField] search 
+  /// The [TextEditingController] of [TextFormField] search
   TextEditingController _searchController = TextEditingController();
 
   /// Function reset state
@@ -83,13 +83,13 @@ class _SearchPageState extends State<SearchPage> {
                     )
                   : GridView.builder(
                       itemCount: _searchProducts.length,
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(top: 10, bottom: 28),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        mainAxisSpacing: 20,
-                        crossAxisSpacing: 20,
-                        childAspectRatio: 5 / 6,
+                        mainAxisSpacing: 16,
+                        crossAxisSpacing: 16,
+                        childAspectRatio: 3 / 4,
                       ),
                       itemBuilder: (_, index) {
                         final product = _searchProducts[index];
