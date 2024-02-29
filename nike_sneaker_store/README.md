@@ -5,7 +5,7 @@
 - You can see the design app: [here](https://www.figma.com/file/NeMkgnPe650F4yep27Xmwm/NikeSneakerStore?type=design&node-id=0%3A1&mode=design&t=CCrQNYUpdEDs4dUQ-1)
 
 ## TIMELINE
-- Feb 05, 2024 - Feb 27, 2024
+- Feb 05, 2024 - Feb 27, 2024 (14 days)
 
 ## TEAM SIZE
 - 1 Developer
@@ -26,12 +26,12 @@
 - Understanding and applying the widget_book plugin for building UI documentation.
 
 ## Deployment Plan
-- [ ] Epic 1: Analysis design, component
-- [ ] Epic 2: Setup environment
-- [ ] Epic 3: Create skeleton structure practice
-- [ ] Epic 4: Setup themes, l10n
-- [ ] Epic 5: Implement the UI
-- [ ] Epic 6: Test the application and prepare for the review
+- [x] Epic 1: Analysis design, component
+- [x] Epic 2: Setup environment
+- [x] Epic 3: Create skeleton structure practice
+- [x] Epic 4: Setup themes, l10n
+- [x] Epic 5: Implement the UI
+- [x] Epic 6: Test the application and prepare for the review
 
 ## Installation
 1. Clone the repository:
@@ -77,4 +77,4 @@
     ```
 6. Link APK app:
 
-    install: [here](https://drive.google.com/file/d/1OUCYBZNoOgNwczvxlk-GmqNjlPIhwnvR/view?usp=sharing)
+    install: [here](https://drive.google.com/file/d/1qYdvTAaVaUP2fKi3Hc3r84iERAvlJRwF/view?usp=sharing)
