@@ -5,7 +5,7 @@
 - You can see the design app: [here](https://www.figma.com/file/NeMkgnPe650F4yep27Xmwm/NikeSneakerStore?type=design&node-id=0%3A1&mode=design&t=CCrQNYUpdEDs4dUQ-1)
 
 ## TIMELINE
-- Feb 05, 2024 - Feb 27, 2024 (14 days)
+- ESTIMATE: Feb 06, 2024 - Feb 27, 2024 (10 days)
 
 ## TEAM SIZE
 - 1 Developer
