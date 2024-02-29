@@ -50,8 +50,14 @@ class _HomePageState extends State<HomePage> {
       AppLocalizations.of(context).tennis,
     ];
 
+    List<String> checkCategory = [
+      'All Shoes',
+      'Outdoor',
+      'Tennis',
+    ];
+
     void changeCategory(String category) {
-      if (category == AppLocalizations.of(context).allShoes) {
+      if (category == 'All Shoes') {
         _productViews = products;
         _resetState();
         return;
@@ -87,7 +93,7 @@ class _HomePageState extends State<HomePage> {
         isMarkerNotification: myCarts.isNotEmpty,
       ),
       body: ListView(
-        padding: const EdgeInsets.only(top: 16,bottom: 20),
+        padding: const EdgeInsets.only(top: 16, bottom: 20),
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -118,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         _categoryIndex = index;
                         _resetState();
-                        changeCategory(categories[index]);
+                        changeCategory(checkCategory[index]);
                       },
                       text: categories[index],
                       backgroundColor: _categoryIndex == index
