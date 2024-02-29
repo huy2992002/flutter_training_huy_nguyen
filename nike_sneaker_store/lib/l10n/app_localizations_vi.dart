@@ -284,7 +284,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get changePassword => 'Thay đổi mật khẩu';
 
   @override
-  String get currentPassword => 'Mật khẩu hiện taik';
+  String get currentPassword => 'Mật khẩu hiện tại';
 
   @override
   String get newPassword => 'Mật Khẩu mới';

@@ -92,7 +92,7 @@
   "avatarChangedSuccess": "Thay đổi ảnh đại diện thành công",
   "passwordChangedSuccess": "Thay đổi mật khẩu thành công",
   "changePassword": "Thay đổi mật khẩu",
-  "currentPassword": "Mật khẩu hiện taik",
+  "currentPassword": "Mật khẩu hiện tại",
   "newPassword": "Mật Khẩu mới",
   "confirmPassword": "Xác nhận mật khẩu",
   "currentPasswordIncorrect": "Mật khẩu hiện tại không đúng",
