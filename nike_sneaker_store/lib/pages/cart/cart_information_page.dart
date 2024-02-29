@@ -5,6 +5,7 @@ import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_information_item.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_total_cost.dart';
@@ -153,6 +154,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
                   child: Image.asset(Assets.images.imgSuccessfully.path)),
               action: () => WidgetsBinding.instance.addPostFrameCallback(
                 (_) {
+                  myCarts.clear();
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
