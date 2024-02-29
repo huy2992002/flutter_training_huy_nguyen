@@ -77,4 +77,4 @@
     ```
 6. Link APK app:
 
-    install: [here](https://drive.google.com/file/d/1qYdvTAaVaUP2fKi3Hc3r84iERAvlJRwF/view?usp=sharing)
+    install: [here](https://drive.google.com/file/d/1fWOglAxj7uNc7ERgd6WwUEC9b0_DDAfD/view?usp=sharing)
