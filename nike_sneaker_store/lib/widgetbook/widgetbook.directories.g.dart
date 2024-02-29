@@ -101,6 +101,13 @@ final directories = <_i1.WidgetbookNode>[
             ),
           ),
           _i1.WidgetbookLeafComponent(
+            name: 'CardProduct',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'Cards',
+              builder: _i5.cardProduct,
+            ),
+          ),
+          _i1.WidgetbookLeafComponent(
             name: 'CardSale',
             useCase: _i1.WidgetbookUseCase(
               name: 'Cards',

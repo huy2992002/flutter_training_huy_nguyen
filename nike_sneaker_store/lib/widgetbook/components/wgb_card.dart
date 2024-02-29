@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/cards/card_cart_product.dart';
 import 'package:nike_sneaker_store/components/cards/card_category.dart';
 import 'package:nike_sneaker_store/components/cards/card_notification.dart';
+import 'package:nike_sneaker_store/components/cards/card_product.dart';
 import 'package:nike_sneaker_store/components/cards/card_sale.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
@@ -129,6 +130,44 @@ Widget cardSale(BuildContext context) {
         max: 90,
       ),
       imagePath: Assets.images.imgSumerSale.path,
+    ),
+  );
+}
+
+@widgetbook.UseCase(
+  name: 'Cards',
+  type: CardProduct,
+)
+Widget cardProduct(BuildContext context) {
+  ProductModel product = ProductModel(
+    uuid: 'uuid',
+    name: 'name product',
+    imagePath: Assets.images.imgNikeAirMax.path,
+    price: 200,
+    quantity: context.knobs.int.slider(
+      label: 'Quantity product',
+      initialValue: 20,
+      min: 1,
+      max: 50,
+    ),
+    description: 'description',
+    isBestSeller: context.knobs.boolean(label: 'Best Seller'),
+    category: 'category',
+  );
+  return Scaffold(
+    body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CardProduct(
+              product: product,
+              onAddCart: () {},
+            ),
+          ],
+        ),
+      ],
     ),
   );
 }
