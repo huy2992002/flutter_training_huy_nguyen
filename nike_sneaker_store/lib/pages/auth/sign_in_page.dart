@@ -105,6 +105,7 @@ class _SignInPageState extends State<SignInPage> {
                 hintText: AppLocalizations.of(context).hintTextEmail,
                 validator: (value) => Validator.validatorEmail(context, value),
                 textInputAction: TextInputAction.next,
+                readOnly: _isLoading,
               ),
               const SizedBox(height: 30),
               TitleLabel(text: AppLocalizations.of(context).password),
@@ -115,6 +116,7 @@ class _SignInPageState extends State<SignInPage> {
                     Validator.validatorPassword(context, value),
                 textInputAction: TextInputAction.done,
                 onFieldSubmitted: (value) => _onLogin(),
+                readOnly: _isLoading,
               ),
               const SizedBox(height: 12),
               Align(

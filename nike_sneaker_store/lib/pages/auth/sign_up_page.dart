@@ -126,6 +126,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 validator: (value) =>
                     Validator.validatorRequired(context, value),
                 textInputAction: TextInputAction.next,
+                readOnly: _isLoading,
               ),
               const SizedBox(height: 20),
               TitleLabel(text: AppLocalizations.of(context).emailAddress),
@@ -134,6 +135,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 hintText: AppLocalizations.of(context).hintTextEmail,
                 validator: (value) => Validator.validatorEmail(context, value),
                 textInputAction: TextInputAction.next,
+                readOnly: _isLoading,
               ),
               const SizedBox(height: 20),
               TitleLabel(text: AppLocalizations.of(context).password),
@@ -143,6 +145,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 validator: (value) =>
                     Validator.validatorPassword(context, value),
                 textInputAction: TextInputAction.next,
+                readOnly: _isLoading,
               ),
               const SizedBox(height: 20),
               TitleLabel(text: AppLocalizations.of(context).confirmPassword),
@@ -156,6 +159,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 textInputAction: TextInputAction.done,
                 onFieldSubmitted: (value) => onRegister(),
+                readOnly: _isLoading,
               ),
               const SizedBox(height: 30),
               NSElevatedButton.text(

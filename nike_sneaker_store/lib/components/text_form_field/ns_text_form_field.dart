@@ -4,9 +4,9 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 
 class NSTextFormField extends StatefulWidget {
   /// Create an [TextFormField]
-  /// 
+  ///
   /// The [hintText] arguments must not be null.
-  /// The [isPassword] arguments value default is false 
+  /// The [isPassword] arguments value default is false
   const NSTextFormField.text({
     required this.hintText,
     this.controller,
@@ -16,11 +16,12 @@ class NSTextFormField extends StatefulWidget {
     this.textInputAction,
     this.textInputType,
     this.isPassword = false,
+    this.readOnly = false,
     super.key,
   });
 
   /// Create [TextFormField] for password in app Nike Sneaker
-  /// 
+  ///
   /// The [hintText] arguments must not be null.
   factory NSTextFormField.password({
     required String hintText,
@@ -29,6 +30,7 @@ class NSTextFormField extends StatefulWidget {
     FormFieldValidator<String>? validator,
     Function(String)? onFieldSubmitted,
     TextInputAction? textInputAction,
+    bool readOnly = false,
   }) {
     return NSTextFormField.text(
       hintText: hintText,
@@ -38,6 +40,7 @@ class NSTextFormField extends StatefulWidget {
       onFieldSubmitted: onFieldSubmitted,
       textInputAction: textInputAction,
       isPassword: true,
+      readOnly: readOnly,
     );
   }
 
@@ -50,32 +53,35 @@ class NSTextFormField extends StatefulWidget {
   final String hintText;
 
   /// Action when changing keyboard values
-  /// 
+  ///
   /// The [onChanged] arguments can null
   final Function(String)? onChanged;
 
   /// Form validator value of [TextFormField]
-  /// 
+  ///
   /// The [validator] arguments can null
   final FormFieldValidator<String>? validator;
 
   /// Action when onTap [textInputAction]
-  /// 
+  ///
   /// The [onFieldSubmitted] arguments can null
   final Function(String)? onFieldSubmitted;
 
   /// Value of [TextInputAction]
-  /// 
+  ///
   /// The [textInputAction] arguments can null
   final TextInputAction? textInputAction;
 
   /// Type of Input [TextFormField]
-  /// 
+  ///
   /// The [textInputType] arguments can null
   final TextInputType? textInputType;
 
-  /// If [isPassword] arguments is true [TextFormField] is password 
+  /// If [isPassword] arguments is true [TextFormField] is password
   final bool isPassword;
+
+  /// If[readOnly] arguments is true [TextFormField] only read disable input
+  final bool readOnly;
 
   @override
   State<NSTextFormField> createState() => _NSTextFormFieldState();
@@ -134,6 +140,7 @@ class _NSTextFormFieldState extends State<NSTextFormField> {
       onFieldSubmitted: widget.onFieldSubmitted,
       textInputAction: widget.textInputAction,
       keyboardType: widget.textInputType,
+      readOnly: widget.readOnly,
     );
   }
 }
