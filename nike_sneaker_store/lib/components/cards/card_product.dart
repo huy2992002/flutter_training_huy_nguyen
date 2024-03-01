@@ -82,6 +82,8 @@ class CardProduct extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         color: Theme.of(context).colorScheme.onBackground,
                       ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 12),
                 Text(

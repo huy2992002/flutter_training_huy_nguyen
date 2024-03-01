@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
-  /// Create design app bar with height 50px 
+  /// Create design app bar with height 50px
   /// with title of app bar is [title], two icon left and right
-  /// 
+  ///
   /// The [title] arguments must not be null.
   const NSAppBar({
     required this.title,
@@ -25,7 +25,7 @@ class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? rightIcon;
 
   /// [Color] of app bar
-  /// 
+  ///
   /// If [colorAppBar] argument is null will use default color of Theme
   final Color? colorAppBar;
 
@@ -41,11 +41,14 @@ class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           if (leftIcon != null) leftIcon! else const SizedBox(width: 44),
-          Text(
-            title,
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+          Expanded(
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+              textAlign: TextAlign.center,
+            ),
           ),
           if (rightIcon != null) rightIcon! else const SizedBox(width: 44),
         ],

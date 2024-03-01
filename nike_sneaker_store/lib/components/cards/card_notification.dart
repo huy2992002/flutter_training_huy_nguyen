@@ -55,6 +55,8 @@ class CardNotification extends StatelessWidget {
                               ? Theme.of(context).colorScheme.onPrimaryContainer
                               : Theme.of(context).colorScheme.primary,
                         ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 8),
                   Row(
