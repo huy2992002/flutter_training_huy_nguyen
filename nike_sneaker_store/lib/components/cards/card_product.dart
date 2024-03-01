@@ -47,6 +47,7 @@ class CardProduct extends StatelessWidget {
               color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(16),
             ),
+            constraints: const BoxConstraints(maxWidth: 153),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
