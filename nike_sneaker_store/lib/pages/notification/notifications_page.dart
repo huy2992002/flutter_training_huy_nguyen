@@ -16,9 +16,6 @@ class NotificationsPage extends StatefulWidget {
 }
 
 class _NotificationsPageState extends State<NotificationsPage> {
-  /// Function reset state
-  void _resetState() => setState(() {});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +25,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
         rightIcon: NsIconButton(
           onPressed: () {
             notifications.clear();
-            _resetState();
+            setState(() {});
           },
           icon: SvgPicture.asset(
             Assets.icons.icTrash,
@@ -76,7 +73,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       notification: notification,
                       onTap: () {
                         notification.isRead = true;
-                        _resetState();
+                        setState(() {});
                       },
                     );
                   },

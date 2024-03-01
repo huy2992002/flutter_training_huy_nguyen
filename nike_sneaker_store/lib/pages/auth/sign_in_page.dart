@@ -44,11 +44,6 @@ class _SignInPageState extends State<SignInPage> {
     setState(() {});
   }
 
-  /// Function change [_isLoading] with parameter [status] & resetState
-  void _showHiddenLoading({required bool status}) {
-    setState(() => _isLoading = status);
-  }
-
   /// Function when action login.
   ///
   /// Check [Validator] success.
@@ -58,15 +53,17 @@ class _SignInPageState extends State<SignInPage> {
     if (_formKey.currentState == null || !_formKey.currentState!.validate()) {
       return;
     }
-    _showHiddenLoading(status: true);
+    setState(() => _isLoading = true);
     await Future.delayed(const Duration(seconds: 2));
     List<UserModel> users = await SharedPrefs.getUsers() ?? accounts;
     bool checkUser = users.any((e) =>
         _emailController.text == e.email &&
         _passwordController.text == e.password);
     if (checkUser) {
-      _showHiddenLoading(status: false);
-      UserModel user = users.singleWhere((e) => e.email == _emailController.text);
+      setState(() => _isLoading = false);
+
+      UserModel user =
+          users.singleWhere((e) => e.email == _emailController.text);
       print('object user ${user.email}');
       await SharedPrefs.saveUserLogin(user);
       Navigator.pushAndRemoveUntil(
@@ -75,7 +72,7 @@ class _SignInPageState extends State<SignInPage> {
         (route) => false,
       );
     } else {
-      _showHiddenLoading(status: false);
+      setState(() => _isLoading = false);
       NSSnackBar.snackbarError(
         context,
         title: AppLocalizations.of(context).emailOrPasswordIncorrect,

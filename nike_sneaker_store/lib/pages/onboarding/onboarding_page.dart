@@ -29,10 +29,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     const OnboardingPower(),
   ];
 
-  /// Function reset state
-  void _resetState() => setState(() {});
-
-  /// The function to switch page of [PageView]. 
+  /// The function to switch page of [PageView].
   /// If it is on the last page, it will switch to [SignInPage]
   void _onNext() {
     if (_pageIndex < _onboardPages.length - 1) {
@@ -64,7 +61,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               itemBuilder: (_, index) => _onboardPages[index],
               onPageChanged: (value) {
                 _pageIndex = value;
-                _resetState();
+                setState(() {});
               },
             ),
           ),

@@ -34,9 +34,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  /// Function reset state
-  void _resetState() => setState(() {});
-
   /// The function get products
   void _getProducts() {
     _productViews = products;
@@ -59,11 +56,12 @@ class _HomePageState extends State<HomePage> {
     void changeCategory(String category) {
       if (category == 'All Shoes') {
         _productViews = products;
-        _resetState();
+        setState(() {});
+
         return;
       }
       _productViews = products.where((e) => e.category == category).toList();
-      _resetState();
+      setState(() {});
     }
 
     void addCart(ProductModel product) {
@@ -76,7 +74,8 @@ class _HomePageState extends State<HomePage> {
         );
       } else {
         myCarts.add(product..quantity = 1);
-        _resetState();
+        setState(() {});
+
         NSSnackBar.snackbarSuccess(
           context,
           title: AppLocalizations.of(context).productAddSuccess,
@@ -123,7 +122,8 @@ class _HomePageState extends State<HomePage> {
                     child: CardCategory(
                       onPressed: () {
                         _categoryIndex = index;
-                        _resetState();
+                        setState(() {});
+                        ;
                         changeCategory(checkCategory[index]);
                       },
                       text: categories[index],
@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                         MaterialPageRoute(
                           builder: (_) => DetailPage(
                             product: product,
-                            resetState: _resetState,
+                            resetState: () => setState(() {}),
                           ),
                         ),
                       ),
@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                       },
                       onFavorite: () {
                         product.isFavorite = !product.isFavorite;
-                        _resetState();
+                        setState(() {});
                       },
                     ),
                   );

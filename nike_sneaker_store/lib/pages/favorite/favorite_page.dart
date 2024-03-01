@@ -24,13 +24,10 @@ class _FavoritePageState extends State<FavoritePage> {
     super.initState();
   }
 
-  /// Function reset state
-  void _resetState() => setState(() {});
-
   /// The function check out [products]'s favorite products add to [_favoriteProducts]
   void _getFavoriteProducts() {
     _favoriteProducts = products.where((e) => e.isFavorite == true).toList();
-    _resetState();
+    setState(() {});
   }
 
   @override
@@ -70,7 +67,7 @@ class _FavoritePageState extends State<FavoritePage> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 16,
                 crossAxisSpacing: 16,
-                childAspectRatio: 3/4,
+                childAspectRatio: 3 / 4,
               ),
               itemBuilder: (_, index) {
                 final product = _favoriteProducts[index];
@@ -78,7 +75,7 @@ class _FavoritePageState extends State<FavoritePage> {
                   product: product,
                   onFavorite: () {
                     product.isFavorite = !product.isFavorite;
-                    _resetState();
+                    setState(() {});
                   },
                   onTap: () => Navigator.push(
                     context,

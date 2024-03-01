@@ -42,11 +42,9 @@ class _MainPageState extends State<MainPage> {
   /// The function change page with index
   void changePage(int index) {
     currentPageIndex = index;
-    _resetState();
-  }
+                        setState(() {});
 
-    /// Function reset state
-  void _resetState() => setState(() {});
+  }
 
   Future<void> getUser() async {
     userLogin = await SharedPrefs.getUserLogin();

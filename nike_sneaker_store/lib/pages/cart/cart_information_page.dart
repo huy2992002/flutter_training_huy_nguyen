@@ -45,8 +45,6 @@ class _CartInformationPageState extends State<CartInformationPage> {
       _phoneController.text.isNotEmpty &&
       _addressController.text.isNotEmpty;
 
-  void _resetState() => setState(() {});
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -89,7 +87,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
                   label: AppLocalizations.of(context).emailAddress,
                   onEdit: _focusNodeEmail.requestFocus,
                   onChanged: (_) {
-                    _resetState();
+                    setState(() {});
                   },
                   focusNode: _focusNodeEmail,
                 ),
@@ -100,7 +98,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
                   label: AppLocalizations.of(context).phone,
                   onEdit: _focusNodePhone.requestFocus,
                   onChanged: (_) {
-                    _resetState();
+                    setState(() {});
                   },
                   focusNode: _focusNodePhone,
                   keyboardType: TextInputType.phone,
@@ -119,7 +117,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
                       child: TextField(
                         controller: _addressController,
                         onChanged: (_) {
-                          _resetState();
+                          setState(() {});
                         },
                         style:
                             Theme.of(context).textTheme.labelMedium?.copyWith(

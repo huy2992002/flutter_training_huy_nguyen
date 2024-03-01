@@ -24,20 +24,18 @@ class _SearchPageState extends State<SearchPage> {
   /// The [TextEditingController] of [TextFormField] search
   TextEditingController _searchController = TextEditingController();
 
-  /// Function reset state
-  void _resetState() => setState(() {});
-
   /// The function user search product with [searchText]
   void _search(String? searchText) {
     if (searchText == null || searchText.isEmpty) {
       _searchProducts = [];
-      _resetState();
+      setState(() {});
+
       return;
     }
     _searchProducts = products
         .where((e) => e.name.toLowerCase().contains(searchText.toLowerCase()))
         .toList();
-    _resetState();
+    setState(() {});
   }
 
   @override
@@ -97,7 +95,7 @@ class _SearchPageState extends State<SearchPage> {
                           product: product,
                           onFavorite: () {
                             product.isFavorite = !product.isFavorite;
-                            _resetState();
+                            setState(() {});
                           },
                           onTap: () => Navigator.push(
                             context,

@@ -14,7 +14,7 @@ import 'package:nike_sneaker_store/utils/extension.dart';
 
 class DetailPage extends StatefulWidget {
   /// Screen display detail of [product]
-  /// 
+  ///
   /// The [product] arguments must not be null.
   const DetailPage({
     required this.product,
@@ -46,12 +46,7 @@ class _DetailPageState extends State<DetailPage> {
     setState(() {});
   }
 
-  /// Function reset state
-  void _resetState() {
-    setState(() {});
-  }
-
-  /// Check if [product] is already in your [myCarts]. 
+  /// Check if [product] is already in your [myCarts].
   /// If not, add [product] to [myCarts]
   void _addToCart(ProductModel product) {
     bool hasCheckCart = myCarts.any((element) => element.uuid == product.uuid);
@@ -62,7 +57,8 @@ class _DetailPageState extends State<DetailPage> {
       );
     } else {
       myCarts.add(product..quantity = 1);
-      _resetState();
+      setState(() {});
+
       NSSnackBar.snackbarSuccess(
         context,
         title: AppLocalizations.of(context).productAddSuccess,
@@ -132,7 +128,7 @@ class _DetailPageState extends State<DetailPage> {
                 return GestureDetector(
                   onTap: () {
                     productView = productImage;
-                    _resetState();
+                    setState(() {});
                   },
                   child: Container(
                     padding: const EdgeInsets.all(2),

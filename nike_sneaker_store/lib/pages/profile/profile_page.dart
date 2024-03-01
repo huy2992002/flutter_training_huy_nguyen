@@ -48,11 +48,6 @@ class _ProfilePageState extends State<ProfilePage> {
     _nameController.text = userLogin?.name ?? '';
     _locationController.text = userLogin?.address ?? '';
     _phoneController.text = userLogin?.phone ?? '';
-    _resetState();
-  }
-
-  /// Function reset state
-  void _resetState() {
     setState(() {});
   }
 
@@ -68,7 +63,8 @@ class _ProfilePageState extends State<ProfilePage> {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
       file = File(result.files.single.path!);
-      _resetState();
+      setState(() {});
+
       NSSnackBar.snackbarSuccess(
         context,
         title: AppLocalizations.of(context).avatarChangedSuccess,
@@ -148,7 +144,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   hintText: AppLocalizations.of(context).yourName,
                   onChanged: (_) {
                     canSave;
-                    _resetState();
+                    setState(() {});
                   },
                 ),
                 const SizedBox(height: 34),
@@ -164,7 +160,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   hintText: AppLocalizations.of(context).location,
                   onChanged: (_) {
                     canSave;
-                    _resetState();
+                    setState(() {});
                   },
                 ),
                 const SizedBox(height: 34),
@@ -180,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   hintText: AppLocalizations.of(context).mobileNumber,
                   onChanged: (_) {
                     canSave;
-                    _resetState();
+                    setState(() {});
                   },
                   textInputType: TextInputType.phone,
                 ),
