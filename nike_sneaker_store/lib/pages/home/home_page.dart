@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
 import 'package:nike_sneaker_store/components/cards/card_category.dart';
 import 'package:nike_sneaker_store/components/cards/card_product.dart';
@@ -110,68 +113,52 @@ class _HomePageState extends State<HomePage> {
           ),
           const SizedBox(height: 24),
           TitleHome(text: AppLocalizations.of(context).selectCategory),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Padding(
+          SizedBox(
+            height: 40,
+            child: ListView.separated(
+              itemCount: categories.length,
+              scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: List.generate(
-                  categories.length,
-                  (index) => Padding(
-                    padding: const EdgeInsets.only(right: 16),
-                    child: CardCategory(
-                      onPressed: () {
-                        _categoryIndex = index;
-                        setState(() {});
-                        ;
-                        changeCategory(checkCategory[index]);
-                      },
-                      text: categories[index],
-                      backgroundColor: _categoryIndex == index
-                          ? Theme.of(context).colorScheme.primary
-                          : Theme.of(context).colorScheme.primaryContainer,
-                      textColor: _categoryIndex == index
-                          ? Theme.of(context).colorScheme.onPrimary
-                          : Theme.of(context).colorScheme.onPrimaryContainer,
-                    ),
-                  ),
-                ),
-              ),
+              itemBuilder: (context, index) {
+                return CardCategory(
+                  onPressed: () => changeCategory(checkCategory[index]),
+                  text: categories[index],
+                );
+              },
+              separatorBuilder: (context, index) => const SizedBox(width: 16),
             ),
           ),
           const SizedBox(height: 24),
           TitleHome(text: AppLocalizations.of(context).popularShoes),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Padding(
+          SizedBox(
+            height: 201,
+            child: ListView.separated(
+              itemCount: _productViews.length,
+              scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: List.generate(_productViews.length, (index) {
-                  final product = _productViews[index];
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: CardProduct(
-                      product: product,
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => DetailPage(
-                            product: product,
-                            resetState: () => setState(() {}),
-                          ),
-                        ),
+              itemBuilder: (context, index) {
+                final product = _productViews[index];
+                return CardProduct(
+                  product: product,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => DetailPage(
+                        product: product,
+                        resetState: () => setState(() {}),
                       ),
-                      onAddCart: () {
-                        addCart(product);
-                      },
-                      onFavorite: () {
-                        product.isFavorite = !product.isFavorite;
-                        setState(() {});
-                      },
                     ),
-                  );
-                }),
-              ),
+                  ),
+                  onAddCart: () {
+                    addCart(product);
+                  },
+                  onFavorite: () {
+                    product.isFavorite = !product.isFavorite;
+                    setState(() {});
+                  },
+                );
+              },
+              separatorBuilder: (context, index) => const SizedBox(width: 20),
             ),
           ),
           const SizedBox(height: 24),
