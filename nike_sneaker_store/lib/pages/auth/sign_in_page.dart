@@ -56,14 +56,13 @@ class _SignInPageState extends State<SignInPage> {
     setState(() => _isLoading = true);
     await Future.delayed(const Duration(seconds: 2));
     List<UserModel> users = await SharedPrefs.getUsers() ?? accounts;
-    bool checkUser = users.any((e) =>
-        _emailController.text == e.email &&
-        _passwordController.text == e.password);
-    if (checkUser) {
+    try {
+      UserModel user = users.singleWhere(
+        (e) =>
+            e.email == _emailController.text &&
+            _passwordController.text == e.password,
+      );
       setState(() => _isLoading = false);
-
-      UserModel user =
-          users.singleWhere((e) => e.email == _emailController.text);
       print('object user ${user.email}');
       await SharedPrefs.saveUserLogin(user);
       Navigator.pushAndRemoveUntil(
@@ -71,7 +70,7 @@ class _SignInPageState extends State<SignInPage> {
         MaterialPageRoute(builder: (_) => const MainPage()),
         (route) => false,
       );
-    } else {
+    } catch (e) {
       setState(() => _isLoading = false);
       NSSnackBar.snackbarError(
         context,
