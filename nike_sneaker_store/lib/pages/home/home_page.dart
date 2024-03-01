@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
 import 'package:nike_sneaker_store/components/cards/card_category.dart';
 import 'package:nike_sneaker_store/components/cards/card_product.dart';
@@ -121,8 +118,17 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               itemBuilder: (context, index) {
                 return CardCategory(
-                  onPressed: () => changeCategory(checkCategory[index]),
+                  onPressed: () {
+                    _categoryIndex = index;
+                    changeCategory(checkCategory[index]);
+                  },
                   text: categories[index],
+                  backgroundColor: _categoryIndex == index
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.primaryContainer,
+                  textColor: _categoryIndex == index
+                      ? Theme.of(context).colorScheme.onPrimary
+                      : Theme.of(context).colorScheme.onPrimaryContainer,
                 );
               },
               separatorBuilder: (context, index) => const SizedBox(width: 16),
