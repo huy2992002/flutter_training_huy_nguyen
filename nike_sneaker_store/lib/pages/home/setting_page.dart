@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
@@ -19,12 +20,12 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  String? dropdownValue = 'en';
+  TextEditingController dropdownController = TextEditingController();
   List<String> language = ['en', 'vi'];
 
   @override
   void initState() {
-    dropdownValue = SharedPrefs.isVietnamese ? 'vi' : 'en';
+    dropdownController.text = SharedPrefs.isVietnamese ? 'vi' : 'en';
     super.initState();
   }
 
@@ -84,19 +85,17 @@ class _SettingPageState extends State<SettingPage> {
                 style: Theme.of(context).textTheme.titleSmall,
               ),
               const Spacer(),
-              DropdownButton(
-                items: List.generate(
+              DropdownMenu(
+                controller: dropdownController,
+                dropdownMenuEntries: List.generate(
                   language.length,
-                  (index) => DropdownMenuItem(
+                  (index) => DropdownMenuEntry(
                     value: language[index],
-                    child: Text(
-                      language[index],
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
+                    label: language[index],
                   ),
                 ),
-                onChanged: (value) {
-                  dropdownValue = value;
+                onSelected: (value) {
+                  dropdownController.text = value ?? 'en';
                   if (value != null && value == 'vi') {
                     Provider.of<AppProvider>(context, listen: false)
                         .changeLocaleVi();
@@ -110,7 +109,6 @@ class _SettingPageState extends State<SettingPage> {
                   }
                   setState(() {});
                 },
-                value: dropdownValue,
               ),
             ],
           ),
