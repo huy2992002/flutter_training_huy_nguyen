@@ -31,28 +31,19 @@ class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: colorAppBar,
-      padding: const EdgeInsets.symmetric(horizontal: 18).copyWith(
-        top: MediaQuery.paddingOf(context).top + 3,
-        bottom: 3,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          if (leftIcon != null) leftIcon! else const SizedBox(width: 44),
-          Expanded(
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          if (rightIcon != null) rightIcon! else const SizedBox(width: 44),
-        ],
-      ),
+    return AppBar(
+      leading: leftIcon != null
+          ? Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: leftIcon,
+            )
+          : const SizedBox(width: 44),
+      leadingWidth: 64,
+      title: Text(title),
+      actions: [
+        if (rightIcon != null) rightIcon! else const SizedBox(width: 44),
+        const SizedBox(width: 20),
+      ],
     );
   }
 

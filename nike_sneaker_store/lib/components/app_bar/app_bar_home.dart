@@ -22,33 +22,28 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.background,
-      padding: const EdgeInsets.symmetric(horizontal: 18).copyWith(
-        top: MediaQuery.paddingOf(context).top + 3,
-        bottom: 3,
+    return AppBar(
+      leading: GestureDetector(
+        onTap: onMenu,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: SvgPicture.asset(
+            Assets.icons.icMenu,
+            color: Theme.of(context).colorScheme.onBackground,
+          ),
+        ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: onMenu,
-            child: SvgPicture.asset(
-              Assets.icons.icMenu,
-              color: Theme.of(context).colorScheme.onBackground,
-            ),
-          ),
-          Text(
-            AppLocalizations.of(context).explore,
-            style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
-          ),
-          ActionIconAppBar(
-            isMarked: isMarkerNotification,
-          ),
-        ],
+      leadingWidth: 43,
+      title: Text(
+        AppLocalizations.of(context).explore,
+        style: Theme.of(context).textTheme.displaySmall,
       ),
+      actions: [
+        ActionIconAppBar(
+          isMarked: isMarkerNotification,
+        ),
+        const SizedBox(width: 20),
+      ],
     );
   }
 
