@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
@@ -23,6 +25,8 @@ class _SearchPageState extends State<SearchPage> {
 
   /// The [TextEditingController] of [TextFormField] search
   TextEditingController _searchController = TextEditingController();
+
+  Timer? active;
 
   /// The function user search product with [searchText]
   void _search(String? searchText) {
@@ -61,7 +65,17 @@ class _SearchPageState extends State<SearchPage> {
             const SizedBox(height: 24),
             NSSearchBox(
               controller: _searchController,
-              onChanged: _search,
+              onChanged: (value) {
+                if (active != null) {
+                  active?.cancel();
+                }
+                active = Timer(
+                    const Duration(
+                      milliseconds: 500,
+                    ), () {
+                  _search(value);
+                });
+              },
             ),
             const SizedBox(height: 18),
             Expanded(
