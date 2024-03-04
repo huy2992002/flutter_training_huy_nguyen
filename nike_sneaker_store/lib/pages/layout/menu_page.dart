@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_avatar.dart';
-import 'package:nike_sneaker_store/pages/main/widgets/card_menu_item.dart';
+import 'package:nike_sneaker_store/pages/layout/widgets/card_menu_item.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
@@ -8,7 +8,7 @@ import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
 import 'package:nike_sneaker_store/pages/home/setting_page.dart';
-import 'package:nike_sneaker_store/pages/main/main_page.dart';
+import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 
 class MenuPage extends StatelessWidget {

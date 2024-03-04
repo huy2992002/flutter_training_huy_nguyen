@@ -10,7 +10,7 @@ import 'package:nike_sneaker_store/pages/auth/sign_up_page.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/prompt_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
-import 'package:nike_sneaker_store/pages/main/main_page.dart';
+import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
@@ -47,7 +47,7 @@ class _SignInPageState extends State<SignInPage> {
   /// Function when action login.
   ///
   /// Check [Validator] success.
-  /// If the [_emailController] and [_passwordController] match the [accounts], go to the [MainPage] screen.
+  /// If the [_emailController] and [_passwordController] match the [accounts], go to the [LayoutPage] screen.
   /// If incorrect, show snackbar notification
   Future<void> _onLogin() async {
     if (_formKey.currentState == null || !_formKey.currentState!.validate()) {
@@ -67,7 +67,7 @@ class _SignInPageState extends State<SignInPage> {
       await SharedPrefs.saveUserLogin(user);
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (_) => const MainPage()),
+        MaterialPageRoute(builder: (_) => const LayoutPage()),
         (route) => false,
       );
     } catch (e) {

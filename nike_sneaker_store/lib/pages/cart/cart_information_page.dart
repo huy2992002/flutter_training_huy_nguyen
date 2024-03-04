@@ -9,7 +9,7 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_information_item.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_total_cost.dart';
-import 'package:nike_sneaker_store/pages/main/main_page.dart';
+import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 
 class CartInformationPage extends StatefulWidget {
@@ -156,7 +156,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const MainPage(),
+                        builder: (_) => const LayoutPage(),
                       ),
                       (route) => false);
                 },

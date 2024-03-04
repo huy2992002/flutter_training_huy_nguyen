@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
-import 'package:nike_sneaker_store/pages/main/main_page.dart';
+import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
 import 'package:nike_sneaker_store/pages/onboarding/onboarding_page.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 
@@ -58,7 +58,7 @@ class _SplashPageState extends State<SplashPage> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => const MainPage(),
+          builder: (context) => const LayoutPage(),
         ),
         (route) => false,
       );

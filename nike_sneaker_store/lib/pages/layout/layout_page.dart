@@ -3,27 +3,27 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/favorite/favorite_page.dart';
 import 'package:nike_sneaker_store/pages/home/home_page.dart';
-import 'package:nike_sneaker_store/pages/main/menu_page.dart';
-import 'package:nike_sneaker_store/pages/main/widgets/ns_bottom_navigation_bar.dart';
-import 'package:nike_sneaker_store/pages/main/widgets/ns_drawer.dart';
+import 'package:nike_sneaker_store/pages/layout/menu_page.dart';
+import 'package:nike_sneaker_store/pages/layout/widgets/ns_bottom_navigation_bar.dart';
+import 'package:nike_sneaker_store/pages/layout/widgets/ns_drawer.dart';
 import 'package:nike_sneaker_store/pages/notification/notifications_page.dart';
 import 'package:nike_sneaker_store/pages/profile/profile_page.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class LayoutPage extends StatefulWidget {
+  const LayoutPage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<LayoutPage> createState() => _LayoutPageState();
 }
 
 /// The [ZoomDrawerController] of [TextFormField] drawer
 ZoomDrawerController zoomController = ZoomDrawerController();
 
-/// index of [MainPage]
+/// index of [LayoutPage]
 int currentPageIndex = 0;
 
-class _MainPageState extends State<MainPage> {
+class _LayoutPageState extends State<LayoutPage> {
   /// [List] page display [BottomNavigationBar]
   List<Widget> _pages = [
     const HomePage(),

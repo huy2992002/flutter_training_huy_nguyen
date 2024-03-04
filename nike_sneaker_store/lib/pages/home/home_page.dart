@@ -11,7 +11,7 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
 import 'package:nike_sneaker_store/pages/home/search_page.dart';
 import 'package:nike_sneaker_store/pages/home/widgets/title_home.dart';
-import 'package:nike_sneaker_store/pages/main/main_page.dart';
+import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
 
 class HomePage extends StatefulWidget {
   /// The home Screen
