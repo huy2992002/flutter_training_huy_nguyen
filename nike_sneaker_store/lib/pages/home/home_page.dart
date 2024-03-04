@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/card_category.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/card_product.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/card_sale.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
@@ -10,6 +7,9 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
 import 'package:nike_sneaker_store/pages/home/search_page.dart';
+import 'package:nike_sneaker_store/pages/home/widgets/card_category.dart';
+import 'package:nike_sneaker_store/pages/home/widgets/card_product.dart';
+import 'package:nike_sneaker_store/pages/home/widgets/card_sale.dart';
 import 'package:nike_sneaker_store/pages/home/widgets/title_home.dart';
 import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
@@ -61,7 +61,9 @@ class _HomePageState extends State<HomePage> {
 
         return;
       }
-      _productViews = products.where((e) => e.category.toLowerCase() == category.toLowerCase()).toList();
+      _productViews = products
+          .where((e) => e.category.toLowerCase() == category.toLowerCase())
+          .toList();
       setState(() {});
     }
 

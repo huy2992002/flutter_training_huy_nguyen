@@ -5,12 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/card_product.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
+import 'package:nike_sneaker_store/pages/home/widgets/card_product.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
-import 'package:nike_sneaker_store/pages/cart/widgets/card_cart_product.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_information_page.dart';
+import 'package:nike_sneaker_store/pages/cart/widgets/card_cart_product.dart';
 import 'package:nike_sneaker_store/pages/cart/widgets/cart_total_cost.dart';
 
 class CartPage extends StatefulWidget {

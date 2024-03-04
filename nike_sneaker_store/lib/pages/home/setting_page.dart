@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
