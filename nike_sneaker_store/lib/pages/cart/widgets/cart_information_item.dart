@@ -64,7 +64,6 @@ class CartInformationItem extends StatelessWidget {
                 label,
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       fontWeight: FontWeight.w500,
-                      color: Theme.of(context).colorScheme.onBackground,
                     ),
               ),
             ],

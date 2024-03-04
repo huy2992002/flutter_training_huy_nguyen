@@ -25,13 +25,13 @@ class NSBottomNavigationBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
-      color: Theme.of(context).colorScheme.onPrimary,
+        color: Theme.of(context).colorScheme.onPrimary,
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).colorScheme.onPrimaryContainer,
+            color: Theme.of(context).shadowColor,
             blurRadius: 3,
-          )
-        ]
+          ),
+        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

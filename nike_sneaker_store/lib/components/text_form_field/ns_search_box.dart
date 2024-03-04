@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class NSSearchBox extends StatelessWidget {
-  /// Create an [TextFormField] 
+  /// Create an [TextFormField]
   const NSSearchBox({
     super.key,
     this.controller,
@@ -20,12 +19,12 @@ class NSSearchBox extends StatelessWidget {
   final TextEditingController? controller;
 
   /// Action when changing keyboard values
-  /// 
+  ///
   /// The [onChanged] arguments can null
   final Function(String)? onChanged;
 
   /// Action when onTap of [NSSearchBox]
-  /// 
+  ///
   /// The [onTap] arguments can null
   final Function()? onTap;
 
@@ -38,9 +37,9 @@ class NSSearchBox extends StatelessWidget {
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(14),
-        boxShadow: [
+        boxShadow:  [
           BoxShadow(
-            color: NSColor.onPrimaryContainer.withOpacity(0.4),
+            color: Theme.of(context).shadowColor,
             offset: const Offset(0, 4),
             blurRadius: 4,
           ),
@@ -50,9 +49,7 @@ class NSSearchBox extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         onTap: onTap,
-        style: Theme.of(context).textTheme.labelMedium?.copyWith(
-              color: Theme.of(context).colorScheme.onPrimaryContainer,
-            ),
+        style: Theme.of(context).textTheme.labelMedium,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(vertical: 14),
           border: InputBorder.none,

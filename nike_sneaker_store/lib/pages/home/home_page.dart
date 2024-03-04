@@ -48,10 +48,10 @@ class _HomePageState extends State<HomePage> {
       AppLocalizations.of(context).tennis,
     ];
 
-    List<String> _categories = [
-      Category.allShoes.name,
-      Category.outDoor.name,
-      Category.tennis.name,
+    List<Category> _categories = [
+      Category.allShoes,
+      Category.outDoor,
+      Category.tennis,
     ];
 
     void changedCategory(String category) {
@@ -87,7 +87,6 @@ class _HomePageState extends State<HomePage> {
     }
 
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBarHome(
         onMenu: () {
           zoomController.toggle?.call();
@@ -123,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                 return CardCategory(
                   onPressed: () {
                     _categoryIndex = index;
-                    changedCategory(_categories[index]);
+                    changedCategory(_categories[index].name);
                   },
                   text: listCategoryView[index],
                   backgroundColor: _categoryIndex == index

@@ -48,7 +48,6 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NSAppBar(
         title: AppLocalizations.of(context).setting,
         leftIcon: NsIconButton(

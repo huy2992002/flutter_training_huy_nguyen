@@ -33,7 +33,6 @@ class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NSAppBar(
         title: AppLocalizations.of(context).favorite,
         rightIcon: ActionIconAppBar(

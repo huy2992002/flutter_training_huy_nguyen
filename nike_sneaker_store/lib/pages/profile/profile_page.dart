@@ -121,9 +121,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 Center(
                   child: Text(
                     userLogin?.name ?? '',
-                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),
                 const SizedBox(height: 6),
@@ -140,9 +138,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 const SizedBox(height: 43),
                 Text(
                   AppLocalizations.of(context).yourName,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onBackground,
-                      ),
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
                 const SizedBox(height: 17),
                 NSTextFormField.text(
@@ -157,9 +153,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 const SizedBox(height: 34),
                 Text(
                   AppLocalizations.of(context).location,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onBackground,
-                      ),
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
                 const SizedBox(height: 17),
                 NSTextFormField.text(
@@ -174,9 +168,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 const SizedBox(height: 34),
                 Text(
                   AppLocalizations.of(context).mobileNumber,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onBackground,
-                      ),
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
                 const SizedBox(height: 17),
                 NSTextFormField.text(

@@ -35,12 +35,7 @@ class NSDialog {
               icon,
               const SizedBox(height: 16),
             ],
-            Text(
-              title,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
+            Text(title),
             const SizedBox(height: 8),
             Text(
               subTitle,
@@ -90,9 +85,6 @@ class NSDialog {
             ],
             Text(
               title,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
@@ -127,9 +119,6 @@ class NSDialog {
           children: [
             Text(
               title,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),

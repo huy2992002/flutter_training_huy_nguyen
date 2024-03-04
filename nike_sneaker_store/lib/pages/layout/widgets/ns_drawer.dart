@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class NSDrawer extends StatelessWidget {
   /// The custom drawer
-  /// 
+  ///
   /// The [menuScreen] & [mainScreen] arguments must not be null.
   const NSDrawer({
     required this.menuScreen,
@@ -31,9 +30,9 @@ class NSDrawer extends StatelessWidget {
       mainScreenTapClose: true,
       angle: -5,
       menuBackgroundColor: Theme.of(context).colorScheme.secondary,
-      boxShadow: const [
+      boxShadow: [
         BoxShadow(
-          color: NSColor.onPrimaryContainer,
+          color: Theme.of(context).shadowColor,
           blurRadius: 2,
         )
       ],

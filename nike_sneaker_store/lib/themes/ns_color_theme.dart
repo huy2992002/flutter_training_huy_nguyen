@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class NSColorTheme {
-  static ColorScheme colorThemeLight = const ColorScheme(
+  static ColorScheme colorThemeLight = ColorScheme(
+    
     brightness: Brightness.light,
     primary: NSColor.primary,
     onPrimary: NSColor.onPrimary,
@@ -23,9 +24,10 @@ class NSColorTheme {
     inversePrimary: NSColor.inversePrimary,
     inverseSurface: NSColor.inverseSurface,
     onInverseSurface: NSColor.onInverseSurface,
+    shadow: NSColor.onPrimaryContainer.withOpacity(0.4),
   );
 
-  static ColorScheme colorThemeDark = const ColorScheme(
+  static ColorScheme colorThemeDark =  ColorScheme(
     brightness: Brightness.dark,
     primary: NSColor.darkPrimary,
     onPrimary: NSColor.darkOnPrimary,
@@ -46,5 +48,6 @@ class NSColorTheme {
     inversePrimary: NSColor.darkInversePrimary,
     inverseSurface: NSColor.darkInverseSurface,
     onInverseSurface: NSColor.darkOnInverseSurface,
+    shadow: NSColor.onPrimaryContainer.withOpacity(0.4),
   );
 }

@@ -21,9 +21,7 @@ class TitleHome extends StatelessWidget {
       padding: padding ?? const EdgeInsets.only(left: 20, bottom: 14),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-              color: Theme.of(context).colorScheme.onBackground,
-            ),
+        style: Theme.of(context).textTheme.labelLarge,
       ),
     );
   }

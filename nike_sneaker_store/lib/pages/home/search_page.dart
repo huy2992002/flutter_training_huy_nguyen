@@ -45,7 +45,6 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NSAppBar(
         title: AppLocalizations.of(context).search,
         leftIcon: NsIconButton(

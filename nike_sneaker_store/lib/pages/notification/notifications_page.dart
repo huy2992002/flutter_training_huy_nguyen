@@ -19,7 +19,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NSAppBar(
         title: AppLocalizations.of(context).notifications,
         rightIcon: NsIconButton(
@@ -42,9 +41,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
             if (notifications.isNotEmpty)
               Text(
                 AppLocalizations.of(context).recent,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onBackground,
-                    ),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             const SizedBox(height: 16),
             if (notifications.isEmpty)

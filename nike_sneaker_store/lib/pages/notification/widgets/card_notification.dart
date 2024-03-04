@@ -71,9 +71,7 @@ class CardNotification extends StatelessWidget {
                       const SizedBox(width: 20),
                       Text(
                         notification.priceSale.toPriceDollar(),
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Theme.of(context).colorScheme.onBackground,
-                            ),
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
                   ),

@@ -37,9 +37,7 @@ class PromptText extends StatelessWidget {
           onTap: onTap,
           child: Text(
             title,
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+            style: Theme.of(context).textTheme.labelLarge,
           ),
         ),
       ],

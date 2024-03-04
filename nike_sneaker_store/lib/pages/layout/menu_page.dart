@@ -34,7 +34,6 @@ class MenuPage extends StatelessWidget {
         left: 28,
         top: MediaQuery.paddingOf(context).top + 30,
       ),
-      color: Theme.of(context).colorScheme.secondary,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

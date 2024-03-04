@@ -24,9 +24,7 @@ class TitleAuth extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+            style: Theme.of(context).textTheme.displaySmall,
           ),
           const SizedBox(height: 8),
           Text(

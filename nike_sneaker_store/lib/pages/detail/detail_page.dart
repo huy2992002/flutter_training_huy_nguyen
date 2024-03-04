@@ -93,9 +93,7 @@ class _DetailPageState extends State<DetailPage> {
         children: [
           Text(
             productView.name,
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+            style: Theme.of(context).textTheme.headlineLarge,
           ),
           const SizedBox(height: 8),
           Text(
@@ -107,9 +105,7 @@ class _DetailPageState extends State<DetailPage> {
           const SizedBox(height: 8),
           Text(
             productView.price.toPriceDollar(),
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),

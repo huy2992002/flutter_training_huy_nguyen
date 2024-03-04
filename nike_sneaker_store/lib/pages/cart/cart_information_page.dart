@@ -76,9 +76,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
               children: [
                 Text(
                   AppLocalizations.of(context).contactInformation,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onBackground,
-                      ),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(height: 16),
                 CartInformationItem(
@@ -106,9 +104,7 @@ class _CartInformationPageState extends State<CartInformationPage> {
                 const SizedBox(height: 12),
                 Text(
                   AppLocalizations.of(context).address,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onBackground,
-                      ),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(height: 8),
                 Row(

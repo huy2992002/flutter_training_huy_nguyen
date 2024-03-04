@@ -52,9 +52,7 @@ class _CartPageState extends State<CartPage> {
                   const SizedBox(height: 16),
                   Text(
                     AppLocalizations.of(context).intItem(myCarts.length),
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   Expanded(
                     child: ListView.separated(
