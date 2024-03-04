@@ -63,7 +63,6 @@ class _SignInPageState extends State<SignInPage> {
             _passwordController.text == e.password,
       );
       setState(() => _isLoading = false);
-      print('object user ${user.email}');
       await SharedPrefs.saveUserLogin(user);
       Navigator.pushAndRemoveUntil(
         context,
