@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
-import 'package:nike_sneaker_store/components/cards/card_category.dart';
-import 'package:nike_sneaker_store/components/cards/card_product.dart';
-import 'package:nike_sneaker_store/components/cards/card_sale.dart';
+import 'package:nike_sneaker_store/pages/home/widgets/card_category.dart';
+import 'package:nike_sneaker_store/pages/home/widgets/card_product.dart';
+import 'package:nike_sneaker_store/pages/home/widgets/card_sale.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';

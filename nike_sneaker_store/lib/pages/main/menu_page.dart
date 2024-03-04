@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_avatar.dart';
-import 'package:nike_sneaker_store/components/cards/card_menu_item.dart';
+import 'package:nike_sneaker_store/pages/main/widgets/card_menu_item.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
