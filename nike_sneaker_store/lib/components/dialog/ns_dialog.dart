@@ -138,20 +138,20 @@ class NSDialog {
               children: [
                 NSElevatedButton.text(
                   onPressed: () {
-                    action?.call();
-                    Navigator.pop(context);
-                  },
-                  text: AppLocalizations.of(context).yes,
-                ),
-                const SizedBox(width: 14),
-                NSElevatedButton.text(
-                  onPressed: () {
                     Navigator.pop(context);
                   },
                   text: AppLocalizations.of(context).no,
                   backgroundColor:
                       Theme.of(context).colorScheme.primaryContainer,
                   textColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
+                const SizedBox(width: 14),
+                NSElevatedButton.text(
+                  onPressed: () {
+                    action?.call();
+                    Navigator.pop(context);
+                  },
+                  text: AppLocalizations.of(context).yes,
                 ),
               ],
             ),
