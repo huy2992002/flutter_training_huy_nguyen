@@ -5,7 +5,7 @@ class UserModel {
   ///
   /// include
   /// [uuid], [name], [email], [password] arguments must not be null
-  /// and [avatar], [address], [phone] argument has default value is false
+  /// and [avatar], [address], [phone] argument must be null
   UserModel({
     required this.uuid,
     required this.name,
