@@ -52,10 +52,24 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   /// The getter checks that email, location & phone is not empty
-  bool get canSave {
-    return _nameController.text.isNotEmpty &&
+  // bool get canSave {
+  //   bool isNotEmpty = _nameController.text.isNotEmpty &&
+  //       _locationController.text.isNotEmpty &&
+  //       _phoneController.text.isNotEmpty;
+  //   bool hasChange = _nameController.text != aw SharedPrefs.getUserLogin().name;
+  //   return;
+  // }
+
+  bool canSave() {
+    bool isNotEmpty = _nameController.text.isNotEmpty &&
         _locationController.text.isNotEmpty &&
         _phoneController.text.isNotEmpty;
+
+    bool hasChange = _nameController.text != userLogin?.name ||
+        _locationController.text != userLogin?.address ||
+        _phoneController.text != userLogin?.phone;
+
+    return isNotEmpty && hasChange;
   }
 
   /// The Function use [FilePicker] get image from device and display by field [file]
@@ -78,7 +92,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> saveUser() async {
-    if (!canSave) return;
+    if (!canSave()) return;
     userLogin?.name = _nameController.text;
     userLogin?.address = _locationController.text;
     userLogin?.phone = _phoneController.text;
@@ -87,6 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
       context,
       title: AppLocalizations.of(context).informationChangedSuccess,
     );
+    setState(() {});
   }
 
   @override
@@ -143,7 +158,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   controller: _nameController,
                   hintText: AppLocalizations.of(context).yourName,
                   onChanged: (_) {
-                    canSave;
+                    canSave();
                     setState(() {});
                   },
                 ),
@@ -159,7 +174,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   controller: _locationController,
                   hintText: AppLocalizations.of(context).location,
                   onChanged: (_) {
-                    canSave;
+                    canSave();
                     setState(() {});
                   },
                 ),
@@ -175,7 +190,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   controller: _phoneController,
                   hintText: AppLocalizations.of(context).mobileNumber,
                   onChanged: (_) {
-                    canSave;
+                    canSave();
                     setState(() {});
                   },
                   textInputType: TextInputType.phone,
@@ -184,10 +199,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 NSElevatedButton.text(
                   onPressed: saveUser,
                   text: AppLocalizations.of(context).saveNow,
-                  backgroundColor: canSave
+                  backgroundColor: canSave()
                       ? Theme.of(context).colorScheme.primary
                       : NSColor.neutral.withOpacity(0.3),
-                  textColor: canSave
+                  textColor: canSave()
                       ? Theme.of(context).colorScheme.onPrimary
                       : Theme.of(context)
                           .colorScheme
