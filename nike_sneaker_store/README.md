@@ -36,6 +36,11 @@
 ## Download APK
 - install: [here](https://drive.google.com/file/d/1fWOglAxj7uNc7ERgd6WwUEC9b0_DDAfD/view?usp=sharing)
 
+## Build With
+- [Flutter](https://flutter.dev/) version 3.19.1
+- [Dark](https://dart.dev/) version 3.3.0
+-  [Visual Studio Code](https://code.visualstudio.com/)
+
 ## Prerequisites
 Before you continue, ensure you meet the following requirements
 - Flutter sdk version: >=3.1.2 <4.0.0
