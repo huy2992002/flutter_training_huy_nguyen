@@ -3,18 +3,18 @@ import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class NSSwitch extends StatelessWidget {
   const NSSwitch({
-    required this.onChange,
+    required this.onChanged,
     this.isDark = false,
     super.key,
   });
 
-  final Function() onChange;
+  final Function() onChanged;
   final bool isDark;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onChange,
+      onTap: onChanged,
       child: Container(
         height: 30,
         width: 46,

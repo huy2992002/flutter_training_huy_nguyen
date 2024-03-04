@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
       'Tennis',
     ];
 
-    void changeCategory(String category) {
+    void changedCategory(String category) {
       if (category == 'All Shoes') {
         _productViews = products;
         setState(() {});
@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                 return CardCategory(
                   onPressed: () {
                     _categoryIndex = index;
-                    changeCategory(checkCategory[index]);
+                    changedCategory(checkCategory[index]);
                   },
                   text: categories[index],
                   backgroundColor: _categoryIndex == index

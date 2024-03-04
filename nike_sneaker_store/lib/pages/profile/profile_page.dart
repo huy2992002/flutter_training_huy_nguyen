@@ -56,15 +56,15 @@ class _ProfilePageState extends State<ProfilePage> {
         _locationController.text.isNotEmpty &&
         _phoneController.text.isNotEmpty;
 
-    bool hasChange = _nameController.text != userLogin?.name ||
+    bool hasChanged = _nameController.text != userLogin?.name ||
         _locationController.text != userLogin?.address ||
         _phoneController.text != userLogin?.phone;
 
-    return isNotEmpty && hasChange;
+    return isNotEmpty && hasChanged;
   }
 
   /// The Function use [FilePicker] get image from device and display by field [file]
-  Future<void> changeAvatar() async {
+  Future<void> changedAvatar() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
       file = File(result.files.single.path!);
@@ -129,7 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 const SizedBox(height: 6),
                 Center(
                   child: NsTextButton(
-                    onPressed: changeAvatar,
+                    onPressed: changedAvatar,
                     text: AppLocalizations.of(context).changeProfilePicture,
                     textStyle: Theme.of(context).textTheme.labelSmall?.copyWith(
                           fontWeight: FontWeight.w500,

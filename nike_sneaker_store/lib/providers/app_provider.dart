@@ -22,7 +22,7 @@ class AppProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeTheme() {
+  void changedTheme() {
     if (_themeData == NSTheme.lightTheme) {
       _themeData = NSTheme.darkTheme;
     } else {
@@ -31,12 +31,12 @@ class AppProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeLocaleVi() {
+  void changedLocaleVi() {
     _locale = const Locale('vi');
     notifyListeners();
   }
 
-  void changeLocaleEn() {
+  void changedLocaleEn() {
     _locale = const Locale('en');
     notifyListeners();
   }

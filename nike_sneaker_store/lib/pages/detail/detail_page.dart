@@ -39,8 +39,8 @@ class _DetailPageState extends State<DetailPage> {
     super.initState();
   }
 
-  /// The function change isFavorite for [productView]
-  void _changeFavorite() {
+  /// The function changed isFavorite for [productView]
+  void _changedFavorite() {
     productView.isFavorite = !productView.isFavorite;
     widget.resetState?.call();
     setState(() {});
@@ -164,7 +164,7 @@ class _DetailPageState extends State<DetailPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
-              onTap: _changeFavorite,
+              onTap: _changedFavorite,
               child: CircleAvatar(
                 radius: 26,
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,

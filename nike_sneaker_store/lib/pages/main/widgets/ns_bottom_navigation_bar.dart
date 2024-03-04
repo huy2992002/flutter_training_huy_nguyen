@@ -6,12 +6,12 @@ import 'package:nike_sneaker_store/resources/ns_color.dart';
 class NSBottomNavigationBar extends StatelessWidget {
   const NSBottomNavigationBar({
     required this.currentIndex,
-    required this.onChangePage,
+    required this.onChangedPage,
     super.key,
   });
 
   final int currentIndex;
-  final Function(int) onChangePage;
+  final Function(int) onChangedPage;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class NSBottomNavigationBar extends StatelessWidget {
         children: List.generate(
           iconPaths.length,
           (index) => GestureDetector(
-            onTap: () => onChangePage(index),
+            onTap: () => onChangedPage(index),
             child: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(

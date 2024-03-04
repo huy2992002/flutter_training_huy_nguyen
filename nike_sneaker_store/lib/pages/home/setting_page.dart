@@ -29,8 +29,8 @@ class _SettingPageState extends State<SettingPage> {
     super.initState();
   }
 
-  void onChangeTheme() {
-    Provider.of<AppProvider>(context, listen: false).changeTheme();
+  void onChangedTheme() {
+    Provider.of<AppProvider>(context, listen: false).changedTheme();
 
     setState(() {
       SharedPrefs.isDark = !SharedPrefs.isDark;
@@ -72,7 +72,7 @@ class _SettingPageState extends State<SettingPage> {
               ),
               const Spacer(),
               NSSwitch(
-                onChange: onChangeTheme,
+                onChanged: onChangedTheme,
                 isDark: SharedPrefs.isDark,
               ),
             ],
@@ -98,13 +98,13 @@ class _SettingPageState extends State<SettingPage> {
                   dropdownController.text = value ?? 'en';
                   if (value != null && value == 'vi') {
                     Provider.of<AppProvider>(context, listen: false)
-                        .changeLocaleVi();
+                        .changedLocaleVi();
                     SharedPrefs.isVietnamese = true;
                   }
 
                   if (value != null && value == 'en') {
                     Provider.of<AppProvider>(context, listen: false)
-                        .changeLocaleEn();
+                        .changedLocaleEn();
                     SharedPrefs.isVietnamese = false;
                   }
                   setState(() {});

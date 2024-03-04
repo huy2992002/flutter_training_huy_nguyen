@@ -17,7 +17,7 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-/// The [ZoomDrawerController] of [TextFormField] drawer 
+/// The [ZoomDrawerController] of [TextFormField] drawer
 ZoomDrawerController zoomController = ZoomDrawerController();
 
 /// index of [MainPage]
@@ -39,11 +39,10 @@ class _MainPageState extends State<MainPage> {
     super.initState();
   }
 
-  /// The function change page with index
-  void changePage(int index) {
+  /// The function changed page with index
+  void changedPage(int index) {
     currentPageIndex = index;
-                        setState(() {});
-
+    setState(() {});
   }
 
   Future<void> getUser() async {
@@ -62,7 +61,7 @@ class _MainPageState extends State<MainPage> {
         body: _pages[currentPageIndex],
         bottomNavigationBar: NSBottomNavigationBar(
           currentIndex: currentPageIndex,
-          onChangePage: changePage,
+          onChangedPage: changedPage,
         ),
       ),
     );
