@@ -51,15 +51,6 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {});
   }
 
-  /// The getter checks that email, location & phone is not empty
-  // bool get canSave {
-  //   bool isNotEmpty = _nameController.text.isNotEmpty &&
-  //       _locationController.text.isNotEmpty &&
-  //       _phoneController.text.isNotEmpty;
-  //   bool hasChange = _nameController.text != aw SharedPrefs.getUserLogin().name;
-  //   return;
-  // }
-
   bool canSave() {
     bool isNotEmpty = _nameController.text.isNotEmpty &&
         _locationController.text.isNotEmpty &&
@@ -161,6 +152,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     canSave();
                     setState(() {});
                   },
+                  textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: 34),
                 Text(
@@ -177,6 +169,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     canSave();
                     setState(() {});
                   },
+                  textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: 34),
                 Text(
@@ -194,6 +187,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     setState(() {});
                   },
                   textInputType: TextInputType.phone,
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (_) => saveUser(),
                 ),
                 const SizedBox(height: 55),
                 NSElevatedButton.text(
