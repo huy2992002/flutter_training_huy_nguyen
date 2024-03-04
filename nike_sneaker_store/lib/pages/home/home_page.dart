@@ -12,6 +12,7 @@ import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
 import 'package:nike_sneaker_store/pages/home/search_page.dart';
 import 'package:nike_sneaker_store/pages/home/widgets/title_home.dart';
 import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
+import 'package:nike_sneaker_store/utils/enum.dart';
 
 class HomePage extends StatefulWidget {
   /// The home Screen
@@ -41,26 +42,26 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> categories = [
+    List<String> listCategoryView = [
       AppLocalizations.of(context).allShoes,
       AppLocalizations.of(context).outDoor,
       AppLocalizations.of(context).tennis,
     ];
 
-    List<String> checkCategory = [
-      'All Shoes',
-      'Outdoor',
-      'Tennis',
+    List<String> _categories = [
+      Category.allShoes.name,
+      Category.outDoor.name,
+      Category.tennis.name,
     ];
 
     void changedCategory(String category) {
-      if (category == 'All Shoes') {
+      if (category == Category.allShoes.name) {
         _productViews = products;
         setState(() {});
 
         return;
       }
-      _productViews = products.where((e) => e.category == category).toList();
+      _productViews = products.where((e) => e.category.toLowerCase() == category.toLowerCase()).toList();
       setState(() {});
     }
 
@@ -113,16 +114,16 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 40,
             child: ListView.separated(
-              itemCount: categories.length,
+              itemCount: listCategoryView.length,
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 20),
               itemBuilder: (context, index) {
                 return CardCategory(
                   onPressed: () {
                     _categoryIndex = index;
-                    changedCategory(checkCategory[index]);
+                    changedCategory(_categories[index]);
                   },
-                  text: categories[index],
+                  text: listCategoryView[index],
                   backgroundColor: _categoryIndex == index
                       ? Theme.of(context).colorScheme.primary
                       : Theme.of(context).colorScheme.primaryContainer,
