@@ -34,12 +34,12 @@ class WidgetBookApp extends StatelessWidget {
               data: NSTheme.lightTheme,
             ),
             WidgetbookTheme(
-              name: 'Dart',
+              name: 'Dark',
               data: NSTheme.darkTheme,
             ),
           ],
           initialTheme: WidgetbookTheme(
-            name: 'Dart',
+            name: 'Dark',
             data: NSTheme.darkTheme,
           ),
         ),
