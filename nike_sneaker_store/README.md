@@ -33,11 +33,19 @@
 - [x] Epic 5: Implement the UI
 - [x] Epic 6: Test the application and prepare for the review
 
+## Download APK
+- install: [here](https://drive.google.com/file/d/1fWOglAxj7uNc7ERgd6WwUEC9b0_DDAfD/view?usp=sharing)
+
+## Prerequisites
+Before you continue, ensure you meet the following requirements
+- Flutter sdk version: >=3.1.2 <4.0.0
+- Dark sdk version: >=3.2.0-0 <4.0.0
+
 ## Installation
 1. Clone the repository:
 ​
     ```
-    https://github.com/huy2992002/flutter_training_huy_nguyen.git
+    git clone https://github.com/huy2992002/flutter_training_huy_nguyen.git
     ```
 2. Checkout branch:
 ​
@@ -68,13 +76,6 @@
    ```
 5. Command used in project:
    ```
-    Gen assets:
-        flutter pub run build_runner build --delete-conflicting-outputs
-    Gen l10n:
-        flutter gen-l10n  
-    Gen WidgetBook:
-        flutter pub run build_runner build    
+    Gen assets, l10n, WidgetBook:
+        flutter pub run build_runner build --delete-conflicting-outputs 
     ```
-6. Link APK app:
-
-    install: [here](https://drive.google.com/file/d/1fWOglAxj7uNc7ERgd6WwUEC9b0_DDAfD/view?usp=sharing)
