@@ -19,45 +19,43 @@ class ForgotPasswordPage extends StatelessWidget {
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
-        body: ListView(
-          padding: EdgeInsets.only(
-            left: 20,
-            top: MediaQuery.paddingOf(context).top + 23,
-            right: 20
+        body: SafeArea(
+          child: ListView(
+            padding: const EdgeInsets.only(left: 20, top: 23, right: 20),
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: NsIconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: SvgPicture.asset(
+                    Assets.icons.icArrow,
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 11),
+              TitleAuth(
+                title: AppLocalizations.of(context).forgotPassword,
+                subTitle: AppLocalizations.of(context).enterEmailResetPassword,
+              ),
+              const SizedBox(height: 40),
+              TitleLabel(text: AppLocalizations.of(context).emailAddress),
+              NSTextFormField.text(
+                hintText: AppLocalizations.of(context).hintTextDefault,
+                textInputAction: TextInputAction.done,
+              ),
+              const SizedBox(height: 40),
+              NSElevatedButton.text(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const VerificationPage(),
+                  ),
+                ),
+                text: AppLocalizations.of(context).resetPassword,
+              ),
+            ],
           ),
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: NsIconButton(
-                onPressed: () => Navigator.pop(context),
-                icon: SvgPicture.asset(
-                  Assets.icons.icArrow,
-                  color: Theme.of(context).colorScheme.onSecondaryContainer,
-                ),
-              ),
-            ),
-            const SizedBox(height: 11),
-            TitleAuth(
-              title: AppLocalizations.of(context).forgotPassword,
-              subTitle: AppLocalizations.of(context).enterEmailResetPassword,
-            ),
-            const SizedBox(height: 40),
-            TitleLabel(text: AppLocalizations.of(context).emailAddress),
-            NSTextFormField.text(
-              hintText: AppLocalizations.of(context).hintTextDefault,
-              textInputAction: TextInputAction.done,
-            ),
-            const SizedBox(height: 40),
-            NSElevatedButton.text(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const VerificationPage(),
-                ),
-              ),
-              text: AppLocalizations.of(context).resetPassword,
-            ),
-          ],
         ),
       ),
     );

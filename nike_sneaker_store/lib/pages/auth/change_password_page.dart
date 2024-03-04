@@ -65,51 +65,53 @@ class ChangePasswordPage extends StatelessWidget {
             ),
           ),
         ),
-        body: Form(
-          key: formKey,
-          child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
-              top: MediaQuery.paddingOf(context).top + 97,
-            ),
-            children: [
-              TitleLabel(
-                text: AppLocalizations.of(context).currentPassword,
+        body: SafeArea(
+          child: Form(
+            key: formKey,
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
+                top: 97,
               ),
-              NSTextFormField.password(
-                controller: currentPasswordController,
-                hintText: AppLocalizations.of(context).hintTextPassword,
-                validator: (value) =>
-                    Validator.validatorPassword(context, value),
-              ),
-              const SizedBox(height: 41),
-              TitleLabel(
-                text: AppLocalizations.of(context).newPassword,
-              ),
-              NSTextFormField.password(
-                controller: newPasswordController,
-                hintText: AppLocalizations.of(context).hintTextPassword,
-                validator: (value) =>
-                    Validator.validatorPassword(context, value),
-              ),
-              const SizedBox(height: 41),
-              TitleLabel(
-                text: AppLocalizations.of(context).confirmPassword,
-              ),
-              NSTextFormField.password(
-                controller: confirmPasswordController,
-                hintText: AppLocalizations.of(context).hintTextPassword,
-                validator: (value) => Validator.validatorConfirmPassword(
-                  context,
-                  value,
-                  newPasswordController.text,
+              children: [
+                TitleLabel(
+                  text: AppLocalizations.of(context).currentPassword,
                 ),
-              ),
-              const SizedBox(height: 100),
-              NSElevatedButton.text(
-                onPressed: onSave,
-                text: AppLocalizations.of(context).saveNow,
-              )
-            ],
+                NSTextFormField.password(
+                  controller: currentPasswordController,
+                  hintText: AppLocalizations.of(context).hintTextPassword,
+                  validator: (value) =>
+                      Validator.validatorPassword(context, value),
+                ),
+                const SizedBox(height: 41),
+                TitleLabel(
+                  text: AppLocalizations.of(context).newPassword,
+                ),
+                NSTextFormField.password(
+                  controller: newPasswordController,
+                  hintText: AppLocalizations.of(context).hintTextPassword,
+                  validator: (value) =>
+                      Validator.validatorPassword(context, value),
+                ),
+                const SizedBox(height: 41),
+                TitleLabel(
+                  text: AppLocalizations.of(context).confirmPassword,
+                ),
+                NSTextFormField.password(
+                  controller: confirmPasswordController,
+                  hintText: AppLocalizations.of(context).hintTextPassword,
+                  validator: (value) => Validator.validatorConfirmPassword(
+                    context,
+                    value,
+                    newPasswordController.text,
+                  ),
+                ),
+                const SizedBox(height: 100),
+                NSElevatedButton.text(
+                  onPressed: onSave,
+                  text: AppLocalizations.of(context).saveNow,
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -84,67 +84,69 @@ class _SignInPageState extends State<SignInPage> {
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
-        body: Form(
-          key: _formKey,
-          child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
-              top: MediaQuery.paddingOf(context).top + 80,
-              bottom: 20,
-            ),
-            children: [
-              TitleAuth(
-                title: AppLocalizations.of(context).helloAgain,
-                subTitle: AppLocalizations.of(context).fillYourDetails,
+        body: SafeArea(
+          child: Form(
+            key: _formKey,
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
+                top: 80,
+                bottom: 20,
               ),
-              const SizedBox(height: 54),
-              TitleLabel(text: AppLocalizations.of(context).emailAddress),
-              NSTextFormField.text(
-                controller: _emailController,
-                hintText: AppLocalizations.of(context).hintTextEmail,
-                validator: (value) => Validator.validatorEmail(context, value),
-                textInputAction: TextInputAction.next,
-                readOnly: _isLoading,
-              ),
-              const SizedBox(height: 30),
-              TitleLabel(text: AppLocalizations.of(context).password),
-              NSTextFormField.password(
-                controller: _passwordController,
-                hintText: AppLocalizations.of(context).hintTextPassword,
-                validator: (value) =>
-                    Validator.validatorPassword(context, value),
-                textInputAction: TextInputAction.done,
-                onFieldSubmitted: (value) => _onLogin(),
-                readOnly: _isLoading,
-              ),
-              const SizedBox(height: 12),
-              Align(
-                alignment: Alignment.centerRight,
-                child: NsTextButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const ForgotPasswordPage(),
+              children: [
+                TitleAuth(
+                  title: AppLocalizations.of(context).helloAgain,
+                  subTitle: AppLocalizations.of(context).fillYourDetails,
+                ),
+                const SizedBox(height: 54),
+                TitleLabel(text: AppLocalizations.of(context).emailAddress),
+                NSTextFormField.text(
+                  controller: _emailController,
+                  hintText: AppLocalizations.of(context).hintTextEmail,
+                  validator: (value) => Validator.validatorEmail(context, value),
+                  textInputAction: TextInputAction.next,
+                  readOnly: _isLoading,
+                ),
+                const SizedBox(height: 30),
+                TitleLabel(text: AppLocalizations.of(context).password),
+                NSTextFormField.password(
+                  controller: _passwordController,
+                  hintText: AppLocalizations.of(context).hintTextPassword,
+                  validator: (value) =>
+                      Validator.validatorPassword(context, value),
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (value) => _onLogin(),
+                  readOnly: _isLoading,
+                ),
+                const SizedBox(height: 12),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: NsTextButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const ForgotPasswordPage(),
+                      ),
                     ),
+                    text: AppLocalizations.of(context).recoveryPassword,
                   ),
-                  text: AppLocalizations.of(context).recoveryPassword,
                 ),
-              ),
-              const SizedBox(height: 24),
-              NSElevatedButton.text(
-                onPressed: _onLogin,
-                text: AppLocalizations.of(context).signIn,
-                isDisable: _isLoading,
-              ),
-              const SizedBox(height: 70),
-              PromptText(
-                text: AppLocalizations.of(context).newUser,
-                title: AppLocalizations.of(context).createAccount,
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const SignUpPage()),
+                const SizedBox(height: 24),
+                NSElevatedButton.text(
+                  onPressed: _onLogin,
+                  text: AppLocalizations.of(context).signIn,
+                  isDisable: _isLoading,
                 ),
-              ),
-            ],
+                const SizedBox(height: 70),
+                PromptText(
+                  text: AppLocalizations.of(context).newUser,
+                  title: AppLocalizations.of(context).createAccount,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const SignUpPage()),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

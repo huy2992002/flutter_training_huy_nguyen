@@ -16,35 +16,37 @@ class VerificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
-          top: MediaQuery.paddingOf(context).top + 23,
-        ),
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: NsIconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: SvgPicture.asset(
-                Assets.icons.icArrow,
-                color: Theme.of(context).colorScheme.onSecondaryContainer,
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
+            top: 23,
+          ),
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: NsIconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: SvgPicture.asset(
+                  Assets.icons.icArrow,
+                  color: Theme.of(context).colorScheme.onSecondaryContainer,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 11),
-          TitleAuth(
-            title: AppLocalizations.of(context).otpVerification,
-            subTitle: AppLocalizations.of(context).pleaseCheckYourEmail,
-          ),
-          const SizedBox(height: 40),
-          TitleLabel(text: AppLocalizations.of(context).otpCode),
-          const NSOtpCode(),
-          const SizedBox(height: 40),
-          NSElevatedButton.text(
-            onPressed: () {},
-            text: AppLocalizations.of(context).verify,
-          ),
-        ],
+            const SizedBox(height: 11),
+            TitleAuth(
+              title: AppLocalizations.of(context).otpVerification,
+              subTitle: AppLocalizations.of(context).pleaseCheckYourEmail,
+            ),
+            const SizedBox(height: 40),
+            TitleLabel(text: AppLocalizations.of(context).otpCode),
+            const NSOtpCode(),
+            const SizedBox(height: 40),
+            NSElevatedButton.text(
+              onPressed: () {},
+              text: AppLocalizations.of(context).verify,
+            ),
+          ],
+        ),
       ),
     );
   }
