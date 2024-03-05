@@ -1,10 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advance_examples/animation/animation_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Advance Examples'),
+        centerTitle: true,
+      ),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        children: const [TextRoute(text: 'Animation', page: AnimationPage())],
+      ),
+    );
+  }
+}
+
+class TextRoute extends StatelessWidget {
+  const TextRoute({
+    super.key,
+    required this.text,
+    required this.page,
+  });
+
+  final String text;
+  final Widget page;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => page,
+        ),
+      ),
+      child: Text(text),
+    );
   }
 }
