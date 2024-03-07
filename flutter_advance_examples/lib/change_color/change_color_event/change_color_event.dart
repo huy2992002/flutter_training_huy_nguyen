@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 abstract class ChangeColorEvent {}
 
-class ChangeColor extends ChangeColorEvent {
-  ChangeColor(this.color);
+class ChangeColorStarted extends ChangeColorEvent {}
+
+class ChangeColorPressed extends ChangeColorEvent {
+  ChangeColorPressed(this.color);
 
   final Color color;
 }
