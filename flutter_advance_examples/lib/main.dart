@@ -13,12 +13,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiRepositoryProvider(
+    return MultiBlocProvider(
       providers: [
-        RepositoryProvider<CounterBloc>(
+        BlocProvider<CounterBloc>(
           create: (context) => CounterBloc(),
         ),
-        RepositoryProvider<ChangeColorBloc>(
+        BlocProvider<ChangeColorBloc>(
           create: (context) => ChangeColorBloc(),
         ),
       ],
