@@ -15,6 +15,9 @@ class CounterPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: BlocBuilder<CounterBloc, int>(
+        buildWhen: (previous, current) {
+          return previous != current;
+        },
         builder: (context, state) {
           return Column(
             children: [

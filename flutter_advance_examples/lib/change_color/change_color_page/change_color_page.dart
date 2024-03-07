@@ -20,6 +20,9 @@ class ChangeColorPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: BlocBuilder<ChangeColorBloc, Color>(
+        buildWhen: (previous, current) {
+          return previous != current;
+        },
         builder: (context, state) {
           return Column(
             children: [
