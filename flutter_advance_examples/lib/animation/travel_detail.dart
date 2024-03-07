@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_advance_examples/animation/travel_model.dart';
 
 class TravelDetail extends StatefulWidget {
