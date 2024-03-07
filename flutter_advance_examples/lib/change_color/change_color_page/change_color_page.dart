@@ -40,7 +40,7 @@ class ChangeColorPage extends StatelessWidget {
                     onTap: () {
                       context
                           .read<ChangeColorBloc>()
-                          .add(ChangeColor(colors[index]));
+                          .add(ChangeColorPressed(colors[index]));
                     },
                     child: Container(
                       width: 40,
