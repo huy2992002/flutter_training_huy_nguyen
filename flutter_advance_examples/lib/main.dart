@@ -3,6 +3,7 @@ import 'package:flutter_advance_examples/change_color/change_color_bloc/change_c
 import 'package:flutter_advance_examples/change_color/change_color_event/change_color_event.dart';
 import 'package:flutter_advance_examples/counter/counter_bloc/counter_bloc.dart';
 import 'package:flutter_advance_examples/home_page.dart';
+import 'package:flutter_advance_examples/login_form/login_bloc/login_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ChangeColorBloc>(
           create: (context) => ChangeColorBloc()..add(ChangeColorStarted()),
+        ),
+        BlocProvider<LoginBloc>(
+          create: (context) => LoginBloc(),
         ),
       ],
       child: MaterialApp(
