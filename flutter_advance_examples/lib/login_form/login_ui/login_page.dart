@@ -13,8 +13,8 @@ class LoginPage extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
     return Scaffold(
       body: BlocConsumer<LoginBloc, LoginState>(
-        buildWhen: (previous, current) => previous != current,
-        listenWhen: (previous, current) => previous != current,
+        buildWhen: (previous, current) => previous.loginStatus != current.loginStatus,
+        listenWhen: (previous, current) => previous.loginStatus != current.loginStatus,
         listener: (context, state) {
           if (state.loginStatus == LoginStatus.failure) {
             ScaffoldMessenger.of(context).showSnackBar(
