@@ -37,4 +37,47 @@ void main() {
     );
   });
 
+  group('group test LoginBloc', () {
+    blocTest(
+      'the first emit {LoginState(loginStatus: LoginStatus.loading)}',
+      build: () => LoginBloc(),
+      seed: () => const LoginState(),
+      act: (bloc) => bloc.add(
+        LoginPressed(email: 'admin@gmail.com', password: '123456'),
+      ),
+      expect: () => [
+        const LoginState(loginStatus: LoginStatus.loading),
+      ],
+    );
+
+    blocTest(
+      'emit {LoginState(loginStatus: LoginStatus.loading)} after check Login success emit {LoginState(loginStatus: LoginStatus.success)}',
+      build: () => LoginBloc(),
+      seed: () => const LoginState(),
+      act: (bloc) => bloc.add(
+        LoginPressed(email: 'admin@gmail.com', password: '123456'),
+      ),
+      wait: const Duration(milliseconds: 3000),
+      expect: () => [
+        const LoginState(loginStatus: LoginStatus.loading),
+        const LoginState(loginStatus: LoginStatus.success),
+      ],
+    );
+
+    blocTest(
+      'emit {LoginState(loginStatus: LoginStatus.loading)} after check Login failure emit {LoginState(loginStatus: LoginStatus.failure)}',
+      build: () => LoginBloc(),
+      seed: () => const LoginState(),
+      act: (bloc) => bloc.add(
+        LoginPressed(email: 'huy@gmail.com', password: '123456'),
+      ),
+      wait: const Duration(milliseconds: 3000),
+      expect: () => [
+        const LoginState(loginStatus: LoginStatus.loading),
+        const LoginState(loginStatus: LoginStatus.failure),
+      ],
+    );
+  });
+
+  
 }
