@@ -1,7 +1,9 @@
+import 'package:equatable/equatable.dart';
+
 enum LoginStatus { initial, loading, success, failure }
 
-class LoginState {
-  LoginState({this.loginStatus = LoginStatus.initial});
+class LoginState extends Equatable {
+  const LoginState({this.loginStatus = LoginStatus.initial});
 
   final LoginStatus loginStatus;
 
@@ -10,4 +12,7 @@ class LoginState {
   ) {
     return LoginState(loginStatus: loginStatus ?? this.loginStatus);
   }
+
+  @override
+  List<Object?> get props => [loginStatus];
 }
