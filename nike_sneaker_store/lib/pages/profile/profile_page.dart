@@ -43,8 +43,8 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
   }
 
-  Future<void> getUser() async {
-    userLogin = await SharedPrefs.getUserLogin();
+  void getUser() {
+    userLogin = SharedPrefs.userLogin;
     _nameController.text = userLogin?.name ?? '';
     _locationController.text = userLogin?.address ?? '';
     _phoneController.text = userLogin?.phone ?? '';
@@ -87,7 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
     userLogin?.name = _nameController.text;
     userLogin?.address = _locationController.text;
     userLogin?.phone = _phoneController.text;
-    await SharedPrefs.saveUserLogin(userLogin);
+    SharedPrefs.userLogin = userLogin;
     NSSnackBar.snackbarSuccess(
       context,
       title: AppLocalizations.of(context).informationChangedSuccess,

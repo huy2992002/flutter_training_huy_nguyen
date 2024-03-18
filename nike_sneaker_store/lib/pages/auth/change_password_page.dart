@@ -34,7 +34,7 @@ class ChangePasswordPage extends StatelessWidget {
       if (formKey.currentState == null || !formKey.currentState!.validate()) {
         return;
       }
-      UserModel? userLogin = await SharedPrefs.getUserLogin();
+      UserModel? userLogin = SharedPrefs.userLogin;
       if (currentPasswordController.text != userLogin?.password) {
         NSSnackBar.snackbarError(
           context,

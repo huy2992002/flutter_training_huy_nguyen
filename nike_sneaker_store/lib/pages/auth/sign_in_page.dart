@@ -63,7 +63,7 @@ class _SignInPageState extends State<SignInPage> {
             _passwordController.text == e.password,
       );
       setState(() => _isLoading = false);
-      await SharedPrefs.saveUserLogin(user);
+      SharedPrefs.userLogin = user;
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (_) => const LayoutPage()),
@@ -102,7 +102,8 @@ class _SignInPageState extends State<SignInPage> {
                 NSTextFormField.text(
                   controller: _emailController,
                   hintText: AppLocalizations.of(context).hintTextEmail,
-                  validator: (value) => Validator.validatorEmail(context, value),
+                  validator: (value) =>
+                      Validator.validatorEmail(context, value),
                   textInputAction: TextInputAction.next,
                   readOnly: _isLoading,
                 ),

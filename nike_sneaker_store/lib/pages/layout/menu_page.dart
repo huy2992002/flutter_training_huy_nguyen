@@ -3,7 +3,6 @@ import 'package:nike_sneaker_store/components/avatar/ns_avatar.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
 import 'package:nike_sneaker_store/pages/home/setting_page.dart';
@@ -15,11 +14,11 @@ class MenuPage extends StatelessWidget {
   const MenuPage({
     super.key,
     this.resetState,
-    this.user,
+    this.name,
   });
 
   final Function()? resetState;
-  final UserModel? user;
+  final String? name;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class MenuPage extends StatelessWidget {
           NSAvatar(imagePath: Assets.images.imgAvatar.path),
           const SizedBox(height: 15),
           Text(
-            user?.name ?? '-:-',
+            name ?? '-:-',
             style: Theme.of(context)
                 .textTheme
                 .titleLarge

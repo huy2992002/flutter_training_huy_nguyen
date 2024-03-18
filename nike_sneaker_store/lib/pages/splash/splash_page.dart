@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage> {
   /// After 2 seconds, it will switch to the [OnboardingPage]
   Future<void> _toPage() async {
     await Future.delayed(const Duration(milliseconds: 2300), () {});
-    UserModel? userLogin = await SharedPrefs.getUserLogin();
+    UserModel? userLogin = SharedPrefs.userLogin;
     if (userLogin == null) {
       if (SharedPrefs.isAccessed) {
         Navigator.pushAndRemoveUntil(

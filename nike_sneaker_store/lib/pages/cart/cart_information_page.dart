@@ -33,8 +33,8 @@ class _CartInformationPageState extends State<CartInformationPage> {
     super.initState();
   }
 
-  Future<void> getUser() async {
-    UserModel? userLogin = await SharedPrefs.getUserLogin();
+  void getUser() {
+    UserModel? userLogin = SharedPrefs.userLogin;
     _emailController.text = userLogin?.email ?? '';
     _phoneController.text = userLogin?.phone ?? '';
     _addressController.text = userLogin?.address ?? '';

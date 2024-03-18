@@ -45,8 +45,8 @@ class _LayoutPageState extends State<LayoutPage> {
     setState(() {});
   }
 
-  Future<void> getUser() async {
-    userLogin = await SharedPrefs.getUserLogin();
+  void getUser() {
+    userLogin = SharedPrefs.userLogin;
   }
 
   @override
@@ -55,7 +55,7 @@ class _LayoutPageState extends State<LayoutPage> {
       controller: zoomController,
       menuScreen: MenuPage(
         resetState: () => setState(() {}),
-        user: userLogin,
+        name: userLogin?.name,
       ),
       mainScreen: Scaffold(
         body: _pages[currentPageIndex],
