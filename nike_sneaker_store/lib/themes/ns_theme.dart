@@ -8,6 +8,7 @@ class NSTheme {
   NSTheme._();
 
   static ThemeData lightTheme = ThemeData(
+    useMaterial3: true,
     brightness: Brightness.light,
     colorScheme: NSColorTheme.colorThemeLight,
     textTheme: NSTextTheme.textTheme,
@@ -22,6 +23,7 @@ class NSTheme {
   );
 
   static ThemeData darkTheme = ThemeData(
+    useMaterial3: true,
     brightness: Brightness.dark,
     colorScheme: NSColorTheme.colorThemeDark,
     textTheme: NSTextTheme.textTheme,
