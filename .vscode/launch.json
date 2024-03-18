@@ -5,6 +5,16 @@
             "name": "Run app",
             "request": "launch",
             "type": "dart",
+            "flutterMode": "profile",
+            "program": "nike_sneaker_store/lib/main.dart",
+            "args": [
+                "nike_sneaker_store/lib/main.dart"
+            ]
+        },
+        {
+            "name": "Run profile",
+            "request": "launch",
+            "type": "dart",
             "program": "nike_sneaker_store/lib/main.dart",
             "args": [
                 "nike_sneaker_store/lib/main.dart"
