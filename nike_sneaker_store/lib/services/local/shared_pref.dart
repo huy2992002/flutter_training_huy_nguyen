@@ -28,7 +28,7 @@ class SharedPrefs {
     _prefs.setString(usersKey, jsonEncode(maps));
   }
 
-  static Future<UserModel?> getUserLogin() async {
+  static UserModel? get userLogin {
     String? data = _prefs.getString(userLoginKey);
     if (data == null) return null;
     UserModel user =
@@ -36,7 +36,7 @@ class SharedPrefs {
     return user;
   }
 
-  static Future<void> saveUserLogin(UserModel? user) async {
+  static set userLogin(UserModel? user) {
     if (user != null) {
       _prefs.setString(userLoginKey, jsonEncode(user.toJson()));
     }
