@@ -136,4 +136,10 @@ class _SettingPageState extends State<SettingPage> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    dropdownController.dispose();
+    super.dispose();
+  }
 }

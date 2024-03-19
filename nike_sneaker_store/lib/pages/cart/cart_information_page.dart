@@ -164,4 +164,15 @@ class _CartInformationPageState extends State<CartInformationPage> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _phoneController.dispose();
+    _addressController.dispose();
+    _addressNode.dispose();
+    _focusNodeEmail.dispose();
+    _focusNodePhone.dispose();
+    super.dispose();
+  }
 }
