@@ -61,20 +61,22 @@ class _NotificationsPageState extends State<NotificationsPage> {
               )
             else
               Expanded(
-                child: ListView.separated(
+                child: ListView.builder(
                   itemCount: notifications.length,
                   itemBuilder: (_, index) {
                     final notification = notifications[index];
 
-                    return CardNotification(
-                      notification: notification,
-                      onTap: () {
-                        notification.isRead = true;
-                        setState(() {});
-                      },
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: CardNotification(
+                        notification: notification,
+                        onTap: () {
+                          notification.isRead = true;
+                          setState(() {});
+                        },
+                      ),
                     );
                   },
-                  separatorBuilder: (_, __) => const SizedBox(height: 16),
                 ),
               )
           ],

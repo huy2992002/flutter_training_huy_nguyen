@@ -55,39 +55,41 @@ class _CartPageState extends State<CartPage> {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   Expanded(
-                    child: ListView.separated(
+                    child: ListView.builder(
                       padding: const EdgeInsets.only(top: 8),
+                      itemCount: myCarts.length,
                       itemBuilder: (_, index) {
                         final product = myCarts[index];
-                        return CardCartProduct(
-                          product: product,
-                          onPlus: () {
-                            setState(() {
-                              product.quantity++;
-                            });
-                          },
-                          onLess: () {
-                            if (product.quantity > 1) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 14),
+                          child: CardCartProduct(
+                            product: product,
+                            onPlus: () {
                               setState(() {
-                                product.quantity--;
+                                product.quantity++;
                               });
-                            } else {
-                              NSDialog.question(
-                                context,
-                                title: AppLocalizations.of(context)
-                                    .doYouWantRemoveFromCart,
-                                action: () {
-                                  setState(() {
-                                    myCarts.remove(product);
-                                  });
-                                },
-                              );
-                            }
-                          },
+                            },
+                            onLess: () {
+                              if (product.quantity > 1) {
+                                setState(() {
+                                  product.quantity--;
+                                });
+                              } else {
+                                NSDialog.question(
+                                  context,
+                                  title: AppLocalizations.of(context)
+                                      .doYouWantRemoveFromCart,
+                                  action: () {
+                                    setState(() {
+                                      myCarts.remove(product);
+                                    });
+                                  },
+                                );
+                              }
+                            },
+                          ),
                         );
                       },
-                      separatorBuilder: (_, __) => const SizedBox(height: 14),
-                      itemCount: myCarts.length,
                     ),
                   )
                 ],

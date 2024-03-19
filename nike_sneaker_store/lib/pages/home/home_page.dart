@@ -114,59 +114,63 @@ class _HomePageState extends State<HomePage> {
           TitleHome(text: AppLocalizations.of(context).selectCategory),
           SizedBox(
             height: 40,
-            child: ListView.separated(
+            child: ListView.builder(
               itemCount: listCategoryView.length,
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 20),
               itemBuilder: (context, index) {
-                return CardCategory(
-                  onPressed: () {
-                    _categoryIndex = index;
-                    changedCategory(_categories[index].name);
-                  },
-                  text: listCategoryView[index],
-                  backgroundColor: _categoryIndex == index
-                      ? Theme.of(context).colorScheme.primary
-                      : Theme.of(context).colorScheme.primaryContainer,
-                  textColor: _categoryIndex == index
-                      ? Theme.of(context).colorScheme.onPrimary
-                      : Theme.of(context).colorScheme.onPrimaryContainer,
+                return Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: CardCategory(
+                    onPressed: () {
+                      _categoryIndex = index;
+                      changedCategory(_categories[index].name);
+                    },
+                    text: listCategoryView[index],
+                    backgroundColor: _categoryIndex == index
+                        ? Theme.of(context).colorScheme.primary
+                        : Theme.of(context).colorScheme.primaryContainer,
+                    textColor: _categoryIndex == index
+                        ? Theme.of(context).colorScheme.onPrimary
+                        : Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
                 );
               },
-              separatorBuilder: (context, index) => const SizedBox(width: 16),
             ),
           ),
           const SizedBox(height: 24),
           TitleHome(text: AppLocalizations.of(context).popularShoes),
           SizedBox(
             height: 201,
-            child: ListView.separated(
+            child: ListView.builder(
               itemCount: _productViews.length,
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 20),
               itemBuilder: (context, index) {
                 final product = _productViews[index];
-                return CardProduct(
-                  product: product,
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => DetailPage(
-                        product: product,
-                        resetState: () => setState(() {}),
+                return Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: CardProduct(
+                    product: product,
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => DetailPage(
+                          product: product,
+                          resetState: () => setState(() {}),
+                        ),
                       ),
                     ),
+                    onAddCart: () {
+                      addCart(product);
+                    },
+                    onFavorite: () {
+                      product.isFavorite = !product.isFavorite;
+                      setState(() {});
+                    },
                   ),
-                  onAddCart: () {
-                    addCart(product);
-                  },
-                  onFavorite: () {
-                    product.isFavorite = !product.isFavorite;
-                    setState(() {});
-                  },
                 );
               },
-              separatorBuilder: (context, index) => const SizedBox(width: 20),
             ),
           ),
           const SizedBox(height: 24),
