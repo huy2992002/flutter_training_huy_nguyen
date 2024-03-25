@@ -19,6 +19,10 @@ class PermissionHandlerPage extends StatelessWidget {
       message = 'Permission camera is permanently denied';
     }
 
+    appSnackBar(context, message: message);
+  }
+
+  void appSnackBar(BuildContext context, {required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
@@ -39,11 +43,7 @@ class PermissionHandlerPage extends StatelessWidget {
       message = 'Permission storage is permanently denied';
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-      ),
-    );
+    appSnackBar(context, message: message);
   }
 
   Future<void> onPermissionMic(BuildContext context) async {
@@ -59,11 +59,7 @@ class PermissionHandlerPage extends StatelessWidget {
       message = 'Permission micro is permanently denied';
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-      ),
-    );
+    appSnackBar(context, message: message);
   }
 
   @override
