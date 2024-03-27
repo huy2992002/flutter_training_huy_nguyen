@@ -5,6 +5,7 @@ import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
+import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
@@ -109,11 +110,14 @@ class _DetailPageState extends State<DetailPage> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-            child: Image.asset(
-              productView.imagePath,
-              width: double.infinity,
-              height: 200,
-              fit: BoxFit.contain,
+            child: Hero(
+              tag: NSConstants.tagProductDetail(widget.product.uuid),
+              child: Image.asset(
+                productView.imagePath,
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           SingleChildScrollView(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
@@ -62,10 +63,13 @@ class CardProduct extends StatelessWidget {
                               Theme.of(context).colorScheme.onPrimaryContainer,
                         ),
                 ),
-                Image.asset(
-                  product.imagePath,
-                  width: 120,
-                  height: 54,
+                Hero(
+                  tag: NSConstants.tagProductDetail(product.uuid),
+                  child: Image.asset(
+                    product.imagePath,
+                    width: 120,
+                    height: 54,
+                  ),
                 ),
                 const SizedBox(height: 12),
                 if (product.isBestSeller) ...[
