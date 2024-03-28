@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/pages/onboarding/bloc/onboarding_cubit.dart';
 import 'package:nike_sneaker_store/pages/splash/splash_page.dart';
 import 'package:nike_sneaker_store/providers/app_provider.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
@@ -27,15 +29,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Nike Sneaker Store',
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      locale: Provider.of<AppProvider>(context).locale,
-      theme: Provider.of<AppProvider>(context).themeData,
-      darkTheme: NSTheme.darkTheme,
-      home: const SplashPage(),
+    return MultiProvider(
+      providers: [
+        BlocProvider(create: (context) => OnboardingCubit()),
+      ],
+      child: MaterialApp(
+        title: 'Nike Sneaker Store',
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: Provider.of<AppProvider>(context).locale,
+        theme: Provider.of<AppProvider>(context).themeData,
+        darkTheme: NSTheme.darkTheme,
+        home: const SplashPage(),
+      ),
     );
   }
 }
