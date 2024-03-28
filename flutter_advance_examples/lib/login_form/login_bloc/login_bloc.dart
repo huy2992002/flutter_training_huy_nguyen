@@ -5,7 +5,7 @@ import 'package:flutter_advance_examples/login_form/login_repository/login_repos
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginState()) {
+  LoginBloc() : super(const LoginState()) {
     on<LoginPressed>(onLoginSubmitted);
   }
 
