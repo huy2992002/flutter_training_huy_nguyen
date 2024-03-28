@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run app",
+            "request": "launch",
+            "type": "dart",
+            "program": "nike_sneaker_store/lib/main.dart",
+            "args": [
+                "nike_sneaker_store/lib/main.dart"
+            ]
+        },
+        {
+            "name": "Run profile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "nike_sneaker_store/lib/main.dart",
+            "args": [
+                "nike_sneaker_store/lib/main.dart"
+            ]
+        },
+        {
+            "name": "Device preview",
+            "request": "launch",
+            "type": "dart",
+            "program": "nike_sneaker_store/lib/device_preview.dart",
+            "args": [
+                "nike_sneaker_store/lib/device_preview.dart"
+            ]
+        },
+        {
+            "name": "Widgetbook",
+            "request": "launch",
+            "type": "dart",
+            "program": "nike_sneaker_store/lib/widgetbook/widgetbook.dart",
+            "args": [
+                "nike_sneaker_store/lib/widgetbook/widgetbook.dart"
+            ]
+        }
+    ]
+}
