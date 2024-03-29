@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/pages/onboarding/bloc/onboarding_cubit.dart';
 import 'package:nike_sneaker_store/pages/splash/splash_page.dart';
 import 'package:nike_sneaker_store/providers/app_provider.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
+import 'package:nike_sneaker_store/services/remote/supabase.dart';
 import 'package:nike_sneaker_store/themes/ns_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -16,11 +16,6 @@ void main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-
-  await Supabase.initialize(
-    url: NSConstants.urlSupabase,
-    anonKey: NSConstants.apiKeySupabase,
-  );
 
   await SharedPrefs.initialization();
 
@@ -37,9 +32,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiRepositoryProvider(
       providers: [
-        BlocProvider(create: (context) => OnboardingCubit()),
+        RepositoryProvider(
+          create: (context) => SupabaseServices(
+            supabaseClient: SupabaseClient(
+                NSConstants.urlSupabase, NSConstants.apiKeySupabase),
+          ),
+        ),
       ],
       child: MaterialApp(
         title: 'Nike Sneaker Store',
