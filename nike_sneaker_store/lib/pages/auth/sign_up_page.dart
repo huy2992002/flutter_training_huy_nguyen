@@ -14,7 +14,7 @@ import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/prompt_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
-import 'package:nike_sneaker_store/services/remote/supabase.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

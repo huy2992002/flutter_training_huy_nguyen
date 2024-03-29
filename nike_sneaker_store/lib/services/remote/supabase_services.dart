@@ -5,5 +5,4 @@ class SupabaseServices {
 
   final SupabaseClient supabaseClient;
 
-  
 }
