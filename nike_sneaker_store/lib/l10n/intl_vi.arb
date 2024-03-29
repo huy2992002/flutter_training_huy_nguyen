@@ -103,6 +103,10 @@
   "no": "Không",
   "doYouWantLogout": "Bạn có muốn đăng xuất?",
   "doYouWantRemoveFromCart": "Bạn có muốn xóa sản phẩm khỏi giỏ hàng?",
+  "confirmInYourEmail": "Vui lòng xác nhận đăng ký ở Email của bạn",
+  "goToEmail": "Chuyển đến gmail",
+  "goToSignIn": "Quay về đăng nhập",
+  "couldNotLaunchGmail": "Không thể chuyển đến Gmail",
   "discountOff": "{discount}% Giảm",
   "@discountOff": {
     "placeholders": {

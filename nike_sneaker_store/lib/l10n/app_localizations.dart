@@ -711,6 +711,30 @@ abstract class AppLocalizations {
   /// **'Do you want to remove the product from the cart?'**
   String get doYouWantRemoveFromCart;
 
+  /// No description provided for @confirmInYourEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm registration in your email'**
+  String get confirmInYourEmail;
+
+  /// No description provided for @goToEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to email'**
+  String get goToEmail;
+
+  /// No description provided for @goToSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to sign in'**
+  String get goToSignIn;
+
+  /// No description provided for @couldNotLaunchGmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not launch gmail'**
+  String get couldNotLaunchGmail;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

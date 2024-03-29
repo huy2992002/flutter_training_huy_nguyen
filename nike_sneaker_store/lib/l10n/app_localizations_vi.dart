@@ -314,6 +314,18 @@ class AppLocalizationsVi extends AppLocalizations {
   String get doYouWantRemoveFromCart => 'Bạn có muốn xóa sản phẩm khỏi giỏ hàng?';
 
   @override
+  String get confirmInYourEmail => 'Vui lòng xác nhận đăng ký ở Email của bạn';
+
+  @override
+  String get goToEmail => 'Chuyển đến gmail';
+
+  @override
+  String get goToSignIn => 'Quay về đăng nhập';
+
+  @override
+  String get couldNotLaunchGmail => 'Không thể chuyển đến Gmail';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm';
   }

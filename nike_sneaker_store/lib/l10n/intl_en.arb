@@ -103,6 +103,10 @@
   "no": "No",
   "doYouWantLogout": "Do you want to log out?",
   "doYouWantRemoveFromCart": "Do you want to remove the product from the cart?",
+  "confirmInYourEmail": "Please confirm registration in your email",
+  "goToEmail": "Go to email",
+  "goToSignIn": "Go to sign in",
+  "couldNotLaunchGmail": "Could not launch gmail",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

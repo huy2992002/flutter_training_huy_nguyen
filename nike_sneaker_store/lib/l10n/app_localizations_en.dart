@@ -314,6 +314,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get doYouWantRemoveFromCart => 'Do you want to remove the product from the cart?';
 
   @override
+  String get confirmInYourEmail => 'Please confirm registration in your email';
+
+  @override
+  String get goToEmail => 'Go to email';
+
+  @override
+  String get goToSignIn => 'Go to sign in';
+
+  @override
+  String get couldNotLaunchGmail => 'Could not launch gmail';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }
