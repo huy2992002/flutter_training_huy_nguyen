@@ -144,12 +144,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 const SizedBox(height: 11),
-                GestureDetector(
-                  onTap: () {},
-                  child: TitleAuth(
-                    title: AppLocalizations.of(context).registerAccount,
-                    subTitle: AppLocalizations.of(context).fillYourDetails,
-                  ),
+                TitleAuth(
+                  title: AppLocalizations.of(context).registerAccount,
+                  subTitle: AppLocalizations.of(context).fillYourDetails,
                 ),
                 const SizedBox(height: 40),
                 TitleLabel(text: AppLocalizations.of(context).yourName),
