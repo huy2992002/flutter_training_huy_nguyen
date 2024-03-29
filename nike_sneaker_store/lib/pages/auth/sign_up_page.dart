@@ -63,7 +63,6 @@ class _SignUpPageState extends State<SignUpPage> {
       return;
     }
     _showHiddenLoading(status: true);
-    await Future.delayed(const Duration(seconds: 2));
     try {
       await context.read<SupabaseServices>().supabaseClient.auth.signUp(
         email: _emailController.text,

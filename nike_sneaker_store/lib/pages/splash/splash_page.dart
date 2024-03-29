@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
-import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
 import 'package:nike_sneaker_store/pages/onboarding/onboarding_page.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
+import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   /// Screen splash page
@@ -34,8 +35,9 @@ class _SplashPageState extends State<SplashPage> {
   /// After 2 seconds, it will switch to the [OnboardingPage]
   Future<void> _toPage() async {
     await Future.delayed(const Duration(milliseconds: 2300), () {});
-    UserModel? userLogin = SharedPrefs.userLogin;
-    if (userLogin == null) {
+    String? accessToken =
+        await context.read<SharedPrefServices>().getAccessToken();
+    if (accessToken == null) {
       if (SharedPrefs.isAccessed) {
         Navigator.pushAndRemoveUntil(
           context,

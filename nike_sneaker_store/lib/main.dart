@@ -6,9 +6,11 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/pages/splash/splash_page.dart';
 import 'package:nike_sneaker_store/providers/app_provider.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/themes/ns_theme.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -17,7 +19,8 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  await Supabase.initialize(url: NSConstants.urlSupabase, anonKey: NSConstants.apiKeySupabase);
+  await Supabase.initialize(
+      url: NSConstants.urlSupabase, anonKey: NSConstants.apiKeySupabase);
   await SharedPrefs.initialization();
 
   runApp(
@@ -38,6 +41,11 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(
           create: (context) => SupabaseServices(
             supabaseClient: Supabase.instance.client,
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => SharedPrefServices(
+            sharedPreferences: SharedPreferences.getInstance(),
           ),
         ),
       ],

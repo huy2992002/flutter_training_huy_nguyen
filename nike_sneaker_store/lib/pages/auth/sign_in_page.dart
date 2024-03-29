@@ -11,6 +11,7 @@ import 'package:nike_sneaker_store/pages/auth/widgets/prompt_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
 import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
+import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 import 'package:provider/provider.dart';
@@ -56,7 +57,6 @@ class _SignInPageState extends State<SignInPage> {
       return;
     }
     setState(() => _isLoading = true);
-    await Future.delayed(const Duration(seconds: 2));
     try {
       final res = await context
           .read<SupabaseServices>()
@@ -66,12 +66,18 @@ class _SignInPageState extends State<SignInPage> {
             email: _emailController.text,
             password: _passwordController.text,
           );
-      print('object ${res.session}');
+      String? accessToken = res.session?.accessToken;
+      String? refreshToken = res.session?.refreshToken;
+      if (accessToken != null && refreshToken != null) {
+        context.read<SharedPrefServices>().saveAccessToken(accessToken);
+        context.read<SharedPrefServices>().saveRefreshToken(refreshToken);
+        print('object $accessToken');
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (_) => const LayoutPage()),
           (route) => false,
         );
+      }
     } on AuthException catch (e) {
       setState(() => _isLoading = false);
       NSSnackBar.snackbarError(
