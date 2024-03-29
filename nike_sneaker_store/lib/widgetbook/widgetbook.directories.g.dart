@@ -15,10 +15,10 @@ import 'package:nike_sneaker_store/widgetbook/components/wgb_avatar.dart'
     as _i3;
 import 'package:nike_sneaker_store/widgetbook/components/wgb_button.dart'
     as _i4;
-import 'package:nike_sneaker_store/widgetbook/components/wgb_card.dart' as _i5;
-import 'package:nike_sneaker_store/widgetbook/components/wgb_otp.dart' as _i6;
+import 'package:nike_sneaker_store/widgetbook/components/wgb_card.dart' as _i7;
+import 'package:nike_sneaker_store/widgetbook/components/wgb_otp.dart' as _i5;
 import 'package:nike_sneaker_store/widgetbook/components/wgb_text_field.dart'
-    as _i7;
+    as _i6;
 import 'package:nike_sneaker_store/widgetbook/components/wgb_theme.dart' as _i8;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
@@ -77,53 +77,13 @@ final directories = <_i1.WidgetbookNode>[
         ],
       ),
       _i1.WidgetbookFolder(
-        name: 'cards',
-        children: [
-          _i1.WidgetbookLeafComponent(
-            name: 'CardCartProduct',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Cards',
-              builder: _i5.cardCartProduct,
-            ),
-          ),
-          _i1.WidgetbookLeafComponent(
-            name: 'CardCategory',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Cards',
-              builder: _i5.cardCategory,
-            ),
-          ),
-          _i1.WidgetbookLeafComponent(
-            name: 'CardNotification',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Cards',
-              builder: _i5.cardNotification,
-            ),
-          ),
-          _i1.WidgetbookLeafComponent(
-            name: 'CardProduct',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Cards',
-              builder: _i5.cardProduct,
-            ),
-          ),
-          _i1.WidgetbookLeafComponent(
-            name: 'CardSale',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Cards',
-              builder: _i5.cardSale,
-            ),
-          ),
-        ],
-      ),
-      _i1.WidgetbookFolder(
         name: 'otp',
         children: [
           _i1.WidgetbookLeafComponent(
             name: 'NSOtpCode',
             useCase: _i1.WidgetbookUseCase(
               name: 'OTP',
-              builder: _i6.nsOTPCode,
+              builder: _i5.nsOTPCode,
             ),
           )
         ],
@@ -135,8 +95,78 @@ final directories = <_i1.WidgetbookNode>[
             name: 'NSTextFormField',
             useCase: _i1.WidgetbookUseCase(
               name: 'TextField',
-              builder: _i7.nsTextFormField,
+              builder: _i6.nsTextFormField,
             ),
+          )
+        ],
+      ),
+    ],
+  ),
+  _i1.WidgetbookFolder(
+    name: 'pages',
+    children: [
+      _i1.WidgetbookFolder(
+        name: 'cart',
+        children: [
+          _i1.WidgetbookFolder(
+            name: 'widgets',
+            children: [
+              _i1.WidgetbookLeafComponent(
+                name: 'CardCartProduct',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Cards',
+                  builder: _i7.cardCartProduct,
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+      _i1.WidgetbookFolder(
+        name: 'home',
+        children: [
+          _i1.WidgetbookFolder(
+            name: 'widgets',
+            children: [
+              _i1.WidgetbookLeafComponent(
+                name: 'CardCategory',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Cards',
+                  builder: _i7.cardCategory,
+                ),
+              ),
+              _i1.WidgetbookLeafComponent(
+                name: 'CardProduct',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Cards',
+                  builder: _i7.cardProduct,
+                ),
+              ),
+              _i1.WidgetbookLeafComponent(
+                name: 'CardSale',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Cards',
+                  builder: _i7.cardSale,
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+      _i1.WidgetbookFolder(
+        name: 'notification',
+        children: [
+          _i1.WidgetbookFolder(
+            name: 'widgets',
+            children: [
+              _i1.WidgetbookLeafComponent(
+                name: 'CardNotification',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Cards',
+                  builder: _i7.cardNotification,
+                ),
+              )
+            ],
           )
         ],
       ),
