@@ -17,6 +17,7 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
 
+  await Supabase.initialize(url: NSConstants.urlSupabase, anonKey: NSConstants.apiKeySupabase);
   await SharedPrefs.initialization();
 
   runApp(
@@ -36,8 +37,7 @@ class MyApp extends StatelessWidget {
       providers: [
         RepositoryProvider(
           create: (context) => SupabaseServices(
-            supabaseClient: SupabaseClient(
-                NSConstants.urlSupabase, NSConstants.apiKeySupabase),
+            supabaseClient: Supabase.instance.client,
           ),
         ),
       ],

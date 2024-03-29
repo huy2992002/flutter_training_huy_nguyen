@@ -65,7 +65,7 @@ class _SignUpPageState extends State<SignUpPage> {
     _showHiddenLoading(status: true);
     await Future.delayed(const Duration(seconds: 2));
     try {
-      await context.watch<SupabaseServices>().supabaseClient.auth.signUp(
+      await context.read<SupabaseServices>().supabaseClient.auth.signUp(
         email: _emailController.text,
         password: _passwordController.text,
         data: {'username': _emailController.text},
@@ -105,7 +105,6 @@ class _SignUpPageState extends State<SignUpPage> {
       _showHiddenLoading(status: false);
       NSSnackBar.snackbarError(context, title: e.toString());
     }
-    Navigator.pop(context);
   }
 
   Future<void> _launchGmail() async {
