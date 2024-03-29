@@ -33,6 +33,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_email.svg
   String get icEmail => 'assets/icons/ic_email.svg';
 
+  /// File path: assets/icons/ic_email_send.svg
+  String get icEmailSend => 'assets/icons/ic_email_send.svg';
+
   /// File path: assets/icons/ic_error.svg
   String get icError => 'assets/icons/ic_error.svg';
 
@@ -105,6 +108,7 @@ class $AssetsIconsGen {
         icDown,
         icEdit,
         icEmail,
+        icEmailSend,
         icError,
         icEye,
         icEyeHidden,
