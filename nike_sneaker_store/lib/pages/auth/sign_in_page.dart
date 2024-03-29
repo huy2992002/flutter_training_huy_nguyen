@@ -11,8 +11,10 @@ import 'package:nike_sneaker_store/pages/auth/widgets/prompt_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
 import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
-import 'package:nike_sneaker_store/services/local/shared_pref.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
+import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SignInPage extends StatefulWidget {
   /// Screen sign in page
@@ -55,25 +57,32 @@ class _SignInPageState extends State<SignInPage> {
     }
     setState(() => _isLoading = true);
     await Future.delayed(const Duration(seconds: 2));
-    List<UserModel> users = await SharedPrefs.getUsers() ?? accounts;
     try {
-      UserModel user = users.singleWhere(
-        (e) =>
-            e.email == _emailController.text &&
-            _passwordController.text == e.password,
-      );
+      final res = await context
+          .read<SupabaseServices>()
+          .supabaseClient
+          .auth
+          .signInWithPassword(
+            email: _emailController.text,
+            password: _passwordController.text,
+          );
+      print('object ${res.session}');
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => const LayoutPage()),
+          (route) => false,
+        );
+    } on AuthException catch (e) {
       setState(() => _isLoading = false);
-      SharedPrefs.userLogin = user;
-      Navigator.pushAndRemoveUntil(
+      NSSnackBar.snackbarError(
         context,
-        MaterialPageRoute(builder: (_) => const LayoutPage()),
-        (route) => false,
+        title: e.message,
       );
     } catch (e) {
       setState(() => _isLoading = false);
       NSSnackBar.snackbarError(
         context,
-        title: AppLocalizations.of(context).emailOrPasswordIncorrect,
+        title: e.toString(),
       );
     }
   }
