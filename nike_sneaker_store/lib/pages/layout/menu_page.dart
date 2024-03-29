@@ -8,7 +8,8 @@ import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
 import 'package:nike_sneaker_store/pages/home/setting_page.dart';
 import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
 import 'package:nike_sneaker_store/pages/layout/widgets/card_menu_item.dart';
-import 'package:nike_sneaker_store/services/local/shared_pref.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
+import 'package:provider/provider.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({
@@ -98,7 +99,12 @@ class MenuPage extends StatelessWidget {
                 title: AppLocalizations.of(context).doYouWantLogout,
                 action: () => WidgetsBinding.instance.addPostFrameCallback(
                   (_) {
-                    SharedPrefs.removeUserLogin();
+                    context
+                        .read<SupabaseServices>()
+                        .supabaseClient
+                        .auth
+                        .signOut();
+
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
