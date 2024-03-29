@@ -68,6 +68,7 @@ class NSDialog {
     String? textSecondaryButton,
     Widget? icon,
     Function()? action,
+    Function()? actionSecondary,
   }) {
     showDialog(
       context: context,
@@ -100,7 +101,7 @@ class NSDialog {
               const SizedBox(height: 14),
               NSElevatedButton.text(
                 onPressed: () {
-                  action?.call();
+                  actionSecondary?.call();
                   Navigator.pop(context);
                 },
                 textColor: Theme.of(context).colorScheme.onBackground,
