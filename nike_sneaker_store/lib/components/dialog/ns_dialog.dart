@@ -65,6 +65,7 @@ class NSDialog {
     BuildContext context, {
     required String title,
     required String textButton,
+    String? textSecondaryButton,
     Widget? icon,
     Function()? action,
   }) {
@@ -95,6 +96,18 @@ class NSDialog {
               },
               text: textButton,
             ),
+            if (textSecondaryButton != null) ...[
+              const SizedBox(height: 14),
+              NSElevatedButton.text(
+                onPressed: () {
+                  action?.call();
+                  Navigator.pop(context);
+                },
+                textColor: Theme.of(context).colorScheme.onBackground,
+                backgroundColor: Theme.of(context).colorScheme.background,
+                text: textSecondaryButton,
+              ),
+            ],
           ],
         ),
       ),
