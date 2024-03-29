@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
+import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_text_form_field.dart';
+import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
@@ -11,9 +14,11 @@ import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/prompt_text.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
-import 'package:nike_sneaker_store/services/local/shared_pref.dart';
-import 'package:nike_sneaker_store/utils/maths.dart';
+import 'package:nike_sneaker_store/services/remote/supabase.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
+import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SignUpPage extends StatefulWidget {
   /// Screen sign up page
@@ -59,32 +64,56 @@ class _SignUpPageState extends State<SignUpPage> {
     }
     _showHiddenLoading(status: true);
     await Future.delayed(const Duration(seconds: 2));
-    List<UserModel> users = await SharedPrefs.getUsers() ?? accounts;
-    bool checkUser = users.any((e) => _emailController.text == e.email);
-    if (checkUser) {
-      _showHiddenLoading(status: false);
-      NSSnackBar.snackbarError(
-        context,
-        title: AppLocalizations.of(context).emailAlreadyExists,
-      );
-    } else {
-      UserModel user = UserModel(
-        uuid: Maths.randomUUid(length: 6),
-        name: _nameController.text,
+    try {
+      await context.watch<SupabaseServices>().supabaseClient.auth.signUp(
         email: _emailController.text,
         password: _passwordController.text,
+        data: {'username': _emailController.text},
       );
-      users.add(user);
-      SharedPrefs.saveUsers(users);
       _showHiddenLoading(status: false);
-      Navigator.pushAndRemoveUntil(
+      NSDialog.textButton(
         context,
-        MaterialPageRoute(
-          builder: (_) => SignInPage(
-            email: _emailController.text,
-          ),
+        icon: SvgPicture.asset(
+          Assets.icons.icEmailSend,
+          height: 100,
         ),
-        (route) => false,
+        title: AppLocalizations.of(context).pleaseCheckYourEmail,
+        textButton: AppLocalizations.of(context).goToEmail,
+        action: () {
+          _launchGmail();
+        },
+        textSecondaryButton: AppLocalizations.of(context).goToSignIn,
+        actionSecondary: () {
+          Navigator.pop(context);
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const SignInPage(),
+                ),
+                (route) => false,
+              );
+            },
+          );
+        },
+      );
+    } on AuthException catch (e) {
+      _showHiddenLoading(status: false);
+      NSSnackBar.snackbarError(context, title: e.message);
+    } catch (e) {
+      _showHiddenLoading(status: false);
+      NSSnackBar.snackbarError(context, title: e.toString());
+    }
+    Navigator.pop(context);
+  }
+
+  Future<void> _launchGmail() async {
+    Uri uri = Uri.parse(NSConstants.pathGmail);
+    if (!await launchUrl(uri)) {
+      NSSnackBar.snackbarError(
+        context,
+        title: AppLocalizations.of(context).couldNotLaunchGmail,
       );
     }
   }
@@ -115,9 +144,12 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 const SizedBox(height: 11),
-                TitleAuth(
-                  title: AppLocalizations.of(context).registerAccount,
-                  subTitle: AppLocalizations.of(context).fillYourDetails,
+                GestureDetector(
+                  onTap: () {},
+                  child: TitleAuth(
+                    title: AppLocalizations.of(context).registerAccount,
+                    subTitle: AppLocalizations.of(context).fillYourDetails,
+                  ),
                 ),
                 const SizedBox(height: 40),
                 TitleLabel(text: AppLocalizations.of(context).yourName),

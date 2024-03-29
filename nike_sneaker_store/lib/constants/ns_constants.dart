@@ -9,4 +9,5 @@ class NSConstants {
   static String tagProductDetail(String uuid) {
     return 'tagProductDetail$uuid';
   }
+  static const pathGmail = 'https://mail.google.com/';
 }
