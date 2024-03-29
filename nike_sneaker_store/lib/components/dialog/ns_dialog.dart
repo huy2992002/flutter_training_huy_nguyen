@@ -93,7 +93,6 @@ class NSDialog {
             NSElevatedButton.text(
               onPressed: () {
                 action?.call();
-                Navigator.pop(context);
               },
               text: textButton,
             ),
@@ -102,7 +101,6 @@ class NSDialog {
               NSElevatedButton.text(
                 onPressed: () {
                   actionSecondary?.call();
-                  Navigator.pop(context);
                 },
                 textColor: Theme.of(context).colorScheme.onBackground,
                 backgroundColor: Theme.of(context).colorScheme.background,

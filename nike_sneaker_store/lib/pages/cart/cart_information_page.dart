@@ -146,17 +146,21 @@ class _CartInformationPageState extends State<CartInformationPage> {
               icon: CircleAvatar(
                   radius: 65,
                   child: Image.asset(Assets.images.imgSuccessfully.path)),
-              action: () => WidgetsBinding.instance.addPostFrameCallback(
-                (_) {
-                  myCarts.clear();
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const LayoutPage(),
-                      ),
-                      (route) => false);
-                },
-              ),
+              action: () {
+                Navigator.pop(context);
+
+                WidgetsBinding.instance.addPostFrameCallback(
+                  (_) {
+                    myCarts.clear();
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const LayoutPage(),
+                        ),
+                        (route) => false);
+                  },
+                );
+              },
             );
           },
           canCheckOut: _canCheckOut,
