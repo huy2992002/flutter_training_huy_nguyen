@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +8,7 @@ import 'package:nike_sneaker_store/pages/splash/splash_page.dart';
 import 'package:nike_sneaker_store/providers/app_provider.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
+import 'package:nike_sneaker_store/services/remote/api_client.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/themes/ns_theme.dart';
 import 'package:provider/provider.dart';
@@ -38,14 +40,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider(
+        RepositoryProvider<SupabaseServices>(
           create: (context) => SupabaseServices(
             supabaseClient: Supabase.instance.client,
           ),
         ),
-        RepositoryProvider(
+        RepositoryProvider<SharedPrefServices>(
           create: (context) => SharedPrefServices(
             sharedPreferences: SharedPreferences.getInstance(),
+          ),
+        ),
+        RepositoryProvider(
+          create: (context) => ApiClient(
+            dio: Dio(),
+            supabaseClient: Supabase.instance.client,
+            prefs: SharedPrefServices(
+              sharedPreferences: SharedPreferences.getInstance(),
+            ),
           ),
         ),
       ],
