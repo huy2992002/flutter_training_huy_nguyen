@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
+import 'package:nike_sneaker_store/features/auth/auth_repository.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/pages/splash/splash_page.dart';
 import 'package:nike_sneaker_store/providers/app_provider.dart';
+import 'package:nike_sneaker_store/routes/ns_routes_config.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
 import 'package:nike_sneaker_store/services/remote/api_client.dart';
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
             sharedPreferences: SharedPreferences.getInstance(),
           ),
         ),
-        RepositoryProvider(
+        RepositoryProvider<ApiClient>(
           create: (context) => ApiClient(
             dio: Dio(),
             supabaseClient: Supabase.instance.client,
@@ -59,8 +60,16 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        RepositoryProvider<AuthRepository>(
+          create: (context) => AuthRepository(
+            supabaseClient: Supabase.instance.client,
+            sharedPrefServices: SharedPrefServices(
+              sharedPreferences: SharedPreferences.getInstance(),
+            ),
+          ),
+        )
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'Nike Sneaker Store',
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -68,7 +77,7 @@ class MyApp extends StatelessWidget {
         locale: Provider.of<AppProvider>(context).locale,
         theme: Provider.of<AppProvider>(context).themeData,
         darkTheme: NSTheme.darkTheme,
-        home: const SplashPage(),
+        routerConfig: NSRoutesConfig.goRoute,
       ),
     );
   }

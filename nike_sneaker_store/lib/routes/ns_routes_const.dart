@@ -1,0 +1,31 @@
+class NSRoutesConst {
+  static const String nameSplash = 'splash';
+  static const String pathSplash = '/splash';
+
+  static const String nameOnboarding = 'onboarding';
+  static const String pathOnboarding = '/onboarding';
+
+  static const String nameSignIn = 'signIn';
+  static const String pathSignIn = '/signIn';
+
+  static const String nameSignUp = 'signUp';
+  static const String pathSignUp = '/signUp';
+
+  static const String nameForgotPass = 'forgotPass';
+  static const String pathForgotPass = '/forgotPass';
+
+  static const String nameVerification = 'verification';
+  static const String pathVerification = '/verification';
+
+  static const String nameLayout = 'layout';
+  static const String pathLayout = '/layout';
+
+  static const String nameCart = 'cart';
+  static const String pathCart = '/cart';
+
+  static const String nameCartInfo = 'cartInfo';
+  static const String pathCartInfo = '/cartInfo';
+
+  static const String nameHome = 'home';
+  static const String pathHome = '/home';
+}
