@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
+import 'package:nike_sneaker_store/features/onboarding/bloc/onboarding_cubit.dart';
+import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_background.dart';
+import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_power.dart';
+import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_start.dart';
+import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_welcome.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
-import 'package:nike_sneaker_store/pages/onboarding/bloc/onboarding_cubit.dart';
-import 'package:nike_sneaker_store/pages/onboarding/widgets/onboarding_background.dart';
-import 'package:nike_sneaker_store/pages/onboarding/widgets/onboarding_power.dart';
-import 'package:nike_sneaker_store/pages/onboarding/widgets/onboarding_start.dart';
-import 'package:nike_sneaker_store/pages/onboarding/widgets/onboarding_welcome.dart';
+
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class OnboardingPage extends StatelessWidget {

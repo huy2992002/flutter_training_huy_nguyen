@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
 import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
-import 'package:nike_sneaker_store/pages/onboarding/onboarding_page.dart';
+import 'package:nike_sneaker_store/features/onboarding/view/onboarding_page.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
 import 'package:provider/provider.dart';
