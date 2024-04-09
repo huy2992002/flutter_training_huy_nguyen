@@ -3,3 +3,5 @@ enum Category {
   outDoor,
   tennis,
 }
+
+enum FormSubmissionStatus { initial, loading, success, failure }

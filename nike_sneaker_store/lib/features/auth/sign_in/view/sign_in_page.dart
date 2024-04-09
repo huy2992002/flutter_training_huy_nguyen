@@ -14,7 +14,7 @@ import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_auth
 import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_label.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
-import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
+import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class SignInPage extends StatelessWidget {
@@ -36,15 +36,18 @@ class SignInPage extends StatelessWidget {
       create: (context) => SignInBloc(context.read<AuthRepository>()),
       child: BlocConsumer<SignInBloc, SignInState>(
         listener: (context, state) {
-          if (state is SignInFailed) {
-            NSSnackBar.snackbarError(context, title: state.message);
+          if (state.status == FormSubmissionStatus.failure) {
+            NSSnackBar.snackbarError(
+              context,
+              title: state.message ?? '',
+            );
           }
-          if (state is SignInSuccess) {
+          if (state.status == FormSubmissionStatus.success) {
             context.push(NSRoutesConst.pathLayout);
           }
         },
         builder: (context, state) {
-          bool isLoading = state is SignInLoading;
+          bool isLoading = state.status == FormSubmissionStatus.loading;
           return GestureDetector(
             onTap: FocusScope.of(context).unfocus,
             child: Scaffold(
@@ -69,6 +72,9 @@ class SignInPage extends StatelessWidget {
                       NSTextFormField.text(
                         controller: _emailController,
                         hintText: AppLocalizations.of(context).hintTextEmail,
+                        onChanged: (value) => context
+                            .read<SignInBloc>()
+                            .add(SignInEmailChanged(context, email: value)),
                         validator: (value) =>
                             Validator.validatorEmail(context, value),
                         textInputAction: TextInputAction.next,
@@ -79,6 +85,8 @@ class SignInPage extends StatelessWidget {
                       NSTextFormField.password(
                         controller: _passwordController,
                         hintText: AppLocalizations.of(context).hintTextPassword,
+                        onChanged: (value) => context.read<SignInBloc>().add(
+                            SignInPasswordChanged(context, password: value)),
                         validator: (value) =>
                             Validator.validatorPassword(context, value),
                         textInputAction: TextInputAction.done,
@@ -96,21 +104,23 @@ class SignInPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 24),
                       NSElevatedButton.text(
-                        onPressed: () async {
-                          if (_formKey.currentState == null ||
-                              !_formKey.currentState!.validate()) {
-                            return;
-                          }
-                          context.read<SignInBloc>().add(
-                                SubmitSignInPressed(
-                                  email: _emailController.text,
-                                  password: _passwordController.text,
-                                ),
-                              );
-                          print(
-                              'object2 ${await context.read<SharedPrefServices>().getAccessToken()}');
-                        },
+                        onPressed: state.isValid
+                            ? () async {
+                                context.read<SignInBloc>().add(
+                                      SubmitSignInPressed(
+                                        email: _emailController.text,
+                                        password: _passwordController.text,
+                                      ),
+                                    );
+                              }
+                            : null,
                         text: AppLocalizations.of(context).signIn,
+                        backgroundColor: state.isValid
+                            ? Theme.of(context).colorScheme.primary
+                            : Theme.of(context).colorScheme.surfaceVariant,
+                        textColor: state.isValid
+                            ? Theme.of(context).colorScheme.onPrimary
+                            : Theme.of(context).colorScheme.onSurfaceVariant,
                         isDisable: isLoading,
                       ),
                       const SizedBox(height: 70),
