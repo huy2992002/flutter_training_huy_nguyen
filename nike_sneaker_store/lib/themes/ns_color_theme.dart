@@ -3,7 +3,6 @@ import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class NSColorTheme {
   static ColorScheme colorThemeLight = ColorScheme(
-    
     brightness: Brightness.light,
     primary: NSColor.primary,
     onPrimary: NSColor.onPrimary,
@@ -25,9 +24,11 @@ class NSColorTheme {
     inverseSurface: NSColor.inverseSurface,
     onInverseSurface: NSColor.onInverseSurface,
     shadow: NSColor.onPrimaryContainer.withOpacity(0.4),
+    surfaceVariant: NSColor.neutral,
+    onSurfaceVariant: NSColor.background,
   );
 
-  static ColorScheme colorThemeDark =  ColorScheme(
+  static ColorScheme colorThemeDark = ColorScheme(
     brightness: Brightness.dark,
     primary: NSColor.darkPrimary,
     onPrimary: NSColor.darkOnPrimary,
@@ -49,5 +50,7 @@ class NSColorTheme {
     inverseSurface: NSColor.darkInverseSurface,
     onInverseSurface: NSColor.darkOnInverseSurface,
     shadow: NSColor.onPrimaryContainer.withOpacity(0.4),
+    surfaceVariant: NSColor.neutral,
+    onSurfaceVariant: NSColor.background,
   );
 }
