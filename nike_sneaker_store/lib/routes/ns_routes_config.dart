@@ -1,13 +1,13 @@
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/view/sign_in_page.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/onboarding_page.dart';
+import 'package:nike_sneaker_store/features/splash/views/splash_page.dart';
 import 'package:nike_sneaker_store/pages/auth/forgot_password_page.dart';
 import 'package:nike_sneaker_store/pages/auth/sign_up_page.dart';
 import 'package:nike_sneaker_store/pages/auth/verification_page.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_information_page.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
 import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
-import 'package:nike_sneaker_store/pages/splash/splash_page.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 
 class NSRoutesConfig {
