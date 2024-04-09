@@ -35,6 +35,7 @@ class SignInPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => SignInBloc(context.read<AuthRepository>()),
       child: BlocConsumer<SignInBloc, SignInState>(
+        listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, state) {
           if (state.status == FormSubmissionStatus.failure) {
             NSSnackBar.snackbarError(
@@ -46,6 +47,9 @@ class SignInPage extends StatelessWidget {
             context.push(NSRoutesConst.pathLayout);
           }
         },
+        buildWhen: (previous, current) =>
+            previous.isValid != current.isValid ||
+            previous.status != current.status,
         builder: (context, state) {
           bool isLoading = state.status == FormSubmissionStatus.loading;
           return GestureDetector(
