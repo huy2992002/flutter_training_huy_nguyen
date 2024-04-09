@@ -10,4 +10,11 @@ class NSConstants {
     return 'tagProductDetail$uuid';
   }
   static const pathGmail = 'https://mail.google.com/';
+  
+  static const baseUrl = 'https://byleabxvsiwkhebkwpcp.supabase.co/rest/v1';
+
+  static const endPointProducts = '/products';
+
+  static const endPointUsers = '/users';
+
 }

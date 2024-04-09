@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -19,6 +20,7 @@ class ApiClient {
   late SharedPrefServices _prefs;
 
   void _initializeInterceptor() {
+    _dio.options.baseUrl = NSConstants.baseUrl;
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
         final accessToken = await _prefs.getAccessToken();
@@ -57,16 +59,12 @@ class ApiClient {
     String url, {
     Map<String, dynamic>? queryParameters,
     Options? options,
-    CancelToken? cancelToken,
-    ProgressCallback? onReceiveProgress,
   }) async {
     try {
       final response = await _dio.get(
         url,
         queryParameters: queryParameters,
         options: options,
-        cancelToken: cancelToken,
-        onReceiveProgress: onReceiveProgress,
       );
       return response;
     } on DioError {
@@ -78,18 +76,13 @@ class ApiClient {
   Future<Response<dynamic>> post(
     String url, {
     dynamic data,
-    Map<String, dynamic>? queryParameters,
     Options? options,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
   }) async {
     try {
       final response = await _dio.post(
         url,
         data: data,
         options: options,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
       );
       return response;
     } catch (e) {
@@ -101,21 +94,13 @@ class ApiClient {
   Future<Response<dynamic>> put(
     String url, {
     dynamic data,
-    Map<String, dynamic>? queryParameters,
     Options? options,
-    CancelToken? cancelToken,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
   }) async {
     try {
       final response = await _dio.put(
         url,
         data: data,
-        queryParameters: queryParameters,
         options: options,
-        cancelToken: cancelToken,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
       );
       return response;
     } catch (e) {
@@ -135,9 +120,7 @@ class ApiClient {
       final response = await _dio.delete(
         url,
         data: data,
-        queryParameters: queryParameters,
         options: options,
-        cancelToken: cancelToken,
       );
       return response.data;
     } catch (e) {
