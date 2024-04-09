@@ -332,6 +332,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "go_router",
+      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dev/go_router-13.2.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "gotrue",
       "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dev/gotrue-2.5.1",
       "packageUri": "lib/",
@@ -956,7 +962,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-03-29T03:44:50.440809Z",
+  "generated": "2024-04-09T04:30:19.398590Z",
   "generator": "pub",
   "generatorVersion": "3.3.0"
 }
