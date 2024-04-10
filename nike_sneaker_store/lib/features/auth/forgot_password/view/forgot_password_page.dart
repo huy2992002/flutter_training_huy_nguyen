@@ -3,11 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_text_form_field.dart';
+import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_auth.dart';
+import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_label.dart';
+import 'package:nike_sneaker_store/features/auth/verification/view/verification_page.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/pages/auth/verification_page.dart';
-import 'package:nike_sneaker_store/pages/auth/widgets/title_auth.dart';
-import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   /// Screen forgot password page
