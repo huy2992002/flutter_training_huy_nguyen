@@ -21,10 +21,19 @@ class ApiClient {
 
   void _initializeInterceptor() {
     _dio.options.baseUrl = NSConstants.baseUrl;
+    _dio.options.headers.addAll({
+      'apikey': NSConstants.apiKeySupabase,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    });
+    
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
+
         final accessToken = await _prefs.getAccessToken();
-        options.headers['Authorization'] = 'Bearer $accessToken';
+        if (accessToken != null) {
+          options.headers['Authorization'] = 'Bearer $accessToken';
+        }
         return handler.next(options);
       },
       onResponse: (response, handler) async {
