@@ -2,8 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/auth/auth_repository.dart';
+import 'package:nike_sneaker_store/features/layout/bloc/layout_cubit.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/providers/app_provider.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_config.dart';
@@ -66,8 +68,21 @@ class MyApp extends StatelessWidget {
             sharedPrefServices: SharedPrefServices(
               sharedPreferences: SharedPreferences.getInstance(),
             ),
+            apiClient: ApiClient(
+              dio: Dio(),
+              supabaseClient: Supabase.instance.client,
+              prefs: SharedPrefServices(
+                sharedPreferences: SharedPreferences.getInstance(),
+              ),
+            ),
           ),
-        )
+        ),
+        RepositoryProvider<ZoomDrawerController>(
+          create: (context) => ZoomDrawerController(),
+        ),
+        RepositoryProvider<LayoutCubit>(
+          create: (context) => LayoutCubit(),
+        ),
       ],
       child: MaterialApp.router(
         title: 'Nike Sneaker Store',
