@@ -28,4 +28,16 @@ class NSRoutesConst {
 
   static const String nameHome = 'home';
   static const String pathHome = '/home';
+
+  static const String nameFavorite = 'favorite';
+  static const String pathFavorite = '/favorite';
+
+  static const String nameNotification = 'notification';
+  static const String pathNotification = '/notification';
+
+  static const String nameProfile = 'profile';
+  static const String pathProfile = '/profile';
+
+  static const String nameSetting = 'setting';
+  static const String pathSetting = '/setting';
 }

@@ -43,7 +43,7 @@ class _SplashPageState extends State<SplashPage> {
         context.push(NSRoutesConst.pathOnboarding);
       }
     } else {
-      context.push(NSRoutesConst.pathLayout);
+      context.push(NSRoutesConst.pathHome);
     }
   }
 
