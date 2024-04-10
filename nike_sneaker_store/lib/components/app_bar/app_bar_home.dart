@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   /// Create design app bar with height 50px
-  ///
-  /// The [onMenu] arguments must not be null.
   const AppBarHome({
-    required this.onMenu,
     this.isMarkerNotification = false,
     super.key,
   });
-
-  /// Action when click onTap of menu icon
-  final Function() onMenu;
 
   /// The [isMarkerNotification] argument is true will display marker with notification
   final bool isMarkerNotification;
@@ -24,7 +20,9 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: GestureDetector(
-        onTap: onMenu,
+        onTap: () {
+          context.read<ZoomDrawerController>().open?.call();
+        },
         child: Padding(
           padding: const EdgeInsets.only(left: 20),
           child: SvgPicture.asset(
