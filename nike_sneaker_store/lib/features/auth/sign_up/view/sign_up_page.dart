@@ -62,6 +62,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return BlocProvider(
       create: (context) => SignUpBloc(context.read<AuthRepository>()),
       child: BlocConsumer<SignUpBloc, SignUpState>(
+        listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, state) {
           if (state.status == FormSubmissionStatus.failure) {
             NSSnackBar.snackbarError(
@@ -127,8 +128,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       const SizedBox(height: 11),
                       TitleAuth(
                         title: AppLocalizations.of(context).registerAccount,
-                        subTitle:
-                            AppLocalizations.of(context).fillYourDetails,
+                        subTitle: AppLocalizations.of(context).fillYourDetails,
                       ),
                       const SizedBox(height: 40),
                       TitleLabel(text: AppLocalizations.of(context).yourName),
@@ -190,6 +190,17 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         textInputAction: TextInputAction.done,
                         readOnly: isLoading,
+                        onFieldSubmitted: (_) => state.isValid
+                            ? () {
+                                context.read<SignUpBloc>().add(
+                                      SubmitSignUpPressed(
+                                        name: _nameController.text,
+                                        email: _emailController.text,
+                                        password: _passwordController.text,
+                                      ),
+                                    );
+                              }
+                            : null,
                       ),
                       const SizedBox(height: 30),
                       NSElevatedButton.text(
