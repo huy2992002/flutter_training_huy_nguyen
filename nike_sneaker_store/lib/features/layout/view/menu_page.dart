@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_avatar.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
+import 'package:nike_sneaker_store/features/layout/bloc/layout_cubit.dart';
+import 'package:nike_sneaker_store/features/layout/view/widgets/card_menu_item.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/pages/auth/sign_in_page.dart';
-import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
-import 'package:nike_sneaker_store/pages/home/setting_page.dart';
-import 'package:nike_sneaker_store/pages/layout/layout_page.dart';
-import 'package:nike_sneaker_store/pages/layout/widgets/card_menu_item.dart';
+import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:provider/provider.dart';
@@ -15,21 +15,13 @@ import 'package:provider/provider.dart';
 class MenuPage extends StatelessWidget {
   const MenuPage({
     super.key,
-    this.resetState,
     this.name,
   });
 
-  final Function()? resetState;
   final String? name;
 
   @override
   Widget build(BuildContext context) {
-    void toPageIndex(int indexPage) {
-      currentPageIndex = indexPage;
-      zoomController.close?.call();
-      resetState?.call();
-    }
-
     return Container(
       padding: EdgeInsets.only(
         left: 28,
@@ -49,41 +41,43 @@ class MenuPage extends StatelessWidget {
           ),
           const SizedBox(height: 50),
           CardMenuItem(
-            onTap: () => toPageIndex(3),
+            onTap: () {
+              context.read<LayoutCubit>().onChangePage(3);
+              context.push(NSRoutesConst.pathProfile);
+              context.read<ZoomDrawerController>().close?.call();
+            },
             title: AppLocalizations.of(context).profile,
             iconPath: Assets.icons.icPerson,
           ),
           const SizedBox(height: 30),
           CardMenuItem(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const CartPage(),
-              ),
-            ),
+            onTap: () => context.push(NSRoutesConst.pathCart),
             title: AppLocalizations.of(context).myCart,
             iconPath: Assets.icons.icBag,
           ),
           const SizedBox(height: 30),
           CardMenuItem(
-            onTap: () => toPageIndex(1),
+            onTap: () {
+              context.read<LayoutCubit>().onChangePage(1);
+              context.push(NSRoutesConst.pathFavorite);
+              context.read<ZoomDrawerController>().close?.call();
+            },
             title: AppLocalizations.of(context).favorite,
             iconPath: Assets.icons.icHeartOutline,
           ),
           const SizedBox(height: 30),
           CardMenuItem(
-            onTap: () => toPageIndex(2),
+            onTap: () {
+              context.read<LayoutCubit>().onChangePage(2);
+              context.push(NSRoutesConst.pathNotification);
+              context.read<ZoomDrawerController>().close?.call();
+            },
             title: AppLocalizations.of(context).notifications,
             iconPath: Assets.icons.icNotification,
           ),
           const SizedBox(height: 30),
           CardMenuItem(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const SettingPage(),
-              ),
-            ),
+            onTap: () => context.push(NSRoutesConst.pathSetting),
             title: AppLocalizations.of(context).setting,
             iconPath: Assets.icons.icSetting,
           ),
@@ -106,12 +100,7 @@ class MenuPage extends StatelessWidget {
                         .auth
                         .signOut();
                     context.read<SharedPrefServices>().removeToken();
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const SignInPage(),
-                        ),
-                        (route) => false);
+                    context.pushReplacement(NSRoutesConst.pathSignIn);
                   },
                 ),
               );
