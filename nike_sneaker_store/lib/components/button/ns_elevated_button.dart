@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class NSElevatedButton extends StatelessWidget {
-  /// Create an [ElevatedButton] 
-  /// 
+  /// Create an [ElevatedButton]
+  ///
   /// The [onPressed] and [text] arguments must not be null.
   const NSElevatedButton.text({
-    required this.onPressed,
     required this.text,
+    this.onPressed,
     this.backgroundColor,
     this.textColor,
     this.icon,
@@ -17,10 +17,10 @@ class NSElevatedButton extends StatelessWidget {
 
   /// Create [ElevatedButton] with Icon for app Nike Sneaker
   /// The distance between [icon] and [text] is 16
-  ///  
+  ///
   /// The [onPressed], [icon] and [text] arguments must not be null.
   factory NSElevatedButton.icon({
-    required Function() onPressed,
+    Function()? onPressed,
     required Widget icon,
     required String text,
     Color? backgroundColor,
@@ -41,18 +41,18 @@ class NSElevatedButton extends StatelessWidget {
   }
 
   /// Action when click onTap Widget
-  final Function() onPressed;
+  final Function()? onPressed;
 
   /// Title display of button
   final String text;
 
   /// Color of background button
-  /// 
+  ///
   /// If [backgroundColor] argument is null, The default color is [Theme.of(context).colorScheme.primary]
   final Color? backgroundColor;
 
   /// Color of text button
-  /// 
+  ///
   /// If [textColor] argument is null, The default color is [Theme.of(context).colorScheme.onPrimary]
   final Color? textColor;
 
@@ -61,7 +61,7 @@ class NSElevatedButton extends StatelessWidget {
   /// If [icon] argument is null, no display right app bar
   final Widget? icon;
 
-  /// Padding of button with content 
+  /// Padding of button with content
   final EdgeInsetsGeometry padding;
 
   /// If [isDisable] argument is true, display [CircularProgressIndicator]
