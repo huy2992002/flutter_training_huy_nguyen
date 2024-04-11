@@ -95,6 +95,12 @@ class SignInPage extends StatelessWidget {
                             Validator.validatorPassword(context, value),
                         textInputAction: TextInputAction.done,
                         readOnly: isLoading,
+                        onFieldSubmitted: (_) => context.read<SignInBloc>().add(
+                              SubmitSignInPressed(
+                                email: _emailController.text,
+                                password: _passwordController.text,
+                              ),
+                            ),
                       ),
                       const SizedBox(height: 12),
                       Align(
@@ -109,14 +115,12 @@ class SignInPage extends StatelessWidget {
                       const SizedBox(height: 24),
                       NSElevatedButton.text(
                         onPressed: state.isValid
-                            ? () async {
-                                context.read<SignInBloc>().add(
-                                      SubmitSignInPressed(
-                                        email: _emailController.text,
-                                        password: _passwordController.text,
-                                      ),
-                                    );
-                              }
+                            ? () => context.read<SignInBloc>().add(
+                                  SubmitSignInPressed(
+                                    email: _emailController.text,
+                                    password: _passwordController.text,
+                                  ),
+                                )
                             : null,
                         text: AppLocalizations.of(context).signIn,
                         backgroundColor: state.isValid

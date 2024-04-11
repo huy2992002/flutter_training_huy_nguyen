@@ -33,7 +33,7 @@ class AuthRepository {
       if (authResponse.user != null) {
         return authResponse.user!;
       } else {
-        throw Exception();
+        throw Exception('Dont find User');
       }
     } catch (e) {
       rethrow;
@@ -56,14 +56,14 @@ class AuthRepository {
           uuid: Maths.randomUUid(length: 10),
           name: name,
           email: email,
-        );  
+        );
         apiClient.post(
           NSConstants.endPointUsers,
           data: user.toJson(),
         );
         return authResponse.user!;
       } else {
-        throw Exception();
+        throw Exception('Dont find User');
       }
     } catch (e) {
       rethrow;

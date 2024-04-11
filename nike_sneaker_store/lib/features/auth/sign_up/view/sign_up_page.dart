@@ -191,29 +191,25 @@ class _SignUpPageState extends State<SignUpPage> {
                         textInputAction: TextInputAction.done,
                         readOnly: isLoading,
                         onFieldSubmitted: (_) => state.isValid
-                            ? () {
-                                context.read<SignUpBloc>().add(
-                                      SubmitSignUpPressed(
-                                        name: _nameController.text,
-                                        email: _emailController.text,
-                                        password: _passwordController.text,
-                                      ),
-                                    );
-                              }
+                            ? () => context.read<SignUpBloc>().add(
+                                  SubmitSignUpPressed(
+                                    name: _nameController.text,
+                                    email: _emailController.text,
+                                    password: _passwordController.text,
+                                  ),
+                                )
                             : null,
                       ),
                       const SizedBox(height: 30),
                       NSElevatedButton.text(
                         onPressed: state.isValid
-                            ? () {
-                                context.read<SignUpBloc>().add(
-                                      SubmitSignUpPressed(
-                                        name: _nameController.text,
-                                        email: _emailController.text,
-                                        password: _passwordController.text,
-                                      ),
-                                    );
-                              }
+                            ? () => context.read<SignUpBloc>().add(
+                                  SubmitSignUpPressed(
+                                    name: _nameController.text,
+                                    email: _emailController.text,
+                                    password: _passwordController.text,
+                                  ),
+                                )
                             : null,
                         text: AppLocalizations.of(context).signUp,
                         backgroundColor: state.isValid

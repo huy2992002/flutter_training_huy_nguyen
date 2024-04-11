@@ -20,9 +20,7 @@ class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: GestureDetector(
-        onTap: () {
-          context.read<ZoomDrawerController>().open?.call();
-        },
+        onTap: () => context.read<ZoomDrawerController>().open?.call(),
         child: Padding(
           padding: const EdgeInsets.only(left: 20),
           child: SvgPicture.asset(
