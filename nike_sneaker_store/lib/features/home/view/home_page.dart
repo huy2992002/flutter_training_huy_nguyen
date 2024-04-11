@@ -42,6 +42,9 @@ class HomePage extends StatelessWidget {
         isMarkerNotification: myCarts.isNotEmpty,
       ),
       body: BlocBuilder<HomeBloc, HomeState>(
+        buildWhen: (previous, current) =>
+            previous.isLoading != current.isLoading ||
+            previous.productDisplays != current.productDisplays,
         builder: (context, state) {
           return RefreshIndicator(
             onRefresh: () async {
