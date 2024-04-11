@@ -1,4 +1,4 @@
-enum Category {
+enum CategoryType {
   allShoes,
   outDoor,
   tennis,
