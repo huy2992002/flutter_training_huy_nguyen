@@ -58,7 +58,7 @@ class ApiClient {
     final newRefreshToken = response.session?.refreshToken;
     if (newAccessToken != null && newRefreshToken != null) {
       _prefs
-        ..saveAccessToken(newRefreshToken)
+        ..saveAccessToken(newAccessToken)
         ..saveRefreshToken(newRefreshToken);
     }
   }
