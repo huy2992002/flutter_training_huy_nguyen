@@ -5,7 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/auth/auth_repository.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/layout/bloc/layout_cubit.dart';
+import 'package:nike_sneaker_store/features/product_repository.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/providers/app_provider.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_config.dart';
@@ -77,12 +80,25 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        RepositoryProvider<ProductRepository>(
+          create: (context) => ProductRepository(
+            apiClient: ApiClient(
+              dio: Dio(),
+              supabaseClient: Supabase.instance.client,
+              prefs: context.read<SharedPrefServices>(),
+            ),
+          ),
+        ),
         RepositoryProvider<ZoomDrawerController>(
           create: (context) => ZoomDrawerController(),
         ),
         RepositoryProvider<LayoutCubit>(
           create: (context) => LayoutCubit(),
         ),
+        RepositoryProvider<HomeBloc>(
+          create: (context) =>
+              HomeBloc(context.read<ProductRepository>())..add(HomeStarted()),
+        )
       ],
       child: MaterialApp.router(
         title: 'Nike Sneaker Store',
