@@ -15,7 +15,7 @@ class NSTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: NSColor.background,
       centerTitle: true,
-      titleTextStyle: NSStyle.h16SemiBold,
+      titleTextStyle: NSStyle.h16SemiBold.copyWith(color: NSColor.onBackground),
     ),
     backgroundColor: NSColor.background,
     shadowColor: NSColor.onPrimaryContainer.withOpacity(0.4),
@@ -30,7 +30,9 @@ class NSTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: NSColor.darkBackground,
       centerTitle: true,
-      titleTextStyle: NSStyle.h16SemiBold,
+      titleTextStyle: NSStyle.h16SemiBold.copyWith(
+        color: NSColor.darkOnBackground,
+      ),
     ),
     backgroundColor: NSColor.darkBackground,
     shadowColor: NSColor.onPrimaryContainer.withOpacity(0.4),
