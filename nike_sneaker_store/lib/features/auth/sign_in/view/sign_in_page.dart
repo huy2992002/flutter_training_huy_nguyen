@@ -12,8 +12,11 @@ import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_state.dart
 import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/prompt_text.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_label.dart';
+import 'package:nike_sneaker_store/features/favorite/bloc/favorite_bloc.dart';
+import 'package:nike_sneaker_store/features/favorite/bloc/favorite_event.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
@@ -45,6 +48,14 @@ class SignInPage extends StatelessWidget {
           }
           if (state.status == FormSubmissionStatus.success) {
             context.push(NSRoutesConst.pathHome);
+            context.read<FavoriteBloc>().add(FavoriteStarted(
+                  uuid: context
+                      .read<SupabaseServices>()
+                      .supabaseClient
+                      .auth
+                      .currentUser
+                      ?.id,
+                ));
           }
         },
         buildWhen: (previous, current) =>

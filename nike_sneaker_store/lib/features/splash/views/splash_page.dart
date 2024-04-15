@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nike_sneaker_store/features/favorite/bloc/favorite_bloc.dart';
+import 'package:nike_sneaker_store/features/favorite/bloc/favorite_event.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
@@ -44,6 +47,14 @@ class _SplashPageState extends State<SplashPage> {
       }
     } else {
       context.push(NSRoutesConst.pathHome);
+      context.read<FavoriteBloc>().add(FavoriteStarted(
+            uuid: context
+                .read<SupabaseServices>()
+                .supabaseClient
+                .auth
+                .currentUser
+                ?.id,
+          ));
     }
   }
 

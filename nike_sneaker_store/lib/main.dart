@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/auth/auth_repository.dart';
+import 'package:nike_sneaker_store/features/favorite/bloc/favorite_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/layout/bloc/layout_cubit.dart';
@@ -98,7 +99,10 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<HomeBloc>(
           create: (context) =>
               HomeBloc(context.read<ProductRepository>())..add(HomeStarted()),
-        )
+        ),
+        RepositoryProvider<FavoriteBloc>(
+          create: (context) => FavoriteBloc(context.read<ProductRepository>()),
+        ),
       ],
       child: MaterialApp.router(
         title: 'Nike Sneaker Store',
