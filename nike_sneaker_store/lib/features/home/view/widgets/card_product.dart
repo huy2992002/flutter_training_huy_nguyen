@@ -56,7 +56,7 @@ class CardProduct extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: onFavorite,
-                  child: (product.isFavorite ?? false)
+                  child: product.isFavorite
                       ? SvgPicture.asset(Assets.icons.icHeart)
                       : SvgPicture.asset(
                           Assets.icons.icHeartOutline,
