@@ -2,7 +2,6 @@ import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
 import 'package:nike_sneaker_store/services/remote/api_client.dart';
-import 'package:nike_sneaker_store/utils/maths.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepository {
@@ -53,7 +52,7 @@ class AuthRepository {
       );
       if (authResponse.user != null) {
         UserModel user = UserModel(
-          uuid: Maths.randomUUid(length: 10),
+          uuid: authResponse.user?.id,
           name: name,
           email: email,
         );
