@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
+import 'package:nike_sneaker_store/features/favorite/bloc/favorite_bloc.dart';
+import 'package:nike_sneaker_store/features/favorite/bloc/favorite_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
@@ -14,6 +16,7 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 
 class HomePage extends StatelessWidget {
@@ -48,7 +51,14 @@ class HomePage extends StatelessWidget {
         builder: (context, state) {
           return RefreshIndicator(
             onRefresh: () async {
-              context.read<HomeBloc>().add(HomeStarted());
+              String? id = context
+                  .read<SupabaseServices>()
+                  .supabaseClient
+                  .auth
+                  .currentUser
+                  ?.id;
+              if (id == null) return;
+              context.read<HomeBloc>().add(HomeStarted(userId: id));
             },
             child: ListView(
               padding: const EdgeInsets.only(top: 16, bottom: 20),
@@ -124,8 +134,23 @@ class HomePage extends StatelessWidget {
                                   // addCart(product);
                                 },
                                 onFavorite: () {
-                                  // product.isFavorite = !product.isFavorite;
-                                  // setState(() {});
+                                  String? userId = context
+                                      .read<SupabaseServices>()
+                                      .supabaseClient
+                                      .auth
+                                      .currentUser
+                                      ?.id;
+
+                                  if (userId != null) {
+                                    context.read<HomeBloc>().add(
+                                          HomeFavoritePressed(
+                                              indexProduct: index),
+                                        );
+                                    context.read<FavoriteBloc>().add(
+                                          FavoritePressed(userId,
+                                              product: product),
+                                        );
+                                  }
                                 },
                               ),
                             );

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls, cascade_invocations
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
@@ -10,6 +12,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeStarted>(_onStarted);
     on<HomeCategoryPressed>(_onChangedCategory);
     on<HomeFavoritePressed>(_onFavoriteProduct);
+    on<HomeFavoriteRemove>(_removeFavoriteProduct);
   }
 
   final ProductRepository productRepository;
@@ -18,7 +21,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(isLoading: true));
     List<ProductModel> products = [];
     try {
+      final productFavorites =
+          await productRepository.getIdProductFavorites(event.userId) ?? [];
       products = await productRepository.getProducts() ?? [];
+      products.forEach((element) {
+        if (productFavorites.any((e) => e.uuid == element.uuid)) {
+          element.isFavorite = true;
+        }
+      });
       emit(state.copyWith(
         products: products,
         productDisplays: products,
@@ -57,6 +67,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final products = [...state.productDisplays];
     products[event.indexProduct].isFavorite =
         !products[event.indexProduct].isFavorite;
-    emit(state.copyWith(productDisplays: [...products]));
+
+    emit(state.copyWith(productDisplays: products));
+  }
+
+  Future<void> _removeFavoriteProduct(
+    HomeFavoriteRemove event,
+    Emitter<HomeState> emit,
+  ) async {
+    final products = state.productDisplays;
+    for (var element in products) {
+      if (element.uuid == event.productId) {
+        element.isFavorite = false;
+      }
+    }
+    emit(state.copyWith(productDisplays: products));
   }
 }
