@@ -71,7 +71,7 @@ class ProductModel {
   String? category;
 
   /// If [isBestSeller] argument is true product has been liked
-  bool? isFavorite;
+  bool isFavorite;
 }
 
 /// Fetch data list [ProductModel]

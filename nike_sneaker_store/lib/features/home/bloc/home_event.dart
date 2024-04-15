@@ -8,3 +8,9 @@ class HomeCategoryPressed extends HomeEvent {
   final int index;
   final String type;
 }
+
+class HomeFavoritePressed extends HomeEvent {
+  HomeFavoritePressed({required this.indexProduct});
+
+  final int indexProduct;
+}

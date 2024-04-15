@@ -9,6 +9,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(this.productRepository) : super(const HomeState()) {
     on<HomeStarted>(_onStarted);
     on<HomeCategoryPressed>(_onChangedCategory);
+    on<HomeFavoritePressed>(_onFavoriteProduct);
   }
 
   final ProductRepository productRepository;
@@ -47,5 +48,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       categoryIndex: event.index,
       productDisplays: productDisplays,
     ));
+  }
+
+  Future<void> _onFavoriteProduct(
+    HomeFavoritePressed event,
+    Emitter<HomeState> emit,
+  ) async {
+    final products = [...state.productDisplays];
+    products[event.indexProduct].isFavorite =
+        !products[event.indexProduct].isFavorite;
+    emit(state.copyWith(productDisplays: [...products]));
   }
 }
