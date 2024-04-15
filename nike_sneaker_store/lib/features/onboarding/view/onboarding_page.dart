@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
-import 'package:nike_sneaker_store/features/auth/sign_in/view/sign_in_page.dart';
 import 'package:nike_sneaker_store/features/onboarding/bloc/onboarding_cubit.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_background.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_power.dart';
@@ -10,6 +10,7 @@ import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_w
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 
 import 'package:nike_sneaker_store/resources/ns_color.dart';
+import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -35,13 +36,7 @@ class OnboardingPage extends StatelessWidget {
           curve: Curves.bounceIn,
         );
       } else {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (_) => const SignInPage(),
-          ),
-          (route) => false,
-        );
+        context.push(NSRoutesConst.pathSignIn);
       }
     }
 
