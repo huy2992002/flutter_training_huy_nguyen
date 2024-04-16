@@ -4,15 +4,14 @@ import 'package:nike_sneaker_store/features/auth/forgot_password/view/forgot_pas
 import 'package:nike_sneaker_store/features/auth/sign_in/view/sign_in_page.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/view/sign_up_page.dart';
 import 'package:nike_sneaker_store/features/auth/verification/view/verification_page.dart';
+import 'package:nike_sneaker_store/features/detail/view/detail_page.dart';
 import 'package:nike_sneaker_store/features/favorite/view/favorite_page.dart';
 import 'package:nike_sneaker_store/features/home/view/home_page.dart';
 import 'package:nike_sneaker_store/features/layout/view/layout_page.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/onboarding_page.dart';
 import 'package:nike_sneaker_store/features/splash/views/splash_page.dart';
-import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_information_page.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
-import 'package:nike_sneaker_store/pages/detail/detail_page.dart';
 import 'package:nike_sneaker_store/pages/home/search_page.dart';
 import 'package:nike_sneaker_store/pages/home/setting_page.dart';
 import 'package:nike_sneaker_store/pages/notification/notifications_page.dart';
@@ -122,17 +121,10 @@ class NSRoutesConfig {
         ],
       ),
       GoRoute(
-          name: NSRoutesConst.nameDetail,
-          path: NSRoutesConst.pathDetail,
-          builder: (context, state) {
-            ProductModel? product;
-            if (state.extra != null && state.extra is ProductModel) {
-              product = state.extra! as ProductModel;
-            }
-            return DetailPage(
-              product: product ?? ProductModel(),
-            );
-          }),
+        name: NSRoutesConst.nameDetail,
+        path: NSRoutesConst.pathDetail,
+        builder: (context, state) => const DetailPage(),
+      ),
       GoRoute(
         name: NSRoutesConst.nameCart,
         path: NSRoutesConst.pathCart,
