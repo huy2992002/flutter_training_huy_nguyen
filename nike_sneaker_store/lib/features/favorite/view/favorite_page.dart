@@ -3,11 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
-import 'package:nike_sneaker_store/features/favorite/bloc/favorite_bloc.dart';
-import 'package:nike_sneaker_store/features/favorite/bloc/favorite_event.dart';
-import 'package:nike_sneaker_store/features/favorite/bloc/favorite_state.dart';
+import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
@@ -25,10 +24,17 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FavoriteBloc, FavoriteState>(
-      buildWhen: (previous, current) =>
-          previous.favoriteProducts != current.favoriteProducts,
+    return BlocConsumer<HomeBloc, HomeState>(
+      listenWhen: (previous, current) =>
+          previous.homeStatus != current.homeStatus,
+      listener: (context, state) {
+        if (state.homeStatus == HomeViewStatus.failure) {
+          NSSnackBar.snackbarError(context, title: state.errorMessage);
+        }
+      },
       builder: (context, state) {
+        final favoriteProducts =
+            state.products.where((e) => e.isFavorite == true).toList();
         return Scaffold(
           appBar: NSAppBar(
             title: AppLocalizations.of(context).favorite,
@@ -36,7 +42,7 @@ class _FavoritePageState extends State<FavoritePage> {
               isMarked: myCarts.isNotEmpty,
             ),
           ),
-          body: state.favoriteProducts.isEmpty
+          body: favoriteProducts.isEmpty
               ? Padding(
                   padding: const EdgeInsets.only(
                     left: 30,
@@ -52,7 +58,7 @@ class _FavoritePageState extends State<FavoritePage> {
                   ),
                 )
               : GridView.builder(
-                  itemCount: state.favoriteProducts.length,
+                  itemCount: favoriteProducts.length,
                   padding: const EdgeInsets.only(
                     left: 20,
                     top: 28,
@@ -66,7 +72,7 @@ class _FavoritePageState extends State<FavoritePage> {
                     childAspectRatio: 3 / 4,
                   ),
                   itemBuilder: (_, index) {
-                    final product = state.favoriteProducts[index];
+                    final product = favoriteProducts[index];
                     return CardProduct(
                         product: product,
                         onFavorite: () {
@@ -76,15 +82,18 @@ class _FavoritePageState extends State<FavoritePage> {
                               .auth
                               .currentUser
                               ?.id;
-                          if (userId != null && product.uuid != null) {
+                          if (userId != null) {
                             context.read<HomeBloc>().add(
-                                HomeFavoriteRemove(productId: product.uuid!));
-                            context.read<FavoriteBloc>().add(
-                                  FavoriteRemove(
-                                    userId,
-                                    productID: product.uuid!,
+                                  HomeFavoritePressed(
+                                    userId: userId,
+                                    productId: product.uuid,
                                   ),
                                 );
+                          } else {
+                            NSSnackBar.snackbarError(
+                              context,
+                              title: AppLocalizations.of(context).notFoundUser,
+                            );
                           }
                         },
                         onTap: () => context.push(NSRoutesConst.pathDetail));
