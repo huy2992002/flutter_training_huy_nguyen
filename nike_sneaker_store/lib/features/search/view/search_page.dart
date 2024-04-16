@@ -36,6 +36,9 @@ class SearchPage extends StatelessWidget {
         productRepository: context.read<ProductRepository>(),
       ),
       child: BlocBuilder<SearchBloc, SearchState>(
+        buildWhen: (previous, current) =>
+            previous.status != current.status ||
+            previous.searchProducts != current.searchProducts,
         builder: (context, state) {
           return Scaffold(
             appBar: NSAppBar(
@@ -66,64 +69,71 @@ class SearchPage extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 18),
-                  Expanded(
-                    child: state.searchProducts.isEmpty
-                        ? Padding(
-                            padding: const EdgeInsets.only(top: 250),
-                            child: Text(
-                              _searchController.text.isEmpty
-                                  ? AppLocalizations.of(context).searchProduct
-                                  : AppLocalizations.of(context).isNoResult,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineSmall
-                                  ?.copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                  ),
-                              textAlign: TextAlign.center,
+                  if (state.status == SearchViewStatus.loading)
+                    const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  else
+                    Expanded(
+                      child: state.searchProducts.isEmpty
+                          ? Padding(
+                              padding: const EdgeInsets.only(top: 250),
+                              child: Text(
+                                _searchController.text.isEmpty
+                                    ? AppLocalizations.of(context).searchProduct
+                                    : AppLocalizations.of(context).isNoResult,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall
+                                    ?.copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                          : GridView.builder(
+                              itemCount: state.searchProducts.length,
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 28),
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 16,
+                                crossAxisSpacing: 16,
+                                childAspectRatio: 3 / 4,
+                              ),
+                              itemBuilder: (_, index) {
+                                final product = state.searchProducts[index];
+                                return CardProduct(
+                                    tag: NSConstants.tagProductSearch(
+                                        product.uuid ?? ''),
+                                    product: product,
+                                    onTap: () {
+                                      context.push(
+                                        NSRoutesConst.pathDetail,
+                                        extra: NSConstants.tagProductFavorite(
+                                            product.uuid ?? ''),
+                                      );
+                                      final products = context
+                                          .read<HomeBloc>()
+                                          .state
+                                          .products
+                                          .where(
+                                            (e) =>
+                                                e.category == product.category,
+                                          )
+                                          .toList();
+                                      context.read<DetailBloc>().add(
+                                            DetailSelectStarted(
+                                              product: product,
+                                              products: products,
+                                            ),
+                                          );
+                                    });
+                              },
                             ),
-                          )
-                        : GridView.builder(
-                            itemCount: state.searchProducts.length,
-                            padding: const EdgeInsets.only(top: 10, bottom: 28),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 16,
-                              crossAxisSpacing: 16,
-                              childAspectRatio: 3 / 4,
-                            ),
-                            itemBuilder: (_, index) {
-                              final product = state.searchProducts[index];
-                              return CardProduct(
-                                  tag: NSConstants.tagProductSearch(
-                                      product.uuid ?? ''),
-                                  product: product,
-                                  onTap: () {
-                                    context.push(
-                                      NSRoutesConst.pathDetail,
-                                      extra: NSConstants.tagProductFavorite(
-                                          product.uuid ?? ''),
-                                    );
-                                    final products = context
-                                        .read<HomeBloc>()
-                                        .state
-                                        .products
-                                        .where(
-                                          (e) => e.category == product.category,
-                                        )
-                                        .toList();
-                                    context.read<DetailBloc>().add(
-                                          DetailSelectStarted(
-                                            product: product,
-                                            products: products,
-                                          ),
-                                        );
-                                  });
-                            },
-                          ),
-                  ),
+                    ),
                 ],
               ),
             ),
