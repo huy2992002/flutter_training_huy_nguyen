@@ -134,8 +134,10 @@ class HomePage extends StatelessWidget {
                               padding: const EdgeInsets.only(right: 20),
                               child: CardProduct(
                                 product: product,
-                                onTap: () =>
-                                    context.push(NSRoutesConst.pathDetail),
+                                onTap: () => context.push(
+                                  NSRoutesConst.pathDetail,
+                                  extra: product,
+                                ),
                                 onAddCart: () {
                                   // addCart(product);
                                 },

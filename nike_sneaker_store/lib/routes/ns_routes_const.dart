@@ -40,4 +40,10 @@ class NSRoutesConst {
 
   static const String nameSetting = 'setting';
   static const String pathSetting = '/setting';
+
+  static const String nameSearch = 'search';
+  static const String pathSearch = '/search';
+
+  static const String nameDetail = 'detail';
+  static const String pathDetail = '/detail';
 }
