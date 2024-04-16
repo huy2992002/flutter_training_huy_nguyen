@@ -19,7 +19,7 @@ class ProductRepository {
     }
   }
 
-  Future<List<ProductModel>?> getIdProductFavorites(String? userId) async {
+  Future<List<String>?> getIdProductFavorites(String? userId) async {
     String url =
         '${NSConstants.endPointUsers}?uuid=eq.$userId&select=favorites';
     try {
@@ -29,7 +29,7 @@ class ProductRepository {
         throw Exception('User not found');
       } else {
         return (data[0]['favorites'] as List<dynamic>?)
-            ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => e as String)
             .toList();
       }
     } catch (e) {
@@ -37,8 +37,8 @@ class ProductRepository {
     }
   }
 
-  Future<dynamic> addFavoriteProduct(
-      String userId, List<ProductModel> products) async {
+  Future<dynamic> updateFavoriteProduct(
+      String userId, List<String> products) async {
     try {
       final url = '${NSConstants.endPointUsers}?uuid=eq.$userId';
       apiClient.patch(url, data: {'favorites': products});
