@@ -19,3 +19,5 @@ class DetailChangeProductPressed extends DetailEvent {
 
   final ProductModel product;
 }
+
+class DetailFavoritePressed extends DetailEvent {}

@@ -6,15 +6,19 @@ import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
+import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_state.dart';
 import 'package:nike_sneaker_store/features/detail/view/widgets/ns_read_more.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
 class DetailPage extends StatelessWidget {
@@ -122,6 +126,29 @@ class DetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
+                onTap: () {
+                  String? userId = context
+                      .read<SupabaseServices>()
+                      .supabaseClient
+                      .auth
+                      .currentUser
+                      ?.id;
+                  if (userId != null) {
+                    print('object $userId');
+                    context.read<DetailBloc>().add(DetailFavoritePressed());
+                    context.read<HomeBloc>().add(
+                          HomeFavoritePressed(
+                            userId: userId,
+                            productId: state.productDisplay?.uuid,
+                          ),
+                        );
+                  } else {
+                    NSSnackBar.snackbarError(
+                      context,
+                      title: AppLocalizations.of(context).notFoundUser,
+                    );
+                  }
+                },
                 child: CircleAvatar(
                   radius: 26,
                   backgroundColor:

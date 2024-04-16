@@ -21,5 +21,6 @@ class DetailState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [productDisplay, products];
+  List<Object?> get props =>
+      [productDisplay, products, productDisplay.hashCode];
 }
