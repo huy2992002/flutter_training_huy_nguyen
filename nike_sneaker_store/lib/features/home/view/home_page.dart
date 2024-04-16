@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
+import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
+import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
@@ -134,10 +136,23 @@ class HomePage extends StatelessWidget {
                               padding: const EdgeInsets.only(right: 20),
                               child: CardProduct(
                                 product: product,
-                                onTap: () => context.push(
-                                  NSRoutesConst.pathDetail,
-                                  extra: product,
-                                ),
+                                onTap: () {
+                                  context.push(
+                                    NSRoutesConst.pathDetail,
+                                    extra: product,
+                                  );
+                                  final products = state.products
+                                      .where(
+                                        (e) => e.category == product.category,
+                                      )
+                                      .toList();
+                                  context.read<DetailBloc>().add(
+                                        DetailSelectStarted(
+                                          product: product,
+                                          products: products,
+                                        ),
+                                      );
+                                },
                                 onAddCart: () {
                                   // addCart(product);
                                 },

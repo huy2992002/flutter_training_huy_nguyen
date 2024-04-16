@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
+import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
+import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
@@ -74,29 +76,46 @@ class _FavoritePageState extends State<FavoritePage> {
                   itemBuilder: (_, index) {
                     final product = favoriteProducts[index];
                     return CardProduct(
-                        product: product,
-                        onFavorite: () {
-                          String? userId = context
-                              .read<SupabaseServices>()
-                              .supabaseClient
-                              .auth
-                              .currentUser
-                              ?.id;
-                          if (userId != null) {
-                            context.read<HomeBloc>().add(
-                                  HomeFavoritePressed(
-                                    userId: userId,
-                                    productId: product.uuid,
-                                  ),
-                                );
-                          } else {
-                            NSSnackBar.snackbarError(
-                              context,
-                              title: AppLocalizations.of(context).notFoundUser,
+                      product: product,
+                      onFavorite: () {
+                        String? userId = context
+                            .read<SupabaseServices>()
+                            .supabaseClient
+                            .auth
+                            .currentUser
+                            ?.id;
+                        if (userId != null) {
+                          context.read<HomeBloc>().add(
+                                HomeFavoritePressed(
+                                  userId: userId,
+                                  productId: product.uuid,
+                                ),
+                              );
+                        } else {
+                          NSSnackBar.snackbarError(
+                            context,
+                            title: AppLocalizations.of(context).notFoundUser,
+                          );
+                        }
+                      },
+                      onTap: () {
+                        context.push(
+                          NSRoutesConst.pathDetail,
+                          extra: product,
+                        );
+                        final products = state.products
+                            .where(
+                              (e) => e.category == product.category,
+                            )
+                            .toList();
+                        context.read<DetailBloc>().add(
+                              DetailSelectStarted(
+                                product: product,
+                                products: products,
+                              ),
                             );
-                          }
-                        },
-                        onTap: () => context.push(NSRoutesConst.pathDetail));
+                      },
+                    );
                   },
                 ),
         );
