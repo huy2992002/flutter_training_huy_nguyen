@@ -11,3 +11,11 @@ class DetailSelectStarted extends DetailEvent {
   final ProductModel product;
   final List<ProductModel> products;
 }
+
+class DetailChangeProductPressed extends DetailEvent {
+  DetailChangeProductPressed({
+    required this.product,
+  });
+
+  final ProductModel product;
+}

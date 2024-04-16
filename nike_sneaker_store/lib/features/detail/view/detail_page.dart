@@ -8,6 +8,7 @@ import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
+import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_state.dart';
 import 'package:nike_sneaker_store/features/detail/view/widgets/ns_read_more.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
@@ -85,7 +86,9 @@ class DetailPage extends StatelessWidget {
                     (index) {
                   final productImage = state.products[index];
                   return GestureDetector(
-                    onTap: () {},
+                    onTap: () => context.read<DetailBloc>().add(
+                          DetailChangeProductPressed(product: productImage),
+                        ),
                     child: Container(
                         padding: const EdgeInsets.all(2),
                         margin: const EdgeInsets.only(right: 14),
@@ -119,7 +122,6 @@ class DetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                // onTap: _changedFavorite,
                 child: CircleAvatar(
                   radius: 26,
                   backgroundColor:

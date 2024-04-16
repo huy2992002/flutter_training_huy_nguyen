@@ -5,6 +5,7 @@ import 'package:nike_sneaker_store/features/detail/bloc/detail_state.dart';
 class DetailBloc extends Bloc<DetailEvent, DetailState> {
   DetailBloc() : super(const DetailState()) {
     on<DetailSelectStarted>(_onSelectProduct);
+    on<DetailChangeProductPressed>(_onChangeProduct);
   }
 
   Future<void> _onSelectProduct(
@@ -15,5 +16,12 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       productDisplay: event.product,
       products: event.products,
     ));
+  }
+
+  Future<void> _onChangeProduct(
+    DetailChangeProductPressed event,
+    Emitter<DetailState> emit,
+  ) async {
+    emit(state.copyWith(productDisplay: event.product));
   }
 }
