@@ -26,10 +26,9 @@ class ApiClient {
       'Content-Type': 'application/json',
       'Prefer': 'return=minimal'
     });
-    
+
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
-
         final accessToken = await _prefs.getAccessToken();
         if (accessToken != null) {
           options.headers['Authorization'] = 'Bearer $accessToken';
@@ -111,6 +110,25 @@ class ApiClient {
         data: data,
         options: options,
       );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // PATCH METHOD
+  Future<Response<dynamic>> patch(
+    String url, {
+    dynamic data,
+    Options? options,
+  }) async {
+    try {
+      final response = await _dio.patch(
+        url,
+        data: data,
+        options: options,
+      );
+      print('${response.realUri}');
       return response;
     } catch (e) {
       rethrow;
