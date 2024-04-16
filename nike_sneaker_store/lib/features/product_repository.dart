@@ -10,9 +10,9 @@ class ProductRepository {
   Future<List<ProductModel>?> getProducts() async {
     try {
       final response = await apiClient.get(NSConstants.endPointProducts);
-      final data = response.data as List<dynamic>;
+      final data = response.data as List<dynamic>?;
       return data
-          .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
           .toList();
     } catch (e) {
       rethrow;
@@ -42,6 +42,19 @@ class ProductRepository {
     try {
       final url = '${NSConstants.endPointUsers}?uuid=eq.$userId';
       apiClient.patch(url, data: {'favorites': products});
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<ProductModel>?> fetchProductByName(String name) async {
+    try {
+      final url = '${NSConstants.endPointProducts}?name=ilike.*$name*';
+      final response = await apiClient.get(url);
+      final data = response.data as List<dynamic>;
+      return data
+          .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
+          .toList();
     } catch (e) {
       rethrow;
     }
