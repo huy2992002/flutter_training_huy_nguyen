@@ -9,10 +9,10 @@ import 'package:nike_sneaker_store/features/favorite/view/favorite_page.dart';
 import 'package:nike_sneaker_store/features/home/view/home_page.dart';
 import 'package:nike_sneaker_store/features/layout/view/layout_page.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/onboarding_page.dart';
+import 'package:nike_sneaker_store/features/search/view/search_page.dart';
 import 'package:nike_sneaker_store/features/splash/views/splash_page.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_information_page.dart';
 import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
-import 'package:nike_sneaker_store/pages/home/search_page.dart';
 import 'package:nike_sneaker_store/pages/home/setting_page.dart';
 import 'package:nike_sneaker_store/pages/notification/notifications_page.dart';
 import 'package:nike_sneaker_store/pages/profile/profile_page.dart';
@@ -123,7 +123,13 @@ class NSRoutesConfig {
       GoRoute(
         name: NSRoutesConst.nameDetail,
         path: NSRoutesConst.pathDetail,
-        builder: (context, state) => const DetailPage(),
+        builder: (context, state) {
+          String tag = '';
+          if (state.extra != null && state.extra is String) {
+            tag = state.extra! as String;
+          }
+          return DetailPage(tag: tag);
+        },
       ),
       GoRoute(
         name: NSRoutesConst.nameCart,

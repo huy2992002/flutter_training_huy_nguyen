@@ -7,7 +7,6 @@ import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
-import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_state.dart';
@@ -25,8 +24,11 @@ class DetailPage extends StatelessWidget {
   /// Screen display detail of [ProductModel]
 
   const DetailPage({
+    required this.tag,
     super.key,
   });
+
+  final String tag;
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +75,7 @@ class DetailPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
               child: Hero(
-                tag: NSConstants.tagProductDetail(
-                    state.productDisplay?.uuid ?? ''),
+                tag: tag,
                 child: NSImageNetwork(
                   path: state.productDisplay?.imagePath,
                   height: 120,

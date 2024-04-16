@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
-import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
@@ -15,6 +14,7 @@ class CardProduct extends StatelessWidget {
     this.onTap,
     this.onFavorite,
     this.onAddCart,
+    this.tag,
     super.key,
   });
 
@@ -35,6 +35,8 @@ class CardProduct extends StatelessWidget {
   ///
   ///The [onAddCart] argument can null
   final Function()? onAddCart;
+
+  final String? tag;
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +69,9 @@ class CardProduct extends StatelessWidget {
                           ),
                   ),
                 Hero(
-                    tag: NSConstants.tagProductDetail(product.uuid ?? ''),
-                    child: NSImageNetwork(path: product.imagePath)),
+                  tag: tag ?? '',
+                  child: NSImageNetwork(path: product.imagePath),
+                ),
                 const SizedBox(height: 12),
                 if (product.isBestSeller ?? true) ...[
                   Text(

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
+import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
@@ -76,6 +77,7 @@ class _FavoritePageState extends State<FavoritePage> {
                   itemBuilder: (_, index) {
                     final product = favoriteProducts[index];
                     return CardProduct(
+                      tag: NSConstants.tagProductFavorite(product.uuid ?? ''),
                       product: product,
                       onFavorite: () {
                         String? userId = context
@@ -101,7 +103,8 @@ class _FavoritePageState extends State<FavoritePage> {
                       onTap: () {
                         context.push(
                           NSRoutesConst.pathDetail,
-                          extra: product,
+                          extra: NSConstants.tagProductFavorite(
+                              product.uuid ?? ''),
                         );
                         final products = state.products
                             .where(

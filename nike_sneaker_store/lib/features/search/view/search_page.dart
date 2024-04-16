@@ -6,6 +6,10 @@ import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
+import 'package:nike_sneaker_store/constants/ns_constants.dart';
+import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
+import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
 import 'package:nike_sneaker_store/features/product_repository.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_bloc.dart';
@@ -93,10 +97,30 @@ class SearchPage extends StatelessWidget {
                             itemBuilder: (_, index) {
                               final product = state.searchProducts[index];
                               return CardProduct(
-                                product: product,
-                                onTap: () =>
-                                    context.push(NSRoutesConst.pathDetail),
-                              );
+                                  tag: NSConstants.tagProductSearch(
+                                      product.uuid ?? ''),
+                                  product: product,
+                                  onTap: () {
+                                    context.push(
+                                      NSRoutesConst.pathDetail,
+                                      extra: NSConstants.tagProductFavorite(
+                                          product.uuid ?? ''),
+                                    );
+                                    final products = context
+                                        .read<HomeBloc>()
+                                        .state
+                                        .products
+                                        .where(
+                                          (e) => e.category == product.category,
+                                        )
+                                        .toList();
+                                    context.read<DetailBloc>().add(
+                                          DetailSelectStarted(
+                                            product: product,
+                                            products: products,
+                                          ),
+                                        );
+                                  });
                             },
                           ),
                   ),
