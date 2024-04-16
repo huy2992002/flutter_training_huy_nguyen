@@ -107,6 +107,7 @@
   "goToEmail": "Chuyển đến gmail",
   "goToSignIn": "Quay về đăng nhập",
   "couldNotLaunchGmail": "Không thể chuyển đến Gmail",
+  "notFoundUser": "Phiên bản đăng nhập đã hết hạn, vui lòng đăng nhập lại",
   "discountOff": "{discount}% Giảm",
   "@discountOff": {
     "placeholders": {

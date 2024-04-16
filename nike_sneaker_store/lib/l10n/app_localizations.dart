@@ -735,6 +735,12 @@ abstract class AppLocalizations {
   /// **'Could not launch gmail'**
   String get couldNotLaunchGmail;
 
+  /// No description provided for @notFoundUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Login version has expired, please log in again'**
+  String get notFoundUser;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

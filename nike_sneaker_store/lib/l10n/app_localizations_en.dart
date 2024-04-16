@@ -326,6 +326,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get couldNotLaunchGmail => 'Could not launch gmail';
 
   @override
+  String get notFoundUser => 'Login version has expired, please log in again';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

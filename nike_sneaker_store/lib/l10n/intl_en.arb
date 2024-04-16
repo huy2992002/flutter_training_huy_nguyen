@@ -107,6 +107,7 @@
   "goToEmail": "Go to email",
   "goToSignIn": "Go to sign in",
   "couldNotLaunchGmail": "Could not launch gmail",
+  "notFoundUser": "Login version has expired, please log in again",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {
