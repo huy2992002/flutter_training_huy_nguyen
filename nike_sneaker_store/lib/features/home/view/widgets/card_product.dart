@@ -54,16 +54,18 @@ class CardProduct extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: onFavorite,
-                  child: product.isFavorite
-                      ? SvgPicture.asset(Assets.icons.icHeart)
-                      : SvgPicture.asset(
-                          Assets.icons.icHeartOutline,
-                          color:
-                              Theme.of(context).colorScheme.onPrimaryContainer,
-                        ),
-                ),
+                if (onFavorite != null)
+                  GestureDetector(
+                    onTap: onFavorite,
+                    child: product.isFavorite
+                        ? SvgPicture.asset(Assets.icons.icHeart)
+                        : SvgPicture.asset(
+                            Assets.icons.icHeartOutline,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                          ),
+                  ),
                 Hero(
                     tag: NSConstants.tagProductDetail(product.uuid ?? ''),
                     child: NSImageNetwork(path: product.imagePath)),
