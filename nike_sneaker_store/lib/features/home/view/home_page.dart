@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
+import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
-import 'package:nike_sneaker_store/features/favorite/bloc/favorite_bloc.dart';
-import 'package:nike_sneaker_store/features/favorite/bloc/favorite_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
@@ -44,9 +43,16 @@ class HomePage extends StatelessWidget {
       appBar: AppBarHome(
         isMarkerNotification: myCarts.isNotEmpty,
       ),
-      body: BlocBuilder<HomeBloc, HomeState>(
+      body: BlocConsumer<HomeBloc, HomeState>(
+        listenWhen: (previous, current) =>
+            previous.homeStatus != current.homeStatus,
+        listener: (context, state) {
+          if (state.homeStatus == HomeViewStatus.failure) {
+            NSSnackBar.snackbarError(context, title: state.errorMessage);
+          }
+        },
         buildWhen: (previous, current) =>
-            previous.isLoading != current.isLoading ||
+            previous.homeStatus != current.homeStatus ||
             previous.productDisplays != current.productDisplays,
         builder: (context, state) {
           return RefreshIndicator(
@@ -107,7 +113,7 @@ class HomePage extends StatelessWidget {
                 TitleHome(text: AppLocalizations.of(context).popularShoes),
                 SizedBox(
                   height: 201,
-                  child: state.isLoading
+                  child: state.homeStatus == HomeViewStatus.loading
                       ? ListView.separated(
                           itemCount: 3,
                           scrollDirection: Axis.horizontal,
@@ -140,16 +146,19 @@ class HomePage extends StatelessWidget {
                                       .auth
                                       .currentUser
                                       ?.id;
-
                                   if (userId != null) {
                                     context.read<HomeBloc>().add(
                                           HomeFavoritePressed(
-                                              indexProduct: index),
+                                            userId: userId,
+                                            productId: product.uuid,
+                                          ),
                                         );
-                                    context.read<FavoriteBloc>().add(
-                                          FavoritePressed(userId,
-                                              product: product),
-                                        );
+                                  } else {
+                                    NSSnackBar.snackbarError(
+                                      context,
+                                      title: AppLocalizations.of(context)
+                                          .notFoundUser,
+                                    );
                                   }
                                 },
                               ),

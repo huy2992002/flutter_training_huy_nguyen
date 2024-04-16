@@ -14,10 +14,12 @@ class HomeCategoryPressed extends HomeEvent {
 
 class HomeFavoritePressed extends HomeEvent {
   HomeFavoritePressed({
-    required this.indexProduct,
+    required this.userId,
+    this.productId,
   });
 
-  final int indexProduct;
+  final String userId;
+  final String? productId;
 }
 
 class HomeFavoriteRemove extends HomeEvent {

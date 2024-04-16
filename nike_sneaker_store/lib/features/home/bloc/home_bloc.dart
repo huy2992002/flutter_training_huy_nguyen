@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls, cascade_invocations
 
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
@@ -12,20 +13,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeStarted>(_onStarted);
     on<HomeCategoryPressed>(_onChangedCategory);
     on<HomeFavoritePressed>(_onFavoriteProduct);
-    on<HomeFavoriteRemove>(_removeFavoriteProduct);
   }
 
   final ProductRepository productRepository;
 
   Future<void> _onStarted(HomeStarted event, Emitter<HomeState> emit) async {
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(homeStatus: HomeViewStatus.loading));
     List<ProductModel> products = [];
     try {
       final productFavorites =
           await productRepository.getIdProductFavorites(event.userId) ?? [];
       products = await productRepository.getProducts() ?? [];
       products.forEach((element) {
-        if (productFavorites.any((e) => e.uuid == element.uuid)) {
+        if (productFavorites.any((e) => e == element.uuid)) {
           element.isFavorite = true;
         }
       });
@@ -33,12 +33,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         products: products,
         productDisplays: products,
         categoryIndex: 0,
-        isLoading: false,
+        homeStatus: HomeViewStatus.success,
       ));
     } catch (e) {
+      String? message;
+
+      if (e is DioException) {
+        message = e.message;
+      } else {
+        message = e.toString();
+      }
+
       emit(state.copyWith(
         categoryIndex: 0,
-        isLoading: false,
+        homeStatus: HomeViewStatus.failure,
+        errorMessage: message,
       ));
     }
   }
@@ -64,23 +73,37 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeFavoritePressed event,
     Emitter<HomeState> emit,
   ) async {
-    final products = [...state.productDisplays];
-    products[event.indexProduct].isFavorite =
-        !products[event.indexProduct].isFavorite;
+    List<ProductModel> products = [...state.products];
+    List<String> productFavorites = [];
+    try {
+      products.forEach((e) {
+        if (e.uuid == event.productId) {
+          e.isFavorite = !e.isFavorite;
+        }
+        if (e.isFavorite == true && e.uuid != null) {
+          productFavorites.add(e.uuid!);
+        }
+      });
 
-    emit(state.copyWith(productDisplays: products));
-  }
+      emit(state.copyWith(productDisplays: products));
 
-  Future<void> _removeFavoriteProduct(
-    HomeFavoriteRemove event,
-    Emitter<HomeState> emit,
-  ) async {
-    final products = state.productDisplays;
-    for (var element in products) {
-      if (element.uuid == event.productId) {
-        element.isFavorite = false;
+      productRepository.updateFavoriteProduct(
+        event.userId,
+        productFavorites,
+      );
+    } catch (e) {
+      String? message;
+
+      if (e is DioException) {
+        message = e.message;
+      } else {
+        message = e.toString();
       }
+
+      emit(state.copyWith(
+        homeStatus: HomeViewStatus.failure,
+        errorMessage: message,
+      ));
     }
-    emit(state.copyWith(productDisplays: products));
   }
 }
