@@ -46,6 +46,30 @@ class ProductModel {
     };
   }
 
+  ProductModel copyWith({
+    String? uuid,
+    String? name,
+    String? imagePath,
+    double? price,
+    int? quantity,
+    String? description,
+    bool? isBestSeller,
+    String? category,
+    bool? isFavorite,
+  }) {
+    return ProductModel(
+      uuid: uuid ?? this.uuid,
+      name: name ?? this.name,
+      imagePath: imagePath ?? this.imagePath,
+      price: price ?? this.price,
+      quantity: quantity ?? this.quantity,
+      description: description ?? this.description,
+      isBestSeller: isBestSeller ?? this.isBestSeller,
+      category: category ?? this.category,
+      isFavorite: isFavorite ?? this.isFavorite,
+    );
+  }
+
   /// uuid of [ProductModel] , argument must not be duplicated
   String? uuid;
 
