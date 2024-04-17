@@ -33,6 +33,7 @@ class _SplashPageState extends State<SplashPage> {
 
   Future<void> _toPage() async {
     await Future.delayed(const Duration(milliseconds: 2300), () {});
+    if (!mounted) return;
     String? accessToken =
         await context.read<SharedPrefServices>().getAccessToken();
     if (accessToken == null) {
