@@ -11,13 +11,13 @@ import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
-import 'package:nike_sneaker_store/features/product_repository.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_bloc.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_event.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_state.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
+import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/utils/debounce.dart';
 

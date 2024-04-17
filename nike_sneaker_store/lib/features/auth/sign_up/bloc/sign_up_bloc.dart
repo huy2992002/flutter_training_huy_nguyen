@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nike_sneaker_store/features/auth/auth_repository.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_event.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_state.dart';
+import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

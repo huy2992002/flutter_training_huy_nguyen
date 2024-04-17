@@ -4,8 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
-import 'package:nike_sneaker_store/features/product_repository.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
+import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {

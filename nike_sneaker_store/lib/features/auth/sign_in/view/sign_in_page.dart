@@ -5,7 +5,6 @@ import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_text_button.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_text_form_field.dart';
-import 'package:nike_sneaker_store/features/auth/auth_repository.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_bloc.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_event.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_state.dart';
@@ -13,6 +12,7 @@ import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/prompt_tex
 import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_label.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';

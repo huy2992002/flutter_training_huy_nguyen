@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nike_sneaker_store/features/product_repository.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_event.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_state.dart';
+import 'package:nike_sneaker_store/repository/product_repository.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc({required this.productRepository}) : super(const SearchState()) {
@@ -20,7 +20,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         emit(state.copyWith(searchProducts: []));
       } else {
         final products =
-            await productRepository.fetchProductByName(event.searchText);
+            await productRepository.fetchProductsByName(event.searchText);
 
         emit(
           state.copyWith(
