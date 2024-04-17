@@ -46,4 +46,7 @@ class NSRoutesConst {
 
   static const String nameDetail = 'detail';
   static const String pathDetail = '/detail';
+
+  static const String nameChangePassword = 'changePassword';
+  static const String pathChangePassword = '/changePassword';
 }

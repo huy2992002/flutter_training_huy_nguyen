@@ -40,7 +40,7 @@ class CardNotification extends StatelessWidget {
                 color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Image.asset(notification.product.imagePath),
+              child: Image.asset(notification.product.imagePath ?? ''),
             ),
             const SizedBox(width: 30),
             Expanded(
@@ -62,7 +62,7 @@ class CardNotification extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        notification.product.price.toPriceDollar(),
+                        (notification.product.price ?? 0).toPriceDollar(),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Theme.of(context).colorScheme.error,
                               decoration: TextDecoration.lineThrough,

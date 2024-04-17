@@ -3,13 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
-import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_text_form_field.dart';
+import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_label.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/models/user_model.dart';
-import 'package:nike_sneaker_store/pages/auth/widgets/title_label.dart';
-import 'package:nike_sneaker_store/services/local/shared_pref.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class ChangePasswordPage extends StatelessWidget {
@@ -29,28 +26,6 @@ class ChangePasswordPage extends StatelessWidget {
 
     /// The global key check [Validator] in page
     final formKey = GlobalKey<FormState>();
-
-    Future<void> onSave() async {
-      if (formKey.currentState == null || !formKey.currentState!.validate()) {
-        return;
-      }
-      UserModel? userLogin = SharedPrefs.userLogin;
-      if (currentPasswordController.text != userLogin?.password) {
-        NSSnackBar.snackbarError(
-          context,
-          title: AppLocalizations.of(context).currentPasswordIncorrect,
-        );
-        return;
-      }
-      List<UserModel> users = await SharedPrefs.getUsers() ?? accounts;
-      users.singleWhere((e) => e.email == (userLogin?.email ?? '')).password =
-          newPasswordController.text;
-      SharedPrefs.saveUsers(users);
-      NSSnackBar.snackbarSuccess(
-        context,
-        title: AppLocalizations.of(context).passwordChangedSuccess,
-      );
-    }
 
     return GestureDetector(
       child: Scaffold(
@@ -107,7 +82,7 @@ class ChangePasswordPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 100),
                 NSElevatedButton.text(
-                  onPressed: onSave,
+                  // onPressed: onSave,
                   text: AppLocalizations.of(context).saveNow,
                 )
               ],
