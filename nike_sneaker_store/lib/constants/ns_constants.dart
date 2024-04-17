@@ -20,7 +20,7 @@ class NSConstants {
 
   static const pathGmail = 'https://mail.google.com/';
 
-  static const baseUrl = 'https://byleabxvsiwkhebkwpcp.supabase.co/rest/v1';
+  static final baseUrl = Env.tableBaseUrl;
 
   static const endPointProducts = '/products';
 
