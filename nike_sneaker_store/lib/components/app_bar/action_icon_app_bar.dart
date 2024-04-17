@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
-import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
+import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 
 class ActionIconAppBar extends StatelessWidget {
   /// Cart icon in AppBar with action to go to your cart
@@ -11,7 +12,7 @@ class ActionIconAppBar extends StatelessWidget {
     this.isMarked = false,
   });
 
-  /// The [isMarked] argument is true will display marker 
+  /// The [isMarked] argument is true will display marker
   final bool isMarked;
 
   @override
@@ -19,12 +20,7 @@ class ActionIconAppBar extends StatelessWidget {
     return Stack(
       children: [
         NsIconButton(
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => const CartPage(),
-            ),
-          ),
+          onPressed: () => context.push(NSRoutesConst.pathCart),
           icon: SvgPicture.asset(
             Assets.icons.icBag,
             color: Theme.of(context).colorScheme.onBackground,
