@@ -23,6 +23,7 @@ class NSSnackBar {
       SnackBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        duration: const Duration(milliseconds: 500),
         content: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
           decoration: BoxDecoration(
