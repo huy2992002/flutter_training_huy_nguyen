@@ -329,6 +329,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get notFoundUser => 'Phiên bản đăng nhập đã hết hạn, vui lòng đăng nhập lại';
 
   @override
+  String get productHaveBeenRemove => 'Sản phẩm đã được xóa khỏi giỏ hàng';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm';
   }

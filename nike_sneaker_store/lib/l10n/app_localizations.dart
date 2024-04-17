@@ -741,6 +741,12 @@ abstract class AppLocalizations {
   /// **'Login version has expired, please log in again'**
   String get notFoundUser;
 
+  /// No description provided for @productHaveBeenRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Product has been removed from the cart'**
+  String get productHaveBeenRemove;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

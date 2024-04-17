@@ -108,6 +108,7 @@
   "goToSignIn": "Quay về đăng nhập",
   "couldNotLaunchGmail": "Không thể chuyển đến Gmail",
   "notFoundUser": "Phiên bản đăng nhập đã hết hạn, vui lòng đăng nhập lại",
+  "productHaveBeenRemove": "Sản phẩm đã được xóa khỏi giỏ hàng",
   "discountOff": "{discount}% Giảm",
   "@discountOff": {
     "placeholders": {

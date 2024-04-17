@@ -329,6 +329,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notFoundUser => 'Login version has expired, please log in again';
 
   @override
+  String get productHaveBeenRemove => 'Product has been removed from the cart';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }
