@@ -7,6 +7,7 @@ import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
+import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
@@ -16,7 +17,6 @@ import 'package:nike_sneaker_store/features/search/bloc/search_event.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_state.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/utils/debounce.dart';
@@ -51,7 +51,9 @@ class SearchPage extends StatelessWidget {
                 ),
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
               ),
-              rightIcon: ActionIconAppBar(isMarked: myCarts.isNotEmpty),
+              rightIcon: ActionIconAppBar(
+                isMarked: context.read<CartBloc>().state.myCarts.isNotEmpty,
+              ),
             ),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

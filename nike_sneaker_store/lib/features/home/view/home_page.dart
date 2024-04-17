@@ -5,6 +5,7 @@ import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
+import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
@@ -16,7 +17,6 @@ import 'package:nike_sneaker_store/features/home/view/widgets/card_sale.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/title_home.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBarHome(
-        isMarkerNotification: myCarts.isNotEmpty,
+        isMarkerNotification: context.read<CartBloc>().state.myCarts.isNotEmpty,
       ),
       body: BlocConsumer<HomeBloc, HomeState>(
         listenWhen: (previous, current) =>

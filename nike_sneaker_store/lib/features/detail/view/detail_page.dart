@@ -7,6 +7,7 @@ import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
+import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_state.dart';
@@ -46,7 +47,7 @@ class DetailPage extends StatelessWidget {
           ),
           title: 'Details',
           rightIcon: ActionIconAppBar(
-            isMarked: myCarts.isNotEmpty,
+            isMarked: context.read<CartBloc>().state.myCarts.isNotEmpty,
           ),
         ),
         body: ListView(

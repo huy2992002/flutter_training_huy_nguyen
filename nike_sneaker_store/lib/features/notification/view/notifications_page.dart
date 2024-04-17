@@ -22,10 +22,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
       appBar: NSAppBar(
         title: AppLocalizations.of(context).notifications,
         rightIcon: NsIconButton(
-          onPressed: () {
-            notifications.clear();
-            setState(() {});
-          },
+          onPressed: () {},
           icon: SvgPicture.asset(
             Assets.icons.icTrash,
             color: Theme.of(context).colorScheme.onPrimaryContainer,
@@ -33,55 +30,55 @@ class _NotificationsPageState extends State<NotificationsPage> {
           backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (notifications.isNotEmpty)
-              Text(
-                AppLocalizations.of(context).recent,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            const SizedBox(height: 16),
-            if (notifications.isEmpty)
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 30,
-                  top: 250,
-                  right: 30,
-                ),
-                child: Text(
-                  AppLocalizations.of(context).noFavoriteNotification,
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                  textAlign: TextAlign.center,
-                ),
-              )
-            else
-              Expanded(
-                child: ListView.builder(
-                  itemCount: notifications.length,
-                  itemBuilder: (_, index) {
-                    final notification = notifications[index];
+      // body: Padding(
+      //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     children: [
+      //       if (notifications.isNotEmpty)
+      //         Text(
+      //           AppLocalizations.of(context).recent,
+      //           style: Theme.of(context).textTheme.titleMedium,
+      //         ),
+      //       const SizedBox(height: 16),
+      //       if (notifications.isEmpty)
+      //         Padding(
+      //           padding: const EdgeInsets.only(
+      //             left: 30,
+      //             top: 250,
+      //             right: 30,
+      //           ),
+      //           child: Text(
+      //             AppLocalizations.of(context).noFavoriteNotification,
+      //             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+      //                   color: Theme.of(context).colorScheme.primary,
+      //                 ),
+      //             textAlign: TextAlign.center,
+      //           ),
+      //         )
+      //       else
+      //         Expanded(
+      //           child: ListView.builder(
+      //             itemCount: notifications.length,
+      //             itemBuilder: (_, index) {
+      //               final notification = notifications[index];
 
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
-                      child: CardNotification(
-                        notification: notification,
-                        onTap: () {
-                          notification.isRead = true;
-                          setState(() {});
-                        },
-                      ),
-                    );
-                  },
-                ),
-              )
-          ],
-        ),
-      ),
+      //               return Padding(
+      //                 padding: const EdgeInsets.only(bottom: 16),
+      //                 child: CardNotification(
+      //                   notification: notification,
+      //                   onTap: () {
+      //                     notification.isRead = true;
+      //                     setState(() {});
+      //                   },
+      //                 ),
+      //               );
+      //             },
+      //           ),
+      //         )
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

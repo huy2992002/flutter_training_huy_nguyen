@@ -5,6 +5,7 @@ import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
+import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
@@ -12,7 +13,6 @@ import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 
@@ -42,7 +42,7 @@ class _FavoritePageState extends State<FavoritePage> {
           appBar: NSAppBar(
             title: AppLocalizations.of(context).favorite,
             rightIcon: ActionIconAppBar(
-              isMarked: myCarts.isNotEmpty,
+              isMarked: context.read<CartBloc>().state.myCarts.isNotEmpty,
             ),
           ),
           body: favoriteProducts.isEmpty
