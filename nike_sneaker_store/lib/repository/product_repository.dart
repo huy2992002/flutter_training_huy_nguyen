@@ -43,7 +43,7 @@ class ProductRepository {
     }
   }
 
-  Future<List<String>?> getIdProductCart(String? userId) async {
+  Future<List<ProductModel>?> getIdProductCart(String? userId) async {
     String url = '${NSConstants.endPointUsers}?uuid=eq.$userId&select=myCarts';
     try {
       final response = await apiClient.get(url);
@@ -51,9 +51,15 @@ class ProductRepository {
       if (data.isEmpty) {
         throw Exception('User not found');
       } else {
-        return (data[0]['myCarts'] as List<dynamic>?)
-            ?.map((e) => e as String)
-            .toList();
+        if (data[0] is Map && (data[0] as Map).containsKey('myCarts')) {
+          return (data[0]['myCarts'] as List<dynamic>?)
+              ?.map((e) => e is Map<String, dynamic>
+                  ? ProductModel.fromJson(e)
+                  : ProductModel())
+              .toList();
+        } else {
+          throw Exception('Dont found myCarts on server');
+        }
       }
     } catch (e) {
       rethrow;
