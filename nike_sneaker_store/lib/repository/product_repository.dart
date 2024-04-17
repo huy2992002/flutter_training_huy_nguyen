@@ -76,6 +76,16 @@ class ProductRepository {
     }
   }
 
+  Future<dynamic> updateMyCart(
+      String userId, List<ProductModel> products) async {
+    try {
+      final url = '${NSConstants.endPointUsers}?uuid=eq.$userId';
+      apiClient.patch(url, data: {'myCarts': products});
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<List<ProductModel>?> fetchProductsByName(String name) async {
     try {
       final url = '${NSConstants.endPointProducts}?name=ilike.*$name*';
