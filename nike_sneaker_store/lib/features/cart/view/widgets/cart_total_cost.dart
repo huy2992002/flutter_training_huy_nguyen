@@ -1,28 +1,31 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
+import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
+import 'package:nike_sneaker_store/features/cart/view/widgets/cart_value_item.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
-import 'package:nike_sneaker_store/pages/cart/widgets/cart_value_item.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
+import 'package:provider/provider.dart';
 
 class CartTotalCost extends StatelessWidget {
   const CartTotalCost({
-    required this.onCheckout,
+    this.onCheckout,
     super.key,
     this.canCheckOut = false,
   });
 
-  final Function() onCheckout;
+  final Function()? onCheckout;
   final bool canCheckOut;
 
   @override
   Widget build(BuildContext context) {
     double subTotal() {
       double subTotal = 0;
+      final myCarts = context.read<CartBloc>().state.myCarts;
       for (ProductModel pr in myCarts) {
-        subTotal += pr.price * pr.quantity;
+        subTotal += (pr.price ?? 0) * (pr.quantity ?? 0);
       }
       return subTotal;
     }
@@ -79,7 +82,7 @@ class CartTotalCost extends StatelessWidget {
           NSElevatedButton.text(
             onPressed: () {
               if (!canCheckOut) return;
-              onCheckout.call();
+              onCheckout?.call();
             },
             text: AppLocalizations.of(context).checkOut,
             backgroundColor: !canCheckOut

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
@@ -45,14 +46,16 @@ class CardCartProduct extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 85,
-            height: 85,
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.background,
               borderRadius: BorderRadius.circular(16),
             ),
-            child: Image.asset(product.imagePath),
+            child: NSImageNetwork(
+              path: product.imagePath,
+              width: 77,
+              height: 77,
+            ),
           ),
           const SizedBox(width: 30),
           Expanded(
@@ -61,13 +64,13 @@ class CardCartProduct extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product.name,
+                  product.name ?? '',
                   style: Theme.of(context).textTheme.bodyMedium,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  product.price.toPriceDollar(),
+                  (product.price ?? 0).toPriceDollar(),
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ],
