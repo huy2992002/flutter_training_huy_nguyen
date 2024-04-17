@@ -11,9 +11,11 @@ class ProductRepository {
     try {
       final response = await apiClient.get(NSConstants.endPointProducts);
       final data = response.data as List<dynamic>?;
-      return data
-          ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
-          .toList();
+      return data?.map((e) {
+        return e is Map<String, dynamic>
+            ? ProductModel.fromJson(e)
+            : ProductModel();
+      }).toList();
     } catch (e) {
       rethrow;
     }
@@ -28,7 +30,28 @@ class ProductRepository {
       if (data.isEmpty) {
         throw Exception('User not found');
       } else {
-        return (data[0]['favorites'] as List<dynamic>?)
+        if (data[0] is Map && (data[0] as Map).containsKey('favorites')) {
+          return (data[0]['favorites'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList();
+        } else {
+          throw Exception('Dont found favorites on server');
+        }
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<String>?> getIdProductCart(String? userId) async {
+    String url = '${NSConstants.endPointUsers}?uuid=eq.$userId&select=myCarts';
+    try {
+      final response = await apiClient.get(url);
+      final data = response.data as List<dynamic>;
+      if (data.isEmpty) {
+        throw Exception('User not found');
+      } else {
+        return (data[0]['myCarts'] as List<dynamic>?)
             ?.map((e) => e as String)
             .toList();
       }
@@ -47,13 +70,15 @@ class ProductRepository {
     }
   }
 
-  Future<List<ProductModel>?> fetchProductByName(String name) async {
+  Future<List<ProductModel>?> fetchProductsByName(String name) async {
     try {
       final url = '${NSConstants.endPointProducts}?name=ilike.*$name*';
       final response = await apiClient.get(url);
       final data = response.data as List<dynamic>;
       return data
-          .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => e is Map<String, dynamic>
+              ? ProductModel.fromJson(e)
+              : ProductModel())
           .toList();
     } catch (e) {
       rethrow;
