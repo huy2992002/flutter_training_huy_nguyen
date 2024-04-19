@@ -1,3 +1,5 @@
+import 'package:nike_sneaker_store/models/product_model.dart';
+
 class UserModel {
   /// Object user
   ///
@@ -11,6 +13,9 @@ class UserModel {
     this.avatar,
     this.address,
     this.phone,
+    this.favorites,
+    this.myCarts,
+    this.notifications,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -32,6 +37,9 @@ class UserModel {
       if (address != null) 'address': address,
       if (avatar != null) 'avatar': avatar,
       if (phone != null) 'phone': phone,
+      if (favorites != null) 'favorites': favorites,
+      if (myCarts != null) 'myCarts': myCarts,
+      if (notifications != null) 'notifications': notifications,
     };
   }
 
@@ -52,4 +60,10 @@ class UserModel {
 
   /// number phone of user
   String? phone;
+
+  List<String>? favorites;
+
+  List<ProductModel>? myCarts;
+
+  List<ProductModel>? notifications;
 }
