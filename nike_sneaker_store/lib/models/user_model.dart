@@ -2,7 +2,7 @@ class UserModel {
   /// Object user
   ///
   /// include
-  /// [uuid], [name], [email], [password] arguments must not be null
+  /// [uuid], [name], [email] arguments must not be null
   /// and [avatar], [address], [phone] argument must be null
   UserModel({
     this.uuid,
