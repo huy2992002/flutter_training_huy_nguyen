@@ -333,6 +333,12 @@ abstract class AppLocalizations {
   /// **'Enter a valid email address'**
   String get validEmailAddress;
 
+  /// No description provided for @validPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number'**
+  String get validPhoneNumber;
+
   /// No description provided for @confirmPasswordNotMatch.
   ///
   /// In en, this message translates to:

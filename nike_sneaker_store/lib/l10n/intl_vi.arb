@@ -39,6 +39,7 @@
   "fieldIsRequired": "Vui lòng không để rỗng",
   "passwordLeast6": "Mật khẩu phải có ít nhất 6 ký tự",
   "validEmailAddress": "Vui lòng nhập địa chỉ email hợp lệ",
+  "validPhoneNumber": "Vui lòng nhập số điện thoại hợp lệ",
   "confirmPasswordNotMatch": "Xác nhận mật khẩu không khớp",
   "emailOrPasswordIncorrect": "Email hoặc mật khẩu không đúng",
   "hintTextEmail": "xyz@gmail.com",

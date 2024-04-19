@@ -125,6 +125,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get validEmailAddress => 'Vui lòng nhập địa chỉ email hợp lệ';
 
   @override
+  String get validPhoneNumber => 'Vui lòng nhập số điện thoại hợp lệ';
+
+  @override
   String get confirmPasswordNotMatch => 'Xác nhận mật khẩu không khớp';
 
   @override

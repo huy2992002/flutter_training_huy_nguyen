@@ -125,6 +125,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get validEmailAddress => 'Enter a valid email address';
 
   @override
+  String get validPhoneNumber => 'Enter a valid phone number';
+
+  @override
   String get confirmPasswordNotMatch => 'Confirm password is not match';
 
   @override

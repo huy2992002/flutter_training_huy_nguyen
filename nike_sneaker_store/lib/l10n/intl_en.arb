@@ -39,6 +39,7 @@
   "fieldIsRequired": "This field is required",
   "passwordLeast6": "Password must be at least 6 digits long",
   "validEmailAddress": "Enter a valid email address",
+  "validPhoneNumber": "Enter a valid phone number",
   "confirmPasswordNotMatch": "Confirm password is not match",
   "emailOrPasswordIncorrect": "Email or password is incorrect",
   "emailAlreadyExists": "Email already exists",
