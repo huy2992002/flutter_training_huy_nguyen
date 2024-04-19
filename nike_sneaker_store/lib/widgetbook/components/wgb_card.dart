@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:nike_sneaker_store/features/cart/view/widgets/card_cart_product.dart';
+import 'package:nike_sneaker_store/features/home/view/widgets/card_category.dart';
+import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
+import 'package:nike_sneaker_store/features/home/view/widgets/card_sale.dart';
+import 'package:nike_sneaker_store/features/notification/view/widgets/card_notification.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
-import 'package:nike_sneaker_store/pages/cart/widgets/card_cart_product.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/card_category.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/card_product.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/card_sale.dart';
-import 'package:nike_sneaker_store/pages/notification/widgets/card_notification.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -95,7 +95,7 @@ Widget cardNotification(BuildContext context) {
     priceSale: context.knobs.double.slider(
       label: 'Price Sale',
       min: 1,
-      max: product.price,
+      max: product.price ?? 10,
       initialValue: 100,
     ),
     date: 'date',
