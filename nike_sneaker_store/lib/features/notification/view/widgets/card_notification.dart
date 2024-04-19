@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
 
@@ -40,7 +41,7 @@ class CardNotification extends StatelessWidget {
                 color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Image.asset(notification.product.imagePath ?? ''),
+              child: NSImageNetwork(path: notification.product?.imagePath),
             ),
             const SizedBox(width: 30),
             Expanded(
@@ -49,9 +50,9 @@ class CardNotification extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    notification.title,
+                    notification.title ?? '',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: notification.isRead
+                          color: notification.isRead ?? false
                               ? Theme.of(context).colorScheme.onPrimaryContainer
                               : Theme.of(context).colorScheme.primary,
                         ),
@@ -62,7 +63,7 @@ class CardNotification extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        (notification.product.price ?? 0).toPriceDollar(),
+                        (notification.product?.price ?? 0).toPriceDollar(),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Theme.of(context).colorScheme.error,
                               decoration: TextDecoration.lineThrough,
@@ -70,7 +71,7 @@ class CardNotification extends StatelessWidget {
                       ),
                       const SizedBox(width: 20),
                       Text(
-                        notification.priceSale.toPriceDollar(),
+                        notification.priceSale?.toPriceDollar() ?? '',
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
