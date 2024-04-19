@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_avatar.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
 import 'package:nike_sneaker_store/features/layout/bloc/layout_cubit.dart';
 import 'package:nike_sneaker_store/features/layout/view/widgets/card_menu_item.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
@@ -10,15 +13,9 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
-import 'package:provider/provider.dart';
 
 class MenuPage extends StatelessWidget {
-  const MenuPage({
-    super.key,
-    this.name,
-  });
-
-  final String? name;
+  const MenuPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +29,14 @@ class MenuPage extends StatelessWidget {
         children: [
           NSAvatar(imagePath: Assets.images.imgAvatar.path),
           const SizedBox(height: 15),
-          Text(
-            name ?? '-:-',
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge
-                ?.copyWith(color: Theme.of(context).colorScheme.onSecondary),
+          BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) => Text(
+              state.user?.name ?? '-:-',
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge
+                  ?.copyWith(color: Theme.of(context).colorScheme.onSecondary),
+            ),
           ),
           const SizedBox(height: 50),
           CardMenuItem(
