@@ -5,18 +5,18 @@ import 'package:nike_sneaker_store/features/auth/forgot_password/view/forgot_pas
 import 'package:nike_sneaker_store/features/auth/sign_in/view/sign_in_page.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/view/sign_up_page.dart';
 import 'package:nike_sneaker_store/features/auth/verification/view/verification_page.dart';
+import 'package:nike_sneaker_store/features/cart/view/cart_information_page.dart';
+import 'package:nike_sneaker_store/features/cart/view/cart_page.dart';
 import 'package:nike_sneaker_store/features/detail/view/detail_page.dart';
 import 'package:nike_sneaker_store/features/favorite/view/favorite_page.dart';
 import 'package:nike_sneaker_store/features/home/view/home_page.dart';
 import 'package:nike_sneaker_store/features/layout/view/layout_page.dart';
 import 'package:nike_sneaker_store/features/notification/view/notifications_page.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/onboarding_page.dart';
+import 'package:nike_sneaker_store/features/profile/view/profile_page.dart';
 import 'package:nike_sneaker_store/features/search/view/search_page.dart';
+import 'package:nike_sneaker_store/features/setting/view/setting_page.dart';
 import 'package:nike_sneaker_store/features/splash/views/splash_page.dart';
-import 'package:nike_sneaker_store/pages/cart/cart_information_page.dart';
-import 'package:nike_sneaker_store/pages/cart/cart_page.dart';
-import 'package:nike_sneaker_store/pages/home/setting_page.dart';
-import 'package:nike_sneaker_store/pages/profile/profile_page.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 
 class NSRoutesConfig {
