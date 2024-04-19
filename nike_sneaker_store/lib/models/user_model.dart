@@ -1,3 +1,4 @@
+import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 
 class UserModel {
@@ -65,5 +66,5 @@ class UserModel {
 
   List<ProductModel>? myCarts;
 
-  List<ProductModel>? notifications;
+  List<NotificationModel>? notifications;
 }
