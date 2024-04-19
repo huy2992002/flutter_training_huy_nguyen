@@ -56,4 +56,16 @@ class Validator {
     }
     return null;
   }
+
+  static String? validatorPhoneNumber(BuildContext context, String? value) {
+    if ((value ?? '').isEmpty) {
+      return AppLocalizations.of(context).fieldIsRequired;
+    }
+
+    final regex = RegExp(NSConstants.phonePattern);
+    if (!regex.hasMatch(value ?? '')) {
+      return AppLocalizations.of(context).validPhoneNumber;
+    }
+    return null;
+  }
 }
