@@ -8,6 +8,7 @@ import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
+import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_state.dart';
@@ -168,6 +169,25 @@ class DetailPage extends StatelessWidget {
                 ),
               ),
               NSElevatedButton.icon(
+                onPressed: () {
+                  String? userId = context
+                      .read<SupabaseServices>()
+                      .supabaseClient
+                      .auth
+                      .currentUser
+                      ?.id;
+                  if (userId != null && state.productDisplay != null) {
+                    context.read<CartBloc>().add(
+                          CartInsertPressed(context,
+                              userId: userId, product: state.productDisplay!),
+                        );
+                  } else {
+                    NSSnackBar.snackbarError(
+                      context,
+                      title: AppLocalizations.of(context).notFoundUser,
+                    );
+                  }
+                },
                 icon: SvgPicture.asset(
                   Assets.icons.icBag,
                   width: 26,
