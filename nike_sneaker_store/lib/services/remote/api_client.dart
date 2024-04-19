@@ -20,7 +20,7 @@ class ApiClient {
   late SharedPrefServices _prefs;
 
   void _initializeInterceptor() {
-    _dio.options.baseUrl = NSConstants.baseUrl;
+    _dio.options.baseUrl = NSConstants.apiUrl;
     _dio.options.headers.addAll({
       'apikey': NSConstants.apiKeySupabase,
       'Content-Type': 'application/json',
