@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
@@ -150,6 +152,24 @@ class ApiClient {
         options: options,
       );
       return response.data;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<String> uploadImage(File file) async {
+    try {
+      String uploadUrl = NSConstants.uploadUrl;
+      FormData formData = FormData.fromMap({
+        'image': await MultipartFile.fromFile(file.path),
+      });
+      final response = await _dio.post(uploadUrl, data: formData);
+
+      if (response.data['data']['url'] is String) {
+        return response.data['data']['url'] as String;
+      } else {
+        throw Exception();
+      }
     } catch (e) {
       rethrow;
     }
