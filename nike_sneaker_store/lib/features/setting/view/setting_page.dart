@@ -1,52 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
+import 'package:nike_sneaker_store/features/home/view/widgets/ns_switch.dart';
+import 'package:nike_sneaker_store/features/setting/bloc/setting_bloc.dart';
+import 'package:nike_sneaker_store/features/setting/bloc/setting_event.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/pages/auth/change_password_page.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/ns_switch.dart';
-import 'package:nike_sneaker_store/providers/app_provider.dart';
+import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
-import 'package:provider/provider.dart';
+import 'package:nike_sneaker_store/themes/ns_theme.dart';
 
-class SettingPage extends StatefulWidget {
+class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
 
   @override
-  State<SettingPage> createState() => _SettingPageState();
-}
-
-class _SettingPageState extends State<SettingPage> {
-  TextEditingController dropdownController = TextEditingController();
-  List<String> language = ['en', 'vi'];
-
-  @override
-  void initState() {
-    dropdownController.text = SharedPrefs.isVietnamese ? 'vi' : 'en';
-    super.initState();
-  }
-
-  void onChangedTheme() {
-    Provider.of<AppProvider>(context, listen: false).changedTheme();
-
-    setState(() {
-      SharedPrefs.isDark = !SharedPrefs.isDark;
-      if (SharedPrefs.isDark) {
-        SystemChrome.setSystemUIOverlayStyle(
-          const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
-        );
-      } else {
-        SystemChrome.setSystemUIOverlayStyle(
-          const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark),
-        );
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    TextEditingController dropdownController = TextEditingController();
+    List<String> language = [LanguageType.en.name, LanguageType.vi.name];
+    dropdownController.text =
+        SharedPrefs.isVietnamese ? LanguageType.vi.name : LanguageType.en.name;
+
     return Scaffold(
       appBar: NSAppBar(
         title: AppLocalizations.of(context).setting,
@@ -70,7 +46,14 @@ class _SettingPageState extends State<SettingPage> {
               ),
               const Spacer(),
               NSSwitch(
-                onChanged: onChangedTheme,
+                onChanged: () {
+                  context.read<SettingBloc>().add(SettingThemeChanged(
+                        theme: SharedPrefs.isDark
+                            ? NSTheme.lightTheme
+                            : NSTheme.darkTheme,
+                      ));
+                  SharedPrefs.isDark = !SharedPrefs.isDark;
+                },
                 isDark: SharedPrefs.isDark,
               ),
             ],
@@ -93,33 +76,26 @@ class _SettingPageState extends State<SettingPage> {
                   ),
                 ),
                 onSelected: (value) {
-                  dropdownController.text = value ?? 'en';
-                  if (value != null && value == 'vi') {
-                    Provider.of<AppProvider>(context, listen: false)
-                        .changedLocaleVi();
+                  if (value == LanguageType.vi.name) {
+                    context.read<SettingBloc>().add(SettingLocaleChanged(
+                            locale: Locale(
+                          value ?? 'vi',
+                        )));
                     SharedPrefs.isVietnamese = true;
-                  }
-
-                  if (value != null && value == 'en') {
-                    Provider.of<AppProvider>(context, listen: false)
-                        .changedLocaleEn();
+                  } else {
+                    context.read<SettingBloc>().add(SettingLocaleChanged(
+                            locale: Locale(
+                          value ?? 'en',
+                        )));
                     SharedPrefs.isVietnamese = false;
                   }
-                  setState(() {});
                 },
               ),
             ],
           ),
           const SizedBox(height: 40),
           GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const ChangePasswordPage(),
-                ),
-              );
-            },
+            onTap: () => context.push(NSRoutesConst.pathChangePassword),
             behavior: HitTestBehavior.translucent,
             child: Row(
               children: [
@@ -136,10 +112,6 @@ class _SettingPageState extends State<SettingPage> {
       ),
     );
   }
-
-  @override
-  void dispose() {
-    dropdownController.dispose();
-    super.dispose();
-  }
 }
+
+enum LanguageType { vi, en }
