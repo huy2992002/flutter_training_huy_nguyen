@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/profile/bloc/profile_event.dart';
 import 'package:nike_sneaker_store/features/profile/bloc/profile_state.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
-import 'package:nike_sneaker_store/repository/auth_repository.dart';
+import 'package:nike_sneaker_store/repository/user_repository.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  ProfileBloc(this.authRepository) : super(const ProfileState()) {
+  ProfileBloc(this.userRepository) : super(const ProfileState()) {
     on<ProfileStarted>(_onStarted);
     on<ProfileNameChanged>(_onNameChanged);
     on<ProfileAddressChanged>(_onAddressChanged);
@@ -16,7 +16,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<ProfileSavePressed>(_onSaveInformation);
   }
 
-  final AuthRepository authRepository;
+  final UserRepository userRepository;
 
   Future<void> _onStarted(
     ProfileStarted event,
@@ -108,7 +108,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) async {
     emit(state.copyWith(status: ProfileSaveStatus.loading));
     try {
-      await authRepository.updateUsers(
+      await userRepository.updateInformationUser(
         UserModel(
           uuid: event.userId,
           name: state.name,

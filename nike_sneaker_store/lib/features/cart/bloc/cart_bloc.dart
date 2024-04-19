@@ -6,10 +6,13 @@ import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_state.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
+import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
+import 'package:nike_sneaker_store/repository/user_repository.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  CartBloc(this.productRepository) : super(const CartState()) {
+  CartBloc(this.productRepository, this.userRepository)
+      : super(const CartState()) {
     on<CartStarted>(_onStarted);
     on<CartInsertPressed>(_onAddToCart);
     on<CartIncrementPressed>(_onPlusProduct);
@@ -17,6 +20,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   }
 
   ProductRepository productRepository;
+  UserRepository userRepository;
 
   Future<void> _onStarted(CartStarted event, Emitter<CartState> emit) async {
     emit(state.copyWith(viewStatus: CartViewStatus.loading));
@@ -66,7 +70,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             message: AppLocalizations.of(event.context).productAddSuccess,
           ),
         );
-        productRepository.updateMyCart(event.userId, products);
+        userRepository.updateInformationUser(
+          UserModel(uuid: event.userId, myCarts: products),
+        );
       }
     } catch (e) {
       String? message;
@@ -102,7 +108,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         cartInsertStatus: CartQuantityStatus.incrementSuccess,
         myCarts: products,
       ));
-      productRepository.updateMyCart(event.userId, products);
+      userRepository.updateInformationUser(
+        UserModel(uuid: event.userId, myCarts: products),
+      );
     } catch (e) {
       String? message;
 
@@ -143,7 +151,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         cartInsertStatus: CartQuantityStatus.decrementSuccess,
         myCarts: products,
       ));
-      productRepository.updateMyCart(event.userId, products);
+      userRepository.updateInformationUser(
+        UserModel(uuid: event.userId, myCarts: products),
+      );
     } catch (e) {
       String? message;
 

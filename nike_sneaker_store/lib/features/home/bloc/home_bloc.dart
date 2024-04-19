@@ -5,14 +5,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
+import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
+import 'package:nike_sneaker_store/repository/user_repository.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(
     this.productRepository,
     this.authRepository,
+    this.userRepository,
   ) : super(const HomeState()) {
     on<HomeStarted>(_onStarted);
     on<HomeCategoryPressed>(_onChangedCategory);
@@ -21,6 +24,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   final ProductRepository productRepository;
   final AuthRepository authRepository;
+  final UserRepository userRepository;
 
   Future<void> _onStarted(HomeStarted event, Emitter<HomeState> emit) async {
     emit(state.copyWith(homeStatus: HomeViewStatus.loading));
@@ -94,10 +98,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       emit(state.copyWith(productDisplays: products));
 
-      productRepository.updateFavoriteProduct(
-        event.userId,
-        productFavorites,
-      );
+      userRepository.updateInformationUser(UserModel(
+        uuid: event.userId,
+        favorites: productFavorites,
+      ));
     } catch (e) {
       String? message;
 

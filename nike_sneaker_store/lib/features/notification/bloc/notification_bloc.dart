@@ -3,16 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/notification/bloc/notification_event.dart';
 import 'package:nike_sneaker_store/features/notification/bloc/notification_state.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
+import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
+import 'package:nike_sneaker_store/repository/user_repository.dart';
 
 class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
-  NotificationBloc(this.productRepository) : super(const NotificationState()) {
+  NotificationBloc(this.productRepository, this.userRepository)
+      : super(const NotificationState()) {
     on<NotificationStarted>(_onStarted);
     on<NotificationReadPressed>(_onReadNotification);
     on<NotificationRemoveAllPressed>(_onRemoveAll);
   }
 
   final ProductRepository productRepository;
+  final UserRepository userRepository;
 
   Future<void> _onStarted(
       NotificationStarted event, Emitter<NotificationState> emit) async {
@@ -49,7 +53,10 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
         notifications: notifications,
         itemStatus: ListNotificationStatus.readSuccess,
       ));
-      productRepository.updateReadNotification(event.userId, notifications);
+      userRepository.updateInformationUser(UserModel(
+        uuid: event.userId,
+        notifications: notifications,
+      ));
     } catch (e) {
       String? message;
 
@@ -70,7 +77,10 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
         itemStatus: ListNotificationStatus.removeSuccess,
         notifications: [],
       ));
-      productRepository.updateReadNotification(event.userId, []);
+      userRepository.updateInformationUser(UserModel(
+        uuid: event.userId,
+        notifications: [],
+      ));
     } catch (e) {
       String? message;
 
