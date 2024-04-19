@@ -12,6 +12,7 @@ migrate_working_dir/
 .dart_tool/
 .env
 /lib/env.g.dart
+/lib/widgetbook/widgetbook.directories.g.dart
 
 # IntelliJ related
 *.iml
