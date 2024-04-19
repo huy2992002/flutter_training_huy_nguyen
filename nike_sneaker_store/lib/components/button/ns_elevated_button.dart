@@ -20,9 +20,9 @@ class NSElevatedButton extends StatelessWidget {
   ///
   /// The [onPressed], [icon] and [text] arguments must not be null.
   factory NSElevatedButton.icon({
-    Function()? onPressed,
     required Widget icon,
     required String text,
+    Function()? onPressed,
     Color? backgroundColor,
     Color? textColor,
     EdgeInsetsGeometry? padding,
