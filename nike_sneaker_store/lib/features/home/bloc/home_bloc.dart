@@ -5,17 +5,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
+import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc(this.productRepository) : super(const HomeState()) {
+  HomeBloc(
+    this.productRepository,
+    this.authRepository,
+  ) : super(const HomeState()) {
     on<HomeStarted>(_onStarted);
     on<HomeCategoryPressed>(_onChangedCategory);
     on<HomeFavoritePressed>(_onFavoriteProduct);
   }
 
   final ProductRepository productRepository;
+  final AuthRepository authRepository;
 
   Future<void> _onStarted(HomeStarted event, Emitter<HomeState> emit) async {
     emit(state.copyWith(homeStatus: HomeViewStatus.loading));
@@ -24,6 +29,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final productFavorites =
           await productRepository.getIdProductFavorites(event.userId) ?? [];
       products = await productRepository.getProducts() ?? [];
+      final user = await authRepository.getUser(userId: event.userId);
       products.forEach((element) {
         if (productFavorites.any((e) => e == element.uuid)) {
           element.isFavorite = true;
@@ -32,6 +38,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(state.copyWith(
         products: products,
         productDisplays: products,
+        user: user,
         categoryIndex: 0,
         homeStatus: HomeViewStatus.success,
       ));

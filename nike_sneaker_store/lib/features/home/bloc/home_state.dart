@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
+import 'package:nike_sneaker_store/models/user_model.dart';
 
 enum HomeViewStatus { initial, loading, success, failure }
 
@@ -7,6 +8,7 @@ class HomeState extends Equatable {
   const HomeState({
     this.products = const [],
     this.productDisplays = const [],
+    this.user,
     this.categoryIndex = 0,
     this.homeStatus = HomeViewStatus.initial,
     this.errorMessage = '',
@@ -14,6 +16,7 @@ class HomeState extends Equatable {
 
   final List<ProductModel> products;
   final List<ProductModel> productDisplays;
+  final UserModel? user;
   final int categoryIndex;
   final HomeViewStatus homeStatus;
   final String errorMessage;
@@ -21,6 +24,7 @@ class HomeState extends Equatable {
   HomeState copyWith({
     List<ProductModel>? products,
     List<ProductModel>? productDisplays,
+    UserModel? user,
     int? categoryIndex,
     HomeViewStatus? homeStatus,
     String? errorMessage,
@@ -28,6 +32,7 @@ class HomeState extends Equatable {
     return HomeState(
       products: products ?? this.products,
       productDisplays: productDisplays ?? this.productDisplays,
+      user: user,
       categoryIndex: categoryIndex ?? this.categoryIndex,
       homeStatus: homeStatus ?? this.homeStatus,
       errorMessage: errorMessage ?? this.errorMessage,
@@ -39,6 +44,7 @@ class HomeState extends Equatable {
         products,
         productDisplays,
         productDisplays.hashCode,
+        user,
         categoryIndex,
         homeStatus,
         errorMessage,
