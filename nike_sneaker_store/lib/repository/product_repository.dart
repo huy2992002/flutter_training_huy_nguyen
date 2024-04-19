@@ -1,4 +1,5 @@
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
+import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/services/remote/api_client.dart';
 
@@ -96,6 +97,42 @@ class ProductRepository {
               ? ProductModel.fromJson(e)
               : ProductModel())
           .toList();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<NotificationModel>?> fetchNotifications(String? userId) async {
+    String url =
+        '${NSConstants.endPointUsers}?uuid=eq.$userId&select=notifications';
+    try {
+      final response = await apiClient.get(url);
+      final data = response.data as List<dynamic>;
+      if (data.isEmpty) {
+        throw Exception('User not found');
+      } else {
+        if (data[0] is Map && (data[0] as Map).containsKey('notifications')) {
+          return (data[0]['notifications'] as List<dynamic>?)
+              ?.map(
+                (e) => e is Map<String, dynamic>
+                    ? NotificationModel.fromJson(e)
+                    : NotificationModel(),
+              )
+              .toList();
+        } else {
+          throw Exception('Dont found favorites on server');
+        }
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<dynamic> updateReadNotification(
+      String userId, List<NotificationModel> notifications) async {
+    try {
+      final url = '${NSConstants.endPointUsers}?uuid=eq.$userId';
+      apiClient.patch(url, data: {'notifications': notifications});
     } catch (e) {
       rethrow;
     }
