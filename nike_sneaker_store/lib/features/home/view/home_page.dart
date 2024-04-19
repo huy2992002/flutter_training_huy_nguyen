@@ -52,6 +52,8 @@ class HomePage extends StatelessWidget {
               isMarkerNotification:
                   context.read<CartBloc>().state.myCarts.isNotEmpty,
             ),
+            listenWhen: (previous, current) =>
+                previous.cartInsertStatus != current.cartInsertStatus,
             listener: (context, state) {
               if (state.cartInsertStatus == CartQuantityStatus.insertSuccess) {
                 NSSnackBar.snackbarSuccess(
