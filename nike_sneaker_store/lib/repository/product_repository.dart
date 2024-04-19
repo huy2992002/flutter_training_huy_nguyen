@@ -67,26 +67,6 @@ class ProductRepository {
     }
   }
 
-  Future<dynamic> updateFavoriteProduct(
-      String userId, List<String> products) async {
-    try {
-      final url = '${NSConstants.endPointUsers}?uuid=eq.$userId';
-      apiClient.patch(url, data: {'favorites': products});
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<dynamic> updateMyCart(
-      String userId, List<ProductModel> products) async {
-    try {
-      final url = '${NSConstants.endPointUsers}?uuid=eq.$userId';
-      apiClient.patch(url, data: {'myCarts': products});
-    } catch (e) {
-      rethrow;
-    }
-  }
-
   Future<List<ProductModel>?> fetchProductsByName(String name) async {
     try {
       final url = '${NSConstants.endPointProducts}?name=ilike.*$name*';
@@ -123,16 +103,6 @@ class ProductRepository {
           throw Exception('Dont found favorites on server');
         }
       }
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<dynamic> updateReadNotification(
-      String userId, List<NotificationModel> notifications) async {
-    try {
-      final url = '${NSConstants.endPointUsers}?uuid=eq.$userId';
-      apiClient.patch(url, data: {'notifications': notifications});
     } catch (e) {
       rethrow;
     }

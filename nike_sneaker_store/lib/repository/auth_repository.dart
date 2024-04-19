@@ -85,13 +85,4 @@ class AuthRepository {
       rethrow;
     }
   }
-
-  Future<void> updateUsers(UserModel user) async {
-    try {
-      final url = '${NSConstants.endPointUsers}?uuid=eq.${user.uuid}';
-      apiClient.patch(url, data: user.toJson());
-    } catch (e) {
-      rethrow;
-    }
-  }
 }
