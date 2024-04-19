@@ -11,4 +11,7 @@ abstract class Env {
 
   @EnviedField(varName: 'API_URL', defaultValue: '')
   static String apiUrl = _Env.apiUrl;
+
+  @EnviedField(varName: 'UPLOAD_URL', defaultValue: '')
+  static String uploadUrl = _Env.uploadUrl;
 }
