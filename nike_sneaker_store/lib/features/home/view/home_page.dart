@@ -123,12 +123,15 @@ class HomePage extends StatelessWidget {
                             return Padding(
                               padding: const EdgeInsets.only(right: 16),
                               child: CardCategory(
-                                onPressed: () => context.read<HomeBloc>().add(
-                                      HomeCategoryPressed(
-                                        index: index,
-                                        type: category.type,
-                                      ),
-                                    ),
+                                onPressed:
+                                    state.homeStatus == HomeViewStatus.loading
+                                        ? null
+                                        : () => context.read<HomeBloc>().add(
+                                              HomeCategoryPressed(
+                                                index: index,
+                                                type: category.type,
+                                              ),
+                                            ),
                                 text: category.name,
                                 backgroundColor: state.categoryIndex == index
                                     ? Theme.of(context).colorScheme.primary
