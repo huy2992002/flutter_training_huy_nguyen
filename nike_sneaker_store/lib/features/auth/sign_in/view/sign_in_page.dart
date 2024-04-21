@@ -44,7 +44,7 @@ class SignInPage extends StatelessWidget {
             );
           }
           if (state.status == FormSubmissionStatus.success) {
-            context.push(NSRoutesConst.pathHome);
+            context.go(NSRoutesConst.pathHome);
           }
         },
         buildWhen: (previous, current) =>
