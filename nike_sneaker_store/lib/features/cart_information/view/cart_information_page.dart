@@ -108,6 +108,8 @@ class CartInformationPage extends StatelessWidget {
                       onChanged: (value) => context
                           .read<CartInfoBloc>()
                           .add(CartInfoEmailChanged(context, email: value)),
+                      readOnly:
+                          state.status == CartCheckOutStatus.checkoutLoading,
                     ),
                     const SizedBox(height: 16),
                     CartInformationItem(
@@ -117,6 +119,8 @@ class CartInformationPage extends StatelessWidget {
                       onEdit: _focusNodePhone.requestFocus,
                       focusNode: _focusNodePhone,
                       keyboardType: TextInputType.phone,
+                      readOnly:
+                          state.status == CartCheckOutStatus.checkoutLoading,
                       onChanged: (value) => context.read<CartInfoBloc>().add(
                           CartInfoPhoneChanged(context, phoneNumber: value)),
                     ),
@@ -147,6 +151,8 @@ class CartInformationPage extends StatelessWidget {
                               border: InputBorder.none,
                             ),
                             focusNode: _addressNode,
+                            readOnly: state.status ==
+                                CartCheckOutStatus.checkoutLoading,
                           ),
                         ),
                         GestureDetector(

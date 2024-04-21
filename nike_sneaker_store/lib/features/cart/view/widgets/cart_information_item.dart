@@ -12,6 +12,7 @@ class CartInformationItem extends StatelessWidget {
     this.onChanged,
     this.focusNode,
     this.keyboardType,
+    this.readOnly = false,
     super.key,
   });
 
@@ -22,6 +23,7 @@ class CartInformationItem extends StatelessWidget {
   final Function(String)? onChanged;
   final FocusNode? focusNode;
   final TextInputType? keyboardType;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +49,8 @@ class CartInformationItem extends StatelessWidget {
                 controller: controller,
                 onChanged: onChanged,
                 style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
-                      fontFamily: FontFamily.poppins
-                    ),
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    fontFamily: FontFamily.poppins),
                 decoration: const InputDecoration(
                   isDense: true,
                   contentPadding: EdgeInsets.zero,
@@ -58,6 +59,7 @@ class CartInformationItem extends StatelessWidget {
                 ),
                 focusNode: focusNode,
                 keyboardType: keyboardType,
+                readOnly: readOnly,
               ),
               const SizedBox(height: 2),
               Text(
