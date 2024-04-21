@@ -6,6 +6,7 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
+import 'package:nike_sneaker_store/features/cart_information/bloc/cart_info_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
@@ -147,6 +148,7 @@ class MyApp extends StatelessWidget {
               )),
           ),
           RepositoryProvider<SettingBloc>(create: (context) => SettingBloc()),
+          RepositoryProvider<CartInfoBloc>(create: (context) => CartInfoBloc()),
         ],
         child: BlocBuilder<SettingBloc, SettingState>(
           builder: (context, state) {
