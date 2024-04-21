@@ -39,7 +39,7 @@ class CartPage extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.background,
           appBar: NSAppBar(
             leftIcon: NsIconButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => context.pop(),
               icon: SvgPicture.asset(
                 Assets.icons.icArrow,
                 color: Theme.of(context).colorScheme.onPrimaryContainer,

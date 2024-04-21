@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
@@ -33,7 +34,7 @@ class ChangePasswordPage extends StatelessWidget {
         appBar: NSAppBar(
           title: AppLocalizations.of(context).changePassword,
           leftIcon: NsIconButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => context.pop(),
             icon: SvgPicture.asset(
               Assets.icons.icArrow,
               color: Theme.of(context).colorScheme.onBackground,

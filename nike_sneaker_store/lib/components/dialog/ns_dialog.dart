@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
@@ -139,7 +140,7 @@ class NSDialog {
               children: [
                 NSElevatedButton.text(
                   onPressed: () {
-                    Navigator.pop(context);
+                    context.pop();
                   },
                   text: AppLocalizations.of(context).no,
                   backgroundColor:
@@ -150,7 +151,7 @@ class NSDialog {
                 NSElevatedButton.text(
                   onPressed: () {
                     action?.call();
-                    Navigator.pop(context);
+                    context.pop();
                   },
                   text: AppLocalizations.of(context).yes,
                 ),

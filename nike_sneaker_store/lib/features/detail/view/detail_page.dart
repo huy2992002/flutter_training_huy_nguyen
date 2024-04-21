@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
@@ -39,7 +40,7 @@ class DetailPage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: NSAppBar(
           leftIcon: NsIconButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => context.pop(),
             backgroundColor: Theme.of(context).colorScheme.primaryContainer,
             icon: SvgPicture.asset(
               Assets.icons.icArrow,

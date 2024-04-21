@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/otp/ns_otp_code.dart';
@@ -25,7 +26,7 @@ class VerificationPage extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: NsIconButton(
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => context.pop(),
                 icon: SvgPicture.asset(
                   Assets.icons.icArrow,
                   color: Theme.of(context).colorScheme.onSecondaryContainer,
