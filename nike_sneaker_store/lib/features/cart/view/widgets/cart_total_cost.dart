@@ -14,10 +14,12 @@ class CartTotalCost extends StatelessWidget {
     this.onCheckout,
     super.key,
     this.canCheckOut = false,
+    this.isDisable = false,
   });
 
   final Function()? onCheckout;
   final bool canCheckOut;
+  final bool isDisable;
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +90,7 @@ class CartTotalCost extends StatelessWidget {
             backgroundColor: !canCheckOut
                 ? NSColor.neutral
                 : Theme.of(context).colorScheme.primary,
+            isDisable: isDisable,
           ),
         ],
       ),
