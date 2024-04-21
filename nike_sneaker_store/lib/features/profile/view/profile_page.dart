@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
+import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_text_button.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
@@ -42,15 +43,15 @@ class ProfilePage extends StatelessWidget {
           ),
           body: BlocConsumer<ProfileBloc, ProfileState>(
             listenWhen: (previous, current) =>
-                previous.status != current.status,
+                previous.buttonStatus != current.buttonStatus,
             listener: (context, state) {
-              if (state.status == ProfileSaveStatus.success) {
+              if (state.buttonStatus == ProfileSaveStatus.success) {
                 NSSnackBar.snackbarSuccess(
                   context,
                   title: AppLocalizations.of(context).informationChangedSuccess,
                 );
               }
-              if (state.status == ProfileSaveStatus.failure) {
+              if (state.buttonStatus == ProfileSaveStatus.failure) {
                 NSSnackBar.snackbarError(context, title: state.message);
               }
             },
@@ -63,12 +64,19 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Center(
-                          child: CircleAvatar(
-                        radius: 48,
-                        backgroundImage: state.fileImage == null
-                            ? AssetImage(Assets.images.imgAvatar.path)
-                            : Image.file(state.fileImage!).image,
-                      )),
+                        child: SizedBox(
+                            height: 96,
+                            width: 96,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(48),
+                              child: state.fileImage == null
+                                  ? state.avatar == null
+                                      ? Image.asset(
+                                          Assets.images.imgAvatar.path)
+                                      : NSImageNetwork(path: state.avatar)
+                                  : Image.file(state.fileImage!),
+                            )),
+                      ),
                       const SizedBox(height: 8),
                       Center(
                         child: Text(
@@ -79,7 +87,9 @@ class ProfilePage extends StatelessWidget {
                       const SizedBox(height: 6),
                       Center(
                         child: NsTextButton(
-                          onPressed: () {},
+                          onPressed: () => context
+                              .read<ProfileBloc>()
+                              .add(ProfileAvatarChanged(context: context)),
                           text:
                               AppLocalizations.of(context).changeProfilePicture,
                           textStyle: Theme.of(context)
@@ -174,7 +184,8 @@ class ProfilePage extends StatelessWidget {
                                 .colorScheme
                                 .onBackground
                                 .withOpacity(0.6),
-                        isDisable: state.status == ProfileSaveStatus.loading,
+                        isDisable:
+                            state.buttonStatus == ProfileSaveStatus.loading,
                       ),
                     ],
                   ),

@@ -5,14 +5,23 @@ import 'package:nike_sneaker_store/models/user_model.dart';
 
 enum ProfileSaveStatus { initial, loading, success, failure }
 
+enum ProfileChangeProfileStatus {
+  initial,
+  avatarLoading,
+  avatarSuccess,
+  avatarFailure,
+}
+
 class ProfileState extends Equatable {
   const ProfileState({
     this.user,
     this.name = '',
     this.address = '',
     this.phoneNumber = '',
+    this.avatar,
     this.fileImage,
-    this.status = ProfileSaveStatus.initial,
+    this.buttonStatus = ProfileSaveStatus.initial,
+    this.avatarStatus = ProfileChangeProfileStatus.initial,
     this.canAction = false,
     this.message = '',
   });
@@ -21,8 +30,10 @@ class ProfileState extends Equatable {
   final String name;
   final String address;
   final String phoneNumber;
+  final String? avatar;
   final File? fileImage;
-  final ProfileSaveStatus status;
+  final ProfileChangeProfileStatus avatarStatus;
+  final ProfileSaveStatus buttonStatus;
   final bool canAction;
   final String message;
 
@@ -31,8 +42,10 @@ class ProfileState extends Equatable {
     String? name,
     String? address,
     String? phoneNumber,
+    String? avatar,
     File? fileImage,
-    ProfileSaveStatus? status,
+    ProfileChangeProfileStatus? avatarStatus,
+    ProfileSaveStatus? buttonStatus,
     bool? canAction,
     String? message,
   }) {
@@ -41,14 +54,26 @@ class ProfileState extends Equatable {
       name: name ?? this.name,
       address: address ?? this.address,
       phoneNumber: phoneNumber ?? this.phoneNumber,
+      avatar: avatar ?? this.avatar,
       fileImage: fileImage ?? this.fileImage,
-      status: status ?? this.status,
+      avatarStatus: avatarStatus ?? this.avatarStatus,
+      buttonStatus: buttonStatus ?? this.buttonStatus,
       canAction: canAction ?? this.canAction,
       message: this.message,
     );
   }
 
   @override
-  List<Object?> get props =>
-      [name, address, phoneNumber, fileImage, status, canAction, message];
+  List<Object?> get props => [
+        name,
+        address,
+        phoneNumber,
+        avatar,
+        user,
+        fileImage,
+        avatarStatus,
+        buttonStatus,
+        canAction,
+        message
+      ];
 }

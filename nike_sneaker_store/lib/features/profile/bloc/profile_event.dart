@@ -9,15 +9,17 @@ class ProfileStarted extends ProfileEvent {
     required this.name,
     required this.address,
     required this.phoneNumber,
+    required this.avatar,
   });
 
   final BuildContext context;
   final String name;
   final String address;
   final String phoneNumber;
+  final String avatar;
 
   @override
-  List<Object?> get props => [name, address, phoneNumber];
+  List<Object?> get props => [name, address, phoneNumber, avatar];
 }
 
 class ProfileNameChanged extends ProfileEvent {
@@ -57,4 +59,13 @@ class ProfileSavePressed extends ProfileEvent {
 
   @override
   List<Object?> get props => [userId];
+}
+
+class ProfileAvatarChanged extends ProfileEvent {
+  ProfileAvatarChanged({required this.context});
+
+  final BuildContext context;
+
+  @override
+  List<Object?> get props => [context];
 }
