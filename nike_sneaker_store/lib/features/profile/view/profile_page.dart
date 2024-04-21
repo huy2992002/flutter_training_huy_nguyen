@@ -87,9 +87,15 @@ class ProfilePage extends StatelessWidget {
                       const SizedBox(height: 6),
                       Center(
                         child: NsTextButton(
-                          onPressed: () => context
-                              .read<ProfileBloc>()
-                              .add(ProfileAvatarChanged(context: context)),
+                          onPressed: state.avatarStatus ==
+                                      ProfileChangeProfileStatus
+                                          .avatarLoading ||
+                                  state.buttonStatus ==
+                                      ProfileSaveStatus.loading
+                              ? null
+                              : () => context
+                                  .read<ProfileBloc>()
+                                  .add(ProfileAvatarChanged(context: context)),
                           text:
                               AppLocalizations.of(context).changeProfilePicture,
                           textStyle: Theme.of(context)
@@ -114,6 +120,8 @@ class ProfilePage extends StatelessWidget {
                             .read<ProfileBloc>()
                             .add(ProfileNameChanged(context, name: value)),
                         textInputAction: TextInputAction.next,
+                        readOnly:
+                            state.buttonStatus == ProfileSaveStatus.loading,
                       ),
                       const SizedBox(height: 27),
                       Text(
@@ -127,6 +135,8 @@ class ProfilePage extends StatelessWidget {
                         onChanged: (value) => context.read<ProfileBloc>().add(
                             ProfileAddressChanged(context, address: value)),
                         textInputAction: TextInputAction.next,
+                        readOnly:
+                            state.buttonStatus == ProfileSaveStatus.loading,
                       ),
                       const SizedBox(height: 27),
                       Text(
@@ -141,6 +151,8 @@ class ProfilePage extends StatelessWidget {
                             ProfilePhoneChanged(context, phoneNumber: value)),
                         textInputType: TextInputType.phone,
                         textInputAction: TextInputAction.done,
+                        readOnly:
+                            state.buttonStatus == ProfileSaveStatus.loading,
                         onFieldSubmitted: state.canAction
                             ? (_) {
                                 if (userId != null) {
