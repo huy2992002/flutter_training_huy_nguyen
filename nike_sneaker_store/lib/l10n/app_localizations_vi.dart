@@ -335,6 +335,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get productHaveBeenRemove => 'Sản phẩm đã được xóa khỏi giỏ hàng';
 
   @override
+  String get selectImageSuccess => 'Chọn ảnh thất bại';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm';
   }

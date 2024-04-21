@@ -110,6 +110,8 @@
   "couldNotLaunchGmail": "Could not launch gmail",
   "notFoundUser": "Login version has expired, please log in again",
   "productHaveBeenRemove": "Product has been removed from the cart",
+  "selectImageSuccess": "Select image successfully",
+  "selectImageSuccess": "Select image failed",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

@@ -753,6 +753,12 @@ abstract class AppLocalizations {
   /// **'Product has been removed from the cart'**
   String get productHaveBeenRemove;
 
+  /// No description provided for @selectImageSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Select image failed'**
+  String get selectImageSuccess;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

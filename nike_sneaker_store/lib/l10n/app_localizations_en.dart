@@ -335,6 +335,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get productHaveBeenRemove => 'Product has been removed from the cart';
 
   @override
+  String get selectImageSuccess => 'Select image failed';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

@@ -110,6 +110,8 @@
   "couldNotLaunchGmail": "Không thể chuyển đến Gmail",
   "notFoundUser": "Phiên bản đăng nhập đã hết hạn, vui lòng đăng nhập lại",
   "productHaveBeenRemove": "Sản phẩm đã được xóa khỏi giỏ hàng",
+  "selectImageSuccess": "Chọn ảnh thành công",
+  "selectImageSuccess": "Chọn ảnh thất bại",
   "discountOff": "{discount}% Giảm",
   "@discountOff": {
     "placeholders": {
