@@ -52,7 +52,7 @@ class MockGoTrue extends Fake implements GoTrueClient {
         user: _user,
       );
     } else {
-      throw Exception('User already exists');
+      throw 'User already exists';
     }
   }
 }
