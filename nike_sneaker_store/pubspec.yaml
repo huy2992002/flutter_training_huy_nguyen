@@ -43,6 +43,7 @@ dependencies:
   flutter_zoom_drawer: ^3.1.2
   go_router: ^13.2.3
   intl: ^0.18.1
+  mockito: ^5.4.4
   permission_handler: ^11.3.0
   pinput: ^4.0.0
   shared_preferences: ^2.2.2
