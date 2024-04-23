@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-abstract class SignUpEvent {}
+abstract class SignUpEvent extends Equatable {}
 
 class SubmitSignUpPressed extends SignUpEvent {
   SubmitSignUpPressed(
@@ -8,6 +9,9 @@ class SubmitSignUpPressed extends SignUpEvent {
   final String name;
   final String email;
   final String password;
+
+  @override
+  List<Object?> get props => [name, email, password];
 }
 
 class SignUpNameChanged extends SignUpEvent {
@@ -15,6 +19,9 @@ class SignUpNameChanged extends SignUpEvent {
 
   final String name;
   final BuildContext context;
+
+  @override
+  List<Object?> get props => [name, context];
 }
 
 class SignUpEmailChanged extends SignUpEvent {
@@ -22,6 +29,9 @@ class SignUpEmailChanged extends SignUpEvent {
 
   final String email;
   final BuildContext context;
+
+  @override
+  List<Object?> get props => [email, context];
 }
 
 class SignUpPasswordChanged extends SignUpEvent {
@@ -29,6 +39,9 @@ class SignUpPasswordChanged extends SignUpEvent {
 
   final String password;
   final BuildContext context;
+
+  @override
+  List<Object?> get props => [password, context];
 }
 
 class SignUpConfirmPasswordChanged extends SignUpEvent {
@@ -36,4 +49,7 @@ class SignUpConfirmPasswordChanged extends SignUpEvent {
 
   final String confirmPassword;
   final BuildContext context;
+
+  @override
+  List<Object?> get props => [confirmPassword, context];
 }
