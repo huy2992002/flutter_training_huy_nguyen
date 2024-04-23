@@ -41,8 +41,8 @@ void main() {
     });
 
     blocTest(
-      'GIVEN user is not sign in'
-      'WHEN user implement event sign in'
+      'GIVEN user is not sign in '
+      'WHEN user implement event sign in '
       'THEN user sign in success',
       // GIVEN
       build: () => signInBloc,
@@ -63,8 +63,8 @@ void main() {
     );
 
     blocTest(
-      'GIVEN user is not sign in'
-      'WHEN user implement event sign in'
+      'GIVEN user is not sign in '
+      'WHEN user implement event sign in '
       'THEN user sign in failure',
       // GIVEN
       build: () => signInBloc,
@@ -82,7 +82,7 @@ void main() {
         // THEN
         const SignInState(
           status: FormSubmissionStatus.failure,
-          message: 'Invalid login credentials',
+          message: 'Exception: Invalid login credentials',
         ),
       ],
     );

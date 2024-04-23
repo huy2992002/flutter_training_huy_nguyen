@@ -40,8 +40,8 @@ void main() {
     });
 
     blocTest(
-      'GIVEN user wants to sign up an account'
-      'WHEN user implement event sign up'
+      'GIVEN user wants to sign up an account '
+      'WHEN user implement event sign up '
       'THEN user sign up success',
       // GIVEN
       build: () => signInBloc,
@@ -63,8 +63,8 @@ void main() {
     );
 
     blocTest(
-      'GIVEN user wants to sign up an account'
-      'WHEN user implement event sign up'
+      'GIVEN user wants to sign up an account '
+      'WHEN user implement event sign up '
       'THEN user sign up fail with email already exists',
       // GIVEN
       build: () => signInBloc,
@@ -83,7 +83,7 @@ void main() {
         // THEN
         const SignUpState(
           status: FormSubmissionStatus.failure,
-          message: 'User already exists',
+          message: 'Exception: User already exists',
         ),
       ],
     );
