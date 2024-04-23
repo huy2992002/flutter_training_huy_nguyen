@@ -512,12 +512,6 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "mockito",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dev/mockito-5.4.4",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
-    },
-    {
       "name": "mocktail",
       "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dev/mocktail-1.0.3",
       "packageUri": "lib/",
@@ -1106,7 +1100,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-04-22T02:57:23.532495Z",
+  "generated": "2024-04-23T03:08:27.928435Z",
   "generator": "pub",
   "generatorVersion": "3.3.0"
 }
