@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
+import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
 import 'package:nike_sneaker_store/features/cart_information/bloc/cart_info_bloc.dart';
@@ -102,6 +103,9 @@ class MyApp extends StatelessWidget {
                 prefs: context.read<SharedPrefServices>(),
               ),
             ),
+          ),
+          RepositoryProvider<SignInBloc>(
+            create: (context) => SignInBloc(context.read<AuthRepository>()),
           ),
           RepositoryProvider<ZoomDrawerController>(
             create: (context) => ZoomDrawerController(),
