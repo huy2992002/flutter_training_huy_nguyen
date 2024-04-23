@@ -31,77 +31,80 @@ void main() {
     );
   });
 
-  testWidgets(
-      'GIVEN user wants to sign up '
-      'WHEN user has not filled in information yet '
-      'THEN button is disabled', (tester) async {
-    // GIVEN
-    when(() => signUpBloc.state)
-        .thenReturn(const SignUpState()); // isValid == false
+  group('Sign Up Page Test', () {
+    testWidgets(
+        'GIVEN user wants to sign up '
+        'WHEN user has not filled in information yet '
+        'THEN button is disabled', (tester) async {
+      // GIVEN
+      when(() => signUpBloc.state)
+          .thenReturn(const SignUpState()); // isValid == false
 
-    // WHEN
-    await tester.pumpWidget(signUpPage);
+      // WHEN
+      await tester.pumpWidget(signUpPage);
 
-    // THEN
-    final button =
-        tester.widget<NSElevatedButton>(find.byType(NSElevatedButton));
-    expect(button.onPressed, null);
-  });
+      // THEN
+      final button =
+          tester.widget<NSElevatedButton>(find.byType(NSElevatedButton));
+      expect(button.onPressed, null);
+    });
 
-  testWidgets(
-      'GIVEN user wants to sign up '
-      'WHEN user pressed the sign up button '
-      'THEN button is disabled & with status loading', (tester) async {
-    // GIVEN
-    when(() => signUpBloc.state)
-        .thenReturn(const SignUpState(status: FormSubmissionStatus.loading));
+    testWidgets(
+        'GIVEN user wants to sign up '
+        'WHEN user pressed the sign up button '
+        'THEN button is disabled & with status loading', (tester) async {
+      // GIVEN
+      when(() => signUpBloc.state)
+          .thenReturn(const SignUpState(status: FormSubmissionStatus.loading));
 
-    // WHEN
-    await tester.pumpWidget(signUpPage);
+      // WHEN
+      await tester.pumpWidget(signUpPage);
 
-    // THEN
-    final button =
-        tester.widget<NSElevatedButton>(find.byType(NSElevatedButton));
-    expect(button.isDisable, true);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
+      // THEN
+      final button =
+          tester.widget<NSElevatedButton>(find.byType(NSElevatedButton));
+      expect(button.isDisable, true);
+      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    });
 
-  testWidgets(
-      'GIVEN user wants to sign up '
-      'WHEN user has filled in the correct information '
-      'THEN user presses the button and receives an event', (tester) async {
-    // GIVEN
-    when(() => signUpBloc.state).thenReturn(const SignUpState(isValid: true));
+    testWidgets(
+        'GIVEN user wants to sign up '
+        'WHEN user has filled in the correct information '
+        'THEN user presses the button and receives an event', (tester) async {
+      // GIVEN
+      when(() => signUpBloc.state).thenReturn(const SignUpState(isValid: true));
 
-    // WHEN
-    await tester.pumpWidget(signUpPage);
+      // WHEN
+      await tester.pumpWidget(signUpPage);
 
-    // THEN
-    await tester.tap(find.byType(NSElevatedButton));
+      // THEN
+      await tester.tap(find.byType(NSElevatedButton));
 
-    verify(() => signUpBloc
-        .add(SubmitSignUpPressed(name: '', email: '', password: ''))).called(1);
-  });
+      verify(() => signUpBloc.add(
+          SubmitSignUpPressed(name: '', email: '', password: ''))).called(1);
+    });
 
-  testWidgets(
-      'GIVEN user enters the SignInPage '
-      'WHEN user login failed '
-      'THEN shows SnackBar when status is submission failure', (tester) async {
-    // GIVEN
-    whenListen(
-      signUpBloc,
-      Stream.fromIterable([
-        const SignUpState(status: FormSubmissionStatus.loading),
-        const SignUpState(status: FormSubmissionStatus.failure),
-      ]),
-      initialState: const SignUpState(),
-    );
+    testWidgets(
+        'GIVEN user enters the SignInPage '
+        'WHEN user login failed '
+        'THEN shows SnackBar when status is submission failure',
+        (tester) async {
+      // GIVEN
+      whenListen(
+        signUpBloc,
+        Stream.fromIterable([
+          const SignUpState(status: FormSubmissionStatus.loading),
+          const SignUpState(status: FormSubmissionStatus.failure),
+        ]),
+        initialState: const SignUpState(),
+      );
 
-    // WHEN
-    await tester.pumpWidget(signUpPage);
+      // WHEN
+      await tester.pumpWidget(signUpPage);
 
-    // THEN
-    await tester.pump();
-    expect(find.byType(SnackBar), findsOneWidget);
+      // THEN
+      await tester.pump();
+      expect(find.byType(SnackBar), findsOneWidget);
+    });
   });
 }
