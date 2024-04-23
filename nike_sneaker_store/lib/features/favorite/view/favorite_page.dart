@@ -61,7 +61,9 @@ class _FavoritePageState extends State<FavoritePage> {
                   ),
                 )
               : GridView.builder(
-                  itemCount: favoriteProducts.length,
+                  itemCount: state.homeStatus == HomeViewStatus.loading
+                      ? 3
+                      : favoriteProducts.length,
                   padding: const EdgeInsets.only(
                     left: 20,
                     top: 28,
@@ -75,50 +77,54 @@ class _FavoritePageState extends State<FavoritePage> {
                     childAspectRatio: 3 / 4,
                   ),
                   itemBuilder: (_, index) {
-                    final product = favoriteProducts[index];
-                    return CardProduct(
-                      tag: NSConstants.tagProductFavorite(product.uuid ?? ''),
-                      product: product,
-                      onFavorite: () {
-                        String? userId = context
-                            .read<SupabaseServices>()
-                            .supabaseClient
-                            .auth
-                            .currentUser
-                            ?.id;
-                        if (userId != null) {
-                          context.read<HomeBloc>().add(
-                                HomeFavoritePressed(
-                                  userId: userId,
-                                  productId: product.uuid,
+                    if (state.homeStatus == HomeViewStatus.loading) {
+                      return const CardProductLoading();
+                    } else {
+                      final product = favoriteProducts[index];
+                      return CardProduct(
+                        tag: NSConstants.tagProductFavorite(product.uuid ?? ''),
+                        product: product,
+                        onFavorite: () {
+                          String? userId = context
+                              .read<SupabaseServices>()
+                              .supabaseClient
+                              .auth
+                              .currentUser
+                              ?.id;
+                          if (userId != null) {
+                            context.read<HomeBloc>().add(
+                                  HomeFavoritePressed(
+                                    userId: userId,
+                                    productId: product.uuid,
+                                  ),
+                                );
+                          } else {
+                            NSSnackBar.snackbarError(
+                              context,
+                              title: AppLocalizations.of(context).notFoundUser,
+                            );
+                          }
+                        },
+                        onTap: () {
+                          context.push(
+                            NSRoutesConst.pathDetail,
+                            extra: NSConstants.tagProductFavorite(
+                                product.uuid ?? ''),
+                          );
+                          final products = state.products
+                              .where(
+                                (e) => e.category == product.category,
+                              )
+                              .toList();
+                          context.read<DetailBloc>().add(
+                                DetailSelectStarted(
+                                  product: product,
+                                  products: products,
                                 ),
                               );
-                        } else {
-                          NSSnackBar.snackbarError(
-                            context,
-                            title: AppLocalizations.of(context).notFoundUser,
-                          );
-                        }
-                      },
-                      onTap: () {
-                        context.push(
-                          NSRoutesConst.pathDetail,
-                          extra: NSConstants.tagProductFavorite(
-                              product.uuid ?? ''),
-                        );
-                        final products = state.products
-                            .where(
-                              (e) => e.category == product.category,
-                            )
-                            .toList();
-                        context.read<DetailBloc>().add(
-                              DetailSelectStarted(
-                                product: product,
-                                products: products,
-                              ),
-                            );
-                      },
-                    );
+                        },
+                      );
+                    }
                   },
                 ),
         );
