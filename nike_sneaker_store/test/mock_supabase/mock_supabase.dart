@@ -55,4 +55,7 @@ class MockGoTrue extends Fake implements GoTrueClient {
       throw Exception('User already exists');
     }
   }
+
+  @override
+  User? get currentUser => _user;
 }
