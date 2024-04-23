@@ -1,8 +1,13 @@
-abstract class HomeEvent {}
+import 'package:equatable/equatable.dart';
+
+abstract class HomeEvent extends Equatable {}
 
 class HomeStarted extends HomeEvent {
   HomeStarted({required this.userId});
   final String userId;
+
+  @override
+  List<Object?> get props => [userId];
 }
 
 class HomeCategoryPressed extends HomeEvent {
@@ -10,6 +15,9 @@ class HomeCategoryPressed extends HomeEvent {
 
   final int index;
   final String type;
+
+  @override
+  List<Object?> get props => [index, type];
 }
 
 class HomeFavoritePressed extends HomeEvent {
@@ -20,6 +28,9 @@ class HomeFavoritePressed extends HomeEvent {
 
   final String userId;
   final String? productId;
+
+  @override
+  List<Object?> get props => [userId, productId];
 }
 
 class HomeFavoriteRemove extends HomeEvent {
@@ -28,4 +39,7 @@ class HomeFavoriteRemove extends HomeEvent {
   });
 
   final String productId;
+
+  @override
+  List<Object?> get props => [productId];
 }
