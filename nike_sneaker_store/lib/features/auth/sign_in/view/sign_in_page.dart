@@ -29,7 +29,6 @@ class SignInPage extends StatelessWidget {
     TextEditingController _passwordController = TextEditingController();
 
     return BlocConsumer<SignInBloc, SignInState>(
-      listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status == FormSubmissionStatus.failure) {
           NSSnackBar.snackbarError(
@@ -38,7 +37,7 @@ class SignInPage extends StatelessWidget {
           );
         }
         if (state.status == FormSubmissionStatus.success) {
-          context.go(NSRoutesConst.pathHome);
+          context.pushReplacement(NSRoutesConst.pathHome);
         }
       },
       buildWhen: (previous, current) =>
