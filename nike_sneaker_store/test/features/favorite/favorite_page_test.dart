@@ -46,7 +46,7 @@ void main() {
         (tester) async {
       // GIVEN
       when(() => homeBloc.state).thenReturn(
-        const HomeState(homeStatus: HomeViewStatus.loading),
+        const HomeState(homeStatus: HomeViewStatus.success),
       );
       when(() => cartBloc.state).thenReturn(const CartState());
 
