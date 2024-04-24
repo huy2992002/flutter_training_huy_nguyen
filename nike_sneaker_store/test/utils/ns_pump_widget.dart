@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/themes/ns_theme.dart';
 
 class NsPumpWidget extends StatelessWidget {
   const NsPumpWidget({
@@ -14,6 +15,7 @@ class NsPumpWidget extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: const Locale('en'),
+      theme: NSTheme.lightTheme,
       home: home,
     );
   }
