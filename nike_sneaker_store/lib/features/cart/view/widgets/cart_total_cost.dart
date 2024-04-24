@@ -82,10 +82,7 @@ class CartTotalCost extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           NSElevatedButton.text(
-            onPressed: () {
-              if (!canCheckOut) return;
-              onCheckout?.call();
-            },
+            onPressed: canCheckOut ? onCheckout : null,
             text: AppLocalizations.of(context).checkOut,
             backgroundColor: !canCheckOut
                 ? NSColor.neutral
