@@ -10,7 +10,7 @@ import 'package:nike_sneaker_store/services/remote/api_client.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../mock_supabase/mock_supabase.dart';
+import '../../../utils/mock_supabase.dart';
 
 void main() {
   group('Sign Up Bloc Test', () {
