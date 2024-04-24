@@ -8,8 +8,9 @@ import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_bloc.dart'
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_event.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_state.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/view/sign_up_page.dart';
-import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
+
+import '../../../utils/ns_pump_widget.dart';
 
 class MockSignUpBloc extends MockBloc<SignUpEvent, SignUpState>
     implements SignUpBloc {}
@@ -20,10 +21,7 @@ void main() {
 
   setUp(() {
     signUpBloc = MockSignUpBloc();
-    signUpPage = MaterialApp(
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      locale: const Locale('en'),
+    signUpPage = NsPumpWidget(
       home: BlocProvider.value(
         value: signUpBloc,
         child: const SignUpPage(),

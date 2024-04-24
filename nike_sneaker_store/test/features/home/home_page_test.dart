@@ -13,12 +13,13 @@ import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
 import 'package:nike_sneaker_store/features/home/view/home_page.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_category.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
-import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/maths.dart';
 
-import '../../mock_supabase/mock_supabase.dart';
+import '../../utils/mock_data.dart';
+import '../../utils/mock_supabase.dart';
+import '../../utils/ns_pump_widget.dart';
 
 class MockHomeBloc extends MockBloc<HomeEvent, HomeState> implements HomeBloc {}
 
@@ -32,21 +33,17 @@ void main() {
   setUp(() {
     homeBloc = MockHomeBloc();
     cartBloc = MockCartBloc();
-    homePage = MaterialApp(
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        locale: const Locale('en'),
+    homePage = NsPumpWidget(
         home: MultiRepositoryProvider(
-          providers: [
-            BlocProvider<HomeBloc>(create: (context) => homeBloc),
-            BlocProvider<CartBloc>(create: (context) => cartBloc),
-            RepositoryProvider<SupabaseServices>(
-              create: (context) =>
-                  SupabaseServices(supabaseClient: MockSupabase()),
-            ),
-          ],
-          child: const HomePage(),
-        ));
+      providers: [
+        BlocProvider<HomeBloc>(create: (context) => homeBloc),
+        BlocProvider<CartBloc>(create: (context) => cartBloc),
+        RepositoryProvider<SupabaseServices>(
+          create: (context) => SupabaseServices(supabaseClient: MockSupabase()),
+        ),
+      ],
+      child: const HomePage(),
+    ));
   });
 
   group('Home Page Test', () {
@@ -86,15 +83,11 @@ void main() {
         'GIVEN the user is signed in '
         'WHEN got the product from data '
         'THEN cart product is shown', (tester) async {
-      List<ProductModel> mockProduct = [
-        ProductModel(uuid: Maths.randomUUid(length: 4), name: 'Product 1'),
-      ];
-
       // GIVEN
       when(() => homeBloc.state).thenReturn(HomeState(
         homeStatus: HomeViewStatus.success,
-        products: mockProduct,
-        productDisplays: mockProduct,
+        products: MockData.mockProducts,
+        productDisplays: MockData.mockProducts,
       ));
       when(() => cartBloc.state).thenReturn(const CartState());
 

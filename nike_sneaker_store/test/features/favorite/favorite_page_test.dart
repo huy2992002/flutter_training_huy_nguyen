@@ -9,12 +9,11 @@ import 'package:nike_sneaker_store/features/favorite/view/favorite_page.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
-import 'package:nike_sneaker_store/l10n/app_localizations.dart';
-import 'package:nike_sneaker_store/models/product_model.dart';
-import 'package:nike_sneaker_store/utils/maths.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../../mock_supabase/mock_supabase.dart';
+import '../../utils/mock_data.dart';
+import '../../utils/mock_supabase.dart';
+import '../../utils/ns_pump_widget.dart';
 import '../home/home_page_test.dart';
 
 void main() {
@@ -22,31 +21,21 @@ void main() {
   late CartBloc cartBloc;
   late Widget favoritePage;
 
-  List<ProductModel> mockProduct = [
-    ProductModel(
-      uuid: Maths.randomUUid(length: 4),
-      name: 'Product 1',
-      isFavorite: true,
-    ),
-  ];
-
   setUp(() {
     homeBloc = MockHomeBloc();
     cartBloc = MockCartBloc();
-    favoritePage = MaterialApp(
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        locale: const Locale('en'),
-        home: MultiBlocProvider(
-          providers: [
-            BlocProvider<HomeBloc>(create: (context) => homeBloc),
-            BlocProvider<CartBloc>(create: (context) => cartBloc),
-            RepositoryProvider<SupabaseClient>(
-              create: (context) => MockSupabase(),
-            )
-          ],
-          child: const FavoritePage(),
-        ));
+    favoritePage = NsPumpWidget(
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<HomeBloc>(create: (context) => homeBloc),
+          BlocProvider<CartBloc>(create: (context) => cartBloc),
+          RepositoryProvider<SupabaseClient>(
+            create: (context) => MockSupabase(),
+          )
+        ],
+        child: const FavoritePage(),
+      ),
+    );
   });
 
   group('Favorite Page Test', () {
@@ -78,7 +67,7 @@ void main() {
       when(() => homeBloc.state).thenReturn(
         HomeState(
           homeStatus: HomeViewStatus.success,
-          products: mockProduct,
+          products: MockData.mockProducts,
         ),
       );
       when(() => cartBloc.state).thenReturn(const CartState());
