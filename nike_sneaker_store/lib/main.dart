@@ -17,6 +17,7 @@ import 'package:nike_sneaker_store/features/notification/bloc/notification_bloc.
 import 'package:nike_sneaker_store/features/notification/bloc/notification_event.dart';
 import 'package:nike_sneaker_store/features/profile/bloc/profile_bloc.dart';
 import 'package:nike_sneaker_store/features/profile/bloc/profile_event.dart';
+import 'package:nike_sneaker_store/features/search/bloc/search_bloc.dart';
 import 'package:nike_sneaker_store/features/setting/bloc/setting_bloc.dart';
 import 'package:nike_sneaker_store/features/setting/bloc/setting_state.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
@@ -125,6 +126,11 @@ class MyApp extends StatelessWidget {
             )..add(HomeStarted(
                 userId: Supabase.instance.client.auth.currentUser?.id ?? '',
               )),
+          ),
+          RepositoryProvider<SearchBloc>(
+            create: (context) => SearchBloc(
+              productRepository: context.read<ProductRepository>(),
+            ),
           ),
           RepositoryProvider<NotificationBloc>(
             create: (context) => NotificationBloc(
