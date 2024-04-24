@@ -7,6 +7,9 @@ class MockData {
     ProductModel(uuid: Maths.randomUUid(length: 4), name: 'Product 1'),
   ];
 
+  static ProductModel mockProduct = ProductModel(
+      uuid: Maths.randomUUid(length: 4), name: 'Product 1', isFavorite: true);
+
   static List<NotificationModel> mockNotifications = [
     NotificationModel(
       uuid: Maths.randomUUid(length: 4),

@@ -67,7 +67,7 @@ void main() {
       when(() => homeBloc.state).thenReturn(
         HomeState(
           homeStatus: HomeViewStatus.success,
-          products: MockData.mockProducts,
+          products: [MockData.mockProduct],
         ),
       );
       when(() => cartBloc.state).thenReturn(const CartState());
