@@ -63,10 +63,10 @@ class AuthRepository {
           );
           return authResponse.user!;
         } else {
-          throw Exception('Email already exists');
+          throw const AuthException('Email already exists');
         }
       } else {
-        throw Exception('Dont find User');
+        throw const AuthException('Dont find User');
       }
     } catch (e) {
       rethrow;
@@ -83,7 +83,7 @@ class AuthRepository {
       if (data.isNotEmpty && data[0] is Map<String, dynamic>) {
         return UserModel.fromJson(data[0] as Map<String, dynamic>);
       } else {
-        throw Exception('User not found');
+        throw const AuthException('User not found');
       }
     } catch (e) {
       rethrow;
