@@ -36,7 +36,7 @@ void main() {
   });
 
   group('Home Bloc Test', () {
-    test('initial state is SignUpState', () {
+    test('initial state is HomeState', () {
       expect(homeBloc.state, equals(const HomeState()));
     });
 
