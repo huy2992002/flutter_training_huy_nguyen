@@ -57,7 +57,7 @@ Before you continue, ensure you meet the following requirements
     ```
     flutter pub get
     ```    
-5. Set up Evn:
+5. Set up environment:
     ``` 
     Create .env file
         Set Up SUPABASE_API_KEY
