@@ -21,5 +21,5 @@ class SettingState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [themeData];
+  List<Object?> get props => [themeData, locale];
 }
