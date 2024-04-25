@@ -11,10 +11,13 @@ import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_state.dart
 import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/prompt_text.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_auth.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_label.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SignInPage extends StatelessWidget {
   /// Screen sign in page
@@ -29,6 +32,7 @@ class SignInPage extends StatelessWidget {
     TextEditingController _passwordController = TextEditingController();
 
     return BlocConsumer<SignInBloc, SignInState>(
+      listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status == FormSubmissionStatus.failure) {
           NSSnackBar.snackbarError(
@@ -37,7 +41,10 @@ class SignInPage extends StatelessWidget {
           );
         }
         if (state.status == FormSubmissionStatus.success) {
-          context.pushReplacement(NSRoutesConst.pathHome);
+          context.go(NSRoutesConst.pathHome);
+          context.read<HomeBloc>().add(HomeStarted(
+                userId: Supabase.instance.client.auth.currentUser?.id ?? '',
+              ));
         }
       },
       buildWhen: (previous, current) =>
