@@ -50,16 +50,12 @@ Widget cardCartProduct(BuildContext context) {
   type: CardCategory,
 )
 Widget cardCategory(BuildContext context) {
-  return Row(
+  return const Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      CardCategory(
-        text: 'All Shoes',
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        textColor: Theme.of(context).colorScheme.onPrimary,
-      ),
-      const SizedBox(width: 20),
-      const CardCategory(text: 'Tennis'),
+      CardCategory(text: 'All Shoes'),
+      SizedBox(width: 20),
+      CardCategory(text: 'Tennis'),
     ],
   );
 }
