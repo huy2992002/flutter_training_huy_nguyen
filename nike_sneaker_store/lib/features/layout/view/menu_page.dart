@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_avatar.dart';
+import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
@@ -27,15 +28,29 @@ class MenuPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          NSAvatar(imagePath: Assets.images.imgAvatar.path),
-          const SizedBox(height: 15),
           BlocBuilder<HomeBloc, HomeState>(
-            builder: (context, state) => Text(
-              state.user?.name ?? '-:-',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(color: Theme.of(context).colorScheme.onSecondary),
+            builder: (context, state) => Column(
+              children: [
+                SizedBox(
+                  width: 48 * 2,
+                  height: 48 * 2,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(48),
+                    child: state.user?.avatar == null
+                        ? NSAvatar(imagePath: Assets.images.imgAvatar.path)
+                        : NSImageNetwork(
+                            path: state.user?.avatar,
+                            fit: BoxFit.cover,
+                          ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Text(
+                  state.user?.name ?? '-:-',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      color: Theme.of(context).colorScheme.onSecondary),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 50),
@@ -99,7 +114,7 @@ class MenuPage extends StatelessWidget {
                         .auth
                         .signOut();
                     context.read<SharedPrefServices>().removeToken();
-                    context.pushReplacement(NSRoutesConst.pathSignIn);
+                    context.go(NSRoutesConst.pathSignIn);
                   },
                 ),
               );
