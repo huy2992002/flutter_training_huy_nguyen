@@ -163,9 +163,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     UserModel user = UserModel(
       uuid: state.user?.uuid,
       email: state.user?.email,
-      name: event.name,
-      address: event.address,
-      avatar: event.avatar,
+      name: event.name ?? state.user?.name,
+      address: event.address ?? state.user?.address,
+      avatar: event.avatar ?? state.user?.avatar,
     );
 
     emit(state.copyWith(user: user));
