@@ -1,6 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_bloc.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_event.dart';
@@ -14,7 +13,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../utils/mock_supabase.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   group('SignInBloc', () {
     late AuthRepository authRepository;
     late SignInBloc signInBloc;
