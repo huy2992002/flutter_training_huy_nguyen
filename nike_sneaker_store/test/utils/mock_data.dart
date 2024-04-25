@@ -1,5 +1,6 @@
 import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
+import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/utils/maths.dart';
 
 class MockData {
@@ -17,4 +18,9 @@ class MockData {
       product: mockProducts[0],
     )
   ];
+
+  static UserModel mockUser = UserModel(
+    uuid: Maths.randomUUid(length: 4),
+    name: 'User 1',
+  );
 }
