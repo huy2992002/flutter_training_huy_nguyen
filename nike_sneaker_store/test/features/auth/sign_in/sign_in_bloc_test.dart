@@ -81,7 +81,7 @@ void main() {
         // THEN
         const SignInState(
           status: FormSubmissionStatus.failure,
-          message: 'Exception: Invalid login credentials',
+          message: 'Invalid login credentials',
         ),
       ],
     );

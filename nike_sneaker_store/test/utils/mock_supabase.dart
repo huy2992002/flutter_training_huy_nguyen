@@ -13,6 +13,7 @@ class MockGoTrue extends Fake implements GoTrueClient {
     userMetadata: {},
     aud: 'aud',
     email: 'testSignIn@gmail.com',
+    identities: <UserIdentity>[],
     createdAt: DateTime.now().toIso8601String(),
   );
 
@@ -33,7 +34,7 @@ class MockGoTrue extends Fake implements GoTrueClient {
         user: _user,
       );
     } else {
-      throw Exception('Invalid login credentials');
+      throw const AuthException('Invalid login credentials');
     }
   }
 
@@ -52,7 +53,7 @@ class MockGoTrue extends Fake implements GoTrueClient {
         user: _user,
       );
     } else {
-      throw Exception('User already exists');
+      throw const AuthException('User already exists');
     }
   }
 

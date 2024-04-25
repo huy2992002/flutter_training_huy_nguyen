@@ -15,7 +15,7 @@ import '../../../utils/mock_supabase.dart';
 void main() {
   group('Sign Up Bloc Test', () {
     late AuthRepository authRepository;
-    late SignUpBloc signInBloc;
+    late SignUpBloc signUpBloc;
 
     setUp(() {
       SharedPreferences.setMockInitialValues({});
@@ -32,11 +32,11 @@ void main() {
           ),
         ),
       );
-      signInBloc = SignUpBloc(authRepository);
+      signUpBloc = SignUpBloc(authRepository);
     });
 
     test('initial state is SignUpState', () {
-      expect(signInBloc.state, equals(const SignUpState()));
+      expect(signUpBloc.state, equals(const SignUpState()));
     });
 
     blocTest(
@@ -44,7 +44,7 @@ void main() {
       'WHEN user implement event sign up '
       'THEN user sign up success',
       // GIVEN
-      build: () => signInBloc,
+      build: () => signUpBloc,
       act: (bloc) {
         String name = 'test';
         String email = 'testNewAccount@gmail.com';
@@ -67,7 +67,7 @@ void main() {
       'WHEN user implement event sign up '
       'THEN user sign up fail with email already exists',
       // GIVEN
-      build: () => signInBloc,
+      build: () => signUpBloc,
       act: (bloc) {
         String name = 'test';
         String email = 'testSignIn@gmail.com';
@@ -83,7 +83,7 @@ void main() {
         // THEN
         const SignUpState(
           status: FormSubmissionStatus.failure,
-          message: 'Exception: User already exists',
+          message: 'User already exists',
         ),
       ],
     );
