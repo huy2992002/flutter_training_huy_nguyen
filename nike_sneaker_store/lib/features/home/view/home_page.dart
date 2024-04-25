@@ -157,16 +157,7 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                             ),
                                 text: category.name,
-                                backgroundColor: state.categoryIndex == index
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Theme.of(context)
-                                        .colorScheme
-                                        .primaryContainer,
-                                textColor: state.categoryIndex == index
-                                    ? Theme.of(context).colorScheme.onPrimary
-                                    : Theme.of(context)
-                                        .colorScheme
-                                        .onPrimaryContainer,
+                                selected: state.categoryIndex == index,
                               ),
                             );
                           },
