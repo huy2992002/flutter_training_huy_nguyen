@@ -143,11 +143,10 @@ class MyApp extends StatelessWidget {
           RepositoryProvider<ProfileBloc>(
             create: (context) => ProfileBloc(context.read<UserRepository>())
               ..add(ProfileStarted(
-                context,
-                name: context.read<HomeBloc>().state.user?.name ?? '',
-                address: context.read<HomeBloc>().state.user?.address ?? '',
-                phoneNumber: context.read<HomeBloc>().state.user?.phone ?? '',
-                avatar: context.read<HomeBloc>().state.user?.avatar ?? '',
+                name: context.read<HomeBloc>().state.user?.name,
+                address: context.read<HomeBloc>().state.user?.address,
+                phoneNumber: context.read<HomeBloc>().state.user?.phone,
+                avatar: context.read<HomeBloc>().state.user?.avatar,
               )),
           ),
           RepositoryProvider<DetailBloc>(create: (context) => DetailBloc()),

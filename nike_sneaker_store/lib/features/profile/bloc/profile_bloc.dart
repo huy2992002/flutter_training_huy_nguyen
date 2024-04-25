@@ -26,22 +26,15 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     ProfileStarted event,
     Emitter<ProfileState> emit,
   ) async {
-    String name = event.name;
-    String address = event.address;
-    String phoneNumber = event.phoneNumber;
-    String avatar = event.avatar;
-    UserModel user = UserModel(
+    String? name = event.name;
+    String? address = event.address;
+    String? phoneNumber = event.phoneNumber;
+    String? avatar = event.avatar;
+
+    UserModel? user = UserModel(
       name: name,
       address: address,
       phone: phoneNumber,
-    );
-
-    bool canAction = isValid(
-      event.context,
-      name: name,
-      address: address,
-      phoneNumber: phoneNumber,
-      user: user,
     );
 
     emit(state.copyWith(
@@ -50,7 +43,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       phoneNumber: phoneNumber,
       avatar: avatar,
       user: user,
-      canAction: canAction,
     ));
   }
 

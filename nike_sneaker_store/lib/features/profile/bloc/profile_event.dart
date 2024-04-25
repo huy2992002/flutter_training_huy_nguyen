@@ -4,19 +4,17 @@ import 'package:flutter/material.dart';
 abstract class ProfileEvent extends Equatable {}
 
 class ProfileStarted extends ProfileEvent {
-  ProfileStarted(
-    this.context, {
+  ProfileStarted({
     required this.name,
     required this.address,
     required this.phoneNumber,
     required this.avatar,
   });
 
-  final BuildContext context;
-  final String name;
-  final String address;
-  final String phoneNumber;
-  final String avatar;
+  final String? name;
+  final String? address;
+  final String? phoneNumber;
+  final String? avatar;
 
   @override
   List<Object?> get props => [name, address, phoneNumber, avatar];

@@ -73,8 +73,14 @@ class ProfilePage extends StatelessWidget {
                                   ? state.avatar == null
                                       ? Image.asset(
                                           Assets.images.imgAvatar.path)
-                                      : NSImageNetwork(path: state.avatar)
-                                  : Image.file(state.fileImage!),
+                                      : NSImageNetwork(
+                                          path: state.avatar,
+                                          fit: BoxFit.cover,
+                                        )
+                                  : Image.file(
+                                      state.fileImage!,
+                                      fit: BoxFit.cover,
+                                    ),
                             )),
                       ),
                       const SizedBox(height: 8),
