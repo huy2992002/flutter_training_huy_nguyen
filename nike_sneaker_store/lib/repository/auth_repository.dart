@@ -48,19 +48,23 @@ class AuthRepository {
       final authResponse = await supabaseClient.auth.signUp(
         email: email,
         password: password,
-        data: {'username': email},
+        data: {'email': email},
       );
       if (authResponse.user != null) {
-        UserModel user = UserModel(
-          uuid: authResponse.user?.id,
-          name: name,
-          email: email,
-        );
-        apiClient.post(
-          NSConstants.endPointUsers,
-          data: user.toJson(),
-        );
-        return authResponse.user!;
+        if ((authResponse.user?.identities?.length ?? 0) > 0) {
+          UserModel user = UserModel(
+            uuid: authResponse.user?.id,
+            name: name,
+            email: email,
+          );
+          apiClient.post(
+            NSConstants.endPointUsers,
+            data: user.toJson(),
+          );
+          return authResponse.user!;
+        } else {
+          throw Exception('Email already exists');
+        }
       } else {
         throw Exception('Dont find User');
       }
