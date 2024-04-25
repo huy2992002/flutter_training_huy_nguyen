@@ -11,7 +11,7 @@ import 'package:nike_sneaker_store/features/cart/view/widgets/cart_total_cost.da
 import 'package:nike_sneaker_store/features/cart_information/bloc/cart_info_bloc.dart';
 import 'package:nike_sneaker_store/features/cart_information/bloc/cart_info_event.dart';
 import 'package:nike_sneaker_store/features/cart_information/bloc/cart_info_state.dart';
-import 'package:nike_sneaker_store/features/profile/bloc/profile_bloc.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
@@ -36,9 +36,9 @@ class CartInformationPage extends StatelessWidget {
             .currentUser
             ?.email ??
         '';
-    _phoneController.text = context.read<ProfileBloc>().state.user?.phone ?? '';
+    _phoneController.text = context.read<HomeBloc>().state.user?.phone ?? '';
     _addressController.text =
-        context.read<ProfileBloc>().state.user?.address ?? '';
+        context.read<HomeBloc>().state.user?.address ?? '';
 
     context.read<CartInfoBloc>().add(CartInfoStarted(
           context,
@@ -74,7 +74,10 @@ class CartInformationPage extends StatelessWidget {
               title: AppLocalizations.of(context).myCart,
               leftIcon: NsIconButton(
                 onPressed: () => context.pop(),
-                icon: SvgPicture.asset(Assets.icons.icArrow),
+                icon: SvgPicture.asset(
+                  Assets.icons.icArrow,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
               ),
             ),
