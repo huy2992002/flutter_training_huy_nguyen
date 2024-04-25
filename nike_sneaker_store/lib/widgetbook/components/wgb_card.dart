@@ -21,7 +21,7 @@ Widget cardCartProduct(BuildContext context) {
       label: 'Product name',
       initialValue: 'Product 1',
     ),
-    imagePath: Assets.images.imgNikeAirMax.path,
+    imagePath: productImage,
     price:
         context.knobs.double.input(label: 'Product price', initialValue: 200),
     quantity: context.knobs.int.slider(
@@ -68,7 +68,7 @@ Widget cardNotification(BuildContext context) {
   ProductModel product = ProductModel(
     uuid: 'uuid',
     name: 'name product',
-    imagePath: Assets.images.imgNikeAirMax.path,
+    imagePath: productImage,
     price: 200,
     quantity: context.knobs.int.slider(
       label: 'Quantity product',
@@ -138,7 +138,7 @@ Widget cardProduct(BuildContext context) {
   ProductModel product = ProductModel(
     uuid: 'uuid',
     name: 'name product',
-    imagePath: Assets.images.imgNikeAirMax.path,
+    imagePath: productImage,
     price: 200,
     quantity: context.knobs.int.slider(
       label: 'Quantity product',
@@ -167,3 +167,6 @@ Widget cardProduct(BuildContext context) {
     ),
   );
 }
+
+String productImage =
+    'https://res.cloudinary.com/dwkiqkpv4/image/upload/v1712808390/public/p5zkqswpn3gy1r7bqspe.png';
