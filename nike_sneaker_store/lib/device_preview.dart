@@ -163,7 +163,10 @@ class MyApp extends StatelessWidget {
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               locale: state.locale,
-              theme: state.themeData,
+              themeMode: state.themeData == NSTheme.lightTheme
+                  ? ThemeMode.light
+                  : ThemeMode.dark,
+              theme: NSTheme.lightTheme,
               darkTheme: NSTheme.darkTheme,
               routerConfig: NSRoutesConfig.goRoute,
             );
