@@ -80,7 +80,7 @@ class NSElevatedButton extends StatelessWidget {
         child: isDisable
             ? Center(
                 child: SizedBox.square(
-                  dimension: 16,
+                  dimension: 19,
                   child: CircularProgressIndicator(
                     color: textColor ?? Theme.of(context).colorScheme.onPrimary,
                     strokeWidth: 2.5,
