@@ -7,12 +7,14 @@ class NSImageNetwork extends StatelessWidget {
     required this.path,
     this.width = 120,
     this.height = 54,
+    this.fit = BoxFit.contain,
     super.key,
   });
 
   final String? path;
   final double width;
   final double height;
+  final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class NSImageNetwork extends StatelessWidget {
               imageUrl: path!,
               width: width,
               height: height,
-              fit: BoxFit.contain,
+              fit: fit,
               placeholder: (context, url) => Center(
                 child: Padding(
                   padding: const EdgeInsets.all(6),
