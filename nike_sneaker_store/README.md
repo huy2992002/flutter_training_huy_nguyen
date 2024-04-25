@@ -67,7 +67,7 @@ Before you continue, ensure you meet the following requirements
     ```   
 6. Command used in project:
    ```
-    Gen Assets, L10n, WidgetBook, Evn:
+    Gen Assets, L10n, WidgetBook, Env:
         flutter pub run build_runner build --delete-conflicting-outputs 
    ```
 7. Run project:
