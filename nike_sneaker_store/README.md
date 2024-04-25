@@ -27,7 +27,7 @@
 - Understanding and applying the widget_book plugin for building UI documentation.
 
 ## 🔽 Download APK
-- You can download and use the application via the following [link](https://drive.google.com/file/d/1Fr0QzR_ySmfKjWtS9GJhT1sCz4OfYSEH/view?usp=sharing).
+- You can download and use the application via the following [link](https://drive.google.com/file/d/16rmeWyp7ysK9YJifpkItlewe_51ihyAF/view?usp=sharing).
 
 ## 💻 Requirements
 Before you continue, ensure you meet the following requirements
