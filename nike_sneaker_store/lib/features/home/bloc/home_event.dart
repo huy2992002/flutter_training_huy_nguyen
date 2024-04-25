@@ -50,3 +50,20 @@ class HomeFavoriteRemove extends HomeEvent {
   @override
   List<Object?> get props => [productId];
 }
+
+class HomeUserChanged extends HomeEvent {
+  HomeUserChanged({
+    this.name,
+    this.address,
+    this.phone,
+    this.avatar,
+  });
+
+  final String? name;
+  final String? address;
+  final String? phone;
+  final String? avatar;
+
+  @override
+  List<Object?> get props => [name, address, phone, avatar];
+}

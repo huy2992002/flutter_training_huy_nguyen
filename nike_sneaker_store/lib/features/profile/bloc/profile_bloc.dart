@@ -109,13 +109,14 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) async {
     emit(state.copyWith(buttonStatus: ProfileSaveStatus.loading));
     try {
+      String? avatar = await userRepository.uploadAvatar(state.fileImage);
       await userRepository.updateInformationUser(
         UserModel(
           uuid: event.userId,
           name: state.name,
           address: state.address,
           phone: state.phoneNumber,
-          avatar: await userRepository.uploadAvatar(state.fileImage),
+          avatar: avatar,
         ),
       );
       emit(state.copyWith(
@@ -123,6 +124,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           name: state.name,
           address: state.address,
           phone: state.phoneNumber,
+          avatar: avatar,
         ),
         canAction: false,
         buttonStatus: ProfileSaveStatus.success,

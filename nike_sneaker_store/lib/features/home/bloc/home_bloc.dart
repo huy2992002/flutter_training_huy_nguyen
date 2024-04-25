@@ -21,6 +21,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeLoadMore>(_onLoadItem);
     on<HomeCategoryPressed>(_onChangedCategory);
     on<HomeFavoritePressed>(_onFavoriteProduct);
+    on<HomeUserChanged>(_onChangedProfile);
   }
 
   final ProductRepository productRepository;
@@ -153,5 +154,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         errorMessage: message,
       ));
     }
+  }
+
+  Future<void> _onChangedProfile(
+    HomeUserChanged event,
+    Emitter<HomeState> emit,
+  ) async {
+    UserModel user = UserModel(
+      uuid: state.user?.uuid,
+      email: state.user?.email,
+      name: event.name,
+      address: event.address,
+      avatar: event.avatar,
+    );
+
+    emit(state.copyWith(user: user));
   }
 }

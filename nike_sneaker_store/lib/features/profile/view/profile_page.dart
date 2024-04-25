@@ -6,6 +6,8 @@ import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_text_button.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_text_form_field.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
+import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/profile/bloc/profile_bloc.dart';
 import 'package:nike_sneaker_store/features/profile/bloc/profile_event.dart';
 import 'package:nike_sneaker_store/features/profile/bloc/profile_state.dart';
@@ -50,6 +52,12 @@ class ProfilePage extends StatelessWidget {
                   context,
                   title: AppLocalizations.of(context).informationChangedSuccess,
                 );
+                context.read<HomeBloc>().add(HomeUserChanged(
+                      name: state.name,
+                      address: state.address,
+                      phone: state.phoneNumber,
+                      avatar: state.user?.avatar,
+                    ));
               }
               if (state.buttonStatus == ProfileSaveStatus.failure) {
                 NSSnackBar.snackbarError(context, title: state.message);
