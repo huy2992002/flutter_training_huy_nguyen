@@ -27,6 +27,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     emit(state.copyWith(
       email: email,
       isValid: isValid,
+      status: FormSubmissionStatus.initial,
     ));
   }
 
@@ -42,6 +43,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     emit(state.copyWith(
       password: password,
       isValid: isValid,
+      status: FormSubmissionStatus.initial,
     ));
   }
 
@@ -54,15 +56,12 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         password: event.password,
       );
       emit(state.copyWith(status: FormSubmissionStatus.success));
-    } on AuthException catch (e) {
-      emit(state.copyWith(
-        status: FormSubmissionStatus.failure,
-        message: e.message,
-      ));
     } catch (e) {
+      String message = '';
+      e is AuthException ? message = e.message : e.toString();
       emit(state.copyWith(
         status: FormSubmissionStatus.failure,
-        message: e.toString(),
+        message: message,
       ));
     }
   }

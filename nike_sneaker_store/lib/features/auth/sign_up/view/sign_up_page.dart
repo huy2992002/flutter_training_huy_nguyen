@@ -177,8 +177,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     textInputAction: TextInputAction.done,
                     readOnly: isLoading,
-                    onFieldSubmitted: (_) => state.isValid
-                        ? () => context.read<SignUpBloc>().add(
+                    onFieldSubmitted: state.isValid
+                        ? (_) => context.read<SignUpBloc>().add(
                               SubmitSignUpPressed(
                                 name: _nameController.text,
                                 email: _emailController.text,
