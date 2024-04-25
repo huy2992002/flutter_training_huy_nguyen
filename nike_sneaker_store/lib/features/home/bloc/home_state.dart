@@ -16,7 +16,7 @@ class HomeState extends Equatable {
   const HomeState({
     this.products = const [],
     this.productDisplays = const [],
-    this.maxItem = 2,
+    this.maxItem = 4,
     this.loadStatus = HomeLoadMoreStatus.loadInitial,
     this.user,
     this.categoryIndex = 0,

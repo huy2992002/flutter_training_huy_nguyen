@@ -9,7 +9,7 @@ class ProductRepository {
 
   final ApiClient apiClient;
 
-  Future<List<ProductModel>?> getProducts({int maxLength = 2}) async {
+  Future<List<ProductModel>?> getProducts({int maxLength = 4}) async {
     try {
       final response = await apiClient.get(
         NSConstants.endPointProducts,
