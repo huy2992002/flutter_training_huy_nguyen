@@ -99,7 +99,7 @@ class _SignUpPageState extends State<SignUpPage> {
             body: SafeArea(
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
-                  top: 18,
+                  top: 16,
                   bottom: 20,
                 ),
                 children: [
@@ -119,7 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     title: AppLocalizations.of(context).registerAccount,
                     subTitle: AppLocalizations.of(context).fillYourDetails,
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 32),
                   TitleLabel(text: AppLocalizations.of(context).yourName),
                   NSTextFormField.text(
                     controller: _nameController,
@@ -132,7 +132,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     textInputAction: TextInputAction.next,
                     readOnly: isLoading,
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 14),
                   TitleLabel(text: AppLocalizations.of(context).emailAddress),
                   NSTextFormField.text(
                     controller: _emailController,
@@ -145,7 +145,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     textInputAction: TextInputAction.next,
                     readOnly: isLoading,
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 14),
                   TitleLabel(text: AppLocalizations.of(context).password),
                   NSTextFormField.password(
                     controller: _passwordController,
@@ -158,7 +158,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     textInputAction: TextInputAction.next,
                     readOnly: isLoading,
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 14),
                   TitleLabel(
                       text: AppLocalizations.of(context).confirmPassword),
                   NSTextFormField.password(
@@ -187,7 +187,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             )
                         : null,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   NSElevatedButton.text(
                     onPressed: state.isValid
                         ? () => context.read<SignUpBloc>().add(
