@@ -32,7 +32,7 @@ class HomeState extends Equatable {
     return HomeState(
       products: products ?? this.products,
       productDisplays: productDisplays ?? this.productDisplays,
-      user: user,
+      user: user ?? this.user,
       categoryIndex: categoryIndex ?? this.categoryIndex,
       homeStatus: homeStatus ?? this.homeStatus,
       errorMessage: errorMessage ?? this.errorMessage,
