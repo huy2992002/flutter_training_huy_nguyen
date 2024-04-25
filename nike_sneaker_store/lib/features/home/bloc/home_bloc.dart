@@ -18,6 +18,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     this.userRepository,
   ) : super(const HomeState()) {
     on<HomeStarted>(_onStarted);
+    on<HomeLoadMore>(_onLoadItem);
     on<HomeCategoryPressed>(_onChangedCategory);
     on<HomeFavoritePressed>(_onFavoriteProduct);
   }
@@ -58,6 +59,42 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(state.copyWith(
         categoryIndex: 0,
         homeStatus: HomeViewStatus.failure,
+        errorMessage: message,
+      ));
+    }
+  }
+
+  Future<void> _onLoadItem(HomeLoadMore event, Emitter<HomeState> emit) async {
+    if (state.loadStatus == HomeLoadMoreStatus.loadCompeted) return;
+
+    emit(state.copyWith(loadStatus: HomeLoadMoreStatus.loading));
+    List<ProductModel> products = [];
+    try {
+      int oldItem = state.products.length;
+      int item = state.maxItem + 2;
+
+      products = await productRepository.getProducts(maxLength: item) ?? [];
+      emit(state.copyWith(
+        products: products,
+        maxItem: item,
+        loadStatus: HomeLoadMoreStatus.loadSuccess,
+      ));
+      _onChangedCategory(
+        HomeCategoryPressed(
+            index: state.categoryIndex, type: event.types[state.categoryIndex]),
+        emit,
+      );
+
+      if (products.length == oldItem || products.length > 20) {
+        emit(state.copyWith(loadStatus: HomeLoadMoreStatus.loadCompeted));
+      }
+    } catch (e) {
+      String? message;
+
+      e is DioException ? message = e.message : message = e.toString();
+
+      emit(state.copyWith(
+        loadStatus: HomeLoadMoreStatus.loadFailure,
         errorMessage: message,
       ));
     }

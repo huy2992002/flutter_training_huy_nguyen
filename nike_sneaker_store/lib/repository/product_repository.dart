@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
@@ -8,9 +9,12 @@ class ProductRepository {
 
   final ApiClient apiClient;
 
-  Future<List<ProductModel>?> getProducts() async {
+  Future<List<ProductModel>?> getProducts({int maxLength = 2}) async {
     try {
-      final response = await apiClient.get(NSConstants.endPointProducts);
+      final response = await apiClient.get(
+        NSConstants.endPointProducts,
+        options: Options(headers: {'Range': '0-$maxLength'}),
+      );
       final data = response.data as List<dynamic>?;
       return data?.map((e) {
         return e is Map<String, dynamic>

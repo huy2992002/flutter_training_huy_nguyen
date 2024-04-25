@@ -4,10 +4,20 @@ import 'package:nike_sneaker_store/models/user_model.dart';
 
 enum HomeViewStatus { initial, loading, success, failure }
 
+enum HomeLoadMoreStatus {
+  loadInitial,
+  loading,
+  loadSuccess,
+  loadFailure,
+  loadCompeted,
+}
+
 class HomeState extends Equatable {
   const HomeState({
     this.products = const [],
     this.productDisplays = const [],
+    this.maxItem = 2,
+    this.loadStatus = HomeLoadMoreStatus.loadInitial,
     this.user,
     this.categoryIndex = 0,
     this.homeStatus = HomeViewStatus.initial,
@@ -16,6 +26,8 @@ class HomeState extends Equatable {
 
   final List<ProductModel> products;
   final List<ProductModel> productDisplays;
+  final int maxItem;
+  final HomeLoadMoreStatus loadStatus;
   final UserModel? user;
   final int categoryIndex;
   final HomeViewStatus homeStatus;
@@ -25,6 +37,8 @@ class HomeState extends Equatable {
     List<ProductModel>? products,
     List<ProductModel>? productDisplays,
     UserModel? user,
+    int? maxItem,
+    HomeLoadMoreStatus? loadStatus,
     int? categoryIndex,
     HomeViewStatus? homeStatus,
     String? errorMessage,
@@ -32,6 +46,8 @@ class HomeState extends Equatable {
     return HomeState(
       products: products ?? this.products,
       productDisplays: productDisplays ?? this.productDisplays,
+      maxItem: maxItem ?? this.maxItem,
+      loadStatus: loadStatus ?? this.loadStatus,
       user: user ?? this.user,
       categoryIndex: categoryIndex ?? this.categoryIndex,
       homeStatus: homeStatus ?? this.homeStatus,
@@ -44,6 +60,8 @@ class HomeState extends Equatable {
         products,
         productDisplays,
         productDisplays.hashCode,
+        maxItem,
+        loadStatus,
         user,
         categoryIndex,
         homeStatus,
