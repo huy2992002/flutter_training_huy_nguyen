@@ -29,7 +29,6 @@ class SearchState extends Equatable {
   @override
   List<Object?> get props => [
         searchProducts,
-        searchProducts.hashCode,
         status,
         errorMessage,
       ];

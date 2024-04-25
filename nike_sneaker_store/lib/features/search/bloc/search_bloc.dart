@@ -17,7 +17,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     print('object ${state.status}');
     try {
       if (event.searchText.isEmpty) {
-        emit(state.copyWith(searchProducts: []));
+        emit(state.copyWith(
+          searchProducts: [],
+          status: SearchViewStatus.success,
+        ));
       } else {
         final products =
             await productRepository.fetchProductsByName(event.searchText);
