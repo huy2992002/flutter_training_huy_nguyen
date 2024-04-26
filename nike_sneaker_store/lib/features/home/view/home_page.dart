@@ -41,11 +41,20 @@ class _HomePageState extends State<HomePage> {
       final currentScroll = scrollController.offset;
 
       if (currentScroll >= maxScroll * 0.9) {
-        context.read<HomeBloc>().add(HomeLoadMore(types: [
-              CategoryType.allShoes.name,
-              CategoryType.outDoor.name,
-              CategoryType.tennis.name,
-            ]));
+        context.read<HomeBloc>().add(HomeLoadMore(
+              userId: context
+                      .read<SupabaseServices>()
+                      .supabaseClient
+                      .auth
+                      .currentUser
+                      ?.id ??
+                  '',
+              types: [
+                CategoryType.allShoes.name,
+                CategoryType.outDoor.name,
+                CategoryType.tennis.name,
+              ],
+            ));
       }
     });
   }

@@ -11,10 +11,11 @@ class HomeStarted extends HomeEvent {
 }
 
 class HomeLoadMore extends HomeEvent {
-  HomeLoadMore({required this.types});
+  HomeLoadMore({required this.userId, required this.types});
   final List<String> types;
+  final String userId;
   @override
-  List<Object?> get props => [types];
+  List<Object?> get props => [types,userId];
 }
 
 class HomeCategoryPressed extends HomeEvent {

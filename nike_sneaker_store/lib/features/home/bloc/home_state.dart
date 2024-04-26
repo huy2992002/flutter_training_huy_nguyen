@@ -59,6 +59,7 @@ class HomeState extends Equatable {
   List<Object?> get props => [
         products,
         productDisplays,
+        productDisplays.hashCode,
         maxItem,
         loadStatus,
         user,

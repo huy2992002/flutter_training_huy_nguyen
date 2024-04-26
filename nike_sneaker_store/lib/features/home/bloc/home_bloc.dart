@@ -73,8 +73,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       int oldItem = state.products.length;
       int item = state.maxItem + 2;
-
-      products = await productRepository.getProducts(maxLength: item) ?? [];
+      final productFavorites =
+          await productRepository.getIdProductFavorites(event.userId) ?? [];
+      products = [...await productRepository.getProducts(maxLength: item) ?? []];
+      products.forEach((element) {
+        if (productFavorites.any((e) => e == element.uuid)) {
+          element.isFavorite = true;
+        }
+      });
       emit(state.copyWith(
         products: products,
         maxItem: item,
