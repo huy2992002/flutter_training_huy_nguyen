@@ -13,7 +13,17 @@ class MockGoTrue extends Fake implements GoTrueClient {
     userMetadata: {},
     aud: 'aud',
     email: 'testSignIn@gmail.com',
-    identities: <UserIdentity>[],
+    identities: <UserIdentity>[
+      const UserIdentity(
+        id: 'id',
+        userId: 'userId',
+        identityData: {},
+        identityId: 'identityId',
+        provider: 'provider',
+        createdAt: 'createdAt',
+        lastSignInAt: 'lastSignInAt',
+      ),
+    ],
     createdAt: DateTime.now().toIso8601String(),
   );
 
