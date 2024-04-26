@@ -35,7 +35,6 @@ Before you continue, ensure you meet the following requirements
 - An IDE ([VSCode](https://code.visualstudio.com/), [Android Studio](https://developer.android.com/), [IntelliJ](https://www.jetbrains.com/idea/download/), etc ).
 - [Flutter](https://flutter.dev/) SDK version: >=3.1.2 <4.0.0.
 - [Dart](https://dart.dev/) SDK version: >=3.2.0-0 <4.0.0.
-- Get env [here](https://drive.google.com/file/d/1BtIpmX1t0Mr2X3j21479YuLJ0IRzZBn9/view?usp=sharing)
 
 ## 🛠️ Installation
 1. Clone the repository:
@@ -43,30 +42,37 @@ Before you continue, ensure you meet the following requirements
     ```
     git clone https://github.com/huy2992002/flutter_training_huy_nguyen.git
     ```
-2. Checkout branch:
+2. Enter folder project:
+    ```
+    cd flutter_training_huy_nguyen
+    ```
+3. Checkout branch:
     ```
     git checkout <feature/flutter-practice-two> 
     ```
-3. Pull origin branch:
+4. Pull origin branch:
     ```
     git pull origin <feature/flutter-practice-two> 
     ```
-4. Get dependency:
+5.  Enter folder app:
+    ```
+    cd nike_sneaker_store
+    ```
+6. Get dependency:
     ```
     flutter pub get
     ```    
-5. Set up environment:
+7. Set up environment:
     ``` 
     Create .env and populate the data based on the .env.example file.
     ```   
     Note: [.env](https://drive.google.com/file/d/1BtIpmX1t0Mr2X3j21479YuLJ0IRzZBn9/view?usp=sharing) file of project.
-6. Generate Env, Assets, L10n, WidgetBook:
+8. Generate Env, Assets, L10n, WidgetBook:
     ```
     flutter pub run build_runner build --delete-conflicting-outputs 
     ```
-7. Run project:
+9.  Run project:
     ```
-    cd nike_sneaker_store
     Run app: 
         flutter run ./lib/main.dart
     Run with device preview:   
@@ -74,8 +80,8 @@ Before you continue, ensure you meet the following requirements
     Run widget book:    
         flutter run ./lib/widgetbook/widgetbook.dart            
     ```
-8. Run coverage
-   ```
+10. Run coverage
+    ```
     flutter test          
-   ```
+    ```
 
