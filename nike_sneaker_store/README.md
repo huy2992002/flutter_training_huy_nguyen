@@ -6,7 +6,8 @@
 - The application is built with state management with BloC.
 - Unit testing and coverage > 70%.
 - You can see the design app: [here](https://www.figma.com/file/NeMkgnPe650F4yep27Xmwm/NikeSneakerStore?type=design&node-id=0%3A1&mode=design&t=CCrQNYUpdEDs4dUQ-1)
-- You can see document Test Case: [here](https://docs.google.com/spreadsheets/d/1QVw7b-pdqrIVHnqYjT9XgA0WwJoXXqrHcFGR0PsZY_4/edit?usp=sharing)
+- You can see document Test Case: [here](https://docs.google.com/spreadsheets/d/1QVw7b-pdqrIVHnqYjT9XgA0WwJoXXqrHcFGR0PsZY_4/edit?usp=sharing).
+- You can see estimates: [here](https://docs.google.com/document/d/17TgG_DXoNJTqKKeXgnPBlrCIjIMj_elPR69fCC89Qko/edit?usp=sharing)
 
 ## 👩🏻‍💻 Team size
 - 1 Developer.
