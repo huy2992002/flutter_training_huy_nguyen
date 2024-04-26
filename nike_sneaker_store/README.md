@@ -59,6 +59,7 @@ Before you continue, ensure you meet the following requirements
     ``` 
     Create .env and populate the data based on the .env.example file.
     ```   
+    Note: [.env](https://drive.google.com/file/d/1BtIpmX1t0Mr2X3j21479YuLJ0IRzZBn9/view?usp=sharing) file of project.
 6. Generate Env, Assets, L10n, WidgetBook:
     ```
     flutter pub run build_runner build --delete-conflicting-outputs 
