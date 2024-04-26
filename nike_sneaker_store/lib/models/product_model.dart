@@ -23,7 +23,7 @@ class ProductModel {
       imagePath: json['imagePath'] as String?,
       price:
           json['price'] != null ? double.parse(json['price'].toString()) : null,
-      quantity: json['quantity'] as int,
+      quantity: json['quantity'] as int?,
       description: json['description'] as String?,
       isBestSeller: json['isBestSeller'] as bool?,
       category: json['category'] as String?,
