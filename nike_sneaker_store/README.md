@@ -1,21 +1,21 @@
 # Nike Sneaker Store
  <img width="100%" alt="Design App Banner" src="https://github.com/huy2992002/flutter_training_huy_nguyen/assets/119470320/56a903cf-392b-45a5-8e6b-44d47e8e9267">
 
-## 📝 OVERVIEW
+## 📝 Overview
 - This is a document detailing the plan to build the Nike Sneaker Store app.
 - The application is built with state management with BloC.
 - Unit testing and coverage > 70%.
 - You can see the design app: [here](https://www.figma.com/file/NeMkgnPe650F4yep27Xmwm/NikeSneakerStore?type=design&node-id=0%3A1&mode=design&t=CCrQNYUpdEDs4dUQ-1)
 - You can see document Test Case: [here](https://docs.google.com/spreadsheets/d/1QVw7b-pdqrIVHnqYjT9XgA0WwJoXXqrHcFGR0PsZY_4/edit?usp=sharing)
 
-## 👩🏻‍💻 TEAM SIZE
+## 👩🏻‍💻 Team size
 - 1 Developer.
 
-## 🎮 TECHNIQUES
+## 🎮 Techniques
 - Flutter.
 - Dart.
 
-## 🎯 TARGETS
+## 🎯 Targets
 - Get familiar with Flutter user interface, widgets and Flutter CLI.
 - Get acquainted with Flutter concepts and gain a better understanding of the architecture overview.
 - Have an understanding at a basic level of how a Flutter application works.
@@ -35,50 +35,46 @@ Before you continue, ensure you meet the following requirements
 - An IDE ([VSCode](https://code.visualstudio.com/), [Android Studio](https://developer.android.com/), [IntelliJ](https://www.jetbrains.com/idea/download/), etc ).
 - [Flutter](https://flutter.dev/) SDK version: >=3.1.2 <4.0.0.
 - [Dart](https://dart.dev/) SDK version: >=3.2.0-0 <4.0.0.
+- Get env [here](https://drive.google.com/file/d/1BtIpmX1t0Mr2X3j21479YuLJ0IRzZBn9/view?usp=sharing)
 
 ## 🛠️ Installation
 1. Clone the repository:
-​
+
     ```
     git clone https://github.com/huy2992002/flutter_training_huy_nguyen.git
     ```
 2. Checkout branch:
-​
     ```
-    git checkout <feature/flutter-practice-one> 
+    git checkout <feature/flutter-practice-two> 
     ```
 3. Pull origin branch:
-​
     ```
-    git pull origin <feature/flutter-practice-one> 
+    git pull origin <feature/flutter-practice-two> 
     ```
 4. Get dependency:
-​
     ```
     flutter pub get
     ```    
 5. Set up environment:
     ``` 
-    Create .env file
-        Set Up SUPABASE_API_KEY
-               SUPABASE_BASE_URL
-               API_URL
-               UPLOAD_URL
+    Create .env and populate the data based on the .env.example file.
     ```   
-6. Command used in project:
-   ```
-    Gen Assets, L10n, WidgetBook, Env:
-        flutter pub run build_runner build --delete-conflicting-outputs 
-   ```
+6. Generate Env, Assets, L10n, WidgetBook:
+    ```
+    flutter pub run build_runner build --delete-conflicting-outputs 
+    ```
 7. Run project:
-   ```
+    ```
     cd nike_sneaker_store
     Run app: 
         flutter run ./lib/main.dart
     Run with device preview:   
         flutter run ./lib/device_preview/device_preview.dart
     Run widget book:    
-        flutter run ./lib/widgetbook/widgetbook.dart 
-    Run test:
-        flutter test            
+        flutter run ./lib/widgetbook/widgetbook.dart            
+    ```
+8. Run coverage
    ```
+    flutter test          
+   ```
+
