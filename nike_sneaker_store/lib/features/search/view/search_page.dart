@@ -30,27 +30,27 @@ class SearchPage extends StatelessWidget {
 
     Debounce debounce = Debounce(milliseconds: 500);
 
-    return BlocBuilder<SearchBloc, SearchState>(
-      buildWhen: (previous, current) =>
-          previous.status != current.status ||
-          previous.searchProducts != current.searchProducts,
-      builder: (context, state) {
-        return Scaffold(
-          appBar: NSAppBar(
-            title: AppLocalizations.of(context).search,
-            leftIcon: NsIconButton(
-              onPressed: () => context.pop(),
-              icon: SvgPicture.asset(
-                Assets.icons.icArrow,
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
-              ),
-              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-            ),
-            rightIcon: ActionIconAppBar(
-              isMarked: context.read<CartBloc>().state.myCarts.isNotEmpty,
-            ),
+    return Scaffold(
+      appBar: NSAppBar(
+        title: AppLocalizations.of(context).search,
+        leftIcon: NsIconButton(
+          onPressed: () => context.pop(),
+          icon: SvgPicture.asset(
+            Assets.icons.icArrow,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
-          body: Padding(
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        ),
+        rightIcon: ActionIconAppBar(
+          isMarked: context.read<CartBloc>().state.myCarts.isNotEmpty,
+        ),
+      ),
+      body: BlocBuilder<SearchBloc, SearchState>(
+        buildWhen: (previous, current) =>
+            previous.status != current.status ||
+            previous.searchProducts != current.searchProducts,
+        builder: (context, state) {
+          return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
@@ -131,9 +131,9 @@ class SearchPage extends StatelessWidget {
                   ),
               ],
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
