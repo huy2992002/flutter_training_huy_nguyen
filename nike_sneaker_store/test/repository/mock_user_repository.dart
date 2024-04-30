@@ -6,6 +6,7 @@ import 'package:nike_sneaker_store/repository/user_repository.dart';
 import 'package:nike_sneaker_store/services/remote/api_client.dart';
 
 import '../services/mock_api_client.dart';
+import '../utils/mock_data.dart';
 
 class MockUserRepository extends Fake implements UserRepository {
   @override
@@ -19,5 +20,10 @@ class MockUserRepository extends Fake implements UserRepository {
   @override
   Future<String?> uploadAvatar(File? file) async {
     return '';
+  }
+
+  @override
+  Future<UserModel?> getUser({required String userId}) async {
+    return MockData.mockUser;
   }
 }

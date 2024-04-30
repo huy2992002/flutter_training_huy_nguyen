@@ -72,21 +72,4 @@ class AuthRepository {
       rethrow;
     }
   }
-
-  Future<UserModel?> getUser({
-    required String userId,
-  }) async {
-    try {
-      final url = '${NSConstants.endPointUsers}?uuid=eq.$userId';
-      final response = await apiClient.get(url);
-      final data = response.data as List<dynamic>;
-      if (data.isNotEmpty && data[0] is Map<String, dynamic>) {
-        return UserModel.fromJson(data[0] as Map<String, dynamic>);
-      } else {
-        throw const AuthException('User not found');
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
 }

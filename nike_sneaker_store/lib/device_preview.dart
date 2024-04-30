@@ -126,7 +126,6 @@ class MyApp extends StatelessWidget {
           RepositoryProvider<HomeBloc>(
             create: (context) => HomeBloc(
               context.read<ProductRepository>(),
-              context.read<AuthRepository>(),
               context.read<UserRepository>(),
             )..add(HomeStarted(
                 userId: Supabase.instance.client.auth.currentUser?.id ?? '',

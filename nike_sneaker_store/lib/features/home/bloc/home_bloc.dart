@@ -6,7 +6,6 @@ import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
-import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/repository/user_repository.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
@@ -14,7 +13,6 @@ import 'package:nike_sneaker_store/utils/enum.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(
     this.productRepository,
-    this.authRepository,
     this.userRepository,
   ) : super(const HomeState()) {
     on<HomeStarted>(_onStarted);
@@ -25,7 +23,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   final ProductRepository productRepository;
-  final AuthRepository authRepository;
   final UserRepository userRepository;
 
   Future<void> _onStarted(HomeStarted event, Emitter<HomeState> emit) async {
@@ -35,7 +32,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final productFavorites =
           await productRepository.getIdProductFavorites(event.userId) ?? [];
       products = await productRepository.getProducts() ?? [];
-      final user = await authRepository.getUser(userId: event.userId);
+      final user = await userRepository.getUser(userId: event.userId);
       products.forEach((element) {
         if (productFavorites.any((e) => e == element.uuid)) {
           element.isFavorite = true;
@@ -75,7 +72,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       int item = state.maxItem + 2;
       final productFavorites =
           await productRepository.getIdProductFavorites(event.userId) ?? [];
-      products = [...await productRepository.getProducts(maxLength: item) ?? []];
+      products = await productRepository.getProducts(maxLength: item) ?? [];
       products.forEach((element) {
         if (productFavorites.any((e) => e == element.uuid)) {
           element.isFavorite = true;

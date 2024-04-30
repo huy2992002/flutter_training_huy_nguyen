@@ -3,20 +3,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
-import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/repository/user_repository.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../../repository/mock_auth_repository.dart';
 import '../../repository/mock_product_repository.dart';
 import '../../repository/mock_user_repository.dart';
 import '../../utils/mock_data.dart';
 import '../../utils/mock_supabase.dart';
 
 void main() {
-  late AuthRepository authRepository;
   late ProductRepository productRepository;
   late UserRepository userRepository;
 
@@ -24,12 +21,10 @@ void main() {
   late SupabaseClient supabaseClient;
 
   setUp(() {
-    authRepository = MockAuthRepository();
     productRepository = MockProductRepository();
     userRepository = MockUserRepository();
     homeBloc = HomeBloc(
       productRepository,
-      authRepository,
       userRepository,
     );
     supabaseClient = MockSupabase();
