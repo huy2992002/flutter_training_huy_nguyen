@@ -20,16 +20,21 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/utils/debounce.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
 
   @override
+  State<SearchPage> createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
+  /// The [TextEditingController] of [TextFormField] search
+  TextEditingController _searchController = TextEditingController();
+
+  Debounce debounce = Debounce(milliseconds: 500);
+
+  @override
   Widget build(BuildContext context) {
-    /// The [TextEditingController] of [TextFormField] search
-    TextEditingController _searchController = TextEditingController();
-
-    Debounce debounce = Debounce(milliseconds: 500);
-
     return Scaffold(
       appBar: NSAppBar(
         title: AppLocalizations.of(context).search,
@@ -135,5 +140,11 @@ class SearchPage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _searchController.dispose();
   }
 }

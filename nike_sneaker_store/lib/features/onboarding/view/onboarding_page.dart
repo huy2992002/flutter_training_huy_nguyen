@@ -12,21 +12,26 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 
-class OnboardingPage extends StatelessWidget {
+class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
 
   @override
+  State<OnboardingPage> createState() => _OnboardingPageState();
+}
+
+class _OnboardingPageState extends State<OnboardingPage> {
+  /// controller of [PageView]
+  final PageController _pageController = PageController();
+
+  /// List page display [PageView]
+  List<Widget> _onboardPages = [
+    const OnboardingWelcome(),
+    const OnboardingStart(),
+    const OnboardingPower(),
+  ];
+
+  @override
   Widget build(BuildContext context) {
-    /// controller of [PageView]
-    final PageController _pageController = PageController();
-
-    /// List page display [PageView]
-    List<Widget> _onboardPages = [
-      const OnboardingWelcome(),
-      const OnboardingStart(),
-      const OnboardingPower(),
-    ];
-
     /// The function to switch page of [PageView].
     /// If it is on the last page, it will switch to [SignInPage]
     void _onNext(int pageIndex) {
@@ -101,5 +106,11 @@ class OnboardingPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
   }
 }

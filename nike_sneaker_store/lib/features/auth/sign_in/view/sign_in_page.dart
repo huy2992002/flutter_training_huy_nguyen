@@ -19,18 +19,23 @@ import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   /// Screen sign in page
   const SignInPage({super.key});
 
   @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  /// The [TextEditingController] of [TextFormField] email
+  TextEditingController _emailController = TextEditingController();
+
+  /// The [TextEditingController] of [TextFormField] password
+  TextEditingController _passwordController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    /// The [TextEditingController] of [TextFormField] email
-    TextEditingController _emailController = TextEditingController();
-
-    /// The [TextEditingController] of [TextFormField] password
-    TextEditingController _passwordController = TextEditingController();
-
     return BlocConsumer<SignInBloc, SignInState>(
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
@@ -145,5 +150,12 @@ class SignInPage extends StatelessWidget {
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
   }
 }
