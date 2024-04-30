@@ -76,6 +76,9 @@ class _HomePageState extends State<HomePage> {
       ),
     ];
 
+    String? userId =
+        context.read<SupabaseServices>().supabaseClient.auth.currentUser?.id;
+
     return Scaffold(
       body: Column(
         children: [
@@ -101,63 +104,61 @@ class _HomePageState extends State<HomePage> {
               }
             },
           ),
-          BlocConsumer<HomeBloc, HomeState>(
-            listenWhen: (previous, current) =>
-                previous.homeStatus != current.homeStatus,
-            listener: (context, state) {
-              if (state.homeStatus == HomeViewStatus.failure) {
-                NSSnackBar.snackbarError(context, title: state.errorMessage);
-              }
-            },
-            buildWhen: (previous, current) =>
-                previous.homeStatus != current.homeStatus ||
-                previous.productDisplays != current.productDisplays ||
-                previous.loadStatus != current.loadStatus,
-            builder: (context, state) {
-              String? userId = context
-                  .read<SupabaseServices>()
-                  .supabaseClient
-                  .auth
-                  .currentUser
-                  ?.id;
-              return Expanded(
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                    String? id = context
-                        .read<SupabaseServices>()
-                        .supabaseClient
-                        .auth
-                        .currentUser
-                        ?.id;
-                    if (id == null) return;
-                    context.read<HomeBloc>().add(HomeStarted(userId: id));
-                  },
-                  child: ListView(
-                    padding: const EdgeInsets.only(top: 16, bottom: 20),
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: NSSearchBox(
-                          onTap: () => context.push(NSRoutesConst.pathSearch),
-                          readOnly: true,
-                        ),
-                      ),
-                      const SizedBox(height: 24),
-                      TitleHome(
-                          text: AppLocalizations.of(context).selectCategory),
-                      SizedBox(
-                        height: 40,
-                        child: ListView.builder(
-                          itemCount: _categories.length,
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          itemBuilder: (context, index) {
-                            final category = _categories[index];
-                            return Padding(
-                              padding: const EdgeInsets.only(right: 16),
-                              child: CardCategory(
-                                onPressed:
-                                    state.homeStatus == HomeViewStatus.loading
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: () async {
+                String? id = context
+                    .read<SupabaseServices>()
+                    .supabaseClient
+                    .auth
+                    .currentUser
+                    ?.id;
+                if (id == null) return;
+                context.read<HomeBloc>().add(HomeStarted(userId: id));
+              },
+              child: ListView(
+                padding: const EdgeInsets.only(top: 16, bottom: 20),
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: NSSearchBox(
+                      onTap: () => context.push(NSRoutesConst.pathSearch),
+                      readOnly: true,
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  TitleHome(text: AppLocalizations.of(context).selectCategory),
+                  BlocConsumer<HomeBloc, HomeState>(
+                    listenWhen: (previous, current) =>
+                        previous.homeStatus != current.homeStatus,
+                    listener: (context, state) {
+                      if (state.homeStatus == HomeViewStatus.failure) {
+                        NSSnackBar.snackbarError(context,
+                            title: state.errorMessage);
+                      }
+                    },
+                    buildWhen: (previous, current) =>
+                        previous.homeStatus != current.homeStatus ||
+                        previous.productDisplays != current.productDisplays ||
+                        previous.loadStatus != current.loadStatus,
+                    builder: (context, state) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 40,
+                            child: ListView.builder(
+                              itemCount: _categories.length,
+                              scrollDirection: Axis.horizontal,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              itemBuilder: (context, index) {
+                                final category = _categories[index];
+                                return Padding(
+                                  padding: const EdgeInsets.only(right: 16),
+                                  child: CardCategory(
+                                    onPressed: state.homeStatus ==
+                                            HomeViewStatus.loading
                                         ? null
                                         : () => context.read<HomeBloc>().add(
                                               HomeCategoryPressed(
@@ -165,129 +166,134 @@ class _HomePageState extends State<HomePage> {
                                                 type: category.type,
                                               ),
                                             ),
-                                text: category.name,
-                                selected: state.categoryIndex == index,
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const SizedBox(height: 24),
-                      TitleHome(
-                          text: AppLocalizations.of(context).popularShoes),
-                      SizedBox(
-                        height: 201,
-                        child: state.homeStatus == HomeViewStatus.loading
-                            ? ListView.separated(
-                                itemCount: 3,
-                                scrollDirection: Axis.horizontal,
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                itemBuilder: (context, index) {
-                                  return const CardProductLoading();
-                                },
-                                separatorBuilder: (context, index) =>
-                                    const SizedBox(width: 20),
-                              )
-                            : ListView.builder(
-                                controller: scrollController,
-                                itemCount: state.loadStatus ==
-                                        HomeLoadMoreStatus.loadCompeted
-                                    ? state.productDisplays.length
-                                    : state.productDisplays.length + 1,
-                                scrollDirection: Axis.horizontal,
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                itemBuilder: (context, index) {
-                                  if (index < state.productDisplays.length) {
-                                    final product =
-                                        state.productDisplays[index];
-                                    return Padding(
-                                      padding: const EdgeInsets.only(right: 20),
-                                      child: CardProduct(
-                                        tag: NSConstants.tagProductHome(
-                                            product.uuid ?? ''),
-                                        product: product,
-                                        onTap: () {
-                                          context.push(
-                                            NSRoutesConst.pathDetail,
-                                            extra: NSConstants.tagProductHome(
+                                    text: category.name,
+                                    selected: state.categoryIndex == index,
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          TitleHome(
+                              text: AppLocalizations.of(context).popularShoes),
+                          SizedBox(
+                            height: 201,
+                            child: state.homeStatus == HomeViewStatus.loading
+                                ? ListView.separated(
+                                    itemCount: 3,
+                                    scrollDirection: Axis.horizontal,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    itemBuilder: (context, index) {
+                                      return const CardProductLoading();
+                                    },
+                                    separatorBuilder: (context, index) =>
+                                        const SizedBox(width: 20),
+                                  )
+                                : ListView.builder(
+                                    controller: scrollController,
+                                    itemCount: state.loadStatus ==
+                                            HomeLoadMoreStatus.loadCompeted
+                                        ? state.productDisplays.length
+                                        : state.productDisplays.length + 1,
+                                    scrollDirection: Axis.horizontal,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    itemBuilder: (context, index) {
+                                      if (index <
+                                          state.productDisplays.length) {
+                                        final product =
+                                            state.productDisplays[index];
+                                        return Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 20),
+                                          child: CardProduct(
+                                            tag: NSConstants.tagProductHome(
                                                 product.uuid ?? ''),
-                                          );
-                                          final products = state.products
-                                              .where(
-                                                (e) =>
-                                                    e.category ==
-                                                    product.category,
-                                              )
-                                              .toList();
-                                          context.read<DetailBloc>().add(
-                                                DetailSelectStarted(
-                                                  product: product,
-                                                  products: products,
-                                                ),
+                                            product: product,
+                                            onTap: () {
+                                              context.push(
+                                                NSRoutesConst.pathDetail,
+                                                extra:
+                                                    NSConstants.tagProductHome(
+                                                        product.uuid ?? ''),
                                               );
-                                        },
-                                        onAddCart: () {
-                                          if (userId != null) {
-                                            context.read<CartBloc>().add(
-                                                CartInsertPressed(context,
-                                                    userId: userId,
-                                                    product: product));
-                                          } else {
-                                            NSSnackBar.snackbarError(
-                                              context,
-                                              title:
-                                                  AppLocalizations.of(context)
+                                              final products = state.products
+                                                  .where(
+                                                    (e) =>
+                                                        e.category ==
+                                                        product.category,
+                                                  )
+                                                  .toList();
+                                              context.read<DetailBloc>().add(
+                                                    DetailSelectStarted(
+                                                      product: product,
+                                                      products: products,
+                                                    ),
+                                                  );
+                                            },
+                                            onAddCart: () {
+                                              if (userId != null) {
+                                                context.read<CartBloc>().add(
+                                                    CartInsertPressed(context,
+                                                        userId: userId,
+                                                        product: product));
+                                              } else {
+                                                NSSnackBar.snackbarError(
+                                                  context,
+                                                  title: AppLocalizations.of(
+                                                          context)
                                                       .notFoundUser,
-                                            );
-                                          }
-                                        },
-                                        onFavorite: () {
-                                          if (userId != null) {
-                                            context.read<HomeBloc>().add(
-                                                  HomeFavoritePressed(
-                                                    userId: userId,
-                                                    productId: product.uuid,
-                                                  ),
                                                 );
-                                          } else {
-                                            NSSnackBar.snackbarError(
-                                              context,
-                                              title:
-                                                  AppLocalizations.of(context)
+                                              }
+                                            },
+                                            onFavorite: () {
+                                              if (userId != null) {
+                                                context.read<HomeBloc>().add(
+                                                      HomeFavoritePressed(
+                                                        userId: userId,
+                                                        productId: product.uuid,
+                                                      ),
+                                                    );
+                                              } else {
+                                                NSSnackBar.snackbarError(
+                                                  context,
+                                                  title: AppLocalizations.of(
+                                                          context)
                                                       .notFoundUser,
-                                            );
-                                          }
-                                        },
-                                      ),
-                                    );
-                                  } else {
-                                    return const Center(
-                                      child: CircularProgressIndicator(),
-                                    );
-                                  }
-                                },
-                              ),
-                      ),
-                      const SizedBox(height: 24),
-                      TitleHome(
-                        text: AppLocalizations.of(context).newArrivals,
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: CardSale(
-                          title: AppLocalizations.of(context).summerSale,
-                          discount: 50,
-                          imagePath: Assets.images.imgSumerSale.path,
-                        ),
-                      ),
-                    ],
+                                                );
+                                              }
+                                            },
+                                          ),
+                                        );
+                                      } else {
+                                        return const Center(
+                                          child: CircularProgressIndicator(),
+                                        );
+                                      }
+                                    },
+                                  ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
-                ),
-              );
-            },
+                  const SizedBox(height: 24),
+                  TitleHome(
+                    text: AppLocalizations.of(context).newArrivals,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: CardSale(
+                      title: AppLocalizations.of(context).summerSale,
+                      discount: 50,
+                      imagePath: Assets.images.imgSumerSale.path,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

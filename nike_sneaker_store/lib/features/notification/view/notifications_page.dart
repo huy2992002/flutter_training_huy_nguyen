@@ -18,6 +18,8 @@ class NotificationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? userId =
+        context.read<SupabaseServices>().supabaseClient.auth.currentUser?.id;
     return Scaffold(
         appBar: NSAppBar(
           title: AppLocalizations.of(context).notifications,
@@ -41,12 +43,6 @@ class NotificationsPage extends StatelessWidget {
               previous.status != current.status ||
               previous.notifications != current.notifications,
           builder: (context, state) {
-            String? userId = context
-                .read<SupabaseServices>()
-                .supabaseClient
-                .auth
-                .currentUser
-                ?.id;
             return state.status == NotificationViewStatus.loading
                 ? const Center(
                     child: CircularProgressIndicator(),

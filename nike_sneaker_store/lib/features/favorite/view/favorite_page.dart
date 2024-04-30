@@ -27,25 +27,28 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeBloc, HomeState>(
-      listenWhen: (previous, current) =>
-          previous.homeStatus != current.homeStatus,
-      listener: (context, state) {
-        if (state.homeStatus == HomeViewStatus.failure) {
-          NSSnackBar.snackbarError(context, title: state.errorMessage);
-        }
-      },
-      builder: (context, state) {
-        final favoriteProducts =
-            state.products.where((e) => e.isFavorite == true).toList();
-        return Scaffold(
-          appBar: NSAppBar(
-            title: AppLocalizations.of(context).favorite,
-            rightIcon: ActionIconAppBar(
-              isMarked: context.read<CartBloc>().state.myCarts.isNotEmpty,
-            ),
-          ),
-          body: favoriteProducts.isEmpty
+    String? userId =
+        context.read<SupabaseServices>().supabaseClient.auth.currentUser?.id;
+
+    return Scaffold(
+      appBar: NSAppBar(
+        title: AppLocalizations.of(context).favorite,
+        rightIcon: ActionIconAppBar(
+          isMarked: context.read<CartBloc>().state.myCarts.isNotEmpty,
+        ),
+      ),
+      body: BlocConsumer<HomeBloc, HomeState>(
+        listenWhen: (previous, current) =>
+            previous.homeStatus != current.homeStatus,
+        listener: (context, state) {
+          if (state.homeStatus == HomeViewStatus.failure) {
+            NSSnackBar.snackbarError(context, title: state.errorMessage);
+          }
+        },
+        builder: (context, state) {
+          final favoriteProducts =
+              state.products.where((e) => e.isFavorite == true).toList();
+          return favoriteProducts.isEmpty
               ? Padding(
                   padding: const EdgeInsets.only(
                     left: 30,
@@ -80,12 +83,6 @@ class _FavoritePageState extends State<FavoritePage> {
                       tag: NSConstants.tagProductFavorite(product.uuid ?? ''),
                       product: product,
                       onFavorite: () {
-                        String? userId = context
-                            .read<SupabaseServices>()
-                            .supabaseClient
-                            .auth
-                            .currentUser
-                            ?.id;
                         if (userId != null) {
                           context.read<HomeBloc>().add(
                                 HomeFavoritePressed(
@@ -120,9 +117,9 @@ class _FavoritePageState extends State<FavoritePage> {
                       },
                     );
                   },
-                ),
-        );
-      },
+                );
+        },
+      ),
     );
   }
 }
