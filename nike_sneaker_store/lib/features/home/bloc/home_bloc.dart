@@ -8,6 +8,7 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/repository/user_repository.dart';
+import 'package:nike_sneaker_store/services/handle_error/error_extension.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
@@ -48,11 +49,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     } catch (e) {
       String? message;
 
-      if (e is DioException) {
-        message = e.message;
-      } else {
-        message = e.toString();
-      }
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
 
       emit(state.copyWith(
         categoryIndex: 0,
@@ -95,10 +94,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     } catch (e) {
       String? message;
 
-      e is DioException ? message = e.message : message = e.toString();
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
 
       emit(state.copyWith(
-        loadStatus: HomeLoadMoreStatus.loadFailure,
+        categoryIndex: 0,
+        homeStatus: HomeViewStatus.failure,
         errorMessage: message,
       ));
     }
@@ -146,13 +148,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     } catch (e) {
       String? message;
 
-      if (e is DioException) {
-        message = e.message;
-      } else {
-        message = e.toString();
-      }
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
 
       emit(state.copyWith(
+        categoryIndex: 0,
         homeStatus: HomeViewStatus.failure,
         errorMessage: message,
       ));
