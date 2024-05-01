@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_event.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_state.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
+import 'package:nike_sneaker_store/services/handle_error/error_extension.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc({required this.productRepository}) : super(const SearchState()) {
@@ -35,11 +36,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     } catch (e) {
       String? message;
 
-      if (e is DioException) {
-        message = e.message;
-      } else {
-        message = e.toString();
-      }
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
 
       emit(state.copyWith(
         status: SearchViewStatus.failure,

@@ -6,6 +6,7 @@ import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/repository/user_repository.dart';
+import 'package:nike_sneaker_store/services/handle_error/error_extension.dart';
 
 class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   NotificationBloc(this.productRepository, this.userRepository)
@@ -31,7 +32,10 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     } catch (e) {
       String? message;
 
-      e is DioException ? message = e.message : message = e.toString();
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
+
       emit(state.copyWith(
         status: NotificationViewStatus.failure,
         message: message,
@@ -60,7 +64,10 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     } catch (e) {
       String? message;
 
-      e is DioException ? message = e.message : message = e.toString();
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
+
       emit(state.copyWith(
         itemStatus: ListNotificationStatus.readFailure,
         message: message,
@@ -84,7 +91,10 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     } catch (e) {
       String? message;
 
-      e is DioException ? message = e.message : message = e.toString();
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
+
       emit(state.copyWith(
         itemStatus: ListNotificationStatus.removeFailure,
         message: message,

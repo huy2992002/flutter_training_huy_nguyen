@@ -8,6 +8,7 @@ import 'package:nike_sneaker_store/features/profile/bloc/profile_state.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/repository/user_repository.dart';
+import 'package:nike_sneaker_store/services/handle_error/error_extension.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
@@ -132,7 +133,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     } catch (e) {
       String? message;
 
-      e is DioException ? message = e.message : message = e.toString();
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
 
       emit(state.copyWith(
         buttonStatus: ProfileSaveStatus.failure,

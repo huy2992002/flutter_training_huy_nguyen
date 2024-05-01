@@ -9,6 +9,7 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/repository/user_repository.dart';
+import 'package:nike_sneaker_store/services/handle_error/error_extension.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc(this.productRepository, this.userRepository)
@@ -35,11 +36,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     } catch (e) {
       String? message;
 
-      if (e is DioException) {
-        message = e.message;
-      } else {
-        message = e.toString();
-      }
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
 
       emit(state.copyWith(
         viewStatus: CartViewStatus.failure,
@@ -77,11 +76,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     } catch (e) {
       String? message;
 
-      if (e is DioException) {
-        message = e.message;
-      } else {
-        message = e.toString();
-      }
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
 
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.insertFailure,
@@ -114,12 +111,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     } catch (e) {
       String? message;
 
-      if (e is DioException) {
-        message = e.message;
-      } else {
-        message = e.toString();
-      }
-
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.incrementFailure,
         message: message,
@@ -157,11 +151,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     } catch (e) {
       String? message;
 
-      if (e is DioException) {
-        message = e.message;
-      } else {
-        message = e.toString();
-      }
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
 
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.decrementFailure,
