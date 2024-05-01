@@ -130,9 +130,14 @@ class _HomePageState extends State<HomePage> {
                   TitleHome(text: AppLocalizations.of(context).selectCategory),
                   BlocConsumer<HomeBloc, HomeState>(
                     listenWhen: (previous, current) =>
-                        previous.homeStatus != current.homeStatus,
+                        previous.homeStatus != current.homeStatus ||
+                        previous.loadStatus != current.loadStatus ||
+                        previous.favoriteStatus != current.favoriteStatus,
                     listener: (context, state) {
-                      if (state.homeStatus == HomeViewStatus.failure) {
+                      if (state.homeStatus == HomeViewStatus.failure ||
+                          state.favoriteStatus ==
+                              HomeFavoriteStatus.favoriteFailure ||
+                          state.loadStatus == HomeLoadMoreStatus.loadFailure) {
                         NSSnackBar.snackbarError(context,
                             title: state.errorMessage);
                       }
@@ -140,7 +145,8 @@ class _HomePageState extends State<HomePage> {
                     buildWhen: (previous, current) =>
                         previous.homeStatus != current.homeStatus ||
                         previous.productDisplays != current.productDisplays ||
-                        previous.loadStatus != current.loadStatus,
+                        previous.loadStatus != current.loadStatus ||
+                        previous.favoriteStatus != current.favoriteStatus,
                     builder: (context, state) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

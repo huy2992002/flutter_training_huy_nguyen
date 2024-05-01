@@ -128,6 +128,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async {
     List<ProductModel> products = [...state.products];
     List<String> productFavorites = [];
+    emit(state.copyWith(
+      favoriteStatus: HomeFavoriteStatus.favoriteLoading,
+    ));
     try {
       userRepository.updateInformationUser(UserModel(
         uuid: event.userId,
@@ -143,7 +146,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         }
       });
 
-      emit(state.copyWith(productDisplays: products));
+      emit(state.copyWith(
+        favoriteStatus: HomeFavoriteStatus.favoriteSuccess,
+        productDisplays: products,
+      ));
     } catch (e) {
       String? message;
 
@@ -152,7 +158,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           : message = e.toString();
 
       emit(state.copyWith(
-        homeStatus: HomeViewStatus.failure,
+        favoriteStatus: HomeFavoriteStatus.favoriteFailure,
         errorMessage: message,
       ));
     }

@@ -4,6 +4,13 @@ import 'package:nike_sneaker_store/models/user_model.dart';
 
 enum HomeViewStatus { initial, loading, success, failure }
 
+enum HomeFavoriteStatus {
+  favoriteInitial,
+  favoriteLoading,
+  favoriteSuccess,
+  favoriteFailure,
+}
+
 enum HomeLoadMoreStatus {
   loadInitial,
   loading,
@@ -21,6 +28,7 @@ class HomeState extends Equatable {
     this.user,
     this.categoryIndex = 0,
     this.homeStatus = HomeViewStatus.initial,
+    this.favoriteStatus = HomeFavoriteStatus.favoriteInitial,
     this.errorMessage = '',
   });
 
@@ -31,6 +39,7 @@ class HomeState extends Equatable {
   final UserModel? user;
   final int categoryIndex;
   final HomeViewStatus homeStatus;
+  final HomeFavoriteStatus favoriteStatus;
   final String errorMessage;
 
   HomeState copyWith({
@@ -39,6 +48,7 @@ class HomeState extends Equatable {
     UserModel? user,
     int? maxItem,
     HomeLoadMoreStatus? loadStatus,
+    HomeFavoriteStatus? favoriteStatus,
     int? categoryIndex,
     HomeViewStatus? homeStatus,
     String? errorMessage,
@@ -51,6 +61,7 @@ class HomeState extends Equatable {
       user: user ?? this.user,
       categoryIndex: categoryIndex ?? this.categoryIndex,
       homeStatus: homeStatus ?? this.homeStatus,
+      favoriteStatus: favoriteStatus ?? this.favoriteStatus,
       errorMessage: errorMessage ?? this.errorMessage,
     );
   }
@@ -59,9 +70,9 @@ class HomeState extends Equatable {
   List<Object?> get props => [
         products,
         productDisplays,
-        productDisplays.hashCode,
         maxItem,
         loadStatus,
+        favoriteStatus,
         user,
         categoryIndex,
         homeStatus,
