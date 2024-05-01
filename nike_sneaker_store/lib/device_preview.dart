@@ -31,7 +31,6 @@ import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
 import 'package:nike_sneaker_store/services/remote/api_client.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/themes/ns_theme.dart';
-import 'package:nike_sneaker_store/utils/debounce.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -51,6 +50,8 @@ void main() async {
     ),
   );
 }
+
+final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -73,57 +74,39 @@ class MyApp extends StatelessWidget {
             create: (context) => ApiClient(
               dio: Dio(),
               supabaseClient: Supabase.instance.client,
-              prefs: SharedPrefServices(
-                sharedPreferences: SharedPreferences.getInstance(),
-              ),
+              prefs: context.read<SharedPrefServices>(),
             ),
           ),
           RepositoryProvider<AuthRepository>(
             create: (context) => AuthRepository(
               supabaseClient: Supabase.instance.client,
-              sharedPrefServices: SharedPrefServices(
-                sharedPreferences: SharedPreferences.getInstance(),
-              ),
-              apiClient: ApiClient(
-                dio: Dio(),
-                supabaseClient: Supabase.instance.client,
-                prefs: SharedPrefServices(
-                  sharedPreferences: SharedPreferences.getInstance(),
-                ),
-              ),
+              sharedPrefServices: context.read<SharedPrefServices>(),
+              apiClient: context.read<ApiClient>(),
             ),
           ),
           RepositoryProvider<ProductRepository>(
             create: (context) => ProductRepository(
-              apiClient: ApiClient(
-                dio: Dio(),
-                supabaseClient: Supabase.instance.client,
-                prefs: context.read<SharedPrefServices>(),
-              ),
+              apiClient: context.read<ApiClient>(),
             ),
           ),
           RepositoryProvider<UserRepository>(
             create: (context) => UserRepository(
-              apiClient: ApiClient(
-                dio: Dio(),
-                supabaseClient: Supabase.instance.client,
-                prefs: context.read<SharedPrefServices>(),
-              ),
+              apiClient: context.read<ApiClient>(),
             ),
-          ),
-          RepositoryProvider<SignInBloc>(
-            create: (context) => SignInBloc(context.read<AuthRepository>()),
-          ),
-          RepositoryProvider<SignUpBloc>(
-            create: (context) => SignUpBloc(context.read<AuthRepository>()),
           ),
           RepositoryProvider<ZoomDrawerController>(
             create: (context) => ZoomDrawerController(),
           ),
-          RepositoryProvider<LayoutCubit>(
+          BlocProvider<SignInBloc>(
+            create: (context) => SignInBloc(context.read<AuthRepository>()),
+          ),
+          BlocProvider<SignUpBloc>(
+            create: (context) => SignUpBloc(context.read<AuthRepository>()),
+          ),
+          BlocProvider<LayoutCubit>(
             create: (context) => LayoutCubit(),
           ),
-          RepositoryProvider<HomeBloc>(
+          BlocProvider<HomeBloc>(
             create: (context) => HomeBloc(
               context.read<ProductRepository>(),
               context.read<UserRepository>(),
@@ -131,12 +114,12 @@ class MyApp extends StatelessWidget {
                 userId: Supabase.instance.client.auth.currentUser?.id ?? '',
               )),
           ),
-          RepositoryProvider<SearchBloc>(
+          BlocProvider<SearchBloc>(
             create: (context) => SearchBloc(
               productRepository: context.read<ProductRepository>(),
             ),
           ),
-          RepositoryProvider<NotificationBloc>(
+          BlocProvider<NotificationBloc>(
             create: (context) => NotificationBloc(
               context.read<ProductRepository>(),
               context.read<UserRepository>(),
@@ -144,7 +127,7 @@ class MyApp extends StatelessWidget {
                 userId: Supabase.instance.client.auth.currentUser?.id ?? '',
               )),
           ),
-          RepositoryProvider<ProfileBloc>(
+          BlocProvider<ProfileBloc>(
             create: (context) => ProfileBloc(context.read<UserRepository>())
               ..add(ProfileStarted(
                 name: context.read<HomeBloc>().state.user?.name,
@@ -153,11 +136,8 @@ class MyApp extends StatelessWidget {
                 avatar: context.read<HomeBloc>().state.user?.avatar,
               )),
           ),
-          RepositoryProvider<DetailBloc>(create: (context) => DetailBloc()),
-          RepositoryProvider<Debounce>(
-            create: (context) => Debounce(milliseconds: 500),
-          ),
-          RepositoryProvider<CartBloc>(
+          BlocProvider<DetailBloc>(create: (context) => DetailBloc()),
+          BlocProvider<CartBloc>(
             create: (context) => CartBloc(
               context.read<ProductRepository>(),
               context.read<UserRepository>(),
@@ -165,8 +145,8 @@ class MyApp extends StatelessWidget {
                 userId: Supabase.instance.client.auth.currentUser?.id ?? '',
               )),
           ),
-          RepositoryProvider<SettingBloc>(create: (context) => SettingBloc()),
-          RepositoryProvider<CartInfoBloc>(create: (context) => CartInfoBloc()),
+          BlocProvider<SettingBloc>(create: (context) => SettingBloc()),
+          BlocProvider<CartInfoBloc>(create: (context) => CartInfoBloc()),
         ],
         child: BlocBuilder<SettingBloc, SettingState>(
           builder: (context, state) {
@@ -176,9 +156,13 @@ class MyApp extends StatelessWidget {
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               locale: state.locale,
+              themeMode: state.themeData == NSTheme.lightTheme
+                  ? ThemeMode.light
+                  : ThemeMode.dark,
               theme: NSTheme.lightTheme,
               darkTheme: NSTheme.darkTheme,
               routerConfig: NSRoutesConfig.goRoute,
+              scaffoldMessengerKey: scaffoldMessengerKey,
             );
           },
         ));
