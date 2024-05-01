@@ -759,6 +759,54 @@ abstract class AppLocalizations {
   /// **'Select image failed'**
   String get selectImageSuccess;
 
+  /// No description provided for @cancelError.
+  ///
+  /// In en, this message translates to:
+  /// **'Request was cancelled. Please try again.'**
+  String get cancelError;
+
+  /// No description provided for @connectionTimeOutError.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection timeout. Please check your internet connection.'**
+  String get connectionTimeOutError;
+
+  /// No description provided for @receiveTimeoutError.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive timeout. Please try again later.'**
+  String get receiveTimeoutError;
+
+  /// No description provided for @badResponseError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load data. Please try again later.'**
+  String get badResponseError;
+
+  /// No description provided for @sendTimeOutError.
+  ///
+  /// In en, this message translates to:
+  /// **'Send timeout. Please try again later.'**
+  String get sendTimeOutError;
+
+  /// No description provided for @defaultError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown error occurred. Please try again later.'**
+  String get defaultError;
+
+  /// No description provided for @connectionError.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection. Please check your network settings.'**
+  String get connectionError;
+
+  /// No description provided for @productNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Product not found'**
+  String get productNotFound;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

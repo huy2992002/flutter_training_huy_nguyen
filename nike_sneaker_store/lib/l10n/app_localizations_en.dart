@@ -338,6 +338,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectImageSuccess => 'Select image failed';
 
   @override
+  String get cancelError => 'Request was cancelled. Please try again.';
+
+  @override
+  String get connectionTimeOutError => 'Connection timeout. Please check your internet connection.';
+
+  @override
+  String get receiveTimeoutError => 'Receive timeout. Please try again later.';
+
+  @override
+  String get badResponseError => 'Failed to load data. Please try again later.';
+
+  @override
+  String get sendTimeOutError => 'Send timeout. Please try again later.';
+
+  @override
+  String get defaultError => 'Unknown error occurred. Please try again later.';
+
+  @override
+  String get connectionError => 'No internet connection. Please check your network settings.';
+
+  @override
+  String get productNotFound => 'Product not found';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

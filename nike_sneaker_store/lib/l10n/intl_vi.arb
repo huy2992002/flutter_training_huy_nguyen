@@ -112,6 +112,14 @@
   "productHaveBeenRemove": "Sản phẩm đã được xóa khỏi giỏ hàng",
   "selectImageSuccess": "Chọn ảnh thành công",
   "selectImageSuccess": "Chọn ảnh thất bại",
+  "cancelError": "Yêu cầu đã bị hủy. Vui lòng thử lại.",
+  "connectionTimeOutError": "Hết thời gian kết nối. Xin vui lòng kiểm tra kết nối Internet của bạn.",
+  "receiveTimeoutError": "Hết thời gian chờ. Vui lòng thử lại sau.",
+  "badResponseError": "Không thể tải dữ liệu. Vui lòng thử lại sau.",
+  "sendTimeOutError": "Hết thời gian gửi. Vui lòng thử lại sau.",
+  "defaultError": "Xảy ra lỗi không xác định được. Vui lòng thử lại sau.",
+  "connectionError": "Không có kết nối internet. Vui lòng kiểm tra cài đặt mạng của bạn",
+  "productNotFound": "Không tìm thấy sản phẩm",
   "discountOff": "{discount}% Giảm",
   "@discountOff": {
     "placeholders": {

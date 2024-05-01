@@ -338,6 +338,30 @@ class AppLocalizationsVi extends AppLocalizations {
   String get selectImageSuccess => 'Chọn ảnh thất bại';
 
   @override
+  String get cancelError => 'Yêu cầu đã bị hủy. Vui lòng thử lại.';
+
+  @override
+  String get connectionTimeOutError => 'Hết thời gian kết nối. Xin vui lòng kiểm tra kết nối Internet của bạn.';
+
+  @override
+  String get receiveTimeoutError => 'Hết thời gian chờ. Vui lòng thử lại sau.';
+
+  @override
+  String get badResponseError => 'Không thể tải dữ liệu. Vui lòng thử lại sau.';
+
+  @override
+  String get sendTimeOutError => 'Hết thời gian gửi. Vui lòng thử lại sau.';
+
+  @override
+  String get defaultError => 'Xảy ra lỗi không xác định được. Vui lòng thử lại sau.';
+
+  @override
+  String get connectionError => 'Không có kết nối internet. Vui lòng kiểm tra cài đặt mạng của bạn';
+
+  @override
+  String get productNotFound => 'Không tìm thấy sản phẩm';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm';
   }
