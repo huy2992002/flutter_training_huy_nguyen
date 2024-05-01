@@ -9,7 +9,7 @@ import 'package:nike_sneaker_store/features/favorite/view/favorite_page.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 
 import '../../utils/mock_data.dart';
 import '../../utils/mock_supabase.dart';
@@ -29,8 +29,9 @@ void main() {
         providers: [
           BlocProvider<HomeBloc>(create: (context) => homeBloc),
           BlocProvider<CartBloc>(create: (context) => cartBloc),
-          RepositoryProvider<SupabaseClient>(
-            create: (context) => MockSupabase(),
+          RepositoryProvider<SupabaseServices>(
+            create: (context) =>
+                SupabaseServices(supabaseClient: MockSupabase()),
           )
         ],
         child: const FavoritePage(),
