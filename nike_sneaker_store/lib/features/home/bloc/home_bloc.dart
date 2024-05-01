@@ -99,8 +99,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           : message = e.toString();
 
       emit(state.copyWith(
-        categoryIndex: 0,
-        homeStatus: HomeViewStatus.failure,
+        loadStatus: HomeLoadMoreStatus.loadFailure,
         errorMessage: message,
       ));
     }
@@ -153,7 +152,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           : message = e.toString();
 
       emit(state.copyWith(
-        categoryIndex: 0,
         homeStatus: HomeViewStatus.failure,
         errorMessage: message,
       ));
