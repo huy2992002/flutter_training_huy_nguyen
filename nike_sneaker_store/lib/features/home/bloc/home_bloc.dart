@@ -129,6 +129,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     List<ProductModel> products = [...state.products];
     List<String> productFavorites = [];
     try {
+      userRepository.updateInformationUser(UserModel(
+        uuid: event.userId,
+        favorites: productFavorites,
+      ));
+
       products.forEach((e) {
         if (e.uuid == event.productId) {
           e.isFavorite = !e.isFavorite;
@@ -139,11 +144,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       });
 
       emit(state.copyWith(productDisplays: products));
-
-      userRepository.updateInformationUser(UserModel(
-        uuid: event.userId,
-        favorites: productFavorites,
-      ));
     } catch (e) {
       String? message;
 
