@@ -5,20 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
-import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_bloc.dart';
-import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
-import 'package:nike_sneaker_store/features/cart_information/bloc/cart_info_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
-import 'package:nike_sneaker_store/features/layout/bloc/layout_cubit.dart';
-import 'package:nike_sneaker_store/features/notification/bloc/notification_bloc.dart';
-import 'package:nike_sneaker_store/features/notification/bloc/notification_event.dart';
-import 'package:nike_sneaker_store/features/profile/bloc/profile_bloc.dart';
-import 'package:nike_sneaker_store/features/profile/bloc/profile_event.dart';
-import 'package:nike_sneaker_store/features/search/bloc/search_bloc.dart';
 import 'package:nike_sneaker_store/features/setting/bloc/setting_bloc.dart';
 import 'package:nike_sneaker_store/features/setting/bloc/setting_state.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
@@ -93,15 +84,6 @@ class MyApp extends StatelessWidget {
           RepositoryProvider<ZoomDrawerController>(
             create: (context) => ZoomDrawerController(),
           ),
-          BlocProvider<SignInBloc>(
-            create: (context) => SignInBloc(context.read<AuthRepository>()),
-          ),
-          BlocProvider<SignUpBloc>(
-            create: (context) => SignUpBloc(context.read<AuthRepository>()),
-          ),
-          BlocProvider<LayoutCubit>(
-            create: (context) => LayoutCubit(),
-          ),
           BlocProvider<HomeBloc>(
             create: (context) => HomeBloc(
               context.read<ProductRepository>(),
@@ -110,29 +92,6 @@ class MyApp extends StatelessWidget {
                 userId: Supabase.instance.client.auth.currentUser?.id ?? '',
               )),
           ),
-          BlocProvider<SearchBloc>(
-            create: (context) => SearchBloc(
-              productRepository: context.read<ProductRepository>(),
-            ),
-          ),
-          BlocProvider<NotificationBloc>(
-            create: (context) => NotificationBloc(
-              context.read<ProductRepository>(),
-              context.read<UserRepository>(),
-            )..add(NotificationStarted(
-                userId: Supabase.instance.client.auth.currentUser?.id ?? '',
-              )),
-          ),
-          BlocProvider<ProfileBloc>(
-            create: (context) => ProfileBloc(context.read<UserRepository>())
-              ..add(ProfileStarted(
-                name: context.read<HomeBloc>().state.user?.name,
-                address: context.read<HomeBloc>().state.user?.address,
-                phoneNumber: context.read<HomeBloc>().state.user?.phone,
-                avatar: context.read<HomeBloc>().state.user?.avatar,
-              )),
-          ),
-          BlocProvider<DetailBloc>(create: (context) => DetailBloc()),
           BlocProvider<CartBloc>(
             create: (context) => CartBloc(
               context.read<ProductRepository>(),
@@ -142,7 +101,7 @@ class MyApp extends StatelessWidget {
               )),
           ),
           BlocProvider<SettingBloc>(create: (context) => SettingBloc()),
-          BlocProvider<CartInfoBloc>(create: (context) => CartInfoBloc()),
+          BlocProvider<DetailBloc>(create: (context) => DetailBloc()),
         ],
         child: BlocBuilder<SettingBloc, SettingState>(
           builder: (context, state) {
