@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nike_sneaker_store/gen/fonts.gen.dart';
 
 class CardMenuItem extends StatelessWidget {
   /// Create card item of menu drawer
@@ -40,6 +41,7 @@ class CardMenuItem extends StatelessWidget {
               title,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSecondary,
+                    fontFamily: FontFamily.raleway
                   ),
             ),
           ),

@@ -42,6 +42,7 @@ class ProfilePage extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: NSAppBar(
             title: AppLocalizations.of(context).profile,
+            colorAppBar: Theme.of(context).colorScheme.surface,
           ),
           body: BlocConsumer<ProfileBloc, ProfileState>(
             listenWhen: (previous, current) =>
