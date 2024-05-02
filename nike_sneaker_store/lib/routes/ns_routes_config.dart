@@ -2,11 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/features/auth/change_password/view/change_password_page.dart';
 import 'package:nike_sneaker_store/features/auth/forgot_password/view/forgot_password_page.dart';
-import 'package:nike_sneaker_store/features/auth/sign_in/view/sign_in_page.dart';
-import 'package:nike_sneaker_store/features/auth/sign_up/view/sign_up_page.dart';
+import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_provider.dart';
+import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_provider.dart';
 import 'package:nike_sneaker_store/features/auth/verification/view/verification_page.dart';
 import 'package:nike_sneaker_store/features/cart/view/cart_page.dart';
-import 'package:nike_sneaker_store/features/cart_information/view/cart_information_page.dart';
+import 'package:nike_sneaker_store/features/cart_information/bloc/cart_info_provider.dart';
 import 'package:nike_sneaker_store/features/detail/view/detail_page.dart';
 import 'package:nike_sneaker_store/features/favorite/view/favorite_page.dart';
 import 'package:nike_sneaker_store/features/home/view/home_page.dart';
@@ -14,7 +14,7 @@ import 'package:nike_sneaker_store/features/layout/view/layout_page.dart';
 import 'package:nike_sneaker_store/features/notification/view/notifications_page.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/onboarding_page.dart';
 import 'package:nike_sneaker_store/features/profile/view/profile_page.dart';
-import 'package:nike_sneaker_store/features/search/view/search_page.dart';
+import 'package:nike_sneaker_store/features/search/bloc/search_provider.dart';
 import 'package:nike_sneaker_store/features/setting/view/setting_page.dart';
 import 'package:nike_sneaker_store/features/splash/views/splash_page.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
@@ -44,12 +44,12 @@ class NSRoutesConfig {
       GoRoute(
         name: NSRoutesConst.nameSignIn,
         path: NSRoutesConst.pathSignIn,
-        builder: (context, state) => const SignInPage(),
+        builder: (context, state) => const SignInProvider(),
       ),
       GoRoute(
         name: NSRoutesConst.nameSignUp,
         path: NSRoutesConst.pathSignUp,
-        builder: (context, state) => const SignUpPage(),
+        builder: (context, state) => const SignUpProvider(),
       ),
       GoRoute(
         name: NSRoutesConst.nameForgotPass,
@@ -64,7 +64,7 @@ class NSRoutesConfig {
       GoRoute(
         name: NSRoutesConst.nameSearch,
         path: NSRoutesConst.pathSearch,
-        builder: (context, state) => const SearchPage(),
+        builder: (context, state) => const SearchProvider(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) => LayoutPage(
@@ -140,7 +140,7 @@ class NSRoutesConfig {
       GoRoute(
         name: NSRoutesConst.nameCartInfo,
         path: NSRoutesConst.pathCartInfo,
-        builder: (context, state) => const CartInformationPage(),
+        builder: (context, state) => const CartInfoProvider(),
       ),
       GoRoute(
         name: NSRoutesConst.nameSetting,
