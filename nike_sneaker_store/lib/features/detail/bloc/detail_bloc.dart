@@ -35,6 +35,5 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       isFavorite: !(state.productDisplay?.isFavorite ?? false),
     );
     emit(state.copyWith(productDisplay: product));
-    print('object ${state.productDisplay?.isFavorite}');
   }
 }

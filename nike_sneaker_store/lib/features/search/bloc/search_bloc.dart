@@ -15,7 +15,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   Future<void> _onSearch(
       SearchTextChanged event, Emitter<SearchState> emit) async {
     emit(state.copyWith(status: SearchViewStatus.loading));
-    print('object ${state.status}');
     try {
       if (event.searchText.isEmpty) {
         emit(state.copyWith(

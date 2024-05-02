@@ -138,7 +138,6 @@ class DetailPage extends StatelessWidget {
                       .currentUser
                       ?.id;
                   if (userId != null) {
-                    print('object $userId');
                     context.read<DetailBloc>().add(DetailFavoritePressed());
                     context.read<HomeBloc>().add(
                           HomeFavoritePressed(

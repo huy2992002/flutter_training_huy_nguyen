@@ -130,7 +130,6 @@ class ApiClient {
         data: data,
         options: options,
       );
-      print('${response.realUri}');
       return response;
     } catch (e) {
       rethrow;
