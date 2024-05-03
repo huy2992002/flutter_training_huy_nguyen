@@ -21,6 +21,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_bag.svg
   String get icBag => 'assets/icons/ic_bag.svg';
 
+  /// File path: assets/icons/ic_cancel.svg
+  String get icCancel => 'assets/icons/ic_cancel.svg';
+
   /// File path: assets/icons/ic_cart.svg
   String get icCart => 'assets/icons/ic_cart.svg';
 
@@ -104,6 +107,7 @@ class $AssetsIconsGen {
         icAdd,
         icArrow,
         icBag,
+        icCancel,
         icCart,
         icDown,
         icEdit,
