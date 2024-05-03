@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_event.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_state.dart';
 import 'package:nike_sneaker_store/repository/auth_repository.dart';
+import 'package:nike_sneaker_store/services/handle_error/error_extension.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -58,7 +61,12 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       emit(state.copyWith(status: FormSubmissionStatus.success));
     } catch (e) {
       String message = '';
-      e is AuthException ? message = e.message : e.toString();
+      e is AuthException
+          ? message = e.getFailure().message
+          : e is SocketException
+              ? message = e.getFailure().message
+              : e.toString();
+
       emit(state.copyWith(
         status: FormSubmissionStatus.failure,
         message: message,

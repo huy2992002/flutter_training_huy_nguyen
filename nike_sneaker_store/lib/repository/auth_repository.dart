@@ -32,7 +32,7 @@ class AuthRepository {
       if (authResponse.user != null) {
         return authResponse.user!;
       } else {
-        throw Exception('Dont find User');
+        throw const AuthException('Dont find User', statusCode: '400');
       }
     } catch (e) {
       rethrow;
@@ -63,7 +63,10 @@ class AuthRepository {
           );
           return authResponse.user!;
         } else {
-          throw const AuthException('Email already exists');
+          throw const AuthException(
+            'User already registered',
+            statusCode: '400',
+          );
         }
       } else {
         throw const AuthException('Dont find User');
