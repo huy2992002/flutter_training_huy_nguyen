@@ -26,6 +26,7 @@ class NSColorTheme {
     shadow: NSColor.onPrimaryContainer.withOpacity(0.4),
     surfaceVariant: NSColor.neutral,
     onSurfaceVariant: NSColor.background,
+    surfaceTint: NSColor.surfaceTint,
   );
 
   static ColorScheme colorThemeDark = ColorScheme(
@@ -52,5 +53,6 @@ class NSColorTheme {
     shadow: NSColor.onPrimaryContainer.withOpacity(0.4),
     surfaceVariant: NSColor.neutral,
     onSurfaceVariant: NSColor.background,
+    surfaceTint: NSColor.darkSurfaceTint,
   );
 }

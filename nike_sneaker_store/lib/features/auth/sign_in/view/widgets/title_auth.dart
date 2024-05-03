@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class TitleAuth extends StatelessWidget {
   /// The text displays the title of the page
-  /// 
+  ///
   /// The [title], [subTitle] arguments must not be null.
   const TitleAuth({
     required this.title,
@@ -30,7 +29,7 @@ class TitleAuth extends StatelessWidget {
           Text(
             subTitle,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: NSColor.neutral,
+                  color: Theme.of(context).colorScheme.surfaceTint,
                 ),
             textAlign: TextAlign.center,
           ),

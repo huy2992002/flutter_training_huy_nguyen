@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
-import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class NSBottomNavigationBar extends StatelessWidget {
   const NSBottomNavigationBar({
@@ -53,7 +52,7 @@ class NSBottomNavigationBar extends StatelessWidget {
                 height: 24,
                 color: currentIndex == index
                     ? Theme.of(context).colorScheme.onPrimary
-                    : NSColor.neutral,
+                    : Theme.of(context).colorScheme.surfaceTint,
               ),
             ),
           ),

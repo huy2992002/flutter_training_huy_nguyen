@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nike_sneaker_store/resources/ns_color.dart';
 
 class PromptText extends StatelessWidget {
   /// The text consists of 2 parts. 
@@ -30,7 +29,7 @@ class PromptText extends StatelessWidget {
         Text(
           text,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: NSColor.neutral,
+                color: Theme.of(context).colorScheme.surfaceTint,
               ),
         ),
         GestureDetector(
