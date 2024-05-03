@@ -14,7 +14,7 @@ import 'package:nike_sneaker_store/features/layout/view/layout_page.dart';
 import 'package:nike_sneaker_store/features/notification/view/notifications_page.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/onboarding_page.dart';
 import 'package:nike_sneaker_store/features/profile/view/profile_page.dart';
-import 'package:nike_sneaker_store/features/search/bloc/search_provider.dart';
+import 'package:nike_sneaker_store/features/search/view/search_page.dart';
 import 'package:nike_sneaker_store/features/setting/view/setting_page.dart';
 import 'package:nike_sneaker_store/features/splash/views/splash_page.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';

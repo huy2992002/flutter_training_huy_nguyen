@@ -17,8 +17,23 @@ import 'package:nike_sneaker_store/features/search/bloc/search_event.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_state.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/utils/debounce.dart';
+
+class SearchProvider extends StatelessWidget {
+  const SearchProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<SearchBloc>(
+      create: (context) => SearchBloc(
+        productRepository: context.read<ProductRepository>(),
+      ),
+      child: const SearchPage(),
+    );
+  }
+}
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -70,6 +85,11 @@ class _SearchPageState extends State<SearchPage> {
                             .read<SearchBloc>()
                             .add(SearchTextChanged(searchText: value));
                       });
+                    },
+                    isCancel: _searchController.text.isNotEmpty,
+                    onCancel: () {
+                      _searchController.clear();
+                      context.read<SearchBloc>().add(RemoveTextPressed());
                     },
                   ),
                   const SizedBox(height: 18),
