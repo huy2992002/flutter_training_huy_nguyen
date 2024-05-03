@@ -60,23 +60,31 @@ class LayoutPage extends StatelessWidget {
           return NSDrawer(
             controller: context.read<ZoomDrawerController>(),
             menuScreen: const MenuPage(),
-            mainScreen: Scaffold(
-                body: navigationShell,
-                bottomNavigationBar:
-                    BlocSelector<HomeBloc, HomeState, HomeViewStatus>(
-                  selector: (state) => state.homeStatus,
-                  builder: (context, homeStatus) {
-                    return NSBottomNavigationBar(
-                      currentIndex: state,
-                      onChangedPage: homeStatus == HomeViewStatus.loading
-                          ? null
-                          : (index) {
-                              context.read<LayoutCubit>().onChangePage(index);
-                              goBrach(index);
-                            },
-                    );
-                  },
-                )),
+            mainScreen: GestureDetector(
+              onHorizontalDragUpdate: (details) {
+                if (details.primaryDelta == null) return;
+                if (details.primaryDelta! > 1) {
+                  context.read<ZoomDrawerController>().open?.call();
+                }
+              },
+              child: Scaffold(
+                  body: navigationShell,
+                  bottomNavigationBar:
+                      BlocSelector<HomeBloc, HomeState, HomeViewStatus>(
+                    selector: (state) => state.homeStatus,
+                    builder: (context, homeStatus) {
+                      return NSBottomNavigationBar(
+                        currentIndex: state,
+                        onChangedPage: homeStatus == HomeViewStatus.loading
+                            ? null
+                            : (index) {
+                                context.read<LayoutCubit>().onChangePage(index);
+                                goBrach(index);
+                              },
+                      );
+                    },
+                  )),
+            ),
           );
         },
       ),
