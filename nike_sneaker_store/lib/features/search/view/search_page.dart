@@ -74,8 +74,11 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                   const SizedBox(height: 18),
                   if (state.status == SearchViewStatus.loading)
-                    const Center(
-                      child: CircularProgressIndicator(),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 120),
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
                     )
                   else
                     Expanded(
@@ -98,7 +101,8 @@ class _SearchPageState extends State<SearchPage> {
                             )
                           : GridView.builder(
                               itemCount: state.searchProducts.length,
-                              padding: const EdgeInsets.only(top: 10, bottom: 28),
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 28),
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
@@ -123,7 +127,8 @@ class _SearchPageState extends State<SearchPage> {
                                           .state
                                           .products
                                           .where(
-                                            (e) => e.category == product.category,
+                                            (e) =>
+                                                e.category == product.category,
                                           )
                                           .toList();
                                       context.read<DetailBloc>().add(
