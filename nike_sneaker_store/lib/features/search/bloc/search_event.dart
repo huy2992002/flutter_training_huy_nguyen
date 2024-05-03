@@ -5,3 +5,5 @@ class SearchTextChanged extends SearchEvent {
 
   final String searchText;
 }
+
+class RemoveTextPressed extends SearchEvent {}

@@ -8,6 +8,7 @@ import 'package:nike_sneaker_store/services/handle_error/error_extension.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc({required this.productRepository}) : super(const SearchState()) {
     on<SearchTextChanged>(_onSearch);
+    on<RemoveTextPressed>(_onRemoveSearchText);
   }
 
   ProductRepository productRepository;
@@ -44,5 +45,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         errorMessage: message,
       ));
     }
+  }
+
+  Future<void> _onRemoveSearchText(
+      RemoveTextPressed event, Emitter<SearchState> emit) async {
+    emit(state.copyWith(
+      searchProducts: [],
+    ));
   }
 }
