@@ -804,8 +804,32 @@ abstract class AppLocalizations {
   /// No description provided for @productNotFound.
   ///
   /// In en, this message translates to:
-  /// **'Product not found'**
+  /// **'Email not confirmed'**
   String get productNotFound;
+
+  /// No description provided for @emailNotConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Email not confirmed'**
+  String get emailNotConfirmed;
+
+  /// No description provided for @invalidLoginCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid login credentials'**
+  String get invalidLoginCredentials;
+
+  /// No description provided for @userAlreadyRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'User already registered'**
+  String get userAlreadyRegistered;
+
+  /// No description provided for @dontFindUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Dont find User'**
+  String get dontFindUser;
 
   /// No description provided for @discountOff.
   ///

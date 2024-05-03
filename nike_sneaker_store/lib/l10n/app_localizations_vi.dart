@@ -362,6 +362,18 @@ class AppLocalizationsVi extends AppLocalizations {
   String get productNotFound => 'Không tìm thấy sản phẩm';
 
   @override
+  String get emailNotConfirmed => 'Email chưa được xác nhận';
+
+  @override
+  String get invalidLoginCredentials => 'Thông tin đăng nhập không hợp lệ';
+
+  @override
+  String get userAlreadyRegistered => 'Người dùng đã đăng ký';
+
+  @override
+  String get dontFindUser => 'Không tìm thấy người dùng';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm';
   }

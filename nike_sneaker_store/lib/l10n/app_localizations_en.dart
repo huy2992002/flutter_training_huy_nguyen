@@ -359,7 +359,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get connectionError => 'No internet connection. Please check your network settings.';
 
   @override
-  String get productNotFound => 'Product not found';
+  String get productNotFound => 'Email not confirmed';
+
+  @override
+  String get emailNotConfirmed => 'Email not confirmed';
+
+  @override
+  String get invalidLoginCredentials => 'Invalid login credentials';
+
+  @override
+  String get userAlreadyRegistered => 'User already registered';
+
+  @override
+  String get dontFindUser => 'Dont find User';
 
   @override
   String discountOff(int discount) {

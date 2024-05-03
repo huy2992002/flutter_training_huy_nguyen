@@ -120,6 +120,10 @@
   "defaultError": "Xảy ra lỗi không xác định được. Vui lòng thử lại sau.",
   "connectionError": "Không có kết nối internet. Vui lòng kiểm tra cài đặt mạng của bạn",
   "productNotFound": "Không tìm thấy sản phẩm",
+  "emailNotConfirmed": "Email chưa được xác nhận",
+  "invalidLoginCredentials": "Thông tin đăng nhập không hợp lệ",
+  "userAlreadyRegistered": "Người dùng đã đăng ký",
+  "dontFindUser": "Không tìm thấy người dùng",
   "discountOff": "{discount}% Giảm",
   "@discountOff": {
     "placeholders": {

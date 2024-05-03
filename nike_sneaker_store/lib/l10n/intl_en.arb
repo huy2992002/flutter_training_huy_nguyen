@@ -119,7 +119,11 @@
   "sendTimeOutError": "Send timeout. Please try again later.",
   "defaultError": "Unknown error occurred. Please try again later.",
   "connectionError": "No internet connection. Please check your network settings.",
-  "productNotFound": "Product not found",
+  "productNotFound": "Email not confirmed",
+  "emailNotConfirmed": "Email not confirmed",
+  "invalidLoginCredentials": "Invalid login credentials",
+  "userAlreadyRegistered": "User already registered",
+  "dontFindUser": "Dont find User",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {
