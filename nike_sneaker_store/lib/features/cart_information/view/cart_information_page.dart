@@ -17,6 +17,18 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 
+class CartInfoProvider extends StatelessWidget {
+  const CartInfoProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<CartInfoBloc>(
+      create: (context) => CartInfoBloc(),
+      child: const CartInformationPage(),
+    );
+  }
+}
+
 class CartInformationPage extends StatelessWidget {
   const CartInformationPage({super.key});
 

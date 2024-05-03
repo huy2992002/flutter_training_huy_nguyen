@@ -14,10 +14,23 @@ import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_labe
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
+class SignInProvider extends StatelessWidget {
+  const SignInProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<SignInBloc>(
+      create: (context) => SignInBloc(context.read<AuthRepository>()),
+      child: const SignInPage(),
+    );
+  }
+}
 
 class SignInPage extends StatefulWidget {
   /// Screen sign in page

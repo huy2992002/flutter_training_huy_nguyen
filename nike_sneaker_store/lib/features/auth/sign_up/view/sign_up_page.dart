@@ -16,10 +16,23 @@ import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_event.dart
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_state.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+class SignUpProvider extends StatelessWidget {
+  const SignUpProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<SignUpBloc>(
+      create: (context) => SignUpBloc(context.read<AuthRepository>()),
+      child: const SignUpPage(),
+    );
+  }
+}
 
 class SignUpPage extends StatefulWidget {
   /// Screen sign up page
