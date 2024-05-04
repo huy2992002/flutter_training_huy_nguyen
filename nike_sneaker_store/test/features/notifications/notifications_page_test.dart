@@ -72,8 +72,8 @@ void main() {
       await tester.pumpWidget(notificationPage);
 
       // Find the text widget
-      final textTitle = tester
-          .widget<Text>(find.text(MockData.mockNotifications[0].title ?? ''));
+      final textTitle =
+          tester.widget<Text>(find.text(MockData.mockNotifications[0].title));
       expect(textTitle.style?.color, NSColor.primary);
     });
 
@@ -92,8 +92,8 @@ void main() {
       await tester.pumpWidget(notificationPage);
 
       // Find the text widget
-      final textTitle = tester
-          .widget<Text>(find.text(MockData.mockNotifications[0].title ?? ''));
+      final textTitle =
+          tester.widget<Text>(find.text(MockData.mockNotifications[0].title));
       expect(textTitle.style?.color, NSColor.onPrimaryContainer);
     });
   });

@@ -50,9 +50,9 @@ class CardNotification extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    notification.title ?? '',
+                    notification.title,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: notification.isRead ?? false
+                          color: notification.isRead
                               ? Theme.of(context).colorScheme.onPrimaryContainer
                               : Theme.of(context).colorScheme.primary,
                         ),

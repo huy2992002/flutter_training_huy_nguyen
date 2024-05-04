@@ -90,7 +90,7 @@ class NotificationsPage extends StatelessWidget {
                                   padding: const EdgeInsets.only(bottom: 16),
                                   child: CardNotification(
                                     notification: notification,
-                                    onTap: notification.isRead ?? false
+                                    onTap: notification.isRead
                                         ? null
                                         : () {
                                             if (userId != null) {
@@ -100,8 +100,7 @@ class NotificationsPage extends StatelessWidget {
                                                     NotificationReadPressed(
                                                       userId: userId,
                                                       notificationId:
-                                                          notification.uuid ??
-                                                              '',
+                                                          notification.uuid,
                                                     ),
                                                   );
                                             } else {
