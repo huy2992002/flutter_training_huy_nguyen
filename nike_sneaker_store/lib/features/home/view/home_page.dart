@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
+import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
@@ -78,6 +79,22 @@ class _HomePageState extends State<HomePage> {
 
     String? userId =
         context.read<SupabaseServices>().supabaseClient.auth.currentUser?.id;
+
+    void updateFavorite(String? productId) {
+      if (userId != null) {
+        context.read<HomeBloc>().add(
+              HomeFavoritePressed(
+                userId: userId,
+                productId: productId,
+              ),
+            );
+      } else {
+        NSSnackBar.snackbarError(
+          context,
+          title: AppLocalizations.of(context).notFoundUser,
+        );
+      }
+    }
 
     return Scaffold(
       body: Column(
@@ -276,23 +293,16 @@ class _HomePageState extends State<HomePage> {
                                                   }
                                                 },
                                                 onFavorite: () {
-                                                  if (userId != null) {
-                                                    context
-                                                        .read<HomeBloc>()
-                                                        .add(
-                                                          HomeFavoritePressed(
-                                                            userId: userId,
-                                                            productId:
-                                                                product.uuid,
-                                                          ),
-                                                        );
+                                                  if (!product.isFavorite) {
+                                                    updateFavorite(
+                                                        product.uuid);
                                                   } else {
-                                                    NSSnackBar.snackbarError(
+                                                    NSDialog.dialogQuestion(
                                                       context,
-                                                      title:
-                                                          AppLocalizations.of(
-                                                                  context)
-                                                              .notFoundUser,
+                                                      title: 'title',
+                                                      action: () =>
+                                                          updateFavorite(
+                                                              product.uuid),
                                                     );
                                                   }
                                                 },

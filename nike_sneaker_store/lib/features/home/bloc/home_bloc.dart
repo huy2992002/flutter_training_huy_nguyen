@@ -132,11 +132,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       favoriteStatus: HomeFavoriteStatus.favoriteLoading,
     ));
     try {
-      userRepository.updateInformationUser(UserModel(
-        uuid: event.userId,
-        favorites: productFavorites,
-      ));
-
       products.forEach((e) {
         if (e.uuid == event.productId) {
           e.isFavorite = !e.isFavorite;
@@ -145,6 +140,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           productFavorites.add(e.uuid!);
         }
       });
+
+      await userRepository.updateInformationUser(UserModel(
+        uuid: event.userId,
+        favorites: productFavorites,
+      ));
 
       emit(state.copyWith(
         favoriteStatus: HomeFavoriteStatus.favoriteSuccess,
