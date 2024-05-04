@@ -124,6 +124,7 @@
   "invalidLoginCredentials": "Invalid login credentials",
   "userAlreadyRegistered": "User already registered",
   "dontFindUser": "Dont find User",
+  "doYouWantCancelFavorite": "Do you want to cancel your favorite?",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {

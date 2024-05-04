@@ -831,6 +831,12 @@ abstract class AppLocalizations {
   /// **'Dont find User'**
   String get dontFindUser;
 
+  /// No description provided for @doYouWantCancelFavorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to cancel your favorite?'**
+  String get doYouWantCancelFavorite;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:

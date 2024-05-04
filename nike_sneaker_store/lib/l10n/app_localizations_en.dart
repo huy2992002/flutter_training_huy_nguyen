@@ -374,6 +374,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dontFindUser => 'Dont find User';
 
   @override
+  String get doYouWantCancelFavorite => 'Do you want to cancel your favorite?';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }

@@ -124,6 +124,7 @@
   "invalidLoginCredentials": "Thông tin đăng nhập không hợp lệ",
   "userAlreadyRegistered": "Người dùng đã đăng ký",
   "dontFindUser": "Không tìm thấy người dùng",
+  "doYouWantCancelFavorite": "Bạn muốn hủy yêu thích sản phẩm?",
   "discountOff": "{discount}% Giảm",
   "@discountOff": {
     "placeholders": {

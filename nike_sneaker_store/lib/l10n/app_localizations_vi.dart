@@ -374,6 +374,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get dontFindUser => 'Không tìm thấy người dùng';
 
   @override
+  String get doYouWantCancelFavorite => 'Bạn muốn hủy yêu thích sản phẩm?';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm';
   }
