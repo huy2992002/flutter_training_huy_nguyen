@@ -23,17 +23,26 @@ enum CartQuantityStatus {
   decrementFailure,
 }
 
+enum CartEventCheckOutStatus {
+  checkoutInitial,
+  checkoutLoading,
+  checkoutSuccess,
+  checkoutFailure,
+}
+
 class CartState extends Equatable {
   const CartState({
     this.viewStatus = CartViewStatus.initial,
     this.myCarts = const [],
     this.message = '',
     this.cartInsertStatus = CartQuantityStatus.initial,
+    this.cartCheckoutStatus = CartEventCheckOutStatus.checkoutInitial,
   });
 
   final CartViewStatus viewStatus;
   final List<ProductModel> myCarts;
   final CartQuantityStatus cartInsertStatus;
+  final CartEventCheckOutStatus cartCheckoutStatus;
   final String message;
 
   CartState copyWith({
@@ -41,12 +50,14 @@ class CartState extends Equatable {
     List<ProductModel>? myCarts,
     String? message,
     CartQuantityStatus? cartInsertStatus,
+    CartEventCheckOutStatus? cartCheckoutStatus,
   }) {
     return CartState(
       viewStatus: viewStatus ?? this.viewStatus,
       myCarts: myCarts ?? this.myCarts,
       message: message ?? this.message,
       cartInsertStatus: cartInsertStatus ?? this.cartInsertStatus,
+      cartCheckoutStatus: cartCheckoutStatus ?? this.cartCheckoutStatus,
     );
   }
 
@@ -56,5 +67,6 @@ class CartState extends Equatable {
         myCarts,
         message,
         cartInsertStatus,
+        cartCheckoutStatus,
       ];
 }

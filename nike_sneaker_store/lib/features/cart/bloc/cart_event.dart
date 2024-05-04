@@ -52,3 +52,14 @@ class CartDecrementPressed extends CartEvent {
   @override
   List<Object?> get props => [userId, productId];
 }
+
+class CartCheckoutPressed extends CartEvent {
+  CartCheckoutPressed({
+    required this.userId,
+  });
+
+  final String userId;
+
+  @override
+  List<Object?> get props => [userId];
+}

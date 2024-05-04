@@ -7,6 +7,9 @@ import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
+import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
+import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
+import 'package:nike_sneaker_store/features/cart/bloc/cart_state.dart';
 import 'package:nike_sneaker_store/features/cart/view/widgets/cart_information_item.dart';
 import 'package:nike_sneaker_store/features/cart/view/widgets/cart_total_cost.dart';
 import 'package:nike_sneaker_store/features/cart_information/bloc/cart_info_bloc.dart';
@@ -42,6 +45,9 @@ class CartInformationPage extends StatelessWidget {
     FocusNode _focusNodePhone = FocusNode();
     FocusNode _addressNode = FocusNode();
 
+    String? userId =
+        context.read<SupabaseServices>().supabaseClient.auth.currentUser?.id;
+
     _emailController.text = context
             .read<SupabaseServices>()
             .supabaseClient
@@ -59,32 +65,7 @@ class CartInformationPage extends StatelessWidget {
           phoneNumber: _phoneController.text,
           address: _addressController.text,
         ));
-    return BlocConsumer<CartInfoBloc, CartInfoState>(
-      listener: (context, state) {
-        if (state.status == CartCheckOutStatus.checkoutFailure) {
-          NSSnackBar.snackbarError(context, title: state.message);
-        }
-        if (state.status == CartCheckOutStatus.checkoutSuccess) {
-          NSDialog.dialog(
-            context,
-            title: Center(
-              child: CircleAvatar(
-                  radius: 65,
-                  child: Image.asset(Assets.images.imgSuccessfully.path)),
-            ),
-            content: Text(
-              AppLocalizations.of(context).yourPaymentSuccessful,
-              textAlign: TextAlign.center,
-            ),
-            actions: [
-              NSElevatedButton.text(
-                onPressed: () => context.go(NSRoutesConst.pathHome),
-                text: AppLocalizations.of(context).backToShopping,
-              )
-            ],
-          );
-        }
-      },
+    return BlocBuilder<CartInfoBloc, CartInfoState>(
       builder: (context, state) {
         return GestureDetector(
           onTap: FocusScope.of(context).unfocus,
@@ -188,12 +169,58 @@ class CartInformationPage extends StatelessWidget {
                 ),
               ),
             ),
-            bottomNavigationBar: CartTotalCost(
-              onCheckout: () => context.read<CartInfoBloc>().add(
-                    CartInfoCheckoutPressed(),
-                  ),
-              canCheckOut: state.canAction,
-              isDisable: state.status == CartCheckOutStatus.checkoutLoading,
+            bottomNavigationBar: BlocConsumer<CartBloc, CartState>(
+              listenWhen: (previous, current) =>
+                  previous.cartCheckoutStatus != current.cartCheckoutStatus,
+              listener: (context, stateCart) {
+                if (stateCart.cartCheckoutStatus ==
+                    CartEventCheckOutStatus.checkoutFailure) {
+                  NSSnackBar.snackbarError(context, title: stateCart.message);
+                }
+                if (stateCart.cartCheckoutStatus ==
+                    CartEventCheckOutStatus.checkoutSuccess) {
+                  NSDialog.dialog(
+                    context,
+                    title: Center(
+                      child: CircleAvatar(
+                          radius: 65,
+                          child:
+                              Image.asset(Assets.images.imgSuccessfully.path)),
+                    ),
+                    content: Text(
+                      AppLocalizations.of(context).yourPaymentSuccessful,
+                      textAlign: TextAlign.center,
+                    ),
+                    actions: [
+                      NSElevatedButton.text(
+                        onPressed: () => context.go(NSRoutesConst.pathHome),
+                        text: AppLocalizations.of(context).backToShopping,
+                      )
+                    ],
+                  );
+                }
+              },
+              buildWhen: (previous, current) =>
+                  previous.cartCheckoutStatus != current.cartCheckoutStatus,
+              builder: (context, stateCart) {
+                return CartTotalCost(
+                  onCheckout: () {
+                    if (userId != null) {
+                      context.read<CartBloc>().add(
+                            CartCheckoutPressed(userId: userId),
+                          );
+                    } else {
+                      NSSnackBar.snackbarError(
+                        context,
+                        title: AppLocalizations.of(context).notFoundUser,
+                      );
+                    }
+                  },
+                  canCheckOut: state.canAction,
+                  isDisable: stateCart.cartCheckoutStatus ==
+                      CartEventCheckOutStatus.checkoutLoading,
+                );
+              },
             ),
           ),
         );

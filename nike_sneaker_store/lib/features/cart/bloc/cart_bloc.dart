@@ -18,6 +18,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartInsertPressed>(_onAddToCart);
     on<CartIncrementPressed>(_onPlusProduct);
     on<CartDecrementPressed>(_onLessProduct);
+    on<CartCheckoutPressed>(_onRemoveCart);
   }
 
   ProductRepository productRepository;
@@ -169,6 +170,33 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.decrementFailure,
+        message: message,
+      ));
+    }
+  }
+
+  Future<void> _onRemoveCart(
+      CartCheckoutPressed event, Emitter<CartState> emit) async {
+    emit(state.copyWith(
+      cartCheckoutStatus: CartEventCheckOutStatus.checkoutLoading,
+    ));
+    try {
+      await userRepository.updateInformationUser(
+        UserModel(uuid: event.userId, myCarts: []),
+      );
+      emit(state.copyWith(
+        myCarts: [],
+        cartCheckoutStatus: CartEventCheckOutStatus.checkoutSuccess,
+      ));
+    } catch (e) {
+      String? message;
+
+      e is DioException
+          ? message = e.getFailure().message
+          : message = e.toString();
+
+      emit(state.copyWith(
+        cartCheckoutStatus: CartEventCheckOutStatus.checkoutFailure,
         message: message,
       ));
     }
