@@ -846,8 +846,8 @@ abstract class AppLocalizations {
   /// No description provided for @intItem.
   ///
   /// In en, this message translates to:
-  /// **'{item} Item'**
-  String intItem(int item);
+  /// **'{count, plural, =0{No items} =1{1 item} other{{count} items}}'**
+  String intItem(num count);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

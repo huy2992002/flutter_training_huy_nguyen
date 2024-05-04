@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 /// The translations for English (`en`).
@@ -382,7 +384,14 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String intItem(int item) {
-    return '$item Item';
+  String intItem(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+      zero: 'No items',
+    );
+    return '$_temp0';
   }
 }

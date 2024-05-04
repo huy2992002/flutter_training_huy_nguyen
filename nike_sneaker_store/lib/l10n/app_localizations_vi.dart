@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 /// The translations for Vietnamese (`vi`).
@@ -382,7 +384,13 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String intItem(int item) {
-    return '$item Số Lượng';
+  String intItem(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count sản phẩm',
+      zero: 'Chưa có sản phẩm',
+    );
+    return '$_temp0';
   }
 }
