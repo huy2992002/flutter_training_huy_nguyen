@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls
+// ignore_for_file: avoid_function_literals_in_foreach_calls, cascade_invocations
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,15 +53,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     try {
       final isValid = state.myCarts.any((e) => e.uuid == event.product.uuid);
       if (isValid) {
-        emit(state.copyWith(
-          cartInsertStatus: CartQuantityStatus.insertFailure,
-          message: AppLocalizations.of(event.context).productAlreadyInCart,
-        ));
-      } else {
-        List<ProductModel> products = [
-          ...state.myCarts,
-          event.product.copyWith(quantity: 1)
-        ];
+        List<ProductModel> products = [...state.myCarts];
+        products.forEach((element) {
+          if (element.uuid == event.product.uuid) {
+            element.quantity = (element.quantity ?? 0) + 1;
+          }
+        });
+        await userRepository.updateInformationUser(
+          UserModel(uuid: event.userId, myCarts: products),
+        );
         emit(
           state.copyWith(
             myCarts: products,
@@ -69,8 +69,20 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             message: AppLocalizations.of(event.context).productAddSuccess,
           ),
         );
-        userRepository.updateInformationUser(
+      } else {
+        List<ProductModel> products = [
+          ...state.myCarts,
+          event.product.copyWith(quantity: 1)
+        ];
+        await userRepository.updateInformationUser(
           UserModel(uuid: event.userId, myCarts: products),
+        );
+        emit(
+          state.copyWith(
+            myCarts: products,
+            cartInsertStatus: CartQuantityStatus.insertSuccess,
+            message: AppLocalizations.of(event.context).productAddSuccess,
+          ),
         );
       }
     } catch (e) {
