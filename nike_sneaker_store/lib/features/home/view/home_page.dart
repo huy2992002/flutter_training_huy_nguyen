@@ -299,7 +299,9 @@ class _HomePageState extends State<HomePage> {
                                                   } else {
                                                     NSDialog.dialogQuestion(
                                                       context,
-                                                      title: 'title',
+                                                      title: AppLocalizations
+                                                              .of(context)
+                                                          .doYouWantCancelFavorite,
                                                       action: () =>
                                                           updateFavorite(
                                                               product.uuid),
