@@ -133,12 +133,10 @@
       }
     }
   },
-  "intItem": "{item} Số Lượng",
+  "intItem": "{count, plural, =0{Chưa có sản phẩm} other{{count} sản phẩm}}",
   "@intItem": {
     "placeholders": {
-      "item": {
-        "type": "int"
-      }
+      "count": {}
     }
   }
 }
