@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
+import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
@@ -180,8 +182,14 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           const SizedBox(height: 24),
-                          TitleHome(
-                              text: AppLocalizations.of(context).popularShoes),
+                          GestureDetector(
+                            onTap: () {
+                              NSDialog.dialog(context, content: Text('data'));
+                            },
+                            child: TitleHome(
+                                text:
+                                    AppLocalizations.of(context).popularShoes),
+                          ),
                           SizedBox(
                             height: 201,
                             child: state.homeStatus == HomeViewStatus.loading

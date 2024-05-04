@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
+import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
@@ -64,16 +65,23 @@ class CartInformationPage extends StatelessWidget {
           NSSnackBar.snackbarError(context, title: state.message);
         }
         if (state.status == CartCheckOutStatus.checkoutSuccess) {
-          NSDialog.textButton(
+          NSDialog.dialog(
             context,
-            title: AppLocalizations.of(context).yourPaymentSuccessful,
-            textButton: AppLocalizations.of(context).backToShopping,
-            icon: CircleAvatar(
-                radius: 65,
-                child: Image.asset(Assets.images.imgSuccessfully.path)),
-            action: () {
-              context.go(NSRoutesConst.pathHome);
-            },
+            title: Center(
+              child: CircleAvatar(
+                  radius: 65,
+                  child: Image.asset(Assets.images.imgSuccessfully.path)),
+            ),
+            content: Text(
+              AppLocalizations.of(context).yourPaymentSuccessful,
+              textAlign: TextAlign.center,
+            ),
+            actions: [
+              NSElevatedButton.text(
+                onPressed: () => context.go(NSRoutesConst.pathHome),
+                text: AppLocalizations.of(context).backToShopping,
+              )
+            ],
           );
         }
       },

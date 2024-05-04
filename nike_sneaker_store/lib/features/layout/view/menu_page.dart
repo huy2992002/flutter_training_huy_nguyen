@@ -4,6 +4,7 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_avatar.dart';
 import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
+import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
@@ -103,20 +104,42 @@ class MenuPage extends StatelessWidget {
           ),
           CardMenuItem(
             onTap: () {
-              NSDialog.question(
+              NSDialog.dialog(
                 context,
-                title: AppLocalizations.of(context).doYouWantLogout,
-                action: () => WidgetsBinding.instance.addPostFrameCallback(
-                  (_) {
-                    context
-                        .read<SupabaseServices>()
-                        .supabaseClient
-                        .auth
-                        .signOut();
-                    context.read<SharedPrefServices>().removeToken();
-                    context.go(NSRoutesConst.pathSignIn);
-                  },
-                ),
+                content: Text(AppLocalizations.of(context).doYouWantLogout),
+                actions: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      NSElevatedButton.text(
+                        onPressed: () => context.pop(),
+                        text: AppLocalizations.of(context).no,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.primaryContainer,
+                        textColor:
+                            Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                      const SizedBox(width: 14),
+                      NSElevatedButton.text(
+                        onPressed: () {
+                          WidgetsBinding.instance.addPostFrameCallback(
+                            (_) {
+                              context
+                                  .read<SupabaseServices>()
+                                  .supabaseClient
+                                  .auth
+                                  .signOut();
+                              context.read<SharedPrefServices>().removeToken();
+                              context.go(NSRoutesConst.pathSignIn);
+                            },
+                          );
+                          context.pop();
+                        },
+                        text: AppLocalizations.of(context).yes,
+                      ),
+                    ],
+                  ),
+                ],
               );
             },
             title: AppLocalizations.of(context).signOut,

@@ -77,26 +77,33 @@ class _SignUpPageState extends State<SignUpPage> {
           );
         }
         if (state.status == FormSubmissionStatus.success) {
-          NSDialog.textButton(
+          NSDialog.dialog(
             context,
-            icon: SvgPicture.asset(
+            title: SvgPicture.asset(
               Assets.icons.icEmailSend,
               height: 100,
             ),
-            title: AppLocalizations.of(context).pleaseCheckYourEmail,
-            textButton: AppLocalizations.of(context).goToEmail,
-            action: () {
-              _launchGmail();
-            },
-            textSecondaryButton: AppLocalizations.of(context).goToSignIn,
-            actionSecondary: () {
-              context.pop();
-              WidgetsBinding.instance.addPostFrameCallback(
-                (_) {
-                  context.push(NSRoutesConst.pathSignIn);
-                },
-              );
-            },
+            content: Text(
+              AppLocalizations.of(context).pleaseCheckYourEmail,
+              textAlign: TextAlign.center,
+            ),
+            actions: [
+              Column(
+                children: [
+                  NSElevatedButton.text(
+                    onPressed: _launchGmail,
+                    text: AppLocalizations.of(context).goToEmail,
+                  ),
+                  const SizedBox(height: 14),
+                  NSElevatedButton.text(
+                    onPressed: () => context.push(NSRoutesConst.pathSignIn),
+                    textColor: Theme.of(context).colorScheme.onBackground,
+                    backgroundColor: Theme.of(context).colorScheme.background,
+                    text: AppLocalizations.of(context).goToSignIn,
+                  ),
+                ],
+              ),
+            ],
           );
         }
       },
