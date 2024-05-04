@@ -3,6 +3,7 @@ import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/services/remote/api_client.dart';
+import 'package:nike_sneaker_store/utils/maths.dart';
 
 class ProductRepository {
   ProductRepository({required this.apiClient});
@@ -100,7 +101,8 @@ class ProductRepository {
               ?.map(
                 (e) => e is Map<String, dynamic>
                     ? NotificationModel.fromJson(e)
-                    : NotificationModel(),
+                    : NotificationModel(
+                        uuid: Maths.randomUUid(length: 4), title: 'Title'),
               )
               .toList();
         } else {

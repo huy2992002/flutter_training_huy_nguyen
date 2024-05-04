@@ -7,23 +7,23 @@ class NotificationModel {
   /// [uuid], [title], [product], [priceSale], [date], arguments must not be null
   /// and [isRead] argument has default value is false
   NotificationModel({
-    this.uuid,
-    this.title,
+    required this.uuid,
+    required this.title,
     this.product,
     this.priceSale,
     this.date,
-    this.isRead,
+    this.isRead = false,
   });
 
   factory NotificationModel.fromJson(Map<String, dynamic> json) {
     return NotificationModel(
-      uuid: json['uuid'] as String?,
-      title: json['title'] as String?,
+      uuid: json['uuid'] as String,
+      title: json['title'] as String,
       product: json['product'] == null
           ? null
           : ProductModel.fromJson(json['product'] as Map<String, dynamic>),
       priceSale: double.parse(json['priceSale'].toString()),
-      isRead: json['isRead'] as bool?,
+      isRead: json['isRead'] as bool,
     );
   }
 
@@ -39,10 +39,10 @@ class NotificationModel {
   }
 
   /// uuid of [NotificationModel] , argument must not be duplicated
-  String? uuid;
+  String uuid;
 
   /// Title of notification
-  String? title;
+  String title;
 
   /// The [product] is represents of the [NotificationModel]
   ProductModel? product;
@@ -51,7 +51,7 @@ class NotificationModel {
   double? priceSale;
 
   /// Status of [NotificationModel] has been read or not
-  bool? isRead;
+  bool isRead;
 
   /// The time the notification is sent
   String? date;
