@@ -92,42 +92,44 @@ class _FavoritePageState extends State<FavoritePage> {
                     crossAxisCount: 2,
                     mainAxisSpacing: 16,
                     crossAxisSpacing: 16,
-                    childAspectRatio: 3 / 4,
+                    childAspectRatio: 4 / 5,
                   ),
                   itemBuilder: (_, index) {
                     final product = favoriteProducts[index];
-                    return CardProduct(
-                      tag: NSConstants.tagProductFavorite(product.uuid ?? ''),
-                      product: product,
-                      onFavorite: () {
-                        if (!product.isFavorite) {
-                          updateFavorite(product.uuid);
-                        } else {
-                          NSDialog.dialogQuestion(
-                            context,
-                            title: 'title',
-                            action: () => updateFavorite(product.uuid),
-                          );
-                        }
-                      },
-                      onTap: () {
-                        context.push(
-                          NSRoutesConst.pathDetail,
-                          extra: NSConstants.tagProductFavorite(
-                              product.uuid ?? ''),
-                        );
-                        final products = state.products
-                            .where(
-                              (e) => e.category == product.category,
-                            )
-                            .toList();
-                        context.read<DetailBloc>().add(
-                              DetailSelectStarted(
-                                product: product,
-                                products: products,
-                              ),
+                    return Center(
+                      child: CardProduct(
+                        tag: NSConstants.tagProductFavorite(product.uuid ?? ''),
+                        product: product,
+                        onFavorite: () {
+                          if (!product.isFavorite) {
+                            updateFavorite(product.uuid);
+                          } else {
+                            NSDialog.dialogQuestion(
+                              context,
+                              title: AppLocalizations.of(context).doYouWantCancelFavorite,
+                              action: () => updateFavorite(product.uuid),
                             );
-                      },
+                          }
+                        },
+                        onTap: () {
+                          context.push(
+                            NSRoutesConst.pathDetail,
+                            extra: NSConstants.tagProductFavorite(
+                                product.uuid ?? ''),
+                          );
+                          final products = state.products
+                              .where(
+                                (e) => e.category == product.category,
+                              )
+                              .toList();
+                          context.read<DetailBloc>().add(
+                                DetailSelectStarted(
+                                  product: product,
+                                  products: products,
+                                ),
+                              );
+                        },
+                      ),
                     );
                   },
                 );

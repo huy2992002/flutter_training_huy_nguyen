@@ -128,36 +128,39 @@ class _SearchPageState extends State<SearchPage> {
                                 crossAxisCount: 2,
                                 mainAxisSpacing: 16,
                                 crossAxisSpacing: 16,
-                                childAspectRatio: 3 / 4,
+                                childAspectRatio: 4 / 5,
                               ),
                               itemBuilder: (_, index) {
                                 final product = state.searchProducts[index];
-                                return CardProduct(
-                                    tag: NSConstants.tagProductSearch(
-                                        product.uuid ?? ''),
-                                    product: product,
-                                    onTap: () {
-                                      context.push(
-                                        NSRoutesConst.pathDetail,
-                                        extra: NSConstants.tagProductFavorite(
-                                            product.uuid ?? ''),
-                                      );
-                                      final products = context
-                                          .read<HomeBloc>()
-                                          .state
-                                          .products
-                                          .where(
-                                            (e) =>
-                                                e.category == product.category,
-                                          )
-                                          .toList();
-                                      context.read<DetailBloc>().add(
-                                            DetailSelectStarted(
-                                              product: product,
-                                              products: products,
-                                            ),
-                                          );
-                                    });
+                                return Center(
+                                  child: CardProduct(
+                                      tag: NSConstants.tagProductSearch(
+                                          product.uuid ?? ''),
+                                      product: product,
+                                      onTap: () {
+                                        context.push(
+                                          NSRoutesConst.pathDetail,
+                                          extra: NSConstants.tagProductFavorite(
+                                              product.uuid ?? ''),
+                                        );
+                                        final products = context
+                                            .read<HomeBloc>()
+                                            .state
+                                            .products
+                                            .where(
+                                              (e) =>
+                                                  e.category ==
+                                                  product.category,
+                                            )
+                                            .toList();
+                                        context.read<DetailBloc>().add(
+                                              DetailSelectStarted(
+                                                product: product,
+                                                products: products,
+                                              ),
+                                            );
+                                      }),
+                                );
                               },
                             ),
                     ),
