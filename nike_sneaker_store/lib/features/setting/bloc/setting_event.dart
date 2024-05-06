@@ -6,7 +6,7 @@ abstract class SettingEvent extends Equatable {}
 class SettingThemeChanged extends SettingEvent {
   SettingThemeChanged({required this.theme});
 
-  final ThemeData theme;
+  final ThemeMode theme;
 
   @override
   List<Object?> get props => [theme];

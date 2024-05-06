@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 
 class SettingState extends Equatable {
   const SettingState({
-    required this.themeData,
+    required this.themeMode,
     required this.locale,
   });
 
-  final ThemeData themeData;
+  final ThemeMode themeMode;
   final Locale locale;
 
   SettingState copyWith({
-    ThemeData? themeData,
+    ThemeMode? themeMode,
     Locale? locale,
   }) {
     return SettingState(
-      themeData: themeData ?? this.themeData,
+      themeMode: themeMode ?? this.themeMode,
       locale: locale ?? this.locale,
     );
   }
 
   @override
-  List<Object?> get props => [themeData, locale];
+  List<Object?> get props => [themeMode, locale];
 }

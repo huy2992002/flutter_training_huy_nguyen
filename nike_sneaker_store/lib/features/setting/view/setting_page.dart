@@ -11,7 +11,6 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref.dart';
-import 'package:nike_sneaker_store/themes/ns_theme.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -49,8 +48,8 @@ class SettingPage extends StatelessWidget {
                 onChanged: () {
                   context.read<SettingBloc>().add(SettingThemeChanged(
                         theme: SharedPrefs.isDark
-                            ? NSTheme.lightTheme
-                            : NSTheme.darkTheme,
+                            ? ThemeMode.light
+                            : ThemeMode.dark,
                       ));
                   SharedPrefs.isDark = !SharedPrefs.isDark;
                 },
