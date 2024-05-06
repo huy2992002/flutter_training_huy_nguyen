@@ -39,4 +39,12 @@ class SupabaseServices {
     return _safeSupabaseRequest(
         () => supabaseClient.from(table).update(values));
   }
+
+  Future<PostgrestFilterBuilder<dynamic>> insertData({
+    required String table,
+    required Map<String, dynamic> values,
+  }) {
+    return _safeSupabaseRequest(
+        () => supabaseClient.from(table).insert(values));
+  }
 }
