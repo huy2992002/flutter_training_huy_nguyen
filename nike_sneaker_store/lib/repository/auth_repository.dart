@@ -56,10 +56,9 @@ class AuthRepository {
             name: name,
             email: email,
           );
-          await supabaseServices.insertData(
-            table: NSConstants.endPointUsers,
-            values: user.toJson(),
-          );
+          await supabaseServices.supabaseClient
+              .from(NSConstants.endPointUsers)
+              .insert(user.toJson());
           return authResponse.user!;
         } else {
           throw const AuthException(

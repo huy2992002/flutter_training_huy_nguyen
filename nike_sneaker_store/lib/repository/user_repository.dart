@@ -18,9 +18,10 @@ class UserRepository {
     try {
       // final url = '${NSConstants.endPointUsers}?uuid=eq.${user.uuid}';
       // apiClient.patch(url, data: user.toJson());
-      final query = await supabaseServices.updateData(
-          table: NSConstants.tableUsers, values: user.toJson());
-      await query.eq('uuid', user.uuid ?? '');
+      await supabaseServices.supabaseClient
+          .from(NSConstants.tableUsers)
+          .update(user.toJson())
+          .eq('uuid', user.uuid ?? '');
     } catch (e) {
       rethrow;
     }
@@ -38,9 +39,10 @@ class UserRepository {
     required String userId,
   }) async {
     try {
-      final query =
-          await supabaseServices.fetchData(table: NSConstants.tableUsers);
-      final data = await query.eq('uuid', userId).select();
+      final data = await supabaseServices.supabaseClient
+          .from(NSConstants.tableUsers)
+          .select()
+          .eq('uuid', userId);
       if (data.isNotEmpty) {
         return UserModel.fromJson(data.first);
       } else {

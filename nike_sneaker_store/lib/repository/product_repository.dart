@@ -17,9 +17,10 @@ class ProductRepository {
 
   Future<List<ProductModel>?> getProducts({int maxLength = 4}) async {
     try {
-      final query =
-          await supabaseServices.fetchData(table: NSConstants.tableProducts);
-      final data = await query.select().range(0, maxLength);
+      final data = await supabaseServices.supabaseClient
+          .from(NSConstants.tableProducts)
+          .select()
+          .range(0, maxLength);
       return data.map((e) {
         return ProductModel.fromJson(e);
       }).toList();
@@ -30,9 +31,10 @@ class ProductRepository {
 
   Future<List<String>?> getIdProductFavorites(String userId) async {
     try {
-      final query = await supabaseServices.fetchData(
-          table: NSConstants.tableUsers, select: 'favorites');
-      final data = await query.eq('uuid', userId).select();
+      final data = await supabaseServices.supabaseClient
+          .from(NSConstants.tableUsers)
+          .select('favorites')
+          .eq('uuid', userId);
       if (data.isEmpty) {
         throw Exception('User not found');
       } else {
@@ -51,9 +53,10 @@ class ProductRepository {
 
   Future<List<ProductModel>?> getIdProductCart(String userId) async {
     try {
-      final query = await supabaseServices.fetchData(
-          table: NSConstants.tableUsers, select: 'myCarts');
-      final data = await query.eq('uuid', userId).select();
+      final data = await supabaseServices.supabaseClient
+          .from(NSConstants.tableUsers)
+          .select('myCarts')
+          .eq('uuid', userId);
       if (data.isEmpty) {
         throw Exception('User not found');
       } else {
@@ -74,9 +77,10 @@ class ProductRepository {
 
   Future<List<ProductModel>?> fetchProductsByName(String name) async {
     try {
-      final query =
-          await supabaseServices.fetchData(table: NSConstants.tableProducts);
-      final data = await query.ilike('name', '*$name*').select();
+      final data = await supabaseServices.supabaseClient
+          .from(NSConstants.tableProducts)
+          .select()
+          .ilike('name', '*$name*');
       return data.map(ProductModel.fromJson).toList();
     } catch (e) {
       rethrow;
@@ -85,9 +89,10 @@ class ProductRepository {
 
   Future<List<NotificationModel>?> fetchNotifications(String userId) async {
     try {
-      final query = await supabaseServices.fetchData(
-          table: NSConstants.tableUsers, select: 'notifications');
-      final data = await query.eq('uuid', userId).select();
+      final data = await supabaseServices.supabaseClient
+          .from(NSConstants.tableUsers)
+          .select('notifications')
+          .eq('uuid', userId);
       if (data.isEmpty) {
         throw Exception('User not found');
       } else {
