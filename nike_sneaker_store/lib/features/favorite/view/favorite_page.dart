@@ -16,6 +16,7 @@ import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart'
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class FavoritePage extends StatefulWidget {
   /// Screen display favorite products
@@ -88,8 +89,13 @@ class _FavoritePageState extends State<FavoritePage> {
                     right: 20,
                     bottom: 28,
                   ),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: getValueForScreenType<int>(
+                      context: context,
+                      mobile: 2,
+                      tablet: 3,
+                      desktop: 4,
+                    ),
                     mainAxisSpacing: 16,
                     crossAxisSpacing: 16,
                     childAspectRatio: 4 / 5,
@@ -106,7 +112,8 @@ class _FavoritePageState extends State<FavoritePage> {
                           } else {
                             NSDialog.dialogQuestion(
                               context,
-                              title: AppLocalizations.of(context).doYouWantCancelFavorite,
+                              title: AppLocalizations.of(context)
+                                  .doYouWantCancelFavorite,
                               action: () => updateFavorite(product.uuid),
                             );
                           }

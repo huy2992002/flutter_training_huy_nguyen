@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/app_bar_home.dart';
 import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
@@ -23,6 +24,7 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class HomePage extends StatefulWidget {
   /// The home Screen
@@ -62,6 +64,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceType = getDeviceType(MediaQuery.of(context).size);
+
     List<CategoryModel> _categories = [
       CategoryModel(
         name: AppLocalizations.of(context).allShoes,
@@ -101,6 +105,9 @@ class _HomePageState extends State<HomePage> {
         children: [
           BlocConsumer<CartBloc, CartState>(
             builder: (context, state) => AppBarHome(
+              onMenu: deviceType == DeviceScreenType.mobile
+                  ? () => context.read<ZoomDrawerController>().open?.call()
+                  : null,
               isMarkerNotification:
                   context.read<CartBloc>().state.myCarts.isNotEmpty,
             ),
