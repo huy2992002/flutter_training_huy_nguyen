@@ -9,6 +9,11 @@ import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
+import 'package:nike_sneaker_store/features/layout/bloc/layout_cubit.dart';
+import 'package:nike_sneaker_store/features/notification/bloc/notification_bloc.dart';
+import 'package:nike_sneaker_store/features/notification/bloc/notification_event.dart';
+import 'package:nike_sneaker_store/features/profile/bloc/profile_bloc.dart';
+import 'package:nike_sneaker_store/features/profile/bloc/profile_event.dart';
 import 'package:nike_sneaker_store/features/setting/bloc/setting_bloc.dart';
 import 'package:nike_sneaker_store/features/setting/bloc/setting_state.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
@@ -21,6 +26,7 @@ import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
 import 'package:nike_sneaker_store/services/remote/api_client.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/themes/ns_theme.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -29,6 +35,10 @@ void main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+
+  ResponsiveSizingConfig.instance.setCustomBreakpoints(
+    const ScreenBreakpoints(desktop: 1024, tablet: 550, watch: 200),
+  );
 
   await Supabase.initialize(
       url: NSConstants.urlSupabase, anonKey: NSConstants.apiKeySupabase);
@@ -101,20 +111,37 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider<SettingBloc>(create: (context) => SettingBloc()),
           BlocProvider<DetailBloc>(create: (context) => DetailBloc()),
+          BlocProvider(create: (context) => LayoutCubit()),
+          BlocProvider<NotificationBloc>(
+            create: (context) => NotificationBloc(
+              context.read<ProductRepository>(),
+              context.read<UserRepository>(),
+            )..add(NotificationStarted(
+                userId: Supabase.instance.client.auth.currentUser?.id ?? '',
+              )),
+          ),
+          BlocProvider<ProfileBloc>(
+            create: (context) => ProfileBloc(context.read<UserRepository>())
+              ..add(ProfileStarted(
+                name: context.read<HomeBloc>().state.user?.name,
+                address: context.read<HomeBloc>().state.user?.address,
+                phoneNumber: context.read<HomeBloc>().state.user?.phone,
+                avatar: context.read<HomeBloc>().state.user?.avatar,
+              )),
+          ),
         ],
         child: BlocBuilder<SettingBloc, SettingState>(
           builder: (context, state) {
+            NSTheme nsTheme = NSTheme();
             return MaterialApp.router(
               title: 'Nike Sneaker Store',
               debugShowCheckedModeBanner: false,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               locale: state.locale,
-              themeMode: state.themeData == NSTheme.lightTheme
-                  ? ThemeMode.light
-                  : ThemeMode.dark,
-              theme: NSTheme.lightTheme,
-              darkTheme: NSTheme.darkTheme,
+              themeMode: state.themeMode,
+              theme: nsTheme.lightTheme(context),
+              darkTheme: nsTheme.darkTheme(context),
               routerConfig: NSRoutesConfig.goRoute,
               scaffoldMessengerKey: scaffoldMessengerKey,
             );
