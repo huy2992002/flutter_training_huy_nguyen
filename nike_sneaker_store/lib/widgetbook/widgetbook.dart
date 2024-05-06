@@ -15,6 +15,7 @@ class WidgetBookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NSTheme nsTheme = NSTheme();
     return Widgetbook.material(
       directories: directories,
       addons: [
@@ -31,16 +32,16 @@ class WidgetBookApp extends StatelessWidget {
           themes: [
             WidgetbookTheme(
               name: 'Light',
-              data: NSTheme.lightTheme,
+              data: nsTheme.lightTheme(context),
             ),
             WidgetbookTheme(
               name: 'Dark',
-              data: NSTheme.darkTheme,
+              data: nsTheme.darkTheme(context),
             ),
           ],
           initialTheme: WidgetbookTheme(
             name: 'Dark',
-            data: NSTheme.darkTheme,
+            data: nsTheme.darkTheme(context),
           ),
         ),
         LocalizationAddon(
