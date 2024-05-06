@@ -5,21 +5,27 @@ import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/action_icon_app_bar.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
+import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/components/text_form_field/ns_search_box.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
+import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
+import 'package:nike_sneaker_store/features/home/view/widgets/card_product_width.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_bloc.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_event.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_state.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/debounce.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class SearchProvider extends StatelessWidget {
   const SearchProvider({super.key});
@@ -50,6 +56,29 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    String? userId =
+        context.read<SupabaseServices>().supabaseClient.auth.currentUser?.id;
+    void onProduct(ProductModel product) {
+      context.push(
+        NSRoutesConst.pathDetail,
+        extra: NSConstants.tagProductFavorite(product.uuid ?? ''),
+      );
+      final products = context
+          .read<HomeBloc>()
+          .state
+          .products
+          .where(
+            (e) => e.category == product.category,
+          )
+          .toList();
+      context.read<DetailBloc>().add(
+            DetailSelectStarted(
+              product: product,
+              products: products,
+            ),
+          );
+    }
+
     return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
@@ -119,48 +148,68 @@ class _SearchPageState extends State<SearchPage> {
                                 textAlign: TextAlign.center,
                               ),
                             )
-                          : GridView.builder(
-                              itemCount: state.searchProducts.length,
-                              padding:
-                                  const EdgeInsets.only(top: 10, bottom: 28),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                mainAxisSpacing: 16,
-                                crossAxisSpacing: 16,
-                                childAspectRatio: 4 / 5,
-                              ),
-                              itemBuilder: (_, index) {
-                                final product = state.searchProducts[index];
-                                return Center(
-                                  child: CardProduct(
-                                      tag: NSConstants.tagProductSearch(
-                                          product.uuid ?? ''),
-                                      product: product,
-                                      onTap: () {
-                                        context.push(
-                                          NSRoutesConst.pathDetail,
-                                          extra: NSConstants.tagProductFavorite(
+                          : ResponsiveBuilder(
+                              builder: (context, sizingInformation) {
+                                if (sizingInformation.isMobile) {
+                                  return GridView.builder(
+                                    itemCount: state.searchProducts.length,
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 28),
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      mainAxisSpacing: 16,
+                                      crossAxisSpacing: 16,
+                                      childAspectRatio: 4 / 5,
+                                    ),
+                                    itemBuilder: (_, index) {
+                                      final product =
+                                          state.searchProducts[index];
+
+                                      return Center(
+                                        child: CardProduct(
+                                          tag: NSConstants.tagProductSearch(
                                               product.uuid ?? ''),
-                                        );
-                                        final products = context
-                                            .read<HomeBloc>()
-                                            .state
-                                            .products
-                                            .where(
-                                              (e) =>
-                                                  e.category ==
-                                                  product.category,
-                                            )
-                                            .toList();
-                                        context.read<DetailBloc>().add(
-                                              DetailSelectStarted(
-                                                product: product,
-                                                products: products,
-                                              ),
+                                          product: product,
+                                          onTap: () => onProduct(product),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                } else {
+                                  return ListView.separated(
+                                    padding: const EdgeInsets.all(24),
+                                    itemCount: state.searchProducts.length,
+                                    itemBuilder: (context, index) {
+                                      final product =
+                                          state.searchProducts[index];
+
+                                      return CardProductWith(
+                                        tag: NSConstants.tagProductSearch(
+                                            product.uuid ?? ''),
+                                        product: product,
+                                        onTap: () => onProduct(product),
+                                        onAddCart: () {
+                                          if (userId != null) {
+                                            context.read<CartBloc>().add(
+                                                CartInsertPressed(context,
+                                                    userId: userId,
+                                                    product: product));
+                                          } else {
+                                            NSSnackBar.snackbarError(
+                                              context,
+                                              title:
+                                                  AppLocalizations.of(context)
+                                                      .notFoundUser,
                                             );
-                                      }),
-                                );
+                                          }
+                                        },
+                                      );
+                                    },
+                                    separatorBuilder: (context, index) =>
+                                        const SizedBox(height: 24),
+                                  );
+                                }
                               },
                             ),
                     ),
