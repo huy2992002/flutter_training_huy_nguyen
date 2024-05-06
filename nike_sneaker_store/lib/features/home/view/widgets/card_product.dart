@@ -4,6 +4,7 @@ import 'package:nike_sneaker_store/components/avatar/ns_image_network.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class CardProduct extends StatelessWidget {
   /// Create card item of [CardProduct]
@@ -59,14 +60,16 @@ class CardProduct extends StatelessWidget {
                 if (onFavorite != null)
                   GestureDetector(
                     onTap: onFavorite,
-                    child: product.isFavorite
-                        ? SvgPicture.asset(Assets.icons.icHeart)
-                        : SvgPicture.asset(
-                            Assets.icons.icHeartOutline,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onPrimaryContainer,
-                          ),
+                    child: SvgPicture.asset(
+                      product.isFavorite
+                          ? Assets.icons.icHeart
+                          : Assets.icons.icHeartOutline,
+                      width: getValueForScreenType(
+                        context: context,
+                        mobile: 16,
+                        tablet: 20,
+                      ),
+                    ),
                   ),
                 Hero(
                   tag: tag ?? '',
@@ -114,6 +117,11 @@ class CardProduct extends StatelessWidget {
                   ),
                   child: SvgPicture.asset(
                     Assets.icons.icAdd,
+                    width: getValueForScreenType(
+                      context: context,
+                      mobile: 14,
+                      tablet: 18,
+                    ),
                     color: Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),

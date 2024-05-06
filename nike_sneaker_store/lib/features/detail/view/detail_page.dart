@@ -36,6 +36,7 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceType = getDeviceType(MediaQuery.of(context).size);
     return BlocBuilder<DetailBloc, DetailState>(builder: (context, state) {
       return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -133,7 +134,9 @@ class DetailPage extends StatelessWidget {
           padding:
               const EdgeInsets.symmetric(horizontal: 27).copyWith(bottom: 40),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: deviceType == DeviceScreenType.mobile
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.spaceEvenly,
             children: [
               GestureDetector(
                 onTap: () {
@@ -159,15 +162,22 @@ class DetailPage extends StatelessWidget {
                   }
                 },
                 child: CircleAvatar(
-                  radius: 26,
+                  radius: getValueForScreenType(
+                    context: context,
+                    mobile: 26,
+                    tablet: 30,
+                  ),
                   backgroundColor:
                       Theme.of(context).colorScheme.primaryContainer,
                   child: SvgPicture.asset(
                     state.productDisplay?.isFavorite ?? false
                         ? Assets.icons.icHeart
                         : Assets.icons.icHeartOutline,
-                    width: 26,
-                    height: 26,
+                    width: getValueForScreenType(
+                      context: context,
+                      mobile: 26,
+                      tablet: 30,
+                    ),
                     color: state.productDisplay?.isFavorite ?? false
                         ? NSColor.favorite
                         : Theme.of(context).colorScheme.onPrimaryContainer,
@@ -196,8 +206,11 @@ class DetailPage extends StatelessWidget {
                 },
                 icon: SvgPicture.asset(
                   Assets.icons.icBag,
-                  width: 26,
-                  height: 26,
+                   width: getValueForScreenType(
+                      context: context,
+                      mobile: 26,
+                      tablet: 30,
+                    ),
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
                 padding:
