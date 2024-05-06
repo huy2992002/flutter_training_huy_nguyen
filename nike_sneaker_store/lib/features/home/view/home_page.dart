@@ -207,7 +207,11 @@ class _HomePageState extends State<HomePage> {
                           TitleHome(
                               text: AppLocalizations.of(context).popularShoes),
                           SizedBox(
-                            height: 201,
+                            height: getValueForScreenType(
+                              context: context,
+                              mobile: 200,
+                              tablet: 230,
+                            ),
                             child: state.homeStatus == HomeViewStatus.loading
                                 ? ListView.separated(
                                     itemCount: 3,

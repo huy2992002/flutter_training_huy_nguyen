@@ -88,6 +88,11 @@ class _SearchPageState extends State<SearchPage> {
             onPressed: () => context.pop(),
             icon: SvgPicture.asset(
               Assets.icons.icArrow,
+              width: getValueForScreenType(
+                context: context,
+                mobile: 24,
+                tablet: 28,
+              ),
               color: Theme.of(context).colorScheme.onPrimaryContainer,
             ),
             backgroundColor: Theme.of(context).colorScheme.primaryContainer,

@@ -20,6 +20,7 @@ import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SignUpProvider extends StatelessWidget {
@@ -129,6 +130,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       onPressed: () => context.pop(),
                       icon: SvgPicture.asset(
                         Assets.icons.icArrow,
+                        width: getValueForScreenType(
+                          context: context,
+                          mobile: 24,
+                          tablet: 28,
+                        ),
                         color:
                             Theme.of(context).colorScheme.onSecondaryContainer,
                       ),

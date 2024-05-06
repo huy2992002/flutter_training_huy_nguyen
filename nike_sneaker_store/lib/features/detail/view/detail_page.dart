@@ -22,6 +22,7 @@ import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/resources/ns_color.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/extension.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class DetailPage extends StatelessWidget {
   /// Screen display detail of [ProductModel]
@@ -44,6 +45,11 @@ class DetailPage extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.primaryContainer,
             icon: SvgPicture.asset(
               Assets.icons.icArrow,
+              width: getValueForScreenType(
+                context: context,
+                mobile: 24,
+                tablet: 28,
+              ),
               color: Theme.of(context).colorScheme.onPrimaryContainer,
             ),
           ),

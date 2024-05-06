@@ -11,6 +11,7 @@ import 'package:nike_sneaker_store/features/notification/view/widgets/card_notif
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class NotificationsPage extends StatelessWidget {
   /// Screen display notifications
@@ -27,6 +28,11 @@ class NotificationsPage extends StatelessWidget {
             onPressed: () {},
             icon: SvgPicture.asset(
               Assets.icons.icTrash,
+              width: getValueForScreenType(
+                context: context,
+                mobile: 24,
+                tablet: 28,
+              ),
               color: Theme.of(context).colorScheme.onPrimaryContainer,
             ),
             backgroundColor: Theme.of(context).colorScheme.primaryContainer,

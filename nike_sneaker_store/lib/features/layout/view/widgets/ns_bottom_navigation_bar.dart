@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class NSBottomNavigationBar extends StatelessWidget {
   const NSBottomNavigationBar({
@@ -48,8 +49,16 @@ class NSBottomNavigationBar extends StatelessWidget {
               ),
               child: SvgPicture.asset(
                 iconPaths[index],
-                width: 24,
-                height: 24,
+                width: getValueForScreenType(
+                  context: context,
+                  mobile: 24,
+                  tablet: 28,
+                ),
+                height: getValueForScreenType(
+                  context: context,
+                  mobile: 24,
+                  tablet: 28,
+                ),
                 color: currentIndex == index
                     ? Theme.of(context).colorScheme.onPrimary
                     : Theme.of(context).colorScheme.surfaceTint,

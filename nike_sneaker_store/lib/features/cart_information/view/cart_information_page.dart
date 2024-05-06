@@ -20,6 +20,7 @@ import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/routes/ns_routes_const.dart';
 import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class CartInfoProvider extends StatelessWidget {
   const CartInfoProvider({super.key});
@@ -77,6 +78,11 @@ class CartInformationPage extends StatelessWidget {
                 onPressed: () => context.pop(),
                 icon: SvgPicture.asset(
                   Assets.icons.icArrow,
+                  width: getValueForScreenType(
+                    context: context,
+                    mobile: 24,
+                    tablet: 28,
+                  ),
                   color: Theme.of(context).colorScheme.onPrimaryContainer,
                 ),
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,

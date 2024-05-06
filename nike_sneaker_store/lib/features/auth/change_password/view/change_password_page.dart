@@ -9,6 +9,7 @@ import 'package:nike_sneaker_store/features/auth/sign_in/view/widgets/title_labe
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/utils/validator.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   /// Screen change password page
@@ -37,6 +38,11 @@ class ChangePasswordPage extends StatelessWidget {
             onPressed: () => context.pop(),
             icon: SvgPicture.asset(
               Assets.icons.icArrow,
+              width: getValueForScreenType(
+                context: context,
+                mobile: 24,
+                tablet: 28,
+              ),
               color: Theme.of(context).colorScheme.onBackground,
             ),
           ),
