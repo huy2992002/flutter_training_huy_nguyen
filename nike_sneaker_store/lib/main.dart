@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
@@ -105,22 +104,19 @@ class MyApp extends StatelessWidget {
         ],
         child: BlocBuilder<SettingBloc, SettingState>(
           builder: (context, state) {
-            return ScreenUtilInit(
-              designSize: const Size(375, 812),
-              child: MaterialApp.router(
-                title: 'Nike Sneaker Store',
-                debugShowCheckedModeBanner: false,
-                localizationsDelegates: AppLocalizations.localizationsDelegates,
-                supportedLocales: AppLocalizations.supportedLocales,
-                locale: state.locale,
-                themeMode: state.themeData == NSTheme.lightTheme
-                    ? ThemeMode.light
-                    : ThemeMode.dark,
-                theme: NSTheme.lightTheme,
-                darkTheme: NSTheme.darkTheme,
-                routerConfig: NSRoutesConfig.goRoute,
-                scaffoldMessengerKey: scaffoldMessengerKey,
-              ),
+            return MaterialApp.router(
+              title: 'Nike Sneaker Store',
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              locale: state.locale,
+              themeMode: state.themeData == NSTheme.lightTheme
+                  ? ThemeMode.light
+                  : ThemeMode.dark,
+              theme: NSTheme.lightTheme,
+              darkTheme: NSTheme.darkTheme,
+              routerConfig: NSRoutesConfig.goRoute,
+              scaffoldMessengerKey: scaffoldMessengerKey,
             );
           },
         ));
