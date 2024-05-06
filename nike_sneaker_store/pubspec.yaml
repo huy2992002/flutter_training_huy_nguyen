@@ -46,6 +46,7 @@ dependencies:
   intl: ^0.18.1
   permission_handler: ^11.3.0
   pinput: ^4.0.0
+  responsive_builder: ^0.7.0
   shared_preferences: ^2.2.2
   supabase_flutter: ^2.3.4
   url_launcher: ^6.2.5
