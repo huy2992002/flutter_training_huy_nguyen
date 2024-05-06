@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class NSSearchBox extends StatelessWidget {
   /// Create an [TextFormField]
@@ -57,7 +58,12 @@ class NSSearchBox extends StatelessWidget {
         onTap: onTap,
         style: Theme.of(context).textTheme.labelMedium,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(vertical: 14),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal:
+                getValueForScreenType(context: context, mobile: 14, tablet: 18),
+            vertical:
+                getValueForScreenType(context: context, mobile: 16, tablet: 24),
+          ),
           border: InputBorder.none,
           hintText: AppLocalizations.of(context).lookingForShoes,
           prefixIcon: Padding(
