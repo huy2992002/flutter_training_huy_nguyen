@@ -29,4 +29,8 @@ class NSConstants {
   static const endPointUsers = '/users';
 
   static final uploadUrl = Env.uploadUrl;
+
+  static const tableUsers = 'users';
+
+  static const tableProducts = 'products';
 }
