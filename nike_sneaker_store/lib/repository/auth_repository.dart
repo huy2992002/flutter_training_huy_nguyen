@@ -1,23 +1,22 @@
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
-import 'package:nike_sneaker_store/services/remote/api_client.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepository {
   AuthRepository({
-    required this.supabaseClient,
+    required this.supabaseServices,
     required this.sharedPrefServices,
-    required this.apiClient,
   });
 
-  final SupabaseClient supabaseClient;
+  final SupabaseServices supabaseServices;
   final SharedPrefServices sharedPrefServices;
-  final ApiClient apiClient;
 
   Future<User> signIn({required String email, required String password}) async {
     try {
-      final authResponse = await supabaseClient.auth.signInWithPassword(
+      final authResponse =
+          await supabaseServices.supabaseClient.auth.signInWithPassword(
         email: email,
         password: password,
       );
@@ -45,7 +44,7 @@ class AuthRepository {
     required String password,
   }) async {
     try {
-      final authResponse = await supabaseClient.auth.signUp(
+      final authResponse = await supabaseServices.supabaseClient.auth.signUp(
         email: email,
         password: password,
         data: {'email': email},
@@ -57,9 +56,9 @@ class AuthRepository {
             name: name,
             email: email,
           );
-          apiClient.post(
-            NSConstants.endPointUsers,
-            data: user.toJson(),
+          await supabaseServices.insertData(
+            table: NSConstants.endPointUsers,
+            values: user.toJson(),
           );
           return authResponse.user!;
         } else {
