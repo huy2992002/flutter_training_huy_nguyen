@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls, cascade_invocations
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
@@ -39,7 +41,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         viewStatus: CartViewStatus.failure,
@@ -91,7 +95,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.insertFailure,
@@ -126,7 +132,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
+
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.incrementFailure,
         message: message,
@@ -166,7 +175,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.decrementFailure,
@@ -193,7 +204,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         cartCheckoutStatus: CartEventCheckOutStatus.checkoutFailure,

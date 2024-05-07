@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/notification/bloc/notification_event.dart';
@@ -34,7 +36,9 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         status: NotificationViewStatus.failure,
@@ -66,7 +70,9 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         itemStatus: ListNotificationStatus.readFailure,
@@ -93,7 +99,9 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         itemStatus: ListNotificationStatus.removeFailure,

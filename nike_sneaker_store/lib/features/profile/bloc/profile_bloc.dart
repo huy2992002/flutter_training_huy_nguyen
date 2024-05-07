@@ -135,7 +135,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         buttonStatus: ProfileSaveStatus.failure,

@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls, cascade_invocations
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
@@ -51,7 +53,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         categoryIndex: 0,
@@ -96,7 +100,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         loadStatus: HomeLoadMoreStatus.loadFailure,
@@ -155,7 +161,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         favoriteStatus: HomeFavoriteStatus.favoriteFailure,

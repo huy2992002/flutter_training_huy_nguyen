@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_event.dart';
@@ -38,7 +40,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       e is DioException
           ? message = e.getFailure().message
-          : message = e.toString();
+          : e is SocketException
+              ? message = e.getFailure().message
+              : message = e.toString();
 
       emit(state.copyWith(
         status: SearchViewStatus.failure,
