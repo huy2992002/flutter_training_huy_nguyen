@@ -113,8 +113,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           ? message = e.getFailure().message
           : e is SocketException
               ? message = e.getFailure().message
-              : e.toString();
-              
+              : message = e.toString();
+
       emit(state.copyWith(
         status: FormSubmissionStatus.failure,
         message: message,
