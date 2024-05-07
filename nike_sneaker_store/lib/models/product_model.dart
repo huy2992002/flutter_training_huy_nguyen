@@ -14,20 +14,26 @@ class ProductModel {
     this.isBestSeller,
     this.category,
     this.isFavorite = false,
+    this.productsInSameColor,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      uuid: json['uuid'] as String?,
-      name: json['name'] as String?,
-      imagePath: json['imagePath'] as String?,
-      price:
-          json['price'] != null ? double.parse(json['price'].toString()) : null,
-      quantity: json['quantity'] as int?,
-      description: json['description'] as String?,
-      isBestSeller: json['isBestSeller'] as bool?,
-      category: json['category'] as String?,
-    );
+        uuid: json['uuid'] as String?,
+        name: json['name'] as String?,
+        imagePath: json['imagePath'] as String?,
+        price: json['price'] != null
+            ? double.parse(json['price'].toString())
+            : null,
+        quantity: json['quantity'] as int?,
+        description: json['description'] as String?,
+        isBestSeller: json['isBestSeller'] as bool?,
+        category: json['category'] as String?,
+        productsInSameColor: json['productsInSameColor'] == null
+            ? null
+            : (json['productsInSameColor'] as List<dynamic>)
+                .map((e) => e as String)
+                .toList());
   }
 
   Map<String, dynamic> toJson() {
@@ -53,6 +59,7 @@ class ProductModel {
     bool? isBestSeller,
     String? category,
     bool? isFavorite,
+    List<String>? productsInSameColor,
   }) {
     return ProductModel(
       uuid: uuid ?? this.uuid,
@@ -64,6 +71,7 @@ class ProductModel {
       isBestSeller: isBestSeller ?? this.isBestSeller,
       category: category ?? this.category,
       isFavorite: isFavorite ?? this.isFavorite,
+      productsInSameColor: productsInSameColor ?? this.productsInSameColor,
     );
   }
 
@@ -93,4 +101,6 @@ class ProductModel {
 
   /// If [isBestSeller] argument is true product has been liked
   bool isFavorite;
+
+  List<String>? productsInSameColor;
 }
