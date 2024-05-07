@@ -59,17 +59,20 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         password: event.password,
       );
       emit(state.copyWith(status: FormSubmissionStatus.success));
-    } catch (e) {
-      String message = '';
-      e is AuthException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on AuthException catch (e) {
       emit(state.copyWith(
         status: FormSubmissionStatus.failure,
-        message: message,
+        message: e.getFailure().message,
+      ));
+    } on SocketException catch (e) {
+      emit(state.copyWith(
+        status: FormSubmissionStatus.failure,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: FormSubmissionStatus.failure,
+        message: e.toString(),
       ));
     }
   }
