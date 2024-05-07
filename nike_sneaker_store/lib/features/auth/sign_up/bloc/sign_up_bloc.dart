@@ -70,7 +70,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     emit(state.copyWith(
       password: event.password,
       isValid: isValid,
-      status: FormSubmissionStatus.initial,
     ));
   }
 
@@ -88,7 +87,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     emit(state.copyWith(
       confirmPassword: event.confirmPassword,
       isValid: isValid,
-      status: FormSubmissionStatus.initial,
     ));
   }
 
