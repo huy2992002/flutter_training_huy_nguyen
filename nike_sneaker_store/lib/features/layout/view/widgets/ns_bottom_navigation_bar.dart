@@ -61,7 +61,7 @@ class NSBottomNavigationBar extends StatelessWidget {
                 ),
                 color: currentIndex == index
                     ? Theme.of(context).colorScheme.onPrimary
-                    : Theme.of(context).colorScheme.surfaceTint,
+                    : Theme.of(context).colorScheme.outline,
               ),
             ),
           ),
