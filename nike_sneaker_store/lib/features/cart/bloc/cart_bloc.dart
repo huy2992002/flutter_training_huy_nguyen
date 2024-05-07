@@ -1,8 +1,6 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls, cascade_invocations
 
 import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_state.dart';
@@ -36,18 +34,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         viewStatus: CartViewStatus.success,
         myCarts: myCarts,
       ));
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         viewStatus: CartViewStatus.failure,
-        message: message,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        viewStatus: CartViewStatus.failure,
+        message: e.toString(),
       ));
     }
   }
@@ -90,18 +85,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           ),
         );
       }
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.insertFailure,
-        message: message,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        cartInsertStatus: CartQuantityStatus.insertFailure,
+        message: e.toString(),
       ));
     }
   }
@@ -127,18 +119,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       userRepository.updateInformationUser(
         UserModel(uuid: event.userId, myCarts: products),
       );
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.incrementFailure,
-        message: message,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        cartInsertStatus: CartQuantityStatus.incrementFailure,
+        message: e.toString(),
       ));
     }
   }
@@ -170,18 +159,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       userRepository.updateInformationUser(
         UserModel(uuid: event.userId, myCarts: products),
       );
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.decrementFailure,
-        message: message,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        cartInsertStatus: CartQuantityStatus.decrementFailure,
+        message: e.toString(),
       ));
     }
   }
@@ -199,18 +185,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         myCarts: [],
         cartCheckoutStatus: CartEventCheckOutStatus.checkoutSuccess,
       ));
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         cartCheckoutStatus: CartEventCheckOutStatus.checkoutFailure,
-        message: message,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        cartCheckoutStatus: CartEventCheckOutStatus.checkoutFailure,
+        message: e.toString(),
       ));
     }
   }
