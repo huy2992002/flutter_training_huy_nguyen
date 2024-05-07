@@ -22,7 +22,7 @@ class NSColor {
   static const notification = Color(0xFFFD1600);
   static const favorite = Color(0xFFF87265);
   static const inversePrimary = Color(0xFF674DC5);
-  static const surfaceTint = Color(0xFF707B81);
+  static const surfaceTint = Color(0xFF9DB2CE);
   static const darkPrimary = Color(0xFFC2EF00);
   static const darkOnPrimary = Color(0xFF304164);
   static const darkSecondary = Color(0xFF304164);
