@@ -1,4 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_event.dart';
@@ -8,6 +9,10 @@ import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../repository/mock_auth_repository.dart';
+
+class MockContext extends Fake implements BuildContext {}
+
+class MockSignUpBloc extends Fake implements SignUpBloc {}
 
 void main() {
   group('Sign Up Bloc Test', () {
@@ -23,6 +28,56 @@ void main() {
     test('initial state is SignUpState', () {
       expect(signUpBloc.state, equals(const SignUpState()));
     });
+
+    blocTest(
+      'emits value [name] when name changed',
+      build: () => signUpBloc,
+      act: (bloc) {
+        bloc.add(SignUpNameChanged(name: 'name'));
+      },
+      expect: () => [
+        const SignUpState(name: 'name'),
+      ],
+    );
+
+    blocTest(
+      'emits value [email] when email changed',
+      build: () => signUpBloc,
+      act: (bloc) {
+        bloc.add(
+          SignUpEmailChanged(email: 'email@gmail.com'),
+        );
+      },
+      expect: () => [
+        const SignUpState(email: 'email@gmail.com'),
+      ],
+    );
+
+    blocTest(
+      'emits value [password] when password changed',
+      build: () => signUpBloc,
+      act: (bloc) {
+        bloc.add(
+          SignUpPasswordChanged(password: '123456'),
+        );
+      },
+      expect: () => [
+        const SignUpState(password: '123456'),
+      ],
+    );
+
+    blocTest(
+      'emits value [confirmPassword] when confirmPassword changed',
+      build: () => signUpBloc,
+      act: (bloc) {
+        bloc.add(
+          SignUpConfirmPasswordChanged(confirmPassword: '123456'),
+        );
+      },
+      expect: () => [
+        const SignUpState(confirmPassword: '123456'),
+      ],
+    );
 
     blocTest(
       'GIVEN user wants to sign up an account '
