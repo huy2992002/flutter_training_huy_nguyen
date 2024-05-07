@@ -4,12 +4,10 @@ import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_bloc.dart'
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_event.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_state.dart';
 import 'package:nike_sneaker_store/repository/auth_repository.dart';
-import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
-import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../utils/mock_supabase.dart';
+import '../../../repository/mock_auth_repository.dart';
 
 void main() {
   group('Sign Up Bloc Test', () {
@@ -18,12 +16,7 @@ void main() {
 
     setUp(() {
       SharedPreferences.setMockInitialValues({});
-      authRepository = AuthRepository(
-        supabaseServices: SupabaseServices(supabaseClient: MockSupabase()),
-        sharedPrefServices: SharedPrefServices(
-          sharedPreferences: SharedPreferences.getInstance(),
-        ),
-      );
+      authRepository = MockAuthRepository();
       signUpBloc = SignUpBloc(authRepository);
     });
 
