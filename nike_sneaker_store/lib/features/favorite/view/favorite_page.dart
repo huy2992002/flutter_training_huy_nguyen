@@ -98,7 +98,7 @@ class _FavoritePageState extends State<FavoritePage> {
                     ),
                     mainAxisSpacing: 16,
                     crossAxisSpacing: 16,
-                    childAspectRatio: 4 / 5,
+                    childAspectRatio: 3 / 4,
                   ),
                   itemBuilder: (_, index) {
                     final product = favoriteProducts[index];
