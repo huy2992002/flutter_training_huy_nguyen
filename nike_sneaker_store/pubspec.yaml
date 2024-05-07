@@ -60,6 +60,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.3
+  test_cov_console: ^0.2.2
   very_good_analysis: ^5.1.0
   widgetbook_annotation: ^3.1.0
   widgetbook_generator: ^3.7.0
