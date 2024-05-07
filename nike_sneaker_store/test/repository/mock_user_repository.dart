@@ -24,6 +24,10 @@ class MockUserRepository extends Fake implements UserRepository {
 
   @override
   Future<UserModel?> getUser({required String userId}) async {
-    return MockData.mockUser;
+    if (userId.isEmpty) {
+      return MockData.mockUser;
+    } else {
+      throw Exception('An error occurred, please check UserId');
+    }
   }
 }

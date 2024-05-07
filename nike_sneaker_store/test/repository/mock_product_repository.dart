@@ -13,12 +13,20 @@ class MockProductRepository extends Fake implements ProductRepository {
 
   @override
   Future<List<String>?> getIdProductFavorites(String? userId) async {
-    return [MockData.mockProduct.uuid ?? ''];
+    if (userId != null) {
+      return [MockData.mockProduct.uuid ?? ''];
+    } else {
+      throw Exception('An error occurred, please check UserId');
+    }
   }
 
   @override
   Future<List<ProductModel>?> getIdProductCart(String? userId) async {
-    return MockData.mockProducts;
+    if (userId != null) {
+      return MockData.mockProducts;
+    } else {
+      throw Exception('An error occurred, please check UserId');
+    }
   }
 
   @override
@@ -28,6 +36,10 @@ class MockProductRepository extends Fake implements ProductRepository {
 
   @override
   Future<List<NotificationModel>?> fetchNotifications(String? userId) async {
-    return MockData.mockNotifications;
+    if (userId != null) {
+      return MockData.mockNotifications;
+    } else {
+      throw Exception('An error occurred, please check UserId');
+    }
   }
 }
