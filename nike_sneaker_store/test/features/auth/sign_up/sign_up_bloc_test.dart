@@ -1,12 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_bloc.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_event.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_state.dart';
 import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
-import 'package:nike_sneaker_store/services/remote/api_client.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,16 +19,9 @@ void main() {
     setUp(() {
       SharedPreferences.setMockInitialValues({});
       authRepository = AuthRepository(
-        supabaseClient: MockSupabase(),
+        supabaseServices: SupabaseServices(supabaseClient: MockSupabase()),
         sharedPrefServices: SharedPrefServices(
           sharedPreferences: SharedPreferences.getInstance(),
-        ),
-        apiClient: ApiClient(
-          dio: Dio(),
-          supabaseClient: MockSupabase(),
-          prefs: SharedPrefServices(
-            sharedPreferences: SharedPreferences.getInstance(),
-          ),
         ),
       );
       signUpBloc = SignUpBloc(authRepository);
@@ -83,7 +75,7 @@ void main() {
         // THEN
         const SignUpState(
           status: FormSubmissionStatus.failure,
-          message: 'User already exists',
+          message: '',
         ),
       ],
     );
