@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/button/ns_elevated_button.dart';
 import 'package:nike_sneaker_store/features/onboarding/bloc/onboarding_cubit.dart';
-import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_background.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_power.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_start.dart';
 import 'package:nike_sneaker_store/features/onboarding/view/widgets/onboarding_welcome.dart';
@@ -54,15 +53,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
           builder: (context, state) {
             return Stack(
               children: [
-                BackgroundOnboarding(
-                  child: PageView.builder(
-                    controller: _pageController,
-                    itemCount: _onboardPages.length,
-                    itemBuilder: (_, index) => _onboardPages[index],
-                    onPageChanged: (value) {
-                      context.read<OnboardingCubit>().onChangePage(value);
-                    },
-                  ),
+                PageView.builder(
+                  controller: _pageController,
+                  itemCount: _onboardPages.length,
+                  itemBuilder: (_, index) => _onboardPages[index],
+                  onPageChanged: (value) {
+                    context.read<OnboardingCubit>().onChangePage(value);
+                  },
                 ),
                 Positioned(
                   left: 20,
