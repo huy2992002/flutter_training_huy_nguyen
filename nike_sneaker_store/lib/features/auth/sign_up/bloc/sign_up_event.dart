@@ -19,9 +19,7 @@ class SignUpNameChanged extends SignUpEvent {
   final String name;
 
   @override
-  List<Object?> get props => [
-        name,
-      ];
+  List<Object?> get props => [name];
 }
 
 class SignUpEmailChanged extends SignUpEvent {
@@ -30,9 +28,7 @@ class SignUpEmailChanged extends SignUpEvent {
   final String email;
 
   @override
-  List<Object?> get props => [
-        email,
-      ];
+  List<Object?> get props => [email];
 }
 
 class SignUpPasswordChanged extends SignUpEvent {
@@ -41,9 +37,7 @@ class SignUpPasswordChanged extends SignUpEvent {
   final String password;
 
   @override
-  List<Object?> get props => [
-        password,
-      ];
+  List<Object?> get props => [password];
 }
 
 class SignUpConfirmPasswordChanged extends SignUpEvent {
