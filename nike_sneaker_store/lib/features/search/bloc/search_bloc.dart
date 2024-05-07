@@ -35,18 +35,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           ),
         );
       }
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         status: SearchViewStatus.failure,
-        errorMessage: message,
+        errorMessage: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: SearchViewStatus.failure,
+        errorMessage: e.toString(),
       ));
     }
   }
