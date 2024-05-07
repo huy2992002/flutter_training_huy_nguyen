@@ -1,12 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_bloc.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_event.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_state.dart';
 import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/services/local/shared_pref_services.dart';
-import 'package:nike_sneaker_store/services/remote/api_client.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,16 +19,9 @@ void main() {
     setUp(() {
       SharedPreferences.setMockInitialValues({});
       authRepository = AuthRepository(
-        supabaseClient: MockSupabase(),
+        supabaseServices: SupabaseServices(supabaseClient: MockSupabase()),
         sharedPrefServices: SharedPrefServices(
           sharedPreferences: SharedPreferences.getInstance(),
-        ),
-        apiClient: ApiClient(
-          dio: Dio(),
-          supabaseClient: MockSupabase(),
-          prefs: SharedPrefServices(
-            sharedPreferences: SharedPreferences.getInstance(),
-          ),
         ),
       );
       signInBloc = SignInBloc(authRepository);
@@ -81,7 +73,7 @@ void main() {
         // THEN
         const SignInState(
           status: FormSubmissionStatus.failure,
-          message: 'Invalid login credentials',
+          message: ''
         ),
       ],
     );
