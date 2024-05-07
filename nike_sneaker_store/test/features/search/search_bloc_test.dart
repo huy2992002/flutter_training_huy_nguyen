@@ -30,7 +30,8 @@ void main() {
       },
       expect: () => [
         const SearchState(status: SearchViewStatus.loading),
-        const SearchState(status: SearchViewStatus.success), // searchProducts: []
+        const SearchState(
+            status: SearchViewStatus.success), // searchProducts: []
       ],
     );
 
@@ -46,6 +47,34 @@ void main() {
           status: SearchViewStatus.success,
           searchProducts: MockData.mockProducts,
         ),
+      ],
+    );
+
+    blocTest(
+      'emit message when search failure',
+      build: () => searchBloc,
+      act: (bloc) {
+        bloc.add(SearchTextChanged(searchText: '***'));
+      },
+      expect: () => [
+        const SearchState(status: SearchViewStatus.loading),
+        const SearchState(
+          status: SearchViewStatus.failure,
+          errorMessage: 'Exception: Dont find product',
+        ),
+      ],
+    );
+
+    blocTest(
+      'emit searchProduct empty when remove searchText',
+      build: () => searchBloc,
+      act: (bloc) {
+        bloc.add(RemoveTextPressed());
+      },
+      expect: () => [
+        const SearchState(
+            // searchProducts: []
+            ),
       ],
     );
   });
