@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 
-class UserModel {
+class UserModel extends Equatable {
   /// Object user
   ///
   /// include
@@ -67,4 +68,17 @@ class UserModel {
   List<ProductModel>? myCarts;
 
   List<NotificationModel>? notifications;
+
+  @override
+  List<Object?> get props => [
+        uuid,
+        name,
+        email,
+        avatar,
+        address,
+        phone,
+        favorites,
+        myCarts,
+        notifications
+      ];
 }
