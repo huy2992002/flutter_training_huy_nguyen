@@ -11,11 +11,12 @@ class NsPumpWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NSTheme nsTheme = NSTheme();
     return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: const Locale('en'),
-      theme: NSTheme.lightTheme,
+      theme: nsTheme.lightTheme(context),
       home: home,
     );
   }

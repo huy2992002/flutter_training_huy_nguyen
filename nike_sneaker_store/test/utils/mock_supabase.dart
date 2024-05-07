@@ -44,7 +44,7 @@ class MockGoTrue extends Fake implements GoTrueClient {
         user: _user,
       );
     } else {
-      throw const AuthException('Invalid login credentials');
+      throw Exception('Invalid login credentials');
     }
   }
 
@@ -63,7 +63,7 @@ class MockGoTrue extends Fake implements GoTrueClient {
         user: _user,
       );
     } else {
-      throw const AuthException('User already exists');
+      throw Exception('User already exists');
     }
   }
 
