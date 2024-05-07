@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_event.dart';
 import 'package:nike_sneaker_store/features/auth/sign_in/bloc/sign_in_state.dart';
 import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/services/handle_error/error_extension.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
-import 'package:nike_sneaker_store/utils/validator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
@@ -24,8 +24,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   ) async {
     String email = event.email;
     String password = state.password;
-    bool isValid = Validator.validatorEmail(event.context, email) == null &&
-        Validator.validatorPassword(event.context, password) == null;
+    bool isValid = isValidSignIn(
+      email,
+      password,
+    );
 
     emit(state.copyWith(
       email: email,
@@ -40,8 +42,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   ) async {
     String email = state.email;
     String password = event.password;
-    bool isValid = Validator.validatorEmail(event.context, email) == null &&
-        Validator.validatorPassword(event.context, password) == null;
+    bool isValid = isValidSignIn(
+      email,
+      password,
+    );
 
     emit(state.copyWith(
       password: password,
@@ -75,5 +79,13 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         message: e.toString(),
       ));
     }
+  }
+
+  bool isValidSignIn(
+    String email,
+    String password,
+  ) {
+    return RegExp(NSConstants.emailPattern).hasMatch(email) &&
+        password.length > 5;
   }
 }

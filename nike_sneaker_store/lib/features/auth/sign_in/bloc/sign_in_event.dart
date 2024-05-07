@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 abstract class SignInEvent extends Equatable {}
 
@@ -13,21 +12,19 @@ class SubmitSignInPressed extends SignInEvent {
 }
 
 class SignInEmailChanged extends SignInEvent {
-  SignInEmailChanged(this.context, {required this.email});
+  SignInEmailChanged({required this.email});
 
   final String email;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [email, context];
+  List<Object?> get props => [email];
 }
 
 class SignInPasswordChanged extends SignInEvent {
-  SignInPasswordChanged(this.context, {required this.password});
+  SignInPasswordChanged({required this.password});
 
   final String password;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [password, context];
+  List<Object?> get props => [password];
 }

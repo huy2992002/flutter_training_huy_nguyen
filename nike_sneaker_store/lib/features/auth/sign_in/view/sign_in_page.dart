@@ -92,7 +92,7 @@ class _SignInPageState extends State<SignInPage> {
                     hintText: AppLocalizations.of(context).hintTextEmail,
                     onChanged: (value) => context
                         .read<SignInBloc>()
-                        .add(SignInEmailChanged(context, email: value)),
+                        .add(SignInEmailChanged(email: value)),
                     validator: (value) =>
                         Validator.validatorEmail(context, value),
                     textInputAction: TextInputAction.next,
@@ -105,7 +105,7 @@ class _SignInPageState extends State<SignInPage> {
                     hintText: AppLocalizations.of(context).hintTextPassword,
                     onChanged: (value) => context
                         .read<SignInBloc>()
-                        .add(SignInPasswordChanged(context, password: value)),
+                        .add(SignInPasswordChanged(password: value)),
                     validator: (value) =>
                         Validator.validatorPassword(context, value),
                     textInputAction: TextInputAction.done,
