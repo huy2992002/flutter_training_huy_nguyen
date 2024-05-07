@@ -45,6 +45,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         user: user,
         categoryIndex: 0,
         homeStatus: HomeViewStatus.success,
+        loadStatus: HomeLoadMoreStatus.loadInitial,
       ));
     } on SocketException catch (e) {
       emit(state.copyWith(
