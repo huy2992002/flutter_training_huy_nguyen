@@ -25,6 +25,32 @@ void main() {
     });
 
     blocTest(
+      'emits value [email] when email changed',
+      build: () => signInBloc,
+      act: (bloc) {
+        bloc.add(
+          SignInEmailChanged(email: 'email@gmail.com')
+        );
+      },
+      expect: () => [
+        const SignInState(email: 'email@gmail.com'),
+      ],
+    );
+
+    blocTest(
+      'emits value [password] when password changed',
+      build: () => signInBloc,
+      act: (bloc) {
+        bloc.add(
+          SignInPasswordChanged(password: '123456'),
+        );
+      },
+      expect: () => [
+        const SignInState(password: '123456'),
+      ],
+    );
+
+    blocTest(
       'GIVEN user is not sign in '
       'WHEN user implement event sign in '
       'THEN user sign in success',
@@ -58,16 +84,15 @@ void main() {
 
         bloc.add(
           SubmitSignInPressed(email: email, password: password),
-        );        
+        );
       },
       expect: () => [
         // WHEN
         const SignInState(status: FormSubmissionStatus.loading),
         // THEN
         const SignInState(
-          status: FormSubmissionStatus.failure,
-          message: 'Exception: Invalid login credentials'
-        ),
+            status: FormSubmissionStatus.failure,
+            message: 'Exception: Invalid login credentials'),
       ],
     );
   });
