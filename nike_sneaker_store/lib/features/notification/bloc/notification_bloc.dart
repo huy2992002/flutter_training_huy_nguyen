@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/notification/bloc/notification_event.dart';
 import 'package:nike_sneaker_store/features/notification/bloc/notification_state.dart';
@@ -31,18 +29,15 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
         status: NotificationViewStatus.success,
         notifications: notifications,
       ));
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         status: NotificationViewStatus.failure,
-        message: message,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: NotificationViewStatus.failure,
+        message: e.toString(),
       ));
     }
   }
@@ -65,18 +60,15 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
         uuid: event.userId,
         notifications: notifications,
       ));
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         itemStatus: ListNotificationStatus.readFailure,
-        message: message,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        itemStatus: ListNotificationStatus.readFailure,
+        message: e.toString(),
       ));
     }
   }
@@ -94,18 +86,15 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
         uuid: event.userId,
         notifications: [],
       ));
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         itemStatus: ListNotificationStatus.removeFailure,
-        message: message,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        itemStatus: ListNotificationStatus.removeFailure,
+        message: e.toString(),
       ));
     }
   }
