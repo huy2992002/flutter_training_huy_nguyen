@@ -67,9 +67,8 @@ void main() {
         const SignUpState(status: FormSubmissionStatus.loading),
         // THEN
         const SignUpState(
-          status: FormSubmissionStatus.failure,
-          message: '',
-        ),
+            status: FormSubmissionStatus.failure,
+            message: 'Exception: User already exists'),
       ],
     );
   });

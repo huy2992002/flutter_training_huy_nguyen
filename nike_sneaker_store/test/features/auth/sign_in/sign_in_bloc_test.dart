@@ -58,7 +58,7 @@ void main() {
 
         bloc.add(
           SubmitSignInPressed(email: email, password: password),
-        );
+        );        
       },
       expect: () => [
         // WHEN
@@ -66,7 +66,7 @@ void main() {
         // THEN
         const SignInState(
           status: FormSubmissionStatus.failure,
-          message: ''
+          message: 'Exception: Invalid login credentials'
         ),
       ],
     );
