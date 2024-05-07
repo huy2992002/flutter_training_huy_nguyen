@@ -188,6 +188,10 @@ class $AssetsImagesGen {
   AssetGenImage get imgPrOnboardWelcome =>
       const AssetGenImage('assets/images/img_pr_onboard_welcome.png');
 
+  /// File path: assets/images/img_splash_funny.png
+  AssetGenImage get imgSplashFunny =>
+      const AssetGenImage('assets/images/img_splash_funny.png');
+
   /// File path: assets/images/img_splash_hight_light.png
   AssetGenImage get imgSplashHightLight =>
       const AssetGenImage('assets/images/img_splash_hight_light.png');
@@ -214,6 +218,7 @@ class $AssetsImagesGen {
         imgPrOnboardLetStart,
         imgPrOnboardPower,
         imgPrOnboardWelcome,
+        imgSplashFunny,
         imgSplashHightLight,
         imgSuccessfully,
         imgSumerSale
