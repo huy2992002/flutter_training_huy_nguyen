@@ -34,12 +34,14 @@ void main() {
         'GIVEN user wants to sign up '
         'WHEN user has not filled in information yet '
         'THEN button is disabled', (tester) async {
+      tester.binding.window.physicalSizeTestValue = const Size(1080, 1920);
       // GIVEN
       when(() => signUpBloc.state)
           .thenReturn(const SignUpState()); // isValid == false
 
       // WHEN
       await tester.pumpWidget(signUpPage);
+      await tester.pumpAndSettle();
 
       // THEN
       final button =
