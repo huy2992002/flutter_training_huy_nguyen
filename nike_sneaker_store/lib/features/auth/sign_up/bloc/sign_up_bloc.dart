@@ -1,13 +1,12 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_event.dart';
 import 'package:nike_sneaker_store/features/auth/sign_up/bloc/sign_up_state.dart';
 import 'package:nike_sneaker_store/repository/auth_repository.dart';
 import 'package:nike_sneaker_store/services/handle_error/error_extension.dart';
 import 'package:nike_sneaker_store/utils/enum.dart';
-import 'package:nike_sneaker_store/utils/validator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
@@ -26,7 +25,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     Emitter<SignUpState> emit,
   ) async {
     bool isValid = isValidSignUp(
-      event.context,
       event.name,
       state.email,
       state.password,
@@ -45,7 +43,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     Emitter<SignUpState> emit,
   ) async {
     bool isValid = isValidSignUp(
-      event.context,
       state.name,
       event.email,
       state.password,
@@ -64,7 +61,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     Emitter<SignUpState> emit,
   ) async {
     bool isValid = isValidSignUp(
-      event.context,
       state.name,
       state.email,
       event.password,
@@ -83,7 +79,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     Emitter<SignUpState> emit,
   ) async {
     bool isValid = isValidSignUp(
-      event.context,
       state.name,
       state.email,
       state.password,
@@ -126,17 +121,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   bool isValidSignUp(
-    BuildContext context,
     String name,
     String email,
     String password,
     String confirmPassword,
   ) {
-    return Validator.validatorRequired(context, name) == null &&
-        Validator.validatorEmail(context, email) == null &&
-        Validator.validatorPassword(context, password) == null &&
-        Validator.validatorConfirmPassword(
-                context, confirmPassword, password) ==
-            null;
+    return name.isNotEmpty &&
+        RegExp(NSConstants.emailPattern).hasMatch(email) &&
+        password.length > 5 &&
+        confirmPassword == password;
   }
 }

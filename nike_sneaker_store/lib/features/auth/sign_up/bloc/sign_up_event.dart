@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 abstract class SignUpEvent extends Equatable {}
 
@@ -15,41 +14,43 @@ class SubmitSignUpPressed extends SignUpEvent {
 }
 
 class SignUpNameChanged extends SignUpEvent {
-  SignUpNameChanged(this.context, {required this.name});
+  SignUpNameChanged({required this.name});
 
   final String name;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [name, context];
+  List<Object?> get props => [
+        name,
+      ];
 }
 
 class SignUpEmailChanged extends SignUpEvent {
-  SignUpEmailChanged(this.context, {required this.email});
+  SignUpEmailChanged({required this.email});
 
   final String email;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [email, context];
+  List<Object?> get props => [
+        email,
+      ];
 }
 
 class SignUpPasswordChanged extends SignUpEvent {
-  SignUpPasswordChanged(this.context, {required this.password});
+  SignUpPasswordChanged({required this.password});
 
   final String password;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [password, context];
+  List<Object?> get props => [
+        password,
+      ];
 }
 
 class SignUpConfirmPasswordChanged extends SignUpEvent {
-  SignUpConfirmPasswordChanged(this.context, {required this.confirmPassword});
+  SignUpConfirmPasswordChanged({required this.confirmPassword});
 
   final String confirmPassword;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [confirmPassword, context];
+  List<Object?> get props => [confirmPassword];
 }

@@ -151,7 +151,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     controller: _nameController,
                     hintText: AppLocalizations.of(context).hintTextDefault,
                     onChanged: (value) => context.read<SignUpBloc>().add(
-                          SignUpNameChanged(context, name: value),
+                          SignUpNameChanged(name: value),
                         ),
                     validator: (value) =>
                         Validator.validatorRequired(context, value),
@@ -164,7 +164,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     controller: _emailController,
                     hintText: AppLocalizations.of(context).hintTextEmail,
                     onChanged: (value) => context.read<SignUpBloc>().add(
-                          SignUpEmailChanged(context, email: value),
+                          SignUpEmailChanged(email: value),
                         ),
                     validator: (value) =>
                         Validator.validatorEmail(context, value),
@@ -177,7 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     controller: _passwordController,
                     hintText: AppLocalizations.of(context).hintTextPassword,
                     onChanged: (value) => context.read<SignUpBloc>().add(
-                          SignUpPasswordChanged(context, password: value),
+                          SignUpPasswordChanged(password: value),
                         ),
                     validator: (value) =>
                         Validator.validatorPassword(context, value),
@@ -192,7 +192,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     hintText: AppLocalizations.of(context).hintTextPassword,
                     onChanged: (value) => context.read<SignUpBloc>().add(
                           SignUpConfirmPasswordChanged(
-                            context,
                             confirmPassword: value,
                           ),
                         ),
