@@ -130,18 +130,20 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         canAction: false,
         buttonStatus: ProfileSaveStatus.success,
       ));
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on DioException catch (e) {
       emit(state.copyWith(
         buttonStatus: ProfileSaveStatus.failure,
-        message: message,
+        message: e.getFailure().message,
+      ));
+    } on SocketException catch (e) {
+      emit(state.copyWith(
+        buttonStatus: ProfileSaveStatus.failure,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        buttonStatus: ProfileSaveStatus.failure,
+        message: e.toString(),
       ));
     }
   }
