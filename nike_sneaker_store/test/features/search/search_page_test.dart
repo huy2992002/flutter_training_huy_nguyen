@@ -12,8 +12,10 @@ import 'package:nike_sneaker_store/features/search/bloc/search_bloc.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_event.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_state.dart';
 import 'package:nike_sneaker_store/features/search/view/search_page.dart';
+import 'package:nike_sneaker_store/services/remote/supabase_services.dart';
 
 import '../../utils/mock_data.dart';
+import '../../utils/mock_supabase.dart';
 import '../../utils/ns_pump_widget.dart';
 import '../home/home_page_test.dart';
 
@@ -33,6 +35,9 @@ void main() {
     searchPage = NsPumpWidget(
         home: MultiRepositoryProvider(
       providers: [
+        RepositoryProvider<SupabaseServices>(
+          create: (context) => SupabaseServices(supabaseClient: MockSupabase()),
+        ),
         BlocProvider<SearchBloc>(create: (context) => searchBloc),
         BlocProvider<HomeBloc>(create: (context) => homeBloc),
         BlocProvider<CartBloc>(create: (context) => cartBloc),
@@ -78,6 +83,7 @@ void main() {
         'GIVEN the user is signed in '
         'WHEN user search product '
         'THEN displays the list of found products', (tester) async {
+      tester.binding.window.physicalSizeTestValue = const Size(1080, 1920);
       // GIVEN
       when(() => searchBloc.state).thenReturn(SearchState(
         searchProducts: MockData.mockProducts,
