@@ -31,7 +31,11 @@ class MockProductRepository extends Fake implements ProductRepository {
 
   @override
   Future<List<ProductModel>?> fetchProductsByName(String name) async {
-    return MockData.mockProducts;
+    if (name != '***') {
+      return MockData.mockProducts;
+    } else {
+      throw Exception('Dont find product');
+    }
   }
 
   @override
