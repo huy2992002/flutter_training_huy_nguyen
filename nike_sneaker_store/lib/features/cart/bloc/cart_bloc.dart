@@ -19,6 +19,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartIncrementPressed>(_onPlusProduct);
     on<CartDecrementPressed>(_onLessProduct);
     on<CartCheckoutPressed>(_onRemoveCart);
+    on<CartRemovePressed>(_onRemoveProduct);
   }
 
   ProductRepository productRepository;
@@ -193,6 +194,32 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     } catch (e) {
       emit(state.copyWith(
         cartCheckoutStatus: CartEventCheckOutStatus.checkoutFailure,
+        message: e.toString(),
+      ));
+    }
+  }
+
+  Future<void> _onRemoveProduct(
+      CartRemovePressed event, Emitter<CartState> emit) async {
+    emit(state.copyWith(cartInsertStatus: CartQuantityStatus.removeLoading));
+    try {
+      List<ProductModel> myCarts = [...state.myCarts];
+      myCarts.removeWhere((element) => element.uuid == event.productId);
+      await userRepository.updateInformationUser(
+        UserModel(uuid: event.userId, myCarts: myCarts),
+      );
+      emit(state.copyWith(
+        myCarts: myCarts,
+        cartInsertStatus: CartQuantityStatus.removeSuccess,
+      ));
+    } on SocketException catch (e) {
+      emit(state.copyWith(
+        cartInsertStatus: CartQuantityStatus.removeFailure,
+        message: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        cartInsertStatus: CartQuantityStatus.removeFailure,
         message: e.toString(),
       ));
     }

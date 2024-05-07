@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nike_sneaker_store/components/app_bar/ns_app_bar.dart';
 import 'package:nike_sneaker_store/components/button/ns_icon_button.dart';
+import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
@@ -67,61 +70,97 @@ class CartPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   )
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 16),
-                      Text(
-                        AppLocalizations.of(context)
-                            .intItem(state.myCarts.length),
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          padding: const EdgeInsets.only(top: 8),
-                          itemCount: state.myCarts.length,
-                          itemBuilder: (_, index) {
-                            final product = state.myCarts[index];
-                            return Padding(
-                              padding: const EdgeInsets.only(bottom: 14),
-                              child: CardCartProduct(
-                                product: product,
-                                onPlus: () {
-                                  if (userId != null) {
-                                    context.read<CartBloc>().add(
-                                          CartIncrementPressed(
-                                              userId: userId,
-                                              productId: product.uuid ?? ''),
-                                        );
-                                  } else {
-                                    NSSnackBar.snackbarError(
-                                      context,
-                                      title: AppLocalizations.of(context)
-                                          .notFoundUser,
-                                    );
-                                  }
-                                },
-                                onLess: () {
-                                  if (userId != null) {
-                                    context.read<CartBloc>().add(
-                                          CartDecrementPressed(
-                                              userId: userId,
-                                              productId: product.uuid ?? ''),
-                                        );
-                                  } else {
-                                    NSSnackBar.snackbarError(
-                                      context,
-                                      title: AppLocalizations.of(context)
-                                          .notFoundUser,
-                                    );
-                                  }
-                                },
-                              ),
-                            );
-                          },
+                : SlidableAutoCloseBehavior(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 16),
+                        Text(
+                          AppLocalizations.of(context)
+                              .intItem(state.myCarts.length),
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                      )
-                    ],
+                        Expanded(
+                          child: ListView.builder(
+                            padding: const EdgeInsets.only(top: 8),
+                            itemCount: state.myCarts.length,
+                            itemBuilder: (_, index) {
+                              final product = state.myCarts[index];
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 14),
+                                child: Slidable(
+                                  endActionPane: ActionPane(
+                                    extentRatio: 0.25,
+                                    motion: const ScrollMotion(),
+                                    children: [
+                                      SlidableAction(
+                                        onPressed: (_) {
+                                          NSDialog.dialogQuestion(
+                                            context,
+                                            title: AppLocalizations.of(context)
+                                                .doYouWantCancelFavorite,
+                                            action: () {
+                                              if (userId != null ||
+                                                  product.uuid != null) {
+                                                context.read<CartBloc>().add(
+                                                      CartRemovePressed(
+                                                        userId: userId!,
+                                                        productId:
+                                                            product.uuid!,
+                                                      ),
+                                                    );
+                                              }
+                                            },
+                                          );
+                                        },
+                                        icon: Icons.remove_circle_outline_sharp,
+                                        backgroundColor:
+                                            Theme.of(context).colorScheme.error,
+                                      ),
+                                    ],
+                                  ),
+                                  child: CardCartProduct(
+                                    product: product,
+                                    onPlus: () {
+                                      if (userId != null) {
+                                        context.read<CartBloc>().add(
+                                              CartIncrementPressed(
+                                                  userId: userId,
+                                                  productId:
+                                                      product.uuid ?? ''),
+                                            );
+                                      } else {
+                                        NSSnackBar.snackbarError(
+                                          context,
+                                          title: AppLocalizations.of(context)
+                                              .notFoundUser,
+                                        );
+                                      }
+                                    },
+                                    onLess: () {
+                                      if (userId != null) {
+                                        context.read<CartBloc>().add(
+                                              CartDecrementPressed(
+                                                  userId: userId,
+                                                  productId:
+                                                      product.uuid ?? ''),
+                                            );
+                                      } else {
+                                        NSSnackBar.snackbarError(
+                                          context,
+                                          title: AppLocalizations.of(context)
+                                              .notFoundUser,
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        )
+                      ],
+                    ),
                   ),
           ),
           bottomNavigationBar: CartTotalCost(

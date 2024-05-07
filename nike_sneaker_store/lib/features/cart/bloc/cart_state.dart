@@ -21,6 +21,9 @@ enum CartQuantityStatus {
   decrementLoading,
   decrementSuccess,
   decrementFailure,
+  removeLoading,
+  removeSuccess,
+  removeFailure,
 }
 
 enum CartEventCheckOutStatus {
