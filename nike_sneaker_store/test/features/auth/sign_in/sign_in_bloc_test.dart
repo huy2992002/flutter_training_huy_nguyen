@@ -27,26 +27,34 @@ void main() {
     blocTest(
       'emits value [email] when email changed',
       build: () => signInBloc,
+      seed: () => const SignInState(password: '123456'),
       act: (bloc) {
-        bloc.add(
-          SignInEmailChanged(email: 'email@gmail.com')
-        );
+        bloc.add(SignInEmailChanged(email: 'email@gmail.com'));
       },
       expect: () => [
-        const SignInState(email: 'email@gmail.com'),
+        const SignInState(
+          email: 'email@gmail.com',
+          password: '123456',
+          isValid: true,
+        ),
       ],
     );
 
     blocTest(
       'emits value [password] when password changed',
       build: () => signInBloc,
+      seed: () => const SignInState(email: 'email@gmail.com'),
       act: (bloc) {
         bloc.add(
           SignInPasswordChanged(password: '123456'),
         );
       },
       expect: () => [
-        const SignInState(password: '123456'),
+        const SignInState(
+          email: 'email@gmail.com',
+          password: '123456',
+          isValid: true,
+        ),
       ],
     );
 
