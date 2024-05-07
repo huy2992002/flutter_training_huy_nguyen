@@ -16,7 +16,6 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
   ) async {
     emit(state.copyWith(
       productDisplay: event.product,
-      products: event.products,
     ));
   }
 
@@ -24,7 +23,11 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
     DetailChangeProductPressed event,
     Emitter<DetailState> emit,
   ) async {
-    emit(state.copyWith(productDisplay: event.product));
+    emit(state.copyWith(status: DetailViewStatus.changeColorLoading));
+    final product = state.productDisplay;
+    product?.imagePath = event.productImage;
+    emit(state.copyWith(
+        productDisplay: product, status: DetailViewStatus.changeColorSuccess));
   }
 
   Future<void> _onFavorite(

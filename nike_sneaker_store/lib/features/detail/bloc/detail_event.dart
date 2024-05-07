@@ -14,10 +14,10 @@ class DetailSelectStarted extends DetailEvent {
 
 class DetailChangeProductPressed extends DetailEvent {
   DetailChangeProductPressed({
-    required this.product,
+    required this.productImage,
   });
 
-  final ProductModel product;
+  final String? productImage;
 }
 
 class DetailFavoritePressed extends DetailEvent {}

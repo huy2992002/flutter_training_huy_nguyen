@@ -97,20 +97,24 @@ class DetailPage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: List.generate(
-                    state.products.length > 5 ? 5 : state.products.length,
-                    (index) {
-                  final productImage = state.products[index];
+                    (state.productDisplay?.productsInSameColor?.length ?? 0) > 5
+                        ? 5
+                        : state.productDisplay?.productsInSameColor?.length ??
+                            0, (index) {
+                  final productImage =
+                      state.productDisplay?.productsInSameColor?[index];
                   return GestureDetector(
                     onTap: () => context.read<DetailBloc>().add(
-                          DetailChangeProductPressed(product: productImage),
+                          DetailChangeProductPressed(
+                              productImage: productImage),
                         ),
                     child: Container(
                         padding: const EdgeInsets.all(2),
                         margin: const EdgeInsets.only(right: 14),
                         decoration: BoxDecoration(
                           color: Theme.of(context).colorScheme.primaryContainer,
-                          border: state.productDisplay?.uuid ==
-                                  productImage.uuid
+                          border: state.productDisplay?.imagePath ==
+                                  productImage
                               ? Border.all(
                                   color: Theme.of(context).colorScheme.primary,
                                 )
@@ -118,7 +122,7 @@ class DetailPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: NSImageNetwork(
-                          path: productImage.imagePath,
+                          path: productImage,
                           width: 56,
                           height: 56,
                         )),
@@ -206,11 +210,11 @@ class DetailPage extends StatelessWidget {
                 },
                 icon: SvgPicture.asset(
                   Assets.icons.icBag,
-                   width: getValueForScreenType(
-                      context: context,
-                      mobile: 26,
-                      tablet: 30,
-                    ),
+                  width: getValueForScreenType(
+                    context: context,
+                    mobile: 26,
+                    tablet: 30,
+                  ),
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
                 padding:
