@@ -96,8 +96,16 @@ class _FavoritePageState extends State<FavoritePage> {
                       tablet: 3,
                       desktop: 4,
                     ),
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
+                    mainAxisSpacing: getValueForScreenType(
+                      context: context,
+                      mobile: 24,
+                      tablet: 16,
+                    ),
+                    crossAxisSpacing: getValueForScreenType(
+                      context: context,
+                      mobile: 24,
+                      tablet: 16,
+                    ),
                     childAspectRatio: 3 / 4,
                   ),
                   itemBuilder: (_, index) {

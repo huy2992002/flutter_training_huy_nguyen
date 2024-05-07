@@ -16,6 +16,7 @@ class CardProduct extends StatelessWidget {
     this.onFavorite,
     this.onAddCart,
     this.tag,
+    this.constraints,
     super.key,
   });
 
@@ -39,6 +40,8 @@ class CardProduct extends StatelessWidget {
 
   final String? tag;
 
+  final BoxConstraints? constraints;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -51,8 +54,9 @@ class CardProduct extends StatelessWidget {
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(16),
+              
             ),
-            constraints: const BoxConstraints(maxWidth: 153),
+            constraints: constraints,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,

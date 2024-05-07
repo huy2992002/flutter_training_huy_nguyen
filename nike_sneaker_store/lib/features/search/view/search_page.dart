@@ -161,11 +161,19 @@ class _SearchPageState extends State<SearchPage> {
                                     padding: const EdgeInsets.only(
                                         top: 10, bottom: 28),
                                     gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                        SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
-                                      mainAxisSpacing: 16,
-                                      crossAxisSpacing: 16,
-                                      childAspectRatio: 4 / 5,
+                                      mainAxisSpacing: getValueForScreenType(
+                                        context: context,
+                                        mobile: 24,
+                                        tablet: 16,
+                                      ),
+                                      crossAxisSpacing: getValueForScreenType(
+                                        context: context,
+                                        mobile: 24,
+                                        tablet: 16,
+                                      ),
+                                      childAspectRatio: 3 / 4,
                                     ),
                                     itemBuilder: (_, index) {
                                       final product =
