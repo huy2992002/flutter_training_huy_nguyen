@@ -1,8 +1,6 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls, cascade_invocations
 
 import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
@@ -48,19 +46,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         categoryIndex: 0,
         homeStatus: HomeViewStatus.success,
       ));
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         categoryIndex: 0,
         homeStatus: HomeViewStatus.failure,
-        errorMessage: message,
+        errorMessage: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        categoryIndex: 0,
+        homeStatus: HomeViewStatus.failure,
+        errorMessage: e.toString(),
       ));
     }
   }
@@ -95,18 +91,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       if (products.length == oldItem || products.length > 20) {
         emit(state.copyWith(loadStatus: HomeLoadMoreStatus.loadCompeted));
       }
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         loadStatus: HomeLoadMoreStatus.loadFailure,
-        errorMessage: message,
+        errorMessage: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        loadStatus: HomeLoadMoreStatus.loadFailure,
+        errorMessage: e.toString(),
       ));
     }
   }
@@ -156,18 +149,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         favoriteStatus: HomeFavoriteStatus.favoriteSuccess,
         productDisplays: products,
       ));
-    } catch (e) {
-      String? message;
-
-      e is DioException
-          ? message = e.getFailure().message
-          : e is SocketException
-              ? message = e.getFailure().message
-              : message = e.toString();
-
+    } on SocketException catch (e) {
       emit(state.copyWith(
         favoriteStatus: HomeFavoriteStatus.favoriteFailure,
-        errorMessage: message,
+        errorMessage: e.getFailure().message,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        favoriteStatus: HomeFavoriteStatus.favoriteFailure,
+        errorMessage: e.toString(),
       ));
     }
   }
