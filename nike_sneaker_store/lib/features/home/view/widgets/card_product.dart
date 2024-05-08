@@ -67,7 +67,7 @@ class CardProduct extends StatelessWidget {
                     child: SvgPicture.asset(
                       product.isFavorite
                           ? Assets.icons.icHeart
-                          : Assets.icons.icHeartOutline,
+                          : Assets.icons.icFavoriteOutline,
                       width: getValueForScreenType(
                         context: context,
                         mobile: 16,
