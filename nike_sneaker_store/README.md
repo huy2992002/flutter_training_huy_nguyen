@@ -28,7 +28,7 @@
 - Understanding and applying the widget_book plugin for building UI documentation.
 
 ## 🔽 Download APK
-- You can download and use the application via the following [link](https://drive.google.com/file/d/1DXq7w1yRA9X3l8FjnK2WwlmPlVS1xok8/view?usp=sharing).
+- You can download and use the application via the following [link](https://drive.google.com/file/d/14RCwRzfVUi-4vzKPFNo8dHE0W6QS89MJ/view?usp=sharing).
 
 ## 💻 Requirements
 Before you continue, ensure you meet the following requirements
@@ -47,32 +47,24 @@ Before you continue, ensure you meet the following requirements
     ```
     cd flutter_training_huy_nguyen
     ```
-3. Checkout branch:
-    ```
-    git checkout <feature/flutter-practice-two> 
-    ```
-4. Pull origin branch:
-    ```
-    git pull origin <feature/flutter-practice-two> 
-    ```
-5.  Enter folder app:
+3.  Enter folder app:
     ```
     cd nike_sneaker_store
     ```
-6. Get dependency:
+4. Get dependency:
     ```
     flutter pub get
     ```    
-7. Set up environment:
+5. Set up environment:
     ``` 
     Create .env and populate the data based on the .env.example file.
     ```   
     Note: [.env](https://drive.google.com/file/d/1BtIpmX1t0Mr2X3j21479YuLJ0IRzZBn9/view?usp=sharing) file of project.
-8. Generate Env, Assets, L10n, WidgetBook:
+6. Generate Env, Assets, L10n, WidgetBook:
     ```
     flutter pub run build_runner build --delete-conflicting-outputs 
     ```
-9.  Run project:
+7.  Run project:
     ```
     Run app: 
         flutter run ./lib/main.dart
@@ -81,7 +73,7 @@ Before you continue, ensure you meet the following requirements
     Run widget book:    
         flutter run ./lib/widgetbook/widgetbook.dart            
     ```
-10. Run coverage
+8.  Run coverage
     ```
     flutter test          
     ```
