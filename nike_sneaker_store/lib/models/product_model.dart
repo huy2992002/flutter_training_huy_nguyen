@@ -1,4 +1,6 @@
-class ProductModel {
+import 'package:equatable/equatable.dart';
+
+class ProductModel extends Equatable {
   /// Object product
   ///
   /// include
@@ -103,4 +105,18 @@ class ProductModel {
   bool isFavorite;
 
   List<String>? productsInSameColor;
+
+  @override
+  List<Object?> get props => [
+        uuid,
+        name,
+        imagePath,
+        price,
+        quantity,
+        description,
+        imagePath,
+        category,
+        isFavorite,
+        productsInSameColor
+      ];
 }
