@@ -97,7 +97,7 @@ class CartPage extends StatelessWidget {
                                           NSDialog.dialogQuestion(
                                             context,
                                             title: AppLocalizations.of(context)
-                                                .doYouWantCancelFavorite,
+                                                .doYouWantRemoveFromCart,
                                             action: () {
                                               if (userId != null ||
                                                   product.uuid != null) {
