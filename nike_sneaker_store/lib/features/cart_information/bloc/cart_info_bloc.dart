@@ -9,7 +9,6 @@ class CartInfoBloc extends Bloc<CartInfoEvent, CartInfoState> {
     on<CartInfoEmailChanged>(_onEmailChanged);
     on<CartInfoPhoneChanged>(_onPhoneChanged);
     on<CartInfoAddressChanged>(_onAddressChanged);
-    on<CartInfoCheckoutPressed>(_onCheckoutCart);
   }
 
   Future<void> _onStarted(
@@ -64,20 +63,6 @@ class CartInfoBloc extends Bloc<CartInfoEvent, CartInfoState> {
       address: event.address,
       canAction: canAction,
     ));
-  }
-
-  Future<void> _onCheckoutCart(
-      CartInfoCheckoutPressed event, Emitter<CartInfoState> emit) async {
-    emit(state.copyWith(status: CartCheckOutStatus.checkoutLoading));
-    try {
-      await Future.delayed(const Duration(milliseconds: 1000));
-      emit(state.copyWith(status: CartCheckOutStatus.checkoutSuccess));
-    } catch (e) {
-      emit(state.copyWith(
-        status: CartCheckOutStatus.checkoutFailure,
-        message: e.toString(),
-      ));
-    }
   }
 
   bool isValid({

@@ -17,11 +17,6 @@ class CartInfoStarted extends CartInfoEvent {
   List<Object?> get props => [email, phoneNumber, address];
 }
 
-class CartInfoCheckoutPressed extends CartInfoEvent {
-  @override
-  List<Object?> get props => [];
-}
-
 class CartInfoEmailChanged extends CartInfoEvent {
   CartInfoEmailChanged({required this.email});
 
