@@ -20,7 +20,6 @@ class MockFilePicker extends Fake implements FilePicker {
         name: 'name',
         size: 12,
         path: 'abc',
-
       ),
     ]);
   }
