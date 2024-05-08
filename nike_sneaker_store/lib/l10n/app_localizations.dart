@@ -804,7 +804,7 @@ abstract class AppLocalizations {
   /// No description provided for @productNotFound.
   ///
   /// In en, this message translates to:
-  /// **'Email not confirmed'**
+  /// **'Product not found'**
   String get productNotFound;
 
   /// No description provided for @emailNotConfirmed.

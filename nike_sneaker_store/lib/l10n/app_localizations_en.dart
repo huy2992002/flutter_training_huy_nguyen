@@ -361,7 +361,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get connectionError => 'No internet connection. Please check your network settings.';
 
   @override
-  String get productNotFound => 'Email not confirmed';
+  String get productNotFound => 'Product not found';
 
   @override
   String get emailNotConfirmed => 'Email not confirmed';
