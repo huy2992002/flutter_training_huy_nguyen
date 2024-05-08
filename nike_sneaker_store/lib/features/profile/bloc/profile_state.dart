@@ -70,7 +70,6 @@ class ProfileState extends Equatable {
         phoneNumber,
         avatar,
         user,
-        fileImage,
         avatarStatus,
         buttonStatus,
         canAction,

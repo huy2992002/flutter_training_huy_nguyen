@@ -1,18 +1,17 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/profile/bloc/profile_event.dart';
 import 'package:nike_sneaker_store/features/profile/bloc/profile_state.dart';
-import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/repository/user_repository.dart';
 import 'package:nike_sneaker_store/services/handle_error/error_extension.dart';
-import 'package:nike_sneaker_store/utils/validator.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  ProfileBloc(this.userRepository) : super(const ProfileState()) {
+  ProfileBloc(this.userRepository, this.filePicker)
+      : super(const ProfileState()) {
     on<ProfileStarted>(_onStarted);
     on<ProfileNameChanged>(_onNameChanged);
     on<ProfileAddressChanged>(_onAddressChanged);
@@ -22,6 +21,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   final UserRepository userRepository;
+  final FilePicker filePicker;
 
   Future<void> _onStarted(
     ProfileStarted event,
@@ -52,7 +52,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     bool canAction = isValid(
-      event.context,
       name: event.name,
       address: state.address,
       phoneNumber: state.phoneNumber,
@@ -71,7 +70,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     bool canAction = isValid(
-      event.context,
       name: state.name,
       address: event.address,
       phoneNumber: state.phoneNumber,
@@ -90,7 +88,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     bool canAction = isValid(
-      event.context,
       name: state.name,
       address: state.address,
       phoneNumber: event.phoneNumber,
@@ -155,11 +152,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(
       state.copyWith(avatarStatus: ProfileChangeProfileStatus.avatarLoading),
     );
-    final result = await FilePicker.platform.pickFiles(type: FileType.image);
+    final result = await filePicker.pickFiles(type: FileType.image);
     if (result != null) {
       File fileImage = File(result.files.single.path!);
       bool canAction = isValid(
-        event.context,
         name: state.name,
         address: state.address,
         phoneNumber: state.phoneNumber,
@@ -175,26 +171,22 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       );
     } else {
       emit(
-        state.copyWith(
-          avatarStatus: ProfileChangeProfileStatus.avatarFailure,
-          message: AppLocalizations.of(event.context).selectImageSuccess,
-        ),
+        state.copyWith(avatarStatus: ProfileChangeProfileStatus.avatarFailure),
       );
     }
   }
 }
 
-bool isValid(
-  BuildContext context, {
+bool isValid({
   required String name,
   required String address,
   required String phoneNumber,
   File? file,
   UserModel? user,
 }) {
-  return Validator.validatorRequired(context, name) == null &&
-      Validator.validatorRequired(context, address) == null &&
-      Validator.validatorPhoneNumber(context, phoneNumber) == null &&
+  return name.isNotEmpty &&
+      address.isNotEmpty &&
+      RegExp(NSConstants.phonePattern).hasMatch(phoneNumber) &&
       (name != user?.name ||
           address != user?.address ||
           phoneNumber != user?.phone ||

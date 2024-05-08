@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 abstract class ProfileEvent extends Equatable {}
 
@@ -21,33 +20,30 @@ class ProfileStarted extends ProfileEvent {
 }
 
 class ProfileNameChanged extends ProfileEvent {
-  ProfileNameChanged(this.context, {required this.name});
+  ProfileNameChanged({required this.name});
 
   final String name;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [name, context];
+  List<Object?> get props => [name];
 }
 
 class ProfileAddressChanged extends ProfileEvent {
-  ProfileAddressChanged(this.context, {required this.address});
+  ProfileAddressChanged({required this.address});
 
   final String address;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [address, context];
+  List<Object?> get props => [address];
 }
 
 class ProfilePhoneChanged extends ProfileEvent {
-  ProfilePhoneChanged(this.context, {required this.phoneNumber});
+  ProfilePhoneChanged({required this.phoneNumber});
 
   final String phoneNumber;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [phoneNumber, context];
+  List<Object?> get props => [phoneNumber];
 }
 
 class ProfileSavePressed extends ProfileEvent {
@@ -60,10 +56,6 @@ class ProfileSavePressed extends ProfileEvent {
 }
 
 class ProfileAvatarChanged extends ProfileEvent {
-  ProfileAvatarChanged({required this.context});
-
-  final BuildContext context;
-
   @override
-  List<Object?> get props => [context];
+  List<Object?> get props => [];
 }

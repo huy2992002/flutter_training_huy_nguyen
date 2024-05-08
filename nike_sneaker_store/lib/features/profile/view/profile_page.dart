@@ -61,7 +61,8 @@ class ProfilePage extends StatelessWidget {
                     ));
               }
               if (state.buttonStatus == ProfileSaveStatus.failure) {
-                NSSnackBar.snackbarError(context, title: state.message);
+                NSSnackBar.snackbarError(context,
+                    title: AppLocalizations.of(context).selectImageSuccess);
               }
             },
             builder: (context, state) {
@@ -110,7 +111,7 @@ class ProfilePage extends StatelessWidget {
                               ? null
                               : () => context
                                   .read<ProfileBloc>()
-                                  .add(ProfileAvatarChanged(context: context)),
+                                  .add(ProfileAvatarChanged()),
                           text:
                               AppLocalizations.of(context).changeProfilePicture,
                           textStyle: Theme.of(context)
@@ -133,7 +134,7 @@ class ProfilePage extends StatelessWidget {
                         hintText: AppLocalizations.of(context).yourName,
                         onChanged: (value) => context
                             .read<ProfileBloc>()
-                            .add(ProfileNameChanged(context, name: value)),
+                            .add(ProfileNameChanged(name: value)),
                         textInputAction: TextInputAction.next,
                         readOnly:
                             state.buttonStatus == ProfileSaveStatus.loading,
@@ -147,8 +148,9 @@ class ProfilePage extends StatelessWidget {
                       NSTextFormField.text(
                         controller: _addressController,
                         hintText: AppLocalizations.of(context).location,
-                        onChanged: (value) => context.read<ProfileBloc>().add(
-                            ProfileAddressChanged(context, address: value)),
+                        onChanged: (value) => context
+                            .read<ProfileBloc>()
+                            .add(ProfileAddressChanged(address: value)),
                         textInputAction: TextInputAction.next,
                         readOnly:
                             state.buttonStatus == ProfileSaveStatus.loading,
@@ -162,8 +164,9 @@ class ProfilePage extends StatelessWidget {
                       NSTextFormField.text(
                         controller: _phoneController,
                         hintText: AppLocalizations.of(context).mobileNumber,
-                        onChanged: (value) => context.read<ProfileBloc>().add(
-                            ProfilePhoneChanged(context, phoneNumber: value)),
+                        onChanged: (value) => context
+                            .read<ProfileBloc>()
+                            .add(ProfilePhoneChanged(phoneNumber: value)),
                         textInputType: TextInputType.phone,
                         textInputAction: TextInputAction.done,
                         readOnly:
