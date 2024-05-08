@@ -84,7 +84,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
       ));
       userRepository.updateInformationUser(UserModel(
         uuid: event.userId,
-        notifications: [],
+        notifications: const [],
       ));
     } on SocketException catch (e) {
       emit(state.copyWith(

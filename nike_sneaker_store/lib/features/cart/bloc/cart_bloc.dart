@@ -177,7 +177,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     ));
     try {
       await userRepository.updateInformationUser(
-        UserModel(uuid: event.userId, myCarts: []),
+        UserModel(uuid: event.userId, myCarts: const []),
       );
       emit(state.copyWith(
         myCarts: [],
