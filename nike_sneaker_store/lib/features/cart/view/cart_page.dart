@@ -92,6 +92,7 @@ class CartPage extends StatelessWidget {
                                     extentRatio: 0.25,
                                     motion: const ScrollMotion(),
                                     children: [
+                                      const SizedBox(width: 8),
                                       SlidableAction(
                                         onPressed: (_) {
                                           NSDialog.dialogQuestion(
@@ -115,6 +116,7 @@ class CartPage extends StatelessWidget {
                                         icon: Icons.remove_circle_outline_sharp,
                                         backgroundColor:
                                             Theme.of(context).colorScheme.error,
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                     ],
                                   ),
