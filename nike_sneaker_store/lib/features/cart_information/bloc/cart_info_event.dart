@@ -1,17 +1,14 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 abstract class CartInfoEvent extends Equatable {}
 
 class CartInfoStarted extends CartInfoEvent {
-  CartInfoStarted(
-    this.context, {
+  CartInfoStarted({
     required this.email,
     required this.phoneNumber,
     required this.address,
   });
 
-  final BuildContext context;
   final String email;
   final String phoneNumber;
   final String address;
@@ -26,31 +23,28 @@ class CartInfoCheckoutPressed extends CartInfoEvent {
 }
 
 class CartInfoEmailChanged extends CartInfoEvent {
-  CartInfoEmailChanged(this.context, {required this.email});
+  CartInfoEmailChanged({required this.email});
 
   final String email;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [email, context];
+  List<Object?> get props => [email];
 }
 
 class CartInfoAddressChanged extends CartInfoEvent {
-  CartInfoAddressChanged(this.context, {required this.address});
+  CartInfoAddressChanged({required this.address});
 
   final String address;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [address, context];
+  List<Object?> get props => [address];
 }
 
 class CartInfoPhoneChanged extends CartInfoEvent {
-  CartInfoPhoneChanged(this.context, {required this.phoneNumber});
+  CartInfoPhoneChanged({required this.phoneNumber});
 
   final String phoneNumber;
-  final BuildContext context;
 
   @override
-  List<Object?> get props => [phoneNumber, context];
+  List<Object?> get props => [phoneNumber];
 }

@@ -61,7 +61,6 @@ class CartInformationPage extends StatelessWidget {
         context.read<HomeBloc>().state.user?.address ?? '';
 
     context.read<CartInfoBloc>().add(CartInfoStarted(
-          context,
           email: _emailController.text,
           phoneNumber: _phoneController.text,
           address: _addressController.text,
@@ -117,7 +116,7 @@ class CartInformationPage extends StatelessWidget {
                       focusNode: _focusNodeEmail,
                       onChanged: (value) => context
                           .read<CartInfoBloc>()
-                          .add(CartInfoEmailChanged(context, email: value)),
+                          .add(CartInfoEmailChanged(email: value)),
                       readOnly:
                           state.status == CartCheckOutStatus.checkoutLoading,
                     ),
@@ -131,8 +130,9 @@ class CartInformationPage extends StatelessWidget {
                       keyboardType: TextInputType.phone,
                       readOnly:
                           state.status == CartCheckOutStatus.checkoutLoading,
-                      onChanged: (value) => context.read<CartInfoBloc>().add(
-                          CartInfoPhoneChanged(context, phoneNumber: value)),
+                      onChanged: (value) => context
+                          .read<CartInfoBloc>()
+                          .add(CartInfoPhoneChanged(phoneNumber: value)),
                     ),
                     const SizedBox(height: 12),
                     Text(
@@ -153,8 +153,7 @@ class CartInformationPage extends StatelessWidget {
                                 ),
                             onChanged: (value) => context
                                 .read<CartInfoBloc>()
-                                .add(CartInfoAddressChanged(context,
-                                    address: value)),
+                                .add(CartInfoAddressChanged(address: value)),
                             decoration: const InputDecoration(
                               contentPadding: EdgeInsets.zero,
                               isDense: true,

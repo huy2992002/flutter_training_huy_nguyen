@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/cart_information/bloc/cart_info_event.dart';
 import 'package:nike_sneaker_store/features/cart_information/bloc/cart_info_state.dart';
-import 'package:nike_sneaker_store/utils/validator.dart';
 
 class CartInfoBloc extends Bloc<CartInfoEvent, CartInfoState> {
   CartInfoBloc() : super(const CartInfoState()) {
@@ -16,7 +15,6 @@ class CartInfoBloc extends Bloc<CartInfoEvent, CartInfoState> {
   Future<void> _onStarted(
       CartInfoStarted event, Emitter<CartInfoState> emit) async {
     bool canAction = isValid(
-      event.context,
       email: event.email,
       address: event.address,
       phoneNumber: event.phoneNumber,
@@ -32,7 +30,6 @@ class CartInfoBloc extends Bloc<CartInfoEvent, CartInfoState> {
   Future<void> _onEmailChanged(
       CartInfoEmailChanged event, Emitter<CartInfoState> emit) async {
     bool canAction = isValid(
-      event.context,
       email: event.email,
       address: state.address,
       phoneNumber: state.phoneNumber,
@@ -46,7 +43,6 @@ class CartInfoBloc extends Bloc<CartInfoEvent, CartInfoState> {
   Future<void> _onPhoneChanged(
       CartInfoPhoneChanged event, Emitter<CartInfoState> emit) async {
     bool canAction = isValid(
-      event.context,
       email: state.email,
       address: state.address,
       phoneNumber: event.phoneNumber,
@@ -60,7 +56,6 @@ class CartInfoBloc extends Bloc<CartInfoEvent, CartInfoState> {
   Future<void> _onAddressChanged(
       CartInfoAddressChanged event, Emitter<CartInfoState> emit) async {
     bool canAction = isValid(
-      event.context,
       email: state.email,
       address: event.address,
       phoneNumber: state.phoneNumber,
@@ -85,14 +80,13 @@ class CartInfoBloc extends Bloc<CartInfoEvent, CartInfoState> {
     }
   }
 
-  bool isValid(
-    BuildContext context, {
+  bool isValid({
     required String email,
     required String address,
     required String phoneNumber,
   }) {
-    return Validator.validatorEmail(context, email) == null &&
-        Validator.validatorRequired(context, address) == null &&
-        Validator.validatorPhoneNumber(context, phoneNumber) == null;
+    return RegExp(NSConstants.emailPattern).hasMatch(email) &&
+        address.isNotEmpty &&
+        RegExp(NSConstants.phonePattern).hasMatch(phoneNumber);
   }
 }
