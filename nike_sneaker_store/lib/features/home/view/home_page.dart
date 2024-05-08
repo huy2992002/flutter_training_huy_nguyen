@@ -141,6 +141,7 @@ class _HomePageState extends State<HomePage> {
                 context.read<HomeBloc>().add(HomeStarted(userId: id));
               },
               child: ListView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 padding: const EdgeInsets.only(top: 16, bottom: 20),
                 children: [
                   Padding(
