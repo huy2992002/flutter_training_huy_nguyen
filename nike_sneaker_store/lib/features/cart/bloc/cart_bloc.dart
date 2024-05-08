@@ -110,13 +110,13 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         }
         return element;
       }).toList();
+      await userRepository.updateInformationUser(
+        UserModel(uuid: event.userId, myCarts: products),
+      );
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.incrementSuccess,
         myCarts: products,
       ));
-      userRepository.updateInformationUser(
-        UserModel(uuid: event.userId, myCarts: products),
-      );
     } on SocketException catch (e) {
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.incrementFailure,
@@ -150,13 +150,13 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         return e;
       }).toList();
       products = products.where((e) => (e.quantity ?? 0) > 0).toList();
+      await userRepository.updateInformationUser(
+        UserModel(uuid: event.userId, myCarts: products),
+      );
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.decrementSuccess,
         myCarts: products,
       ));
-      userRepository.updateInformationUser(
-        UserModel(uuid: event.userId, myCarts: products),
-      );
     } on SocketException catch (e) {
       emit(state.copyWith(
         cartInsertStatus: CartQuantityStatus.decrementFailure,
