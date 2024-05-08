@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_state.dart';
+import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/repository/user_repository.dart';
 
@@ -137,7 +138,10 @@ void main() {
       seed: () =>
           CartState(myCarts: [MockData.mockProduct.copyWith(quantity: 2)]),
       act: (bloc) {
-        bloc.add(CartIncrementPressed(userId: 'userId', productId: '12345'));
+        bloc.add(CartIncrementPressed(
+          userId: 'userId',
+          product: ProductModel(uuid: '12345'),
+        ));
       },
       expect: () => [
         CartState(
@@ -157,7 +161,10 @@ void main() {
       seed: () =>
           CartState(myCarts: [MockData.mockProduct.copyWith(quantity: 2)]),
       act: (bloc) {
-        bloc.add(CartIncrementPressed(userId: '', productId: '12345'));
+        bloc.add(CartIncrementPressed(
+          userId: '',
+          product: ProductModel(uuid: '12345'),
+        ));
       },
       expect: () => [
         CartState(
@@ -177,7 +184,10 @@ void main() {
       seed: () =>
           CartState(myCarts: [MockData.mockProduct.copyWith(quantity: 2)]),
       act: (bloc) {
-        bloc.add(CartDecrementPressed(userId: '12345', productId: '12345'));
+        bloc.add(CartDecrementPressed(
+          userId: '12345',
+          product: ProductModel(uuid: '12345'),
+        ));
       },
       expect: () => [
         CartState(
@@ -197,7 +207,10 @@ void main() {
       seed: () =>
           CartState(myCarts: [MockData.mockProduct.copyWith(quantity: 1)]),
       act: (bloc) {
-        bloc.add(CartDecrementPressed(userId: '12345', productId: '12345'));
+        bloc.add(CartDecrementPressed(
+          userId: '12345',
+          product: ProductModel(uuid: '12345'),
+        ));
       },
       expect: () => [
         CartState(
@@ -220,7 +233,10 @@ void main() {
       seed: () =>
           CartState(myCarts: [MockData.mockProduct.copyWith(quantity: 1)]),
       act: (bloc) {
-        bloc.add(CartDecrementPressed(userId: '', productId: '12345'));
+        bloc.add(CartDecrementPressed(
+          userId: '',
+          product: ProductModel(uuid: '12345'),
+        ));
       },
       expect: () => [
         CartState(
@@ -286,7 +302,10 @@ void main() {
       seed: () =>
           CartState(myCarts: [MockData.mockProduct.copyWith(quantity: 1)]),
       act: (bloc) {
-        bloc.add(CartRemovePressed(userId: '12345', productId: '12345'));
+        bloc.add(CartRemovePressed(
+          userId: '12345',
+          product: ProductModel(uuid: '12345'),
+        ));
       },
       expect: () => [
         CartState(
@@ -306,7 +325,10 @@ void main() {
       seed: () =>
           CartState(myCarts: [MockData.mockProduct.copyWith(quantity: 1)]),
       act: (bloc) {
-        bloc.add(CartRemovePressed(userId: '', productId: '12345'));
+        bloc.add(CartRemovePressed(
+          userId: '',
+          product: ProductModel(uuid: '12345'),
+        ));
       },
       expect: () => [
         CartState(
