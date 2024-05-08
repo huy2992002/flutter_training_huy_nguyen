@@ -46,6 +46,7 @@ class NotificationsPage extends StatelessWidget {
             }
           },
           buildWhen: (previous, current) =>
+              previous.itemStatus != current.itemStatus ||
               previous.status != current.status ||
               previous.notifications != current.notifications,
           builder: (context, state) {

@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 
-class NotificationModel {
+class NotificationModel extends Equatable {
   /// Object notification
   ///
   /// include
@@ -38,6 +39,24 @@ class NotificationModel {
     };
   }
 
+  NotificationModel copyWith({
+    String? uuid,
+    String? title,
+    ProductModel? product,
+    double? priceSale,
+    bool? isRead,
+    String? date,
+  }) {
+    return NotificationModel(
+      uuid: uuid ?? this.uuid,
+      title: title ?? this.title,
+      product: product ?? this.product,
+      priceSale: priceSale ?? this.priceSale,
+      isRead: isRead ?? this.isRead,
+      date: date ?? this.date,
+    );
+  }
+
   /// uuid of [NotificationModel] , argument must not be duplicated
   String uuid;
 
@@ -55,4 +74,7 @@ class NotificationModel {
 
   /// The time the notification is sent
   String? date;
+
+  @override
+  List<Object?> get props => [uuid, title, product, priceSale, isRead, date];
 }

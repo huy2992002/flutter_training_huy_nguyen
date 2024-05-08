@@ -1,8 +1,9 @@
+// ignore_for_file: cascade_invocations, avoid_function_literals_in_foreach_calls
+
 import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/notification/bloc/notification_event.dart';
 import 'package:nike_sneaker_store/features/notification/bloc/notification_state.dart';
-import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
 import 'package:nike_sneaker_store/repository/user_repository.dart';
@@ -47,18 +48,18 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     emit(state.copyWith(itemStatus: ListNotificationStatus.readLoading));
     try {
       final notifications = [...state.notifications];
-      for (NotificationModel element in notifications) {
-        if (element.uuid == event.notificationId) {
-          element.isRead = true;
+      notifications.forEach((e) {
+        if (e.uuid == event.notificationId) {
+          e.isRead = true;
         }
-      }
+      });
+      await userRepository.updateInformationUser(UserModel(
+        uuid: event.userId,
+        notifications: notifications,
+      ));
       emit(state.copyWith(
         notifications: notifications,
         itemStatus: ListNotificationStatus.readSuccess,
-      ));
-      userRepository.updateInformationUser(UserModel(
-        uuid: event.userId,
-        notifications: notifications,
       ));
     } on SocketException catch (e) {
       emit(state.copyWith(
