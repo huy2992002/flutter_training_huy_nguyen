@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_state.dart';
-import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 import 'package:nike_sneaker_store/models/user_model.dart';
 import 'package:nike_sneaker_store/repository/product_repository.dart';
@@ -67,7 +66,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           state.copyWith(
             myCarts: products,
             cartInsertStatus: CartQuantityStatus.insertSuccess,
-            message: AppLocalizations.of(event.context).productAddSuccess,
           ),
         );
       } else {
@@ -82,7 +80,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           state.copyWith(
             myCarts: products,
             cartInsertStatus: CartQuantityStatus.insertSuccess,
-            message: AppLocalizations.of(event.context).productAddSuccess,
           ),
         );
       }

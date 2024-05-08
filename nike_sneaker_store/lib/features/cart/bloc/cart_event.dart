@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
 
 abstract class CartEvent extends Equatable {}
@@ -13,18 +12,16 @@ class CartStarted extends CartEvent {
 }
 
 class CartInsertPressed extends CartEvent {
-  CartInsertPressed(
-    this.context, {
+  CartInsertPressed({
     required this.userId,
     required this.product,
   });
 
-  final BuildContext context;
   final String userId;
   final ProductModel product;
 
   @override
-  List<Object?> get props => [userId, product, context];
+  List<Object?> get props => [userId, product];
 }
 
 class CartIncrementPressed extends CartEvent {

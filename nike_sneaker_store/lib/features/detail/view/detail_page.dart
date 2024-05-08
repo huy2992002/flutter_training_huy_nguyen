@@ -198,7 +198,7 @@ class DetailPage extends StatelessWidget {
                       ?.id;
                   if (userId != null && state.productDisplay != null) {
                     context.read<CartBloc>().add(
-                          CartInsertPressed(context,
+                          CartInsertPressed(
                               userId: userId, product: state.productDisplay!),
                         );
                   } else {

@@ -196,7 +196,7 @@ class _SearchPageState extends State<SearchPage> {
                                         onAddCart: () {
                                           if (userId != null) {
                                             context.read<CartBloc>().add(
-                                                CartInsertPressed(context,
+                                                CartInsertPressed(
                                                     userId: userId,
                                                     product: product));
                                           } else {

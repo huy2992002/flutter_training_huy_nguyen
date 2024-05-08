@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
               if (state.cartInsertStatus == CartQuantityStatus.insertSuccess) {
                 NSSnackBar.snackbarSuccess(
                   context,
-                  title: context.read<CartBloc>().state.message,
+                  title: AppLocalizations.of(context).productAddSuccess,
                 );
               }
               if (state.cartInsertStatus == CartQuantityStatus.insertFailure) {
@@ -281,7 +281,6 @@ class _HomePageState extends State<HomePage> {
                                                     context
                                                         .read<CartBloc>()
                                                         .add(CartInsertPressed(
-                                                            context,
                                                             userId: userId,
                                                             product: product));
                                                   } else {
