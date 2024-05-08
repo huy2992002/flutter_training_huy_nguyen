@@ -27,27 +27,27 @@ class CartInsertPressed extends CartEvent {
 class CartIncrementPressed extends CartEvent {
   CartIncrementPressed({
     required this.userId,
-    required this.productId,
+    required this.product,
   });
 
   final String userId;
-  final String productId;
+  final ProductModel product;
 
   @override
-  List<Object?> get props => [userId, productId];
+  List<Object?> get props => [userId, product];
 }
 
 class CartDecrementPressed extends CartEvent {
   CartDecrementPressed({
     required this.userId,
-    required this.productId,
+    required this.product,
   });
 
   final String userId;
-  final String productId;
+  final ProductModel product;
 
   @override
-  List<Object?> get props => [userId, productId];
+  List<Object?> get props => [userId, product];
 }
 
 class CartCheckoutPressed extends CartEvent {
@@ -64,12 +64,12 @@ class CartCheckoutPressed extends CartEvent {
 class CartRemovePressed extends CartEvent {
   CartRemovePressed({
     required this.userId,
-    required this.productId,
+    required this.product,
   });
 
   final String userId;
-  final String productId;
+  final ProductModel product;
 
   @override
-  List<Object?> get props => [userId, productId];
+  List<Object?> get props => [userId, product];
 }

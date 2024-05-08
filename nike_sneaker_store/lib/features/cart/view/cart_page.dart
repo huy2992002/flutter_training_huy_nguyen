@@ -105,8 +105,7 @@ class CartPage extends StatelessWidget {
                                                 context.read<CartBloc>().add(
                                                       CartRemovePressed(
                                                         userId: userId!,
-                                                        productId:
-                                                            product.uuid!,
+                                                        product: product,
                                                       ),
                                                     );
                                               }
@@ -126,9 +125,9 @@ class CartPage extends StatelessWidget {
                                       if (userId != null) {
                                         context.read<CartBloc>().add(
                                               CartIncrementPressed(
-                                                  userId: userId,
-                                                  productId:
-                                                      product.uuid ?? ''),
+                                                userId: userId,
+                                                product: product,
+                                              ),
                                             );
                                       } else {
                                         NSSnackBar.snackbarError(
@@ -142,9 +141,9 @@ class CartPage extends StatelessWidget {
                                       if (userId != null) {
                                         context.read<CartBloc>().add(
                                               CartDecrementPressed(
-                                                  userId: userId,
-                                                  productId:
-                                                      product.uuid ?? ''),
+                                                userId: userId,
+                                                product: product,
+                                              ),
                                             );
                                       } else {
                                         NSSnackBar.snackbarError(

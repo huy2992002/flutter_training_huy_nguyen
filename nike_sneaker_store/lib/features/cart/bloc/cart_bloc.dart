@@ -51,11 +51,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       CartInsertPressed event, Emitter<CartState> emit) async {
     emit(state.copyWith(cartInsertStatus: CartQuantityStatus.insertLoading));
     try {
-      final isValid = state.myCarts.any((e) => e.uuid == event.product.uuid);
+      final isValid = state.myCarts.any((e) =>
+          e.uuid == event.product.uuid &&
+          e.imagePath == event.product.imagePath);
       if (isValid) {
         List<ProductModel> products = [...state.myCarts];
         products.forEach((element) {
-          if (element.uuid == event.product.uuid) {
+          if (element.uuid == event.product.uuid &&
+              element.imagePath == event.product.imagePath) {
             element.quantity = (element.quantity ?? 0) + 1;
           }
         });
@@ -103,7 +106,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     ));
     try {
       final products = state.myCarts.map((element) {
-        if (element.uuid == event.productId) {
+        if (element.uuid == event.product.uuid &&
+            element.imagePath == event.product.imagePath) {
           element = element.copyWith(
             quantity: (element.quantity ?? 0) + 1,
           );
@@ -137,7 +141,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     ));
     try {
       List<ProductModel> products = state.myCarts.map((e) {
-        if (e.uuid == event.productId) {
+        if (e.uuid == event.product.uuid &&
+            e.imagePath == event.product.imagePath) {
           e = e.copyWith(
             quantity: (e.quantity ?? 0) - 1,
           );
@@ -201,7 +206,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     emit(state.copyWith(cartInsertStatus: CartQuantityStatus.removeLoading));
     try {
       List<ProductModel> myCarts = [...state.myCarts];
-      myCarts.removeWhere((element) => element.uuid == event.productId);
+      myCarts.removeWhere((element) =>
+          element.uuid == event.product.uuid &&
+          element.imagePath == event.product.imagePath);
       await userRepository.updateInformationUser(
         UserModel(uuid: event.userId, myCarts: myCarts),
       );
