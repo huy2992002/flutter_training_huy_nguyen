@@ -79,13 +79,13 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     emit(state.copyWith(itemStatus: ListNotificationStatus.removeLoading));
 
     try {
+      await userRepository.updateInformationUser(UserModel(
+        uuid: event.userId,
+        notifications: const [],
+      ));
       emit(state.copyWith(
         itemStatus: ListNotificationStatus.removeSuccess,
         notifications: [],
-      ));
-      userRepository.updateInformationUser(UserModel(
-        uuid: event.userId,
-        notifications: const [],
       ));
     } on SocketException catch (e) {
       emit(state.copyWith(
