@@ -7,6 +7,8 @@ import 'package:nike_sneaker_store/components/dialog/ns_dialog.dart';
 import 'package:nike_sneaker_store/components/snackbar/ns_snackbar.dart';
 import 'package:nike_sneaker_store/constants/ns_constants.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
+import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
+import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_event.dart';
 import 'package:nike_sneaker_store/features/home/bloc/home_state.dart';
@@ -130,6 +132,11 @@ class _FavoritePageState extends State<FavoritePage> {
                             extra: NSConstants.tagProductFavorite(
                                 product.uuid ?? ''),
                           );
+                          context.read<DetailBloc>().add(
+                                DetailSelectStarted(
+                                  product: product,
+                                ),
+                              );
                         },
                       ),
                     );
