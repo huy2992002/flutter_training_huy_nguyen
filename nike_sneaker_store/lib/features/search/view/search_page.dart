@@ -12,7 +12,6 @@ import 'package:nike_sneaker_store/features/cart/bloc/cart_bloc.dart';
 import 'package:nike_sneaker_store/features/cart/bloc/cart_event.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_bloc.dart';
 import 'package:nike_sneaker_store/features/detail/bloc/detail_event.dart';
-import 'package:nike_sneaker_store/features/home/bloc/home_bloc.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
 import 'package:nike_sneaker_store/features/home/view/widgets/card_product_width.dart';
 import 'package:nike_sneaker_store/features/search/bloc/search_bloc.dart';
@@ -63,18 +62,10 @@ class _SearchPageState extends State<SearchPage> {
         NSRoutesConst.pathDetail,
         extra: NSConstants.tagProductFavorite(product.uuid ?? ''),
       );
-      final products = context
-          .read<HomeBloc>()
-          .state
-          .products
-          .where(
-            (e) => e.category == product.category,
-          )
-          .toList();
+
       context.read<DetailBloc>().add(
             DetailSelectStarted(
               product: product,
-              products: products,
             ),
           );
     }

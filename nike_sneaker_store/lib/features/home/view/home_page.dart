@@ -268,20 +268,11 @@ class _HomePageState extends State<HomePage> {
                                                         .tagProductHome(
                                                             product.uuid ?? ''),
                                                   );
-                                                  final products = state
-                                                      .products
-                                                      .where(
-                                                        (e) =>
-                                                            e.category ==
-                                                            product.category,
-                                                      )
-                                                      .toList();
                                                   context
                                                       .read<DetailBloc>()
                                                       .add(
                                                         DetailSelectStarted(
                                                           product: product,
-                                                          products: products,
                                                         ),
                                                       );
                                                 },
