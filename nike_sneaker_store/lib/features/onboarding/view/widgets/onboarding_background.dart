@@ -63,6 +63,7 @@ class BackgroundOnboardingLetStart extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(Assets.images.imgSplashHightLight.path),
                   const Spacer(),
@@ -70,7 +71,7 @@ class BackgroundOnboardingLetStart extends StatelessWidget {
                   const SizedBox(width: 30),
                 ],
               ),
-              const SizedBox(height: 200),
+              const SizedBox(height: 250),
               Center(
                 child: Image.asset(
                   Assets.images.imgLogoNike.path,
@@ -106,7 +107,7 @@ class BackgroundOnboardingPower extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(Assets.images.imgSplashHightLight.path),
-              const SizedBox(height: 200),
+              const SizedBox(height: 250),
               Center(
                 child: Image.asset(
                   Assets.images.imgLogoNike.path,
