@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -125,13 +126,14 @@ class MyApp extends StatelessWidget {
               )),
           ),
           BlocProvider<ProfileBloc>(
-            create: (context) => ProfileBloc(context.read<UserRepository>())
-              ..add(ProfileStarted(
-                name: context.read<HomeBloc>().state.user?.name,
-                address: context.read<HomeBloc>().state.user?.address,
-                phoneNumber: context.read<HomeBloc>().state.user?.phone,
-                avatar: context.read<HomeBloc>().state.user?.avatar,
-              )),
+            create: (context) =>
+                ProfileBloc(context.read<UserRepository>(), FilePicker.platform)
+                  ..add(ProfileStarted(
+                    name: context.read<HomeBloc>().state.user?.name,
+                    address: context.read<HomeBloc>().state.user?.address,
+                    phoneNumber: context.read<HomeBloc>().state.user?.phone,
+                    avatar: context.read<HomeBloc>().state.user?.avatar,
+                  )),
           ),
         ],
         child: BlocBuilder<SettingBloc, SettingState>(
