@@ -48,6 +48,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_eye_hidden.svg
   String get icEyeHidden => 'assets/icons/ic_eye_hidden.svg';
 
+  /// File path: assets/icons/ic_favorite_outline.svg
+  String get icFavoriteOutline => 'assets/icons/ic_favorite_outline.svg';
+
   /// File path: assets/icons/ic_heart.svg
   String get icHeart => 'assets/icons/ic_heart.svg';
 
@@ -116,6 +119,7 @@ class $AssetsIconsGen {
         icError,
         icEye,
         icEyeHidden,
+        icFavoriteOutline,
         icHeart,
         icHeartOutline,
         icHome,
