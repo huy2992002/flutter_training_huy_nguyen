@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:nike_sneaker_store/resources/ns_style.dart';
 
 class NSTextTheme {
-  static TextTheme textTheme = TextTheme(
-    displayLarge: NSStyle.h33Black,
-    displayMedium: NSStyle.h32Black,
-    displaySmall: NSStyle.h32Bold,
-    headlineLarge: NSStyle.h26Bold,
-    headlineMedium: NSStyle.h24Semibold,
-    headlineSmall: NSStyle.h21SemiBold,
-    titleLarge: NSStyle.h20Medium,
-    titleMedium: NSStyle.h18Semibold,
-    titleSmall: NSStyle.h16Normal,
-    bodyLarge: NSStyle.h16Bold,
-    bodyMedium: NSStyle.h16Medium,
-    bodySmall: NSStyle.h14Medium,
-    labelLarge: NSStyle.h16SemiBold,
-    labelMedium: NSStyle.h14SemiBold,
-    labelSmall: NSStyle.h12Normal,
-  );
+  TextTheme textTheme(BuildContext context) {
+    NSStyle nsStyle = NSStyle();
+    return TextTheme(
+      displayLarge: nsStyle.h33Black(context),
+      displayMedium: nsStyle.h32Black(context),
+      displaySmall: nsStyle.h32Bold(context),
+      headlineLarge: nsStyle.h26Bold(context),
+      headlineMedium: nsStyle.h24Semibold(context),
+      headlineSmall: nsStyle.h21SemiBold(context),
+      titleLarge: nsStyle.h20Medium(context),
+      titleMedium: nsStyle.h18Semibold(context),
+      titleSmall: nsStyle.h16Normal(context),
+      bodyLarge: nsStyle.h16Bold(context),
+      bodyMedium: nsStyle.h16Medium(context),
+      bodySmall: nsStyle.h14Medium(context),
+      labelLarge: nsStyle.h16SemiBold(context),
+      labelMedium: nsStyle.h14SemiBold(context),
+      labelSmall: nsStyle.h12Normal(context),
+    );
+  }
 }

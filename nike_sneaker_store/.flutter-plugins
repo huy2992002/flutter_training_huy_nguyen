@@ -1,7 +1,12 @@
 # This is a generated file; do not edit or check into version control.
+app_links=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\app_links-3.5.1\\
 file_picker=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\file_picker-6.1.1\\
 flutter_localization=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\flutter_localization-0.2.0\\
 flutter_plugin_android_lifecycle=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\flutter_plugin_android_lifecycle-2.0.17\\
+gtk=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\gtk-2.1.0\\
+path_provider=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider-2.1.2\\
+path_provider_android=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_android-2.2.2\\
+path_provider_foundation=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_foundation-2.3.2\\
 path_provider_linux=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_linux-2.2.1\\
 path_provider_windows=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_windows-2.2.1\\
 permission_handler=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\permission_handler-11.3.0\\
@@ -16,3 +21,11 @@ shared_preferences_linux=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pu
 shared_preferences_web=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\shared_preferences_web-2.2.1\\
 shared_preferences_windows=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\shared_preferences_windows-2.3.2\\
 smart_auth=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\smart_auth-2.0.0\\
+sqflite=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\sqflite-2.3.3\\
+url_launcher=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\url_launcher-6.2.5\\
+url_launcher_android=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\url_launcher_android-6.3.0\\
+url_launcher_ios=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\url_launcher_ios-6.2.5\\
+url_launcher_linux=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\url_launcher_linux-3.1.1\\
+url_launcher_macos=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\url_launcher_macos-3.1.0\\
+url_launcher_web=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\url_launcher_web-2.3.0\\
+url_launcher_windows=C:\\Users\\ACER\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\url_launcher_windows-3.1.1\\

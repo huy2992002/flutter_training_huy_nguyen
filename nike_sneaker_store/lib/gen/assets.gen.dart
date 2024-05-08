@@ -21,6 +21,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_bag.svg
   String get icBag => 'assets/icons/ic_bag.svg';
 
+  /// File path: assets/icons/ic_cancel.svg
+  String get icCancel => 'assets/icons/ic_cancel.svg';
+
   /// File path: assets/icons/ic_cart.svg
   String get icCart => 'assets/icons/ic_cart.svg';
 
@@ -33,6 +36,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_email.svg
   String get icEmail => 'assets/icons/ic_email.svg';
 
+  /// File path: assets/icons/ic_email_send.svg
+  String get icEmailSend => 'assets/icons/ic_email_send.svg';
+
   /// File path: assets/icons/ic_error.svg
   String get icError => 'assets/icons/ic_error.svg';
 
@@ -41,6 +47,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_eye_hidden.svg
   String get icEyeHidden => 'assets/icons/ic_eye_hidden.svg';
+
+  /// File path: assets/icons/ic_favorite_outline.svg
+  String get icFavoriteOutline => 'assets/icons/ic_favorite_outline.svg';
 
   /// File path: assets/icons/ic_heart.svg
   String get icHeart => 'assets/icons/ic_heart.svg';
@@ -101,13 +110,16 @@ class $AssetsIconsGen {
         icAdd,
         icArrow,
         icBag,
+        icCancel,
         icCart,
         icDown,
         icEdit,
         icEmail,
+        icEmailSend,
         icError,
         icEye,
         icEyeHidden,
+        icFavoriteOutline,
         icHeart,
         icHeartOutline,
         icHome,
@@ -180,6 +192,10 @@ class $AssetsImagesGen {
   AssetGenImage get imgPrOnboardWelcome =>
       const AssetGenImage('assets/images/img_pr_onboard_welcome.png');
 
+  /// File path: assets/images/img_splash_funny.png
+  AssetGenImage get imgSplashFunny =>
+      const AssetGenImage('assets/images/img_splash_funny.png');
+
   /// File path: assets/images/img_splash_hight_light.png
   AssetGenImage get imgSplashHightLight =>
       const AssetGenImage('assets/images/img_splash_hight_light.png');
@@ -206,6 +222,7 @@ class $AssetsImagesGen {
         imgPrOnboardLetStart,
         imgPrOnboardPower,
         imgPrOnboardWelcome,
+        imgSplashFunny,
         imgSplashHightLight,
         imgSuccessfully,
         imgSumerSale

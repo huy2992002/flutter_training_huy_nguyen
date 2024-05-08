@@ -32,6 +32,7 @@ class NSAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: colorAppBar,
       leading: leftIcon != null
           ? Padding(
               padding: const EdgeInsets.only(left: 20),

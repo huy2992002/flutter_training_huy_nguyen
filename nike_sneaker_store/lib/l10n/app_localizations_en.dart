@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 /// The translations for English (`en`).
@@ -123,6 +125,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get validEmailAddress => 'Enter a valid email address';
+
+  @override
+  String get validPhoneNumber => 'Enter a valid phone number';
 
   @override
   String get confirmPasswordNotMatch => 'Confirm password is not match';
@@ -314,12 +319,79 @@ class AppLocalizationsEn extends AppLocalizations {
   String get doYouWantRemoveFromCart => 'Do you want to remove the product from the cart?';
 
   @override
+  String get confirmInYourEmail => 'Please confirm registration in your email';
+
+  @override
+  String get goToEmail => 'Go to email';
+
+  @override
+  String get goToSignIn => 'Go to sign in';
+
+  @override
+  String get couldNotLaunchGmail => 'Could not launch gmail';
+
+  @override
+  String get notFoundUser => 'Login version has expired, please log in again';
+
+  @override
+  String get productHaveBeenRemove => 'Product has been removed from the cart';
+
+  @override
+  String get selectImageSuccess => 'Select image failed';
+
+  @override
+  String get cancelError => 'Request was cancelled. Please try again.';
+
+  @override
+  String get connectionTimeOutError => 'Connection timeout. Please check your internet connection.';
+
+  @override
+  String get receiveTimeoutError => 'Receive timeout. Please try again later.';
+
+  @override
+  String get badResponseError => 'Failed to load data. Please try again later.';
+
+  @override
+  String get sendTimeOutError => 'Send timeout. Please try again later.';
+
+  @override
+  String get defaultError => 'Unknown error occurred. Please try again later.';
+
+  @override
+  String get connectionError => 'No internet connection. Please check your network settings.';
+
+  @override
+  String get productNotFound => 'Product not found';
+
+  @override
+  String get emailNotConfirmed => 'Email not confirmed';
+
+  @override
+  String get invalidLoginCredentials => 'Invalid login credentials';
+
+  @override
+  String get userAlreadyRegistered => 'User already registered';
+
+  @override
+  String get dontFindUser => 'Dont find User';
+
+  @override
+  String get doYouWantCancelFavorite => 'Do you want to cancel your favorite?';
+
+  @override
   String discountOff(int discount) {
     return '$discount% OFF';
   }
 
   @override
-  String intItem(int item) {
-    return '$item Item';
+  String intItem(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+      zero: 'No items',
+    );
+    return '$_temp0';
   }
 }

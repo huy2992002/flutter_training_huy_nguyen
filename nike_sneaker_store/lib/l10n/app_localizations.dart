@@ -333,6 +333,12 @@ abstract class AppLocalizations {
   /// **'Enter a valid email address'**
   String get validEmailAddress;
 
+  /// No description provided for @validPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number'**
+  String get validPhoneNumber;
+
   /// No description provided for @confirmPasswordNotMatch.
   ///
   /// In en, this message translates to:
@@ -711,6 +717,126 @@ abstract class AppLocalizations {
   /// **'Do you want to remove the product from the cart?'**
   String get doYouWantRemoveFromCart;
 
+  /// No description provided for @confirmInYourEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm registration in your email'**
+  String get confirmInYourEmail;
+
+  /// No description provided for @goToEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to email'**
+  String get goToEmail;
+
+  /// No description provided for @goToSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to sign in'**
+  String get goToSignIn;
+
+  /// No description provided for @couldNotLaunchGmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not launch gmail'**
+  String get couldNotLaunchGmail;
+
+  /// No description provided for @notFoundUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Login version has expired, please log in again'**
+  String get notFoundUser;
+
+  /// No description provided for @productHaveBeenRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Product has been removed from the cart'**
+  String get productHaveBeenRemove;
+
+  /// No description provided for @selectImageSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Select image failed'**
+  String get selectImageSuccess;
+
+  /// No description provided for @cancelError.
+  ///
+  /// In en, this message translates to:
+  /// **'Request was cancelled. Please try again.'**
+  String get cancelError;
+
+  /// No description provided for @connectionTimeOutError.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection timeout. Please check your internet connection.'**
+  String get connectionTimeOutError;
+
+  /// No description provided for @receiveTimeoutError.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive timeout. Please try again later.'**
+  String get receiveTimeoutError;
+
+  /// No description provided for @badResponseError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load data. Please try again later.'**
+  String get badResponseError;
+
+  /// No description provided for @sendTimeOutError.
+  ///
+  /// In en, this message translates to:
+  /// **'Send timeout. Please try again later.'**
+  String get sendTimeOutError;
+
+  /// No description provided for @defaultError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown error occurred. Please try again later.'**
+  String get defaultError;
+
+  /// No description provided for @connectionError.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection. Please check your network settings.'**
+  String get connectionError;
+
+  /// No description provided for @productNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Product not found'**
+  String get productNotFound;
+
+  /// No description provided for @emailNotConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Email not confirmed'**
+  String get emailNotConfirmed;
+
+  /// No description provided for @invalidLoginCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid login credentials'**
+  String get invalidLoginCredentials;
+
+  /// No description provided for @userAlreadyRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'User already registered'**
+  String get userAlreadyRegistered;
+
+  /// No description provided for @dontFindUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Dont find User'**
+  String get dontFindUser;
+
+  /// No description provided for @doYouWantCancelFavorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to cancel your favorite?'**
+  String get doYouWantCancelFavorite;
+
   /// No description provided for @discountOff.
   ///
   /// In en, this message translates to:
@@ -720,8 +846,8 @@ abstract class AppLocalizations {
   /// No description provided for @intItem.
   ///
   /// In en, this message translates to:
-  /// **'{item} Item'**
-  String intItem(int item);
+  /// **'{count, plural, =0{No items} =1{1 item} other{{count} items}}'**
+  String intItem(num count);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

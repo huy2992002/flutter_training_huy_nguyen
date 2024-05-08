@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/l10n/app_localizations.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class NSSearchBox extends StatelessWidget {
   /// Create an [TextFormField]
@@ -11,6 +12,8 @@ class NSSearchBox extends StatelessWidget {
     this.onChanged,
     this.onTap,
     this.readOnly = false,
+    this.isCancel = false,
+    this.onCancel,
   });
 
   /// Controls the text being edited.
@@ -31,13 +34,17 @@ class NSSearchBox extends StatelessWidget {
   /// If [readOnly] arguments is true [TextFormField] is only read
   final bool readOnly;
 
+  final bool isCancel;
+
+  final Function()? onCancel;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(14),
-        boxShadow:  [
+        boxShadow: [
           BoxShadow(
             color: Theme.of(context).shadowColor,
             offset: const Offset(0, 4),
@@ -51,7 +58,12 @@ class NSSearchBox extends StatelessWidget {
         onTap: onTap,
         style: Theme.of(context).textTheme.labelMedium,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(vertical: 14),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal:
+                getValueForScreenType(context: context, mobile: 14, tablet: 18),
+            vertical:
+                getValueForScreenType(context: context, mobile: 16, tablet: 24),
+          ),
           border: InputBorder.none,
           hintText: AppLocalizations.of(context).lookingForShoes,
           prefixIcon: Padding(
@@ -64,6 +76,17 @@ class NSSearchBox extends StatelessWidget {
           prefixIconConstraints: const BoxConstraints(
             maxHeight: 24,
           ),
+          suffixIcon: isCancel
+              ? GestureDetector(
+                  onTap: onCancel,
+                  child: SvgPicture.asset(
+                    Assets.icons.icCancel,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                )
+              : null,
+          suffixIconConstraints:
+              const BoxConstraints(maxHeight: 20, maxWidth: 48),
         ),
         readOnly: readOnly,
       ),

@@ -6,33 +6,32 @@ import 'package:nike_sneaker_store/l10n/app_localizations.dart';
 
 class AppBarHome extends StatelessWidget implements PreferredSizeWidget {
   /// Create design app bar with height 50px
-  ///
-  /// The [onMenu] arguments must not be null.
   const AppBarHome({
-    required this.onMenu,
     this.isMarkerNotification = false,
+    this.onMenu,
     super.key,
   });
-
-  /// Action when click onTap of menu icon
-  final Function() onMenu;
 
   /// The [isMarkerNotification] argument is true will display marker with notification
   final bool isMarkerNotification;
 
+  final Function()? onMenu;
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: GestureDetector(
-        onTap: onMenu,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: SvgPicture.asset(
-            Assets.icons.icMenu,
-            color: Theme.of(context).colorScheme.onBackground,
-          ),
-        ),
-      ),
+      leading: onMenu != null
+          ? GestureDetector(
+              onTap: onMenu,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: SvgPicture.asset(
+                  Assets.icons.icMenu,
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
+              ),
+            )
+          : null,
       leadingWidth: 43,
       title: Text(
         AppLocalizations.of(context).explore,

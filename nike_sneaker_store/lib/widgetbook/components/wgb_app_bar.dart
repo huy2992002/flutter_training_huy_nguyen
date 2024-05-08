@@ -16,7 +16,6 @@ Widget appBarHome(BuildContext context) {
   return Align(
     alignment: Alignment.topCenter,
     child: AppBarHome(
-      onMenu: () {},
       isMarkerNotification: context.knobs.boolean(label: 'Marker'),
     ),
   );

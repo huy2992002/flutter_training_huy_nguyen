@@ -39,6 +39,7 @@
   "fieldIsRequired": "This field is required",
   "passwordLeast6": "Password must be at least 6 digits long",
   "validEmailAddress": "Enter a valid email address",
+  "validPhoneNumber": "Enter a valid phone number",
   "confirmPasswordNotMatch": "Confirm password is not match",
   "emailOrPasswordIncorrect": "Email or password is incorrect",
   "emailAlreadyExists": "Email already exists",
@@ -103,6 +104,27 @@
   "no": "No",
   "doYouWantLogout": "Do you want to log out?",
   "doYouWantRemoveFromCart": "Do you want to remove the product from the cart?",
+  "confirmInYourEmail": "Please confirm registration in your email",
+  "goToEmail": "Go to email",
+  "goToSignIn": "Go to sign in",
+  "couldNotLaunchGmail": "Could not launch gmail",
+  "notFoundUser": "Login version has expired, please log in again",
+  "productHaveBeenRemove": "Product has been removed from the cart",
+  "selectImageSuccess": "Select image successfully",
+  "selectImageSuccess": "Select image failed",
+  "cancelError": "Request was cancelled. Please try again.",
+  "connectionTimeOutError": "Connection timeout. Please check your internet connection.",
+  "receiveTimeoutError": "Receive timeout. Please try again later.",
+  "badResponseError": "Failed to load data. Please try again later.",
+  "sendTimeOutError": "Send timeout. Please try again later.",
+  "defaultError": "Unknown error occurred. Please try again later.",
+  "connectionError": "No internet connection. Please check your network settings.",
+  "productNotFound": "Product not found",
+  "emailNotConfirmed": "Email not confirmed",
+  "invalidLoginCredentials": "Invalid login credentials",
+  "userAlreadyRegistered": "User already registered",
+  "dontFindUser": "Dont find User",
+  "doYouWantCancelFavorite": "Do you want to cancel your favorite?",
   "discountOff": "{discount}% OFF",
   "@discountOff": {
     "placeholders": {
@@ -111,12 +133,10 @@
       }
     }
   },
-  "intItem": "{item} Item",
+ "intItem": "{count, plural, =0{No items} =1{1 item} other{{count} items}}",
   "@intItem": {
     "placeholders": {
-      "item": {
-        "type": "int"
-      }
+      "count": {}
     }
   }
 }

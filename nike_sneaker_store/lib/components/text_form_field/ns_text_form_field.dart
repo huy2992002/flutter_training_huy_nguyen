@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class NSTextFormField extends StatefulWidget {
   /// Create an [TextFormField]
@@ -106,8 +107,11 @@ class _NSTextFormFieldState extends State<NSTextFormField> {
       decoration: InputDecoration(
         filled: true,
         fillColor: Theme.of(context).colorScheme.secondaryContainer,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+        contentPadding: EdgeInsets.symmetric(
+          horizontal:
+              getValueForScreenType(context: context, mobile: 14, tablet: 18),
+          vertical: getValueForScreenType(context: context, mobile: 16, tablet: 24),
+        ),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(14),
@@ -136,7 +140,7 @@ class _NSTextFormFieldState extends State<NSTextFormField> {
       ),
       obscureText: _isShowPassword,
       validator: widget.validator,
-      autovalidateMode: AutovalidateMode.disabled,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       onFieldSubmitted: widget.onFieldSubmitted,
       textInputAction: widget.textInputAction,
       keyboardType: widget.textInputType,

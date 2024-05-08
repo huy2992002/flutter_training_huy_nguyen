@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 /// The translations for Vietnamese (`vi`).
@@ -123,6 +125,9 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get validEmailAddress => 'Vui lòng nhập địa chỉ email hợp lệ';
+
+  @override
+  String get validPhoneNumber => 'Vui lòng nhập số điện thoại hợp lệ';
 
   @override
   String get confirmPasswordNotMatch => 'Xác nhận mật khẩu không khớp';
@@ -314,12 +319,78 @@ class AppLocalizationsVi extends AppLocalizations {
   String get doYouWantRemoveFromCart => 'Bạn có muốn xóa sản phẩm khỏi giỏ hàng?';
 
   @override
+  String get confirmInYourEmail => 'Vui lòng xác nhận đăng ký ở Email của bạn';
+
+  @override
+  String get goToEmail => 'Chuyển đến gmail';
+
+  @override
+  String get goToSignIn => 'Quay về đăng nhập';
+
+  @override
+  String get couldNotLaunchGmail => 'Không thể chuyển đến Gmail';
+
+  @override
+  String get notFoundUser => 'Phiên bản đăng nhập đã hết hạn, vui lòng đăng nhập lại';
+
+  @override
+  String get productHaveBeenRemove => 'Sản phẩm đã được xóa khỏi giỏ hàng';
+
+  @override
+  String get selectImageSuccess => 'Chọn ảnh thất bại';
+
+  @override
+  String get cancelError => 'Yêu cầu đã bị hủy. Vui lòng thử lại.';
+
+  @override
+  String get connectionTimeOutError => 'Hết thời gian kết nối. Xin vui lòng kiểm tra kết nối Internet của bạn.';
+
+  @override
+  String get receiveTimeoutError => 'Hết thời gian chờ. Vui lòng thử lại sau.';
+
+  @override
+  String get badResponseError => 'Không thể tải dữ liệu. Vui lòng thử lại sau.';
+
+  @override
+  String get sendTimeOutError => 'Hết thời gian gửi. Vui lòng thử lại sau.';
+
+  @override
+  String get defaultError => 'Xảy ra lỗi không xác định được. Vui lòng thử lại sau.';
+
+  @override
+  String get connectionError => 'Không có kết nối internet. Vui lòng kiểm tra cài đặt mạng của bạn';
+
+  @override
+  String get productNotFound => 'Không tìm thấy sản phẩm';
+
+  @override
+  String get emailNotConfirmed => 'Email chưa được xác nhận';
+
+  @override
+  String get invalidLoginCredentials => 'Thông tin đăng nhập không hợp lệ';
+
+  @override
+  String get userAlreadyRegistered => 'Người dùng đã đăng ký';
+
+  @override
+  String get dontFindUser => 'Không tìm thấy người dùng';
+
+  @override
+  String get doYouWantCancelFavorite => 'Bạn muốn hủy yêu thích sản phẩm?';
+
+  @override
   String discountOff(int discount) {
     return '$discount% Giảm';
   }
 
   @override
-  String intItem(int item) {
-    return '$item Số Lượng';
+  String intItem(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count sản phẩm',
+      zero: 'Chưa có sản phẩm',
+    );
+    return '$_temp0';
   }
 }

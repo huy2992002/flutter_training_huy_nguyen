@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:nike_sneaker_store/features/cart/view/widgets/card_cart_product.dart';
+import 'package:nike_sneaker_store/features/home/view/widgets/card_category.dart';
+import 'package:nike_sneaker_store/features/home/view/widgets/card_product.dart';
+import 'package:nike_sneaker_store/features/home/view/widgets/card_sale.dart';
+import 'package:nike_sneaker_store/features/notification/view/widgets/card_notification.dart';
 import 'package:nike_sneaker_store/gen/assets.gen.dart';
 import 'package:nike_sneaker_store/models/notification_model.dart';
 import 'package:nike_sneaker_store/models/product_model.dart';
-import 'package:nike_sneaker_store/pages/cart/widgets/card_cart_product.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/card_category.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/card_product.dart';
-import 'package:nike_sneaker_store/pages/home/widgets/card_sale.dart';
-import 'package:nike_sneaker_store/pages/notification/widgets/card_notification.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -21,7 +21,7 @@ Widget cardCartProduct(BuildContext context) {
       label: 'Product name',
       initialValue: 'Product 1',
     ),
-    imagePath: Assets.images.imgNikeAirMax.path,
+    imagePath: productImage,
     price:
         context.knobs.double.input(label: 'Product price', initialValue: 200),
     quantity: context.knobs.int.slider(
@@ -50,16 +50,12 @@ Widget cardCartProduct(BuildContext context) {
   type: CardCategory,
 )
 Widget cardCategory(BuildContext context) {
-  return Row(
+  return const Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      CardCategory(
-        text: 'All Shoes',
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        textColor: Theme.of(context).colorScheme.onPrimary,
-      ),
-      const SizedBox(width: 20),
-      const CardCategory(text: 'Tennis'),
+      CardCategory(text: 'All Shoes'),
+      SizedBox(width: 20),
+      CardCategory(text: 'Tennis'),
     ],
   );
 }
@@ -72,7 +68,7 @@ Widget cardNotification(BuildContext context) {
   ProductModel product = ProductModel(
     uuid: 'uuid',
     name: 'name product',
-    imagePath: Assets.images.imgNikeAirMax.path,
+    imagePath: productImage,
     price: 200,
     quantity: context.knobs.int.slider(
       label: 'Quantity product',
@@ -95,7 +91,7 @@ Widget cardNotification(BuildContext context) {
     priceSale: context.knobs.double.slider(
       label: 'Price Sale',
       min: 1,
-      max: product.price,
+      max: product.price ?? 10,
       initialValue: 100,
     ),
     date: 'date',
@@ -142,7 +138,7 @@ Widget cardProduct(BuildContext context) {
   ProductModel product = ProductModel(
     uuid: 'uuid',
     name: 'name product',
-    imagePath: Assets.images.imgNikeAirMax.path,
+    imagePath: productImage,
     price: 200,
     quantity: context.knobs.int.slider(
       label: 'Quantity product',
@@ -171,3 +167,6 @@ Widget cardProduct(BuildContext context) {
     ),
   );
 }
+
+String productImage =
+    'https://res.cloudinary.com/dwkiqkpv4/image/upload/v1712808390/public/p5zkqswpn3gy1r7bqspe.png';
